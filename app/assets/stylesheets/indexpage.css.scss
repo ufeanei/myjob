@@ -1,0 +1,67 @@
+
+.contain {
+  overflow: auto;
+}
+
+
+
+
+.omrade{
+  border: 1px solid #aaa;
+  background: #fff;
+}
+
+hr {
+  border: 1px solid #aaa;
+  border-style:dashed;
+ }
+
+ .sideadvert {
+  background: #f1f1f1;
+  padding-right: 0;
+  
+ }
+
+ .jobs-list {padding: 0 10px}
+
+ .jobs-list li {
+list-style: none;
+border: 1px solid #aaa;
+padding-left: 10px;
+padding-top: 10px;
+margin: 0 0 8px 0 ;
+background: #fff;
+
+}
+
+.jobs-list ul {
+  padding-left: 0px;
+  margin: 0;
+}
+
+#money {
+  font-weight: bold;
+}
+
+.toppanel {
+  border: 1px solid #aaa;
+  overflow: auto;
+  padding: 15px;
+  background: #fff;
+  margin-bottom: 30px
+}
+
+.main-content {
+  margin-top: 20px;
+}
+.fylke-checkbox {
+
+  margin-bottom: 0
+}
+
+@media (max-width: 600px) {
+  .all {
+   margin: 0 auto;
+  }
+
+  }

@@ -1,0 +1,64 @@
+
+<div class="row ">
+  <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+    <div class="form-div well">
+      <h2 class="text-center form-head-text">Sett inn Annonse</h2>
+      <br>
+      <br>
+      <%= form_for(@job) do |f| %>
+       <div class="form-group">
+          <%= f.label :title, 'Job title' %>
+          <%= f.text_field :title, class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :description %>
+          <%= f.text_area :description, row: 15, class: "form-control" %>
+        </div>      
+        <div class="form-group">
+          <%= f.label :payment %>
+          <%= f.text_field :payment, class: "form-control" %>
+        </div>
+        <br>
+
+        Items to be transported:
+        
+        
+          <div class="row">        
+            <div class="form-group col-md-6"> 
+              <%= f.label "From:" %>         
+              <%= f.text_field :street_addr, placeholder: "Gateaddress eks. storgata 20A", class: "form-control" %>
+              <%= f.select(:fylke_id, options_for_select(@kommune), {prompt: "Velg Kommune"}, {class:"form-control addr-field"}) %>               
+              <%= f.select(:kommune_id, options_for_select(@kommune), {prompt: "Velg Kommune"}, {class:"form-control"}) %>              
+            </div>
+
+            <div class="form-group col-md-6"> 
+              <%= f.label "To:" %>         
+              <%= f.text_field :destination_addr, placeholder: "Gate address", class: "form-control addr-field" %>
+            </div>
+          </div>
+          <br>
+
+          <div class="row">
+            <div class="form-group col-md-4 ">
+              <%= label_tag "You are signed in as:"%>
+              <%= text_field_tag :user,"", class: "form-control" %>Du kan endre   
+            </div>
+            <div class="col-md-8"></div><!--- this is to shorten text field field above -->
+          </div>
+          <div class="row">
+           <div class="form-group col-md-4">
+              <%= f.label :contact_number, "Contact Number" %>           
+              <%= f.text_field :contact_number, class: "form-control" %>                    
+           </div>
+           <div class="col-md-8"></div>
+          </div>
+         <div class="form-group">
+          <%= check_box_tag "terms" %> I agree <%= link_to 'Terms of Service', service_path %> and <%= link_to 'Privacy statment', privacy_path %>
+          
+        </div>
+
+        <%= f.submit "Post your job", class: "btn btn-lg btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,88 @@
+
+<div class="contain main-content">
+  <div class="row col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2  all">
+   
+    <div class="toppanel">
+      <div class="col-md-6 col-xs-6">
+        <h5>203 treff</h5>
+      </div>
+        <div class="col-md-6 col-xs-6 push-right"> 
+          <select class="form-control addr-field">
+            <option>Recent</option>
+            <option>7 days ago</option>
+          </select>
+        </div>
+    </div><!--end of top panel-->
+
+    <aside class="col-md-3 col-sm-5 omrade"> <!-- aside is the fylke filter on the left of the index page. this lists all the fylkes -->
+      <h2>Område</h2>
+      <hr/>
+      <div class=''>
+        <%= form_tag '/login', method: :post do %> <!-- where we submit the form. it is an ajax request ie js request -->
+          <% @fylke.each do |fylke| %> 
+            <div class="form-group fylke-checkbox">
+              <%= check_box_tag("fylke_id[#{fylke.id}]", fylke.id) %>
+              <%= label_tag("fylke_id[#{fylke.id}]", fylke.name) %>
+            </div>    
+          <% end%> 
+          <%= submit_tag "submit" %>
+        <% end %>
+      </div>
+    </aside>
+
+    <div class="col-md-6 col-sm-7 jobs-list"><!--- the  middle part of page that list all jobs begins here-->
+    <ul>
+      <% @jobs.each do |job| %> <!--- this piece of code generates the infos for each job to be displayed -->
+      <li>
+        <div class="row">
+          <%= link_to job_path(job.id) do %>
+            <div class="col-md-4 col-sm-4">
+              <%= image_tag('pages/fotolia.jpg', size: "170 x 200", class: 'img-responsive pull-left thumbnail') %>
+            </div>
+            <div class="col-md-5 col-sm-6">
+              <p> <%= job.title %></p>
+            </div>
+          <% end %>
+          <div class="col-md-3 ">
+            <h5 id="money"> <%= job.payment %></h5>
+          </div>
+        </div>
+        <hr>
+        <div class="row panel-bottom">
+          <p class="col-md-6 text-center"><%= job.fylke.name %> </p>
+          <p class="col-md-6 text-center">Posted on: <%= job.created_at.month %> </p>
+        </div>
+      </li>
+      <% end %> <!--- end of infos for each job here -->
+    </ul>
+    </div> <!-- end of middle section code -->
+
+    <div class="col-md-3 sideadvert hidden-sm"> <!-- the code is for the side advert on the index page at the right -->
+      <br>
+      <br>
+      <div>
+        <h3>Drivers</h3>
+        <p>Har du varebil, kassebil, pickup?
+            You can make extra money by transporting load for someone in your locality</p>
+        <p><a href="#"> Become a driver.Click here</a></p>
+      </div>
+      <div>
+        <h3>Kunde</h3>
+        <p>Are you moving out, or you bought something from the shop or online and you want it transported to your house?
+            For all your moving problems just post your shipment  and select a driver to transport it.</p>
+        <p><%= link_to 'Post your add here', new_job_path %></p>
+
+         <br/>
+         <br/>
+         <br/>
+         <br/>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
