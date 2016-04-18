@@ -12,7 +12,7 @@ class JobsController < ApplicationController
   end
 
   def new
-    @kommune = [["Asker", 1], ["Akerhus", 2]] #Kommune.all.map{|u| [ u.name, u.id ] }
+    @fylkes = Fylke.all #.map { |e| [e.name, e.id] } #[["Asker", 1], ["Akerhus", 2]] #Kommune.all.map{|u| [ u.name, u.id ] }
     @job = Job.new
   end
 

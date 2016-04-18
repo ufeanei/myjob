@@ -27,8 +27,10 @@
             <div class="form-group col-md-6"> 
               <%= f.label "From:" %>         
               <%= f.text_field :street_addr, placeholder: "Gateaddress eks. storgata 20A", class: "form-control" %>
-              <%= f.select(:fylke_id, options_for_select(@kommune), {prompt: "Velg Kommune"}, {class:"form-control addr-field"}) %>               
-              <%= f.select(:kommune_id, options_for_select(@kommune), {prompt: "Velg Kommune"}, {class:"form-control"}) %>              
+              <%= f.collection_select :fylke_id, @fylkes, :id, :name, {prompt: "Velg Fylke"}, {class:"form-control addr-field"}%>  
+              <%= f.grouped_collection_select :kommune_id, @fylkes, :kommunes, :name, :id, :name, {}, {class:"form-control addr-field"} %>
+                           
+                          
             </div>
 
             <div class="form-group col-md-6"> 
