@@ -14,3 +14,10 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require_tree .
+
+//
+//$(document).ready(function(){
+//	$('input').change(function(e){
+//		$.ajax(type: 'post', )
+//	})
+//})

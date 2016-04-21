@@ -13,7 +13,7 @@
         <p><%= @job.description %> </p>
         <br/>
         <h3>Directions</h3>
-        <p><%= @job.street_addr %> <strong>  To  </strong> <%= @job.destination_addr %> </p>   
+        <p><%= @job.street_addr %> <strong>  To  </strong> <%= @job.destination_addr%> </p>   
         <%= image_tag('pages/fotolia.jpg', class: 'img-responsive thumbnail') %>
       </div>
 
@@ -26,7 +26,7 @@
             <li>
               <div class="row col-md-12 col-xs-12">
                 <p class="col-md-4 col-xs-5">Annonsør:</p>
-                <p class="col-md-8 col-xs-5  text-center" ><%= @job.created_at %></p>
+                <p class="col-md-8 col-xs-5  text-center" ><%= display_datetime(@job.created_at) %></p>
               </div>
             </li>
             <li>

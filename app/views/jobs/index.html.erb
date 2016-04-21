@@ -18,11 +18,11 @@
       <h2>Område</h2>
       <hr/>
       <div class=''>
-        <%= form_tag '/login', method: :post do %> <!-- where we submit the form. it is an ajax request ie js request -->
-          <% @fylke.each do |fylke| %> 
+        <%= form_tag jobs_path(params["fylke_id"]), method: :get do %> <!-- where we submit the form. it is an ajax request ie js request -->
+          <% @fylkes.each do |fylke| %> 
             <div class="form-group fylke-checkbox">
               <%= check_box_tag("fylke_id[#{fylke.id}]", fylke.id) %>
-              <%= label_tag("fylke_id[#{fylke.id}]", fylke.name) %>
+              <%= label_tag("fylke_id[#{fylke.id}]", fylke.name) %>(<%= jobs_per_fylke(@all_jobs, fylke.id)%>)
             </div>    
           <% end%> 
           <%= submit_tag "submit" %>

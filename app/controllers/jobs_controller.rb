@@ -1,14 +1,36 @@
 class JobsController < ApplicationController
   def login
 
+
+
   end
 
 
 
   def index
-    @fylke = Fylke.all
 
-    @jobs = Job.all
+
+    @fylkes = Fylke.all
+    @all_jobs= Job.all
+
+    if requested_jobs
+      @jobs= Job.where(fylke_id: requested_jobs)
+
+      
+      
+      
+    else
+      @jobs= Job.all
+      
+    end
+    #redirect_to :back
+#
+#    respond_to do |format|
+#      format.html
+#      format.js
+#    end
+#
+
   end
 
   def new
@@ -54,7 +76,9 @@ class JobsController < ApplicationController
   params.require(:job).permit(:title,:description, :payment, :street_addr, :destination_addr, :contact_number,  :user_id, :kommune_id)
  end
 
-
+def requested_jobs
+ params["fylke_id"].keys if params["fylke_id"]
+end
 
 
 end

@@ -1,0 +1,32 @@
+<% if jobs %>
+
+	$('.jobs-list').html(
+	<ul>
+	  <% @jobs.each do |job| %> <!--- this piece of code generates the infos for each job to be displayed -->
+	    <li>
+	      <div class="row">
+	        <%= link_to job_path(job.id) do %>
+	          <div class="col-md-4 col-sm-4">
+	            <%= image_tag('pages/fotolia.jpg', size: "170 x 200", class: 'img-responsive pull-left thumbnail') %>
+	          </div>
+	          <div class="col-md-5 col-sm-6">
+	            <p> <%= job.title %></p>
+	          </div>
+	        <% end %>
+	        <div class="col-md-3 ">
+	          <h5 id="money"> <%= job.payment %></h5>
+	        </div>
+	      </div>
+	      <hr>
+	      <div class="row panel-bottom">
+	        <p class="col-md-6 text-center"><%= job.fylke.name %> </p>
+	        <p class="col-md-6 text-center">Posted on: <%= job.created_at.month %> </p>
+	      </div>
+	    </li>
+	  <% end %> <!--- end of infos for each job here -->
+	</ul>
+	);
+
+<% else %>
+  $('.jobs-list').html("No Jobs found for your search");
+<% end %>
