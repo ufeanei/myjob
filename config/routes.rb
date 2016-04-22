@@ -5,7 +5,7 @@ Porter::Application.routes.draw do
  get "/privacy" => "pages#privacy"
  get "/service" => "pages#service"
 
- post "/index" => "jobs#index"
+ post "/jobs/search" => "jobs#index"
   
  root 'pages#home'
 

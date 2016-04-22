@@ -16,8 +16,21 @@
 //= require_tree .
 
 //
-//$(document).ready(function(){
-//	$('input').change(function(e){
-//		$.ajax(type: 'post', )
-//	})
-//})
+
+$(document).ready(function(){
+
+$(".spinner").hide();
+
+$("#search-job-fylke input[type='checkbox']").on('change', function(){
+	$("#search-job-fylke").submit();
+
+});
+
+  $(document).ajaxStart(function() {
+    $(".spinner").fadeIn('slow');
+ }).ajaxStop(function() {
+      $(".spinner").hide();
+  });	
+});
+
+

@@ -14,24 +14,16 @@ class JobsController < ApplicationController
     @all_jobs= Job.all
 
     if requested_jobs
-      @jobs= Job.where(fylke_id: requested_jobs)
-
-      
-      
-      
+      @jobs= Job.where(fylke_id: requested_jobs)     
     else
-      @jobs= Job.all
-      
+      @jobs= Job.all   
     end
-    #redirect_to :back
-#
-#    respond_to do |format|
-#      format.html
-#      format.js
-#    end
-#
+    respond_to do |format|
+      format.html
+      format.js 
+    end
 
-  end
+  end 
 
   def new
     @fylkes = Fylke.all #.map { |e| [e.name, e.id] } #[["Asker", 1], ["Akerhus", 2]] #Kommune.all.map{|u| [ u.name, u.id ] }
@@ -44,7 +36,7 @@ class JobsController < ApplicationController
     @job = Job.new(job_params)
     if @job.save
       flash[:succes] = 'your job has been created'
-      redirect_to root_path
+      redirect_to jobs_path
     else
       render :new
     end
@@ -67,13 +59,18 @@ class JobsController < ApplicationController
 
   def show
   
-    @job = Job.find_by(id: params[:id]) 
+    @job = Job.find_by(id: params[:id])
+    if !@job
+      flash[:danger]= "That job does not exist"
+      redirect_to jobs_path
+    end
+
   end
 
  private
 
  def job_params
-  params.require(:job).permit(:title,:description, :payment, :street_addr, :destination_addr, :contact_number,  :user_id, :kommune_id)
+  params.require(:job).permit(:title,:description, :payment, :street_addr, :destination_addr, :contact_number,  :user_id, :kommune_id, :fylke_id)
  end
 
 def requested_jobs
