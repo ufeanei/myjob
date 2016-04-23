@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160412015848) do
+ActiveRecord::Schema.define(version: 20160423115725) do
 
   create_table "fylkes", force: true do |t|
     t.string "name"
+  end
+
+  create_table "job_applications", force: true do |t|
+    t.integer  "job_id"
+    t.integer  "user_id"
+    t.boolean  "awarded",    default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "jobs", force: true do |t|
@@ -34,6 +42,18 @@ ActiveRecord::Schema.define(version: 20160412015848) do
   create_table "kommunes", force: true do |t|
     t.string  "name"
     t.integer "fylke_id"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.text     "user_self_description"
+    t.integer  "kommune_id"
+    t.boolean  "admin",                 default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

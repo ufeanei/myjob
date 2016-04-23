@@ -20,6 +20,8 @@
 $(document).ready(function(){
 
 $(".spinner").hide();
+$("#search-job-fylke input[type='submit']").hide();
+
 
 $("#search-job-fylke input[type='checkbox']").on('change', function(){
 	$("#search-job-fylke").submit();

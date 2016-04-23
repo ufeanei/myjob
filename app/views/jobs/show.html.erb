@@ -1,5 +1,5 @@
 <div class="correct-row-style"> <!-- this first div is added to correct positioning effects from the bootstrap class="row" styles  --> 
-  <div class=" row  col-md-8 col-sm-10 col-sm-offset-1 col-md-offset-2" id="container">
+  <div class=" row  col-md-6 col-sm-10 col-sm-offset-1 col-md-offset-3" id="container">
     <div class="toppanel">
       <br>
       <br>
@@ -7,6 +7,7 @@
     <div class="wrapper">
       <div class="job-main-details col-sm-7 col-md-8 col-xs-12">
         <h2><%= @job.title %></h2>
+        <br>
         <%= image_tag('pages/fotolia.jpg', class: 'img-responsive  thumbnail') %>
         <br/>
         <h3>Description</h3>
@@ -15,6 +16,20 @@
         <h3>Directions</h3>
         <p><%= @job.street_addr %> <strong>  To  </strong> <%= @job.destination_addr%> </p>   
         <%= image_tag('pages/fotolia.jpg', class: 'img-responsive thumbnail') %>
+        <ul>
+            <li>
+              <div class="row col-md-12 col-xs-12">
+                <p class="col-md-4 col-xs-5">Posted on:</p>
+                <p class="col-md-8 col-xs-5"><%= display_datetime(@job.created_at) %></p>
+              </div>
+            </li>
+            <li>
+              <div class="row col-md-12 col-xs-12">
+                <p class="col-md-4 col-xs-5">Modified:</p>
+                <p class="col-md-8 col-xs-5"><%= display_datetime(@job.updated_at) %></p>
+              </div>
+            </li>
+          </ul>
       </div>
 
       <div class="side-info col-md-4 col-sm-5 col-xs-12 "> 
@@ -26,35 +41,21 @@
             <li>
               <div class="row col-md-12 col-xs-12">
                 <p class="col-md-4 col-xs-5">Annonsør:</p>
-                <p class="col-md-8 col-xs-5  text-center" ><%= display_datetime(@job.created_at) %></p>
+                <p class="col-md-8 col-xs-5" >Espen Øvre</p>
               </div>
             </li>
             <li>
               <div class="row col-md-12 col-xs-12">
-                <p class="col-md-4 col-xs-5">Posted on:</p>
-                <p class="col-md-8 col-xs-5 text-center">20.10.2015 at 21:26</p>
+                <p class="col-md-4 col-xs-5">Phone:</p>
+                <p class="col-md-8 col-xs-5"><%= @job.contact_number %></p>
               </div>
             </li>
           </ul>
           <br/>
           <br/>
-          <ul>
-            <li>
-              <div class="row col-md-12 col-xs-12">
-                <p class="col-md-4 col-xs-5">Posted on:</p>
-                <p class="col-md-8 col-xs-5 text-center">20.10.2015 at 21:26</p>
-              </div>
-            </li>
-            <li>
-              <div class="row col-md-12 col-xs-12">
-                <p class="col-md-4 col-xs-5">Posted on:</p>
-                <p class="col-md-8 col-xs-5 text-center">20.10.2015 at 21:26</p>
-              </div>
-            </li>
-          </ul>
-          status:
-          <span>Job not yet awarded</span>
-          <br/>
+          
+          <br>
+          <h4 class="">status: <strong>Job not yet awarded</strong></h4>
           <br/>
           <button class="btn btn-block btn-primary">Apply to transport it </button>  
         </div>
@@ -62,8 +63,23 @@
         <div class="applicants-div">
           <h2 class="text-center">10</h2>
           <h4 class="text-center">Applicants </h4>  
-        </div><!--end of applicants-div-->   
-      </div> 
+        </div><!--end of applicants-div-->  
+
+        <div class="similar-jobs">
+          <br>
+          <h4 class="text-center"><%=@job.fylke.name.upcase %> JOBS</h4>
+          <br>
+          <% @same_location_jobs.each do |job| %>
+            <% if job.id != @job.id %>
+              <div>
+                <h4><%= link_to job.title, job_path(job) %></h4>
+                <p><strong><%= job.fylke.name %></strong></p>
+              </div>
+            <% end %>
+          <% end %>
+        </div><!-- end of similar jobs-->
+
+      </div><!-- end of job main details--> 
     </div> <!-- end of wrapper-->       
   </div>
 </div>

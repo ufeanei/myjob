@@ -4,7 +4,7 @@
 
 #container {
   padding: 0;
-overflow:auto;
+  overflow:auto;
   margin-top: 40px;
   margin-bottom: 40px
  
@@ -35,9 +35,14 @@ overflow:auto;
   
   }
 
-  .apply-section {
-    margin-top: 15px;
+  .apply-section, .similar-jobs {
+  margin-top: 15px;
   background: #fff;
   border: 1px solid #aaa
+
+  }
+
+  .similar-jobs {
+ padding: 0 15px;
 
   }

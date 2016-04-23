@@ -6,11 +6,8 @@
       <div class="col-md-6 col-xs-6">
         <h5><strong id="total-jobs"><%=@jobs.size %></strong> Jobs display</h5>
       </div>
-        <div class="col-md-6 col-xs-6 push-right"> 
-          <select class="form-control addr-field">
-            <option>Recent</option>
-            <option>7 days ago</option>
-          </select>
+        <div class="col-md-6 col-xs-6"> 
+          
         </div>
     </div><!--end of top panel-->
 
@@ -24,13 +21,15 @@
               <%= check_box_tag("fylke_id[#{fylke.id}]", fylke.id) %>
               <%= label_tag("fylke_id[#{fylke.id}]", fylke.name) %>(<%= jobs_per_fylke(@all_jobs, fylke.id)%>)
             </div>    
-          <% end%> 
-          <%= submit_tag "submit" %>
+          <% end%>
+          <br>
+          <br> 
+          <%= submit_tag "" %>
         <% end %>
       </div>
     </aside>
 
-    <div class="col-md-6 col-sm-7 "><!--- the  middle part of page that list all jobs begins here-->
+    <div class="col-md-6 col-sm-7 middle-section"><!--- the  middle part of page that list all jobs begins here-->
     <div class="spinner "><%= image_tag('pages/spin.gif') %></div>
     <div class="jobs-list">
     <%= render 'index_page_jobs_list' %>

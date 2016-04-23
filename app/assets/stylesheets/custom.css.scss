@@ -92,26 +92,23 @@ main {
   font-family: helvetica, sans-serif
 }
 
-.btn {
-  
+.btn-ship, .btn-helper {
   font-size: 16px;
   color: #ffffff;
   font-weight: 600;
-  border-radius: 0;
   font-family: arial, helvetica, sans-serif;
-  border-radius:200px
+  border-radius:200px;
+  margin:10px 20px;
 }
 
 .btn-ship {
-  background-color:#cc6600;
-  margin:10px 20px;
-
+  background-color:#cc6600;  
 }
 
 .btn-helper {
   border: 1px solid #fff;
   background-color: rgba(0,0,0,0);
-  margin:10px 20px;
+  
 }
 
 .panel {

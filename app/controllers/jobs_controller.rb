@@ -43,7 +43,7 @@ class JobsController < ApplicationController
   end
 
   def edit
-    @job = Job.find_by(params[:id]) 
+    @job = Job.find_by(id: params[:id]) 
   end
 
   def update
@@ -60,10 +60,12 @@ class JobsController < ApplicationController
   def show
   
     @job = Job.find_by(id: params[:id])
+    @same_location_jobs = Job.where(fylke_id: @job.fylke_id).limit(6).order(created_at: :desc)
     if !@job
       flash[:danger]= "That job does not exist"
       redirect_to jobs_path
     end
+
 
   end
 
