@@ -1,0 +1,53 @@
+.register-button {
+	 
+	background: #0066cc;
+	border: 1px solid #f1f1f1;
+	font-size: 25px;
+	font-weight: 100;
+	letter-spacing: 2px;
+	color: #fff;
+
+}
+#contain {
+	overflow: auto;
+}
+.new-user-wrapper {
+	
+	padding: 1px;
+	padding-top: 0px;
+	background: #fff;
+	border: 1px solid #aaaaaa;
+	border-radius: 5px;
+	margin-top: 50px
+}
+
+ 
+.hr-new-user {
+	border: 1px solid #aaaaaa;
+	border-style: dashed;
+	width: 60%;
+}
+.text-center {
+	margin-bottom: 30px;
+}
+
+@media (max-width: 600px) {
+  .new-user-wrapper {
+    margin: 0 auto;
+  }
+}
+
+.infos{
+	font-size: 18px;
+	color: #666;
+} 
+
+.registerform {
+	background: #f1f1f1;
+	border-radius: 0px;
+	border: 1px solid #aaa;
+	border-right: none;
+	margin: 0;
+	margin-bottom: -1px;
+}
+
