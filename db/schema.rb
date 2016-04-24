@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160423115725) do
+ActiveRecord::Schema.define(version: 20160423154203) do
 
   create_table "fylkes", force: true do |t|
     t.string "name"
@@ -52,6 +52,9 @@ ActiveRecord::Schema.define(version: 20160423115725) do
     t.text     "user_self_description"
     t.integer  "kommune_id"
     t.boolean  "admin",                 default: false
+    t.string   "phone"
+    t.string   "street_addr"
+    t.string   "car_reg"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

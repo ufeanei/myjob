@@ -16,8 +16,8 @@ Porter::Application.routes.draw do
     get 'my_jobs'
     get 'my_applications'
     get 'my_granted_applications'
-    get 'my_profile'
     get 'reset_password'
+    get 'dashboard'
   end
  end
 end

@@ -1,4 +1,4 @@
-<div id="contain"> <!--added to undo positioning due to bootstrap row style-->
+<div class="contain"> <!--added to undo positioning due to bootstrap row style-->
   <div class="row well new-user-wrapper col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-xs-12 ">  
     <div class="col-md-6 col-xs-12 infos hidden-xs">
       <br/>
@@ -21,7 +21,7 @@
         </div>
         <div class="form-group">
           <%= f.label :email, 'Email address' %>
-          <%= f.text_field :email, class: "form-control", placeholder: 'Email' %>
+          <%= f.text_field :email, class: "form-control", placeholder: 'Email', autocomplete: false %>
         </div>
         <div class="form-group">
           <%=f.label :password, 'Password' %>

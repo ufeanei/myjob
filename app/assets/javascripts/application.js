@@ -36,3 +36,6 @@ $("#search-job-fylke input[type='checkbox']").on('change', function(){
 });
 
 
+
+
+

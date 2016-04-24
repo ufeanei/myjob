@@ -1,0 +1,50 @@
+
+
+<div class=" well registerform col-xs-12" novalidate>
+  <h3 class="text-center">Please Complete your profile</h3>
+
+  <%= form_for @user do |f| %>
+    <div class="form-group">
+      <%= f.label :first_name, 'First Name' %>
+      <%= f.text_field :first_name, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :last_name, 'Last Name' %>
+      <%= f.text_field :last_name, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :email, 'Email' %>
+      <%= f.text_field :email, class: "form-control" %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :phone, 'Phone Number' %>
+      <%= f.text_field :phone, class: "form-control" %>
+    </div>
+    
+    <div class="form-group">
+      <%= f.label :street_addr, 'Gate adress' %>
+      <%= f.text_field :street_addr, class: "form-control", placeholder: "eg Grytingstien 2, 4041" %>
+    </div>
+    <div class="form-group">
+      <%= f.label 'Kommune' %>
+     <%= f.collection_select :kommune_id, @kommunes, :id, :name, {prompt: "Velg Kommune"}, {class:"form-control addr-field"}%> 
+    </div>
+    <div class="form-group">
+      <%= f.label :car_reg, 'Bil Reg.nr' %>
+      <%= f.text_field :car_reg, class: "form-control", placeholder: "eg RJ12345" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :user_self_description, 'A litt om du og din bil.' %>
+      <%= f.text_area :user_self_description, class: "form-control", placeholder: "jeg er slutten je har en karton bil" %>
+    </div>
+         
+    <br/>
+     
+    <%= f.submit "Save", class: "btn btn-default btn-block register-button" %> 
+     
+  <% end %>
+</div>
+
+
