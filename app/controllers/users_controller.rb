@@ -14,43 +14,10 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-    @kommunes = Kommune.all
-    @user = User.find_by(id: params[:id])
-
-    respond_to do |format|
-      format.html
-      format.js
-    end
+  def show
+    @user = User.find_by(id: 1)
   end
 
-
-
-  def dashboard
-    @kommunes = Kommune.all
-    @user = User.find_by(id: params[:id])
-  end
-
-  def reset_password
-    respond_to do |format|
-      format.html
-      format.js
-    end
-  end
-
-  def my_applicationss
-    #before action. check login, confirmed and current_user
-    @my_jobs = JobApplication.where(user_id: params[:id])
-  end
-
-  def my_jobs
-    #before action. check login, confirmed and current_user
-    @my_jobs = Job.where(user_id: params[:id])
-  end
-
-  def jobs_won
-    @jobs_won =  JobApplication.where(user_id: params[:id], awarded: true)
-  end
 
 
 
@@ -61,6 +28,8 @@ class UsersController < ApplicationController
    def user_params
      params.require(:user).permit(:first_name, :last_name, :email, :password)
    end
+
+   
 
 
 

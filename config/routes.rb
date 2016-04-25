@@ -11,13 +11,17 @@ Porter::Application.routes.draw do
 
  resources :jobs
 
- resources :users do
+ resources :users 
+
+ resource :dashboards, only: [:show] do
   member do
     get 'my_jobs'
     get 'my_applications'
     get 'my_granted_applications'
     get 'reset_password'
-    get 'dashboard'
+    get 'edit_profile'
+    get 'my_profile'
   end
  end
+
 end

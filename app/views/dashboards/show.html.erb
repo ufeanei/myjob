@@ -9,9 +9,9 @@
         <h4 id="jobs-won"><%= link_to 'My Jobs won', '' %></h4>
         <h4>Account Settings</h4>
         <ul>
-          <li id="my-profile"><%= link_to 'My profile', edit_user_path(@user), remote: true %></li>
-          <li id="edit-profile"><%= link_to 'Edit Profile', edit_user_path(@user), remote: true %></li>
-          <li id="change password"><%= link_to 'Change Password', reset_password_user_path(@user), remote: true  %></li>
+          <li id="my-profile"><%= link_to 'My profile', my_profile_dashboards_path, remote: true %></li>
+          <li id="edit-profile"><%= link_to 'Edit Profile', edit_profile_dashboards_path, remote: true %></li>
+          <li id="change password"><%= link_to 'Change Password', reset_password_dashboards_path, remote: true  %></li>
         </ul>   
       </div>
       
