@@ -45,7 +45,8 @@ class JobsController < ApplicationController
     end
   end
 
-  def show  
+  def show 
+    
     @job = Job.find_by(id: params[:id])
     @same_location_jobs = Job.where(fylke_id: @job.fylke_id).limit(6).order(created_at: :desc)
 
@@ -64,6 +65,8 @@ class JobsController < ApplicationController
   def requested_jobs
    params["fylke_id"].keys if params["fylke_id"]
   end
+
+  
 
 
 end

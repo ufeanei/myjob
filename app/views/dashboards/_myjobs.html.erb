@@ -1,0 +1,9 @@
+<%= @jobs.each do |job| %>
+  <div class="row">
+  	<div class="col-md-4 col-sm-4">
+      <%= image_tag('pages/fotolia.jpg', size: "170 x 200", class: 'img-responsive pull-left thumbnail') %>
+    </div>
+    <div class="col-md-5 col-sm-6">
+      <p> <%= job.title %></p>
+    </div>
+  </div>
