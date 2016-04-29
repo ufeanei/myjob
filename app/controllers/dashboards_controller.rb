@@ -31,7 +31,11 @@ class DashboardsController < ApplicationController
 
   def my_jobs
     #before action. check login, confirmed and current_user
-    @my_jobs = Job.where(user_id: '1')
+    @my_jobs = Job.where(user_id: 1)
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   def jobs_won
@@ -48,4 +52,6 @@ class DashboardsController < ApplicationController
       format.js
     end
   end
+
+
 end

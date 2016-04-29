@@ -13,7 +13,7 @@ Porter::Application.routes.draw do
 
  resources :users 
 
- resource :dashboards, only: [:show] do
+ resource :dashboard, only: [:show] do
   member do
     get 'my_jobs'
     get 'my_applications'

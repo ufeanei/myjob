@@ -4,14 +4,14 @@
       <h2>Dashboard</h2>
       <hr/>
       <div class=''>
-        <h4 id="my-jobs"><%= link_to 'My Jobs', '' %></h4>
+        <h4 id="my-jobs"><%= link_to 'My Jobs', my_jobs_dashboard_path, remote: true %></h4>
         <h4 id="my-applications"><%= link_to 'My Applications', '' %></h4>
         <h4 id="jobs-won"><%= link_to 'My Jobs won', '' %></h4>
         <h4>Account Settings</h4>
         <ul>
-          <li id="my-profile"><%= link_to 'My profile', my_profile_dashboards_path, remote: true %></li>
-          <li id="edit-profile"><%= link_to 'Edit Profile', edit_profile_dashboards_path, remote: true %></li>
-          <li id="change password"><%= link_to 'Change Password', reset_password_dashboards_path, remote: true  %></li>
+          <li id="my-profile"><%= link_to 'My profile', my_profile_dashboard_path, remote: true %></li>
+          <li id="edit-profile"><%= link_to 'Edit Profile', edit_profile_dashboard_path, remote: true %></li>
+          <li id="change password"><%= link_to 'Change Password', reset_password_dashboard_path, remote: true  %></li>
         </ul>   
       </div>
       
