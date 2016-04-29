@@ -14,4 +14,7 @@ class PagesController < ApplicationController
 	
 	def about
 	end
+
+	def become_driver
+	end
 end

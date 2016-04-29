@@ -4,6 +4,8 @@ Porter::Application.routes.draw do
  get "/contact" => "pages#contact"
  get "/privacy" => "pages#privacy"
  get "/service" => "pages#service"
+ get "/become_driver" => "pages#become_driver"
+
 
  post "/jobs/search" => "jobs#index"
   
@@ -17,7 +19,7 @@ Porter::Application.routes.draw do
   member do
     get 'my_jobs'
     get 'my_applications'
-    get 'my_granted_applications'
+    get 'jobs_won'
     get 'reset_password'
     get 'edit_profile'
     get 'my_profile'

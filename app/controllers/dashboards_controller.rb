@@ -24,9 +24,12 @@ class DashboardsController < ApplicationController
     end
   end
 
-  def my_applicationss
+  def my_applications
     #before action. check login, confirmed and current_user
-    @my_jobs = JobApplication.where(user_id: '1')
+    @my_applications = JobApplication.where(user_id: 1, awarded: false)
+    respond_to do |format|
+      format.js
+    end
   end
 
   def my_jobs
@@ -39,7 +42,11 @@ class DashboardsController < ApplicationController
   end
 
   def jobs_won
-    @jobs_won =  JobApplication.where(user_id: '1', awarded: true)
+    @appli_won =  JobApplication.where(user_id: '1', awarded: true)
+
+    respond_to do |format|
+      format.js
+    end
   end
 
   def create_password

@@ -1,9 +1,5 @@
 class JobsController < ApplicationController
 
-  def login
-
-  end
-
   def index
     @fylkes = Fylke.all
     @all_jobs= Job.all

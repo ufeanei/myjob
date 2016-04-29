@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160423154203) do
+ActiveRecord::Schema.define(version: 20160429182025) do
 
   create_table "fylkes", force: true do |t|
     t.string "name"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20160423154203) do
     t.integer  "kommune_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "status"
   end
 
   create_table "kommunes", force: true do |t|

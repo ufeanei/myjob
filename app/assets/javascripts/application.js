@@ -19,6 +19,12 @@
 
 $(document).ready(function(){
 
+// myjobs js
+
+
+
+// jobs index page js
+
 $(".spinner").hide();
 $("#search-job-fylke input[type='submit']").hide();
 
@@ -34,7 +40,6 @@ $("#search-job-fylke input[type='checkbox']").on('change', function(){
       $(".spinner").hide();
   });	
 });
-
 
 
 
