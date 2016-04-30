@@ -16,14 +16,14 @@
 }
 
 .job-wrap {
-	border: 1px solid #aaaaaa;
+border: 1px solid #aaaaaa;
 padding: 15px;
-background-color: #f1f1f1
+background-color: #c0c0c0;
 
 
 }
 
-.edit-btn, .delete-btn {
+.edit-btn{
 	border-radius: 200px;
 	padding: 7px 25px;
 	
@@ -32,9 +32,4 @@ background-color: #f1f1f1
 .edit-btn {
 	border: 1px solid blue;
 	color:blue;
-}
-
-.delete-btn {
-	border: 1px solid red;
-	color:red;
 }

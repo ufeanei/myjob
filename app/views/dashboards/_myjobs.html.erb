@@ -1,70 +1,74 @@
-
-<% @my_jobs.each do |job| %>
-<div class="job-wrap">
-  <div>
-  <div class="row job-section">
-  	<div class="col-md-3 col-sm-3">
-      <%= image_tag('pages/fotolia.jpg', class: 'img-responsive pull-left thumbnail') %>
-      <p> views:21 </p>
+<% if @my_jobs %>
+<h3 class="text-center"><strong>My Jobs</strong></h3>
+  <% @my_jobs.each do |job| %>
+    <div class="job-wrap">
+      <div>
+      <div class="row job-section">
+      	<div class="col-md-3 col-sm-3">
+          <%= image_tag('pages/fotolia.jpg', class: 'img-responsive pull-left thumbnail') %>
+          
+        </div>
+        <div class="col-md-5 col-sm-6">
+          <p> <%= link_to "#{job.title}", job_path(job) %></p>
+          <br>
+          <p> views: <strong>21 </strong></p>
+        
+          <%= link_to 'Endre', edit_job_path(job), class: "pull-left edit-btn" %> 
+        </div>
+      </div>
     </div>
-    <div class="col-md-5 col-sm-6">
-      <p> <%= link_to "#{job.title}", job_path(job) %></p>
+
+
+
+    <div class="applicants-list">
+      <h2 class="text-center">Applicants</h2>
+      <p>The following have applid to help. click on the name to view each helper and invite the one you like.</p>
+      <p>You can always cancel an invitation and invite someone else </p>
       <br>
-      <br>
-      <%= link_to 'Endre', edit_job_path(job), class: "pull-left edit-btn" %> <%= link_to 'Slett', '', class: "pull-right delete-btn" %>
+      
+      <table class="table table-hover ">
+        <tr>
+          <td><strong><%= link_to "Espen O.", '' %> </strong></td>
+          <td> Stavanger </td>
+          <td> <%= link_to 'invite', '', class: "btn btn-info invite" %></td>
+          <td> <%= link_to 'Cancel', '', class: "btn btn-danger invite-cancel" %></td>
+        </tr>
+        <tr>
+          <td><strong><%= link_to "Espen O.", '' %> </strong></td>
+          <td> Stavanger </td>
+          <td> <%= link_to 'invite', '', class: "btn btn-info" %></td>
+          <td> <%= link_to 'Cancel', '', class: "btn btn-danger invite-cancel" %></td>
+        </tr>
+          <tr>
+          <td><strong><%= link_to "Espen O.", '' %> </strong></td>
+          <td> Stavanger </td>
+          <td> <%= link_to 'invite', '', class: "btn btn-info" %></td>
+          <td> <%= link_to 'Cancel', '', class: "btn btn-danger invite-cancel" %></td>
+        </tr>
+          <tr>
+          <td><strong><%= link_to "Espen O.", '' %> </strong></td>
+          <td> Stavanger </td>
+          <td> <%= link_to 'invite', '', class: "btn btn-info" %></td>
+          <td> <%= link_to 'Cancel', '', class: "btn btn-danger invite-cancel" %></td>
+        </tr>
+          <tr>
+          <td><strong><%= link_to "Espen O.", '' %> </strong></td>
+          <td> Stavanger </td>
+          <td> <%= link_to 'invite', '', class: "btn btn-info" %></td>
+          <td> <%= link_to 'Cancel', '', class: "btn btn-danger invite-cancel" %></td>
+        </tr>   
+      </table>
+   
+
     </div>
-  </div>
-</div>
-
-
-
-<div class="applicants-list">
-  <h2 class="text-center">Applicants</h2>
-  <p>The following have applid to help. click on the name to view each helper and invite the one you like.</p>
-  <p>You can always cancel an invitation and invite someone else </p>
-  <br>
-
-  <table class="table table-hover">
-    <tr>
-      <td><strong><%= link_to "Espen O.", '' %> </strong></td>
-      <td> Stavanger </td>
-      <td> <%= link_to 'invite', '', class: "btn btn-info" %></td>
-      <td> <%= link_to 'Cancel', '', class: "btn btn-danger invite-cancel" %></td>
-    </tr>
-    <tr>
-      <td><strong><%= link_to "Espen O.", '' %> </strong></td>
-      <td> Stavanger </td>
-      <td> <%= link_to 'invite', '', class: "btn btn-info" %></td>
-      <td> <%= link_to 'Cancel', '', class: "btn btn-danger invite-cancel" %></td>
-    </tr>
-      <tr>
-      <td><strong><%= link_to "Espen O.", '' %> </strong></td>
-      <td> Stavanger </td>
-      <td> <%= link_to 'invite', '', class: "btn btn-info" %></td>
-      <td> <%= link_to 'Cancel', '', class: "btn btn-danger invite-cancel" %></td>
-    </tr>
-      <tr>
-      <td><strong><%= link_to "Espen O.", '' %> </strong></td>
-      <td> Stavanger </td>
-      <td> <%= link_to 'invite', '', class: "btn btn-info" %></td>
-      <td> <%= link_to 'Cancel', '', class: "btn btn-danger invite-cancel" %></td>
-    </tr>
-      <tr>
-      <td><strong><%= link_to "Espen O.", '' %> </strong></td>
-      <td> Stavanger </td>
-      <td> <%= link_to 'invite', '', class: "btn btn-info" %></td>
-      <td> <%= link_to 'Cancel', '', class: "btn btn-danger invite-cancel" %></td>
-    </tr>   
-  </table>
-
-</div>
-</div>
-<br>
-<br>
-<br>
-  
-  
+    </div>
+    <br>
+    <br>
+    <br>
   <% end %>
+<% else %>
+  <h3>You have not posted any jobs</h3>
+<% end %>
    
    
   

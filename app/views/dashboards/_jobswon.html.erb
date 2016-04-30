@@ -1,5 +1,6 @@
-<h4 class="text-center">Gratulere! </h4>
-<p>You have been invited for the following jobs. Please take contact with Job owner immediately</p>
+<h3 class="text-center"><string>Jobs won </strong></h3>
+<p>Gratulere ! You have been invited for the following jobs</p> 
+<p>Please take contact with Job owner immediately</p> 
 <br>
 
 <% @appli_won.each do |appli| %>
@@ -8,6 +9,7 @@
 
     <h5> Jobeier:   <strong><%= appli.job.user.first_name %> </strong></h5>
     <h5> Telefon:   <strong><%= appli.job.contact_number %> </strong></h5>
+    <h5> Address:   <strong><%= appli.job.street_addr %> </strong></h5>
     <h5> <%= appli.job.kommune.name %> </h5>  
   </div>
   <br>

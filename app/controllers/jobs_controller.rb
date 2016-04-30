@@ -28,6 +28,7 @@ class JobsController < ApplicationController
   end
 
   def edit
+     @fylkes = Fylke.all
     @job = Job.find_by(id: params[:id]) 
   end
 

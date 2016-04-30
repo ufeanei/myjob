@@ -21,6 +21,14 @@ $(document).ready(function(){
 
 // myjobs js
 
+$('.invite-cancel').hide();
+
+
+	$('.invite').click(function(e){
+		e.preventDefault();
+	$('.invite-cancel').show();
+});
+ 
 
 
 // jobs index page js

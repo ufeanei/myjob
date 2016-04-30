@@ -5,6 +5,7 @@ class DashboardsController < ApplicationController
   def show
     @kommunes = Kommune.all
     @user = User.find(1)
+    @my_jobs = Job.where(user_id: 1)
   end
 
   def reset_password
