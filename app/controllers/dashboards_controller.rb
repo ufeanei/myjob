@@ -51,6 +51,13 @@ class DashboardsController < ApplicationController
   end
 
   def create_password
+    #if !authenticate(params[:oldpassword])
+    #flash[:danger]= "old password incorrect"
+    #render form
+    #else
+   # if newpassword==old password
+     # user.password=newpassword
+    #
 
   end
 

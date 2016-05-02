@@ -1,8 +1,6 @@
 $(function(){
 	all_kommunes = $('#job_kommune_id').html();
 	
-     // when the form is submitted, the child select should show just one option velg kommune
-     //$('#job_kommune_id').html("<option> Velg Kommune </option>");
         selected_fylke = $('#job_fylke_id option:selected').text();
 		optgroup = "optgroup[label='" + selected_fylke + "']";
 	    options = "<option> Velg Kommune </option>"+ $(all_kommunes).filter(optgroup).html();  // we want the first option to be Velg kommune

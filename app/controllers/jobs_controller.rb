@@ -4,7 +4,7 @@ class JobsController < ApplicationController
     @fylkes = Fylke.all
     @all_jobs= Job.all
 
-    @jobs = requested_jobs ? Job.where(fylke_id: requested_jobs) : Job.all 
+    @jobs = requested_jobs ? Job.where(fylke_id: requested_jobs) : @all_jobs
  
     respond_to do |format|
       format.html
@@ -28,7 +28,7 @@ class JobsController < ApplicationController
   end
 
   def edit
-     @fylkes = Fylke.all
+    @fylkes = Fylke.all
     @job = Job.find_by(id: params[:id]) 
   end
 
@@ -42,15 +42,9 @@ class JobsController < ApplicationController
     end
   end
 
-  def show 
-    
+  def show   
     @job = Job.find_by(id: params[:id])
     @same_location_jobs = Job.where(fylke_id: @job.fylke_id).limit(6).order(created_at: :desc)
-
-    if !@job
-      flash[:danger]= "That job does not exist"
-      redirect_to jobs_path
-    end
   end
 
  private
