@@ -1,17 +1,21 @@
 <h3 class="text-center"><strong>My applications</strong></h3>
-<p>Your applications to active jobs are shown below</p>
-<p>If the jobowner has given the job to a helper, your application for that job is not shown here</p>
-<p>Check the "My Jobs Won" on the left</p>
-<br>
+<% if @my_applications.empty? %>
+  <h3>You have not applied to any jobs</h3>
+<% else %>
+  <p>Your applications to active jobs are shown below</p>
+  <p>If the jobowner has given the job to a helper, your application for that job is not shown here</p>
+  <p>Check the "My Jobs Won" on the left</p>
+  <br>
 
-<% @my_applications.each do |appl| %>
-<div class="my-appli">
-  <h3><%= link_to "#{appl.job.title}", job_path(appl.job) %></h3>
-  <% if appl.job.status=='active' %>
-  <h4><strong>Active </strong></h4>
- <br>
-  <%= appl.job.kommune.name %> 
+  <% @my_applications.each do |appl| %>
+    <div class="my-appli">
+      <h3><%= link_to "#{appl.job.title}", job_path(appl.job) %></h3>
+      <% if appl.job.status=='active' %>
+      <h4><strong>Active </strong></h4>
+     <br>
+      <%= appl.job.kommune.name %> 
+      <% end %>
+    </div>
+    <br>
   <% end %>
-</div>
-<br>
-<% end %>
+<% end%>

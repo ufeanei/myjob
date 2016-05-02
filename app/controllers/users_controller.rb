@@ -6,10 +6,14 @@ class UsersController < ApplicationController
 
   def create
     @user= User.new(user_params)
+
+ 
     if @user.save
-      flash[:success]=" Signup succesfull. Please complete your profile"
-      redirect_to user_edit_path(@user)
+      flash[:success]= "Signup succesfull. Please complete your profile"
+      session[:user_id] = @user.id
+      redirect_to :back
     else
+      flash[:danger] = "record not saved"
       render :new
     end
   end
@@ -22,7 +26,7 @@ class UsersController < ApplicationController
    private
 
    def user_params
-     params.require(:user).permit(:first_name, :last_name, :email, :password)
+     params.require(:user).permit(:first_name, :last_name, :email, :password_confirmation, :password, :user_self_description, :kommune_id, :admin, :phone, :street_addr, :car_reg)
    end
 
 end

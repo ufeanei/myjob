@@ -11,29 +11,36 @@
     <div class="col-md-6 registerform col-xs-12" novalidate>
       <h3 class="text-center">CREATE YOUR ACCOUNT</h3>
       <%= form_for @user do |f| %>
+       <%= render 'shared/errors', obj: @user %>
         <div class="form-group">
-          <%= f.label :first_name, 'First Name' %>
+          <%= f.label :first_name %>
           <%= f.text_field :first_name, class: "form-control" %>
         </div>
         <div class="form-group">
-          <%= f.label :last_name, 'Last Name' %>
+          <%= f.label :last_name %>
           <%= f.text_field :last_name, class: "form-control" %>
         </div>
+         <input type="text" style="display:none"> <!-- hidden inputs added to cancel autocomplete for email and password-->
+         <input type="password" style="display:none">
         <div class="form-group">
           <%= f.label :email, 'Email address' %>
-          <%= f.text_field :email, class: "form-control", placeholder: 'Email', autocomplete: false %>
+          <%= f.text_field :email, class: "form-control" %>
         </div>
         <div class="form-group">
-          <%=f.label :password, 'Password' %>
+          <%=f.label :password %>
           <%= f.password_field :password, class: "form-control", placeholder: 'passord' %>
-        </div>      
+        </div> 
+        <div class="form-group">
+          <%=f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation, class: "form-control", placeholder: 'passord' %>
+        </div>     
         <br/>
         <div class="form-group">
           <%= check_box_tag "terms" %> I agree <%= link_to 'Terms of Service', service_path %> and <%= link_to 'Privacy statment', privacy_path %>      
         </div>
         <%= f.submit "Register", class: "btn btn-default btn-block register-button" %> 
         <hr class="hr-new-user"/>
-        <h4 class="text-center">Are you a member already? <%= link_to 'Login', '#' %></h4>
+        <h4 class="text-center">Are you a member already? <%= link_to 'Login', login_path %></h4>
       <% end %>
     </div>
   </div>
