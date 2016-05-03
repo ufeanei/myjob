@@ -1,8 +1,11 @@
 class JobsController < ApplicationController
-  before_action :require_user, only: [:new, :create]
+
+  before_action :require_user, only: [:new, :create, :edit, :update]
+  before_action :get_job, only: [:edit, :update, :show]
+  before_action :get_all_fylke, only: [:index, :new, :edit]
 
   def index
-    @fylkes = Fylke.all
+    #@fylkes = Fylke.all
     @all_jobs= Job.all
 
     @jobs = requested_jobs ? Job.where(fylke_id: requested_jobs) : @all_jobs
@@ -14,7 +17,7 @@ class JobsController < ApplicationController
   end 
 
   def new
-    @fylkes = Fylke.all #.map { |e| [e.name, e.id] } #[["Asker", 1], ["Akerhus", 2]] #Kommune.all.map{|u| [ u.name, u.id ] }
+    #@fylkes = Fylke.all 
     @job = Job.new
   end
 
@@ -29,22 +32,22 @@ class JobsController < ApplicationController
   end
 
   def edit
-    @fylkes = Fylke.all
-    @job = Job.find_by(id: params[:id]) 
+    #@fylkes = Fylke.all
+    #@job = Job.find_by(id: params[:id]) 
   end
 
   def update
-    @job = Job.find_by(params[:id])
+    #@job = Job.find_by(id: params[:id])
      if @job.update(job_params)
       flash[:success] = "your job has been update"
-      redirect_to root_path
+      redirect_to dashboard_path
     else
       render :edit
     end
   end
 
   def show   
-    @job = Job.find_by(id: params[:id])
+    #@job = Job.find_by(id: params[:id])
     @same_location_jobs = Job.where(fylke_id: @job.fylke_id).limit(6).order(created_at: :desc)
   end
 
@@ -56,6 +59,14 @@ class JobsController < ApplicationController
 
   def requested_jobs
    params["fylke_id"].keys if params["fylke_id"]
+  end
+
+  def get_job
+    @job = Job.find_by(id: params[:id])
+  end
+
+  def get_all_fylke
+   @fylkes = Fylke.all 
   end
 
   
