@@ -1,6 +1,10 @@
 class SessionsController < ApplicationController
 
   def new 
+    if logged_in?
+      flash[:success] = "you already logged in"
+      redirect_to jobs_path
+    end
   end
 
   def create
@@ -8,8 +12,9 @@ class SessionsController < ApplicationController
 
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
+      params[:remember] == '1' ? remember(user) : forget(user) # this lin
       flash[:success] = "Login succesfull"
-      redirect_to :back
+      redirect_to jobs_path
     else
       flash[:danger] = "Invalid password or username"
       render :new
@@ -17,7 +22,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:user_id] = nil
+    log_out if logged_in?
     flash[:success] = "You've logged out"
     redirect_to jobs_path
   end
