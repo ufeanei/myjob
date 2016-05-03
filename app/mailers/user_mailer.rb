@@ -1,9 +1,19 @@
 class UserMailer < ActionMailer::Base
 
-	def confirm_email(email, body)
-		@email = email
-		@body = body
-		mail(from: email, subject: 'Confirm your email')
-	end
+  default from: 'akaranjoh@yahoo.com'
+
+  def confirm_email(user)
+
+    @user = user
+    mail(to: user.email, subject: 'Confirm your email')
+  end
+
+
+  def reset_password(user)
+    @user = user
+
+    mail(to: user.email, subject: "Password reset")
+
+  end
 
 end

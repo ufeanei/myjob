@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   attr_accessor :remember_token, :confirmation_token
 
   before_save :downcase_email
-  before_create :create_activation_digest
+  before_create :create_confirmation_digest
   
   belongs_to :kommune
   has_many :jobs
@@ -22,8 +22,8 @@ end
 
 #this method sets a remeber_token then inserts its digest in the remember_column of a user 
 def remember
-    self.remember_token = User.new_token  
-    update_attribute(:remember_digest, User.digest(remember_token))  
+  self.remember_token = User.new_token  
+  update_attribute(:remember_digest, User.digest(remember_token))  
 end
 
 #this generalised method checks whether the token your provide corresponds to the digest stored. if there is a mismatch it return false
@@ -31,10 +31,10 @@ end
 # imagine user signs out in firefox, close one chrome browser then tries to use the last browser to request unauthorized pages.
 
 def authenticated?(attribute, token)
-    digest = self.send("#{attribute}_digest")
-    return false if digest.nil?                        
+  digest = self.send("#{attribute}_digest")
+  return false if digest.nil?                        
                                                        
-    BCrypt::Password.new(digest).is_password?(token)
+  BCrypt::Password.new(digest).is_password?(token)
 end
 
 def forget
@@ -49,9 +49,9 @@ private
   end
 
   # Creates and assigns the activation token and digest.
-  def create_activation_digest
-    self.activation_token  = User.new_token
-    elf.activation_digest = User.digest(activation_token)
+  def create_confirmation_digest
+    self.confirmation_token  = User.new_token
+    self.confirmation_digest = User.digest(confirmation_token)
   end
 
 

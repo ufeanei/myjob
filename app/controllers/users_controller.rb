@@ -9,9 +9,9 @@ class UsersController < ApplicationController
 
  
     if @user.save
-      flash[:success]= "Signup succesfull. Please complete your profile"
-      session[:user_id] = @user.id
-      redirect_to :back
+      UserMailer.confirm_email(@user).deliver
+      flash[:success]= "Signup succesfull. Please check your email to confirmed your account"
+      redirect_to jobs_path
     else
       flash[:danger] = "record not saved"
       render :new

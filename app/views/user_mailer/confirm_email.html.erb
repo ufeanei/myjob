@@ -1,0 +1,7 @@
+<h1>Frakt</h1>
+<p> Hi <%= @user.first_name %>, </p>
+<p>
+	welcome to Frakt! Click on the link below to confirm your email and activate your account
+</p>
+
+<%= link_to "Activate", confirm_url(@user.confirmation_token, email: @user.email) %>

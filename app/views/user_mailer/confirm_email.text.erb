@@ -1,0 +1,8 @@
+  Hi <%= @user.first_name %> 
+ 
+Welcome to Frakt! Click on the link below to confirm your email and activate your account
+
+<%= confirm_url(@user.confirmation_token, email: @user.email) %>
+
+Kundesupport
+Frakt
