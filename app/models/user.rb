@@ -1,20 +1,23 @@
 class User < ActiveRecord::Base
-	attr_accessor :remember_token
-belongs_to :kommune
-has_many :jobs
-has_many :job_applications
+  attr_accessor :remember_token, :confirmation_token
 
-has_secure_password
+  before_save :downcase_email
+  before_create :create_activation_digest
+  
+  belongs_to :kommune
+  has_many :jobs
+  has_many :job_applications
+
+  has_secure_password
 
 #used to create the digest of any string
-def self.digest(string)
-	cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCryp::Engine.cost
-	BCrypt::Password.create(string, cost: cost)
+def self.digest(string) 
+  BCrypt::Password.create(string, cost: 8)
 end
 
 # use this to generate any random url safe base64 token
 def self.new_token
-	SecureRandom.urlsafe_base64
+  SecureRandom.urlsafe_base64
 end
 
 #this method sets a remeber_token then inserts its digest in the remember_column of a user 
@@ -35,9 +38,21 @@ def authenticated?(attribute, token)
 end
 
 def forget
-	update_attribute(:remember_digest, nil)
+  update_attribute(:remember_digest, nil)
 end
 
+private
+
+ # Converts email to all lower-case.
+  def downcase_email
+     self.email = email.downcase
+  end
+
+  # Creates and assigns the activation token and digest.
+  def create_activation_digest
+    self.activation_token  = User.new_token
+    elf.activation_digest = User.digest(activation_token)
+  end
 
 
 

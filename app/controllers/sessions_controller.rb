@@ -9,12 +9,19 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by(email: params[:email])
-
+ 
     if user && user.authenticate(params[:password])
-      session[:user_id] = user.id
-      params[:remember] == '1' ? remember(user) : forget(user) # this lin
-      flash[:success] = "Login succesfull"
-      redirect_to jobs_path
+      if user.confirmed?
+        session[:user_id] = user.id
+        params[:remember] == '1' ? remember(user) : forget(user) # this lin
+        flash[:success] = "Login succesfull"
+        redirect_to jobs_path
+      else
+        message ="Account not yet confirmed"
+        message+= "check your email for confirmation link"
+        flash[:warning] = message
+        redirect_to jobs_path
+      end
     else
       flash[:danger] = "Invalid password or username"
       render :new
