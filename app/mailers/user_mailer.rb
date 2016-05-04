@@ -1,6 +1,6 @@
 class UserMailer < ActionMailer::Base
 
-  default from: 'akaranjoh@yahoo.com'
+  default from: 'example@yahoo.com'
 
   def confirm_email(user)
 
