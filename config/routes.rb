@@ -5,7 +5,7 @@ Porter::Application.routes.draw do
  get "/privacy" => "pages#privacy"
  get "/service" => "pages#service"
  get "/become_driver" => "pages#become_driver"
- get "/confirm" => "confirmation#edit"
+ get "/confirm" => "confirmations#edit"
 
  post "/jobs/search" => "jobs#index"
   
