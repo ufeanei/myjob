@@ -12,6 +12,7 @@ Porter::Application.routes.draw do
  root 'pages#home'
 
  resources :jobs
+ resources :password_resets,  only: [:new, :create, :edit, :update]
 
  resources :users 
 
