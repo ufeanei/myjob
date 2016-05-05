@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessor :remember_token, :confirmation_token
+  attr_accessor :remember_token, :confirmation_token, :reset_token
 
   before_save :downcase_email
   before_create :create_confirmation_digest
@@ -41,6 +41,13 @@ def forget
   update_attribute(:remember_digest, nil)
 end
 
+# create and sets a reset_digest, reset_token virtual attribute a
+def create_reset_digest
+    self.reset_token = User.new_token
+    update_attribute(:reset_digest,  User.digest(reset_token))
+    update_attribute(:reset_sent_at, Time.zone.now)
+end
+
 private
 
  # Converts email to all lower-case.
@@ -53,6 +60,9 @@ private
     self.confirmation_token  = User.new_token
     self.confirmation_digest = User.digest(confirmation_token)
   end
+   
+  
+
 
 
 

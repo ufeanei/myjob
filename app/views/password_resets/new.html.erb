@@ -1,12 +1,12 @@
 <div class="contain ">
   <div class="col-md-4 col-md-offset-4 well">
     <h2>Forgot Password</h2>
-    <%= form_for :password_reset, url: password_resets_path do |f| %>
+    <%= form_tag password_resets_path method: :post  do |f| %>
     <div class="form-group">
-      <%=f.label :email %>
-      <%= f.email_field :email, class: 'form-control'%>
+      <%= label_tag :email %>
+      <%= text_field_tag :email, nil, class: 'form-control'%>
     </div>
-    <%= f.submit "Send", class: "btn btn-primary btn-block" %>
+    <%= submit_tag "Send", class: "btn btn-primary btn-block" %>
     <% end %>
   </div>
 </div>
