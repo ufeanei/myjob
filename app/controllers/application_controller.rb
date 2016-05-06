@@ -46,7 +46,7 @@ class ApplicationController < ActionController::Base
 
   def require_user
   	if !logged_in?
-  		flash[:danger] = "Please first login"
+  		flash[:info] = "Please first login"
   		redirect_to jobs_path
   	end
   end
