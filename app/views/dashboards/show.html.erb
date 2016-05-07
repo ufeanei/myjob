@@ -1,26 +1,5 @@
-<div class="contain">
-  <div class="row col-xs-12 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
-    <aside class="col-md-4 col-sm-5 well dashboard-menu"> 
-      <h2>Dashboard</h2>
-      <hr/>
-      <div class=''>
-        <h4 id="my-jobs"><%= link_to 'My Jobs', my_jobs_dashboard_path, remote: true %></h4>
-        <h4 id="my-applications"><%= link_to 'My Applications', my_applications_dashboard_path, remote: true %></h4>
-        <h4 id="jobs-won"><%= link_to 'My Jobs won', jobs_won_dashboard_path, remote: true %></h4>
-        <h4>Account Settings</h4>
-        <ul>
-          <li id="my-profile"><%= link_to 'My profile', my_profile_dashboard_path, remote: true %></li>
-          <li id="edit-profile"><%= link_to 'Edit Profile', edit_profile_dashboard_path, remote: true %></li>
-          <li id="change password"><%= link_to 'Change Password', reset_password_dashboard_path, remote: true  %></li>
-        </ul>   
-      </div>
+<%= render 'part1' %>
+<%= render 'my_jobs' %>
+<%= render 'part2' %>
       
-    </aside>
-    <div class="col-md-7 col-sm-7  col-xs-12 result-section well">
-    <div class="dashboard-menu-info"> 
-      <%= render 'myjobs' %>
-      
-    </div>
-    </div> 
-  </div>
-</div>
+    

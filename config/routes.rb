@@ -23,9 +23,10 @@ Porter::Application.routes.draw do
  resource :dashboard, only: [:show] do
   member do
     get 'my_jobs'
+    get 'new_password'
     get 'my_applications'
     get 'jobs_won'
-    get 'change_password'
+    patch 'change_password'
     get 'edit_profile'
     get 'my_profile'
   end

@@ -36,13 +36,12 @@ class ApplicationController < ActionController::Base
     cookies.delete(:remember_token)
   end
 
+ # logs out the user ie kills both the remeber functionality and temporal session functionality then reset current user to nils
   def log_out
     forget(current_user)
     session.delete(:user_id)
     @current_user = nil
   end
-
-
 
   def require_user
   	if !logged_in?
