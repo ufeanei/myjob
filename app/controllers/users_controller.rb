@@ -7,8 +7,6 @@ class UsersController < ApplicationController
 
   def create
     @user= User.new(user_params)
-
- 
     if @user.save
       UserMailer.confirm_email(@user).deliver
       flash[:success]= "Signup succesfull. Please check your email to confirmed your account"
@@ -19,12 +17,22 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+    @user = User.find_by(id: params[:id])
+     if @user.update_attributes(user_params)
+      flash[:success] ="Profile succesfully updated"
+      redirect_to :back
+    else
+      render 'dashboards/edit_profile'
+    end
+  end
+
   def show
     @user = User.find_by(id: params[:id])
   end
 
 
-   private
+  private
 
    def user_params
      params.require(:user).permit(:first_name, :last_name, :email, :password_confirmation, :password, :user_self_description, :kommune_id, :admin, :phone, :street_addr, :car_reg)
