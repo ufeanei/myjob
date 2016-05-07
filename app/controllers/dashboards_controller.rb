@@ -6,6 +6,7 @@ before_action :require_user
     @kommunes = Kommune.all
     @user = User.find_by(id: current_user.id)
     @my_jobs = Job.where(user_id: current_user.id)
+    render :my_profile
   end
 
   
