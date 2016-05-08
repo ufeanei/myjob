@@ -4,10 +4,12 @@
    
     <div class="toppanel">
       <div class="col-md-6 col-xs-6">
-        <h5><strong id="total-jobs"><%=@jobs.size %></strong> Jobs display</h5>
+        <h5><strong id="total-jobs"><%= @jobs.size  %></strong> Jobs display</h5>
       </div>
-        <div class="col-md-6 col-xs-6"> 
-           
+        <div class="col-md-6 col-xs-6 pagin"> 
+         
+    <%= will_paginate @jobs, renderer: BootstrapPagination::Rails, previous_label: '<', next_label:'>' %>
+
         </div>
     </div><!--end of top panel-->
 
@@ -15,7 +17,7 @@
       <h2>Område</h2>
       <hr/>
       <div class=''>
-        <%= form_tag jobs_search_path, method: :post, remote: true, id: 'search-job-fylke' do %> <!-- where we submit the form. it is an ajax request ie js request -->
+        <%= form_tag search_jobs_path, method: :get, remote: true, id: 'search-job-fylke' do %> <!-- where we submit the form. it is an ajax request ie js request -->
           <% @fylkes.each do |fylke| %> 
             <div class="form-group fylke-checkbox">
               <%= check_box_tag("fylke_id[#{fylke.id}]", fylke.id) %>
@@ -30,6 +32,7 @@
     </aside>
 
     <div class="col-md-6 col-sm-7 middle-section"><!--- the  middle part of page that list all jobs begins here-->
+
     <div class="spinner "><%= image_tag('pages/spin.gif') %></div>
     <div class="jobs-list">
     <%= render 'index_page_jobs_list' %>
@@ -58,9 +61,12 @@
       </div>
     </div>
   </div>
+
 </div>
 
-
+<div>
+    <%= will_paginate @jobs, renderer: BootstrapPagination::Rails, previous_label: '<', next_label:'>' %>
+</div>
 
 
 

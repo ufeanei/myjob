@@ -1,4 +1,3 @@
-
 $("#total-jobs").html("<%= @jobs.size %>");
-
+$(".pagin").html(" <%=j( will_paginate @jobs, renderer: BootstrapPagination::Rails, previous_label: '<', next_label:'>' )%>")
 $(".jobs-list").html("<%= j (render 'index_page_jobs_list') %>");

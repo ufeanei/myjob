@@ -6,15 +6,24 @@ class JobsController < ApplicationController
 
   def index
     #@fylkes = Fylke.all
-    @all_jobs= Job.all
 
-    @jobs = (requested_jobs ? Job.where(fylke_id: requested_jobs) : @all_jobs).order(created_at: :desc)
- 
+    @all_jobs= Job.all
+    if requested_jobs
+      @jobs=Job.where(fylke_id: requested_jobs).order(created_at: :desc).paginate(page: params[:page], per_page: 5)
+    else
+      @jobs = @all_jobs.order(created_at: :desc).paginate(page: params[:page], per_page: 5)
+    end
+  
+   # @jobs = (requested_jobs ? Job.where(fylke_id: requested_jobs) : @all_jobs).order(created_at: :desc).paginate(page: params[:page], per_page: 5)
     respond_to do |format|
       format.html
+    
       format.js 
     end
+    
   end 
+
+  
 
   def new
     #@fylkes = Fylke.all 
@@ -24,6 +33,8 @@ class JobsController < ApplicationController
   def create    
     @job = Job.new(job_params)
     @job.user = current_user
+
+   
     if @job.save
       flash[:succes] = 'your job has been created'
       redirect_to jobs_path

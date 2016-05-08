@@ -6,12 +6,15 @@ Porter::Application.routes.draw do
  get "/service" => "pages#service"
  get "/become_driver" => "pages#become_driver"
  get "/confirm" => "confirmations#edit"
-
- post "/jobs/search" => "jobs#index"
   
  root 'pages#home'
 
- resources :jobs
+ resources :jobs do
+  collection do
+ 	get 'search'=> 'jobs#index'
+ end
+ 
+ end
  resources :password_resets,  only: [:new, :create, :edit, :update]
 
  resources :users 
