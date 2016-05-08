@@ -8,7 +8,7 @@ class JobsController < ApplicationController
     #@fylkes = Fylke.all
     @all_jobs= Job.all
 
-    @jobs = requested_jobs ? Job.where(fylke_id: requested_jobs) : @all_jobs
+    @jobs = (requested_jobs ? Job.where(fylke_id: requested_jobs) : @all_jobs).order(created_at: :desc)
  
     respond_to do |format|
       format.html
@@ -23,6 +23,7 @@ class JobsController < ApplicationController
 
   def create    
     @job = Job.new(job_params)
+    @job.user = current_user
     if @job.save
       flash[:succes] = 'your job has been created'
       redirect_to jobs_path
@@ -54,7 +55,7 @@ class JobsController < ApplicationController
  private
 
    def job_params
-    params.require(:job).permit(:title,:description, :payment, :street_addr, :destination_addr, :contact_number,  :user_id, :kommune_id, :fylke_id)
+    params.require(:job).permit(:title,:description, :payment, :street_addr, :destination_addr, :contact_number, :kommune_id, :fylke_id)
    end
 
   def requested_jobs
