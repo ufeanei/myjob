@@ -18,7 +18,6 @@ class JobsController < ApplicationController
   end 
 
   def new
-    
     @job = Job.new
   end
 
@@ -33,12 +32,11 @@ class JobsController < ApplicationController
     end
   end
 
-  def edit
-    
+  def edit 
   end
 
   def update
-     if @job.update(job_params)
+    if @job.update(job_params)
       flash[:success] = "your job has been update"
       redirect_to dashboard_path
     else
@@ -67,8 +65,4 @@ class JobsController < ApplicationController
   def get_all_fylke
    @fylkes = Fylke.all 
   end
-
-  
-
-
 end

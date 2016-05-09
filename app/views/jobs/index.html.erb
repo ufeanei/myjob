@@ -28,13 +28,14 @@
         <% end %>
       </div>
     </aside>
-
     <div class="col-md-6 col-sm-7 middle-section"><!--- the  middle part of page that list all jobs begins here-->
-
-    <div class="spinner "><%= image_tag('pages/spin.gif') %></div>
-    <div class="jobs-list">
-    <%= render 'index_page_jobs_list' %>
-    </div>
+      <div class="spinner "><%= image_tag('pages/spin.gif') %></div>
+      <div class="jobs-list">
+        <%= render 'index_page_jobs_list' %>
+      </div>
+      <div class="pagin pagin-down">
+        <%= will_paginate @jobs, renderer: BootstrapPagination::Rails, previous_label: '<', next_label:'>' %>
+      </div>
     </div> <!-- end of middle section code -->
 
     <div class="col-md-3 sideadvert hidden-sm"> <!-- the code is for the side advert on the index page at the right -->
@@ -59,12 +60,9 @@
       </div>
     </div>
   </div>
-
 </div>
 
-<div class="pagin">
-    <%= will_paginate @jobs, renderer: BootstrapPagination::Rails, previous_label: '<', next_label:'>' %>
-</div>
+
 
 
 
