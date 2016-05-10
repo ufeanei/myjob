@@ -16,20 +16,10 @@
         <h3>Directions</h3>
         <p><%= @job.street_addr %> <strong>  To  </strong> <%= @job.destination_addr%> </p>   
         <%= image_tag('pages/fotolia.jpg', class: 'img-responsive thumbnail') %>
-        <ul>
-            <li>
-              <div class="row col-md-12 col-xs-12">
-                <p class="col-md-4 col-xs-5">Posted on:</p>
-                <p class="col-md-8 col-xs-5"><%= display_datetime(@job.created_at) %></p>
-              </div>
-            </li>
-            <li>
-              <div class="row col-md-12 col-xs-12">
-                <p class="col-md-4 col-xs-5">Modified:</p>
-                <p class="col-md-8 col-xs-5"><%= display_datetime(@job.updated_at) %></p>
-              </div>
-            </li>
-          </ul>
+         
+        <p class="row col-md-12 col-xs-12"><em>Modified: <%= display_datetime(@job.updated_at)%> </em></p>
+               
+              
       </div>
 
       <div class="side-info col-md-4 col-sm-5 col-xs-12 "> 
@@ -41,7 +31,7 @@
             <li>
               <div class="row col-md-12 col-xs-12">
                 <p class="col-md-4 col-xs-5">Annonsør:</p>
-                <p class="col-md-8 col-xs-5" >Espen Øvre</p>
+                <p class="col-md-8 col-xs-5" > <%= full_name(@job.user) %></p>
               </div>
             </li>
             <li>
@@ -53,7 +43,7 @@
           </ul>
           <br/>
           
-          <h4 class="">status: <strong>Job not yet awarded</strong></h4>
+          <h4 >status: <strong class="status">Job not yet awarded</strong></h4>
           <br/>
           <button class="btn btn-block btn-primary">Apply to transport it </button>  
         </div>
@@ -65,7 +55,7 @@
 
         <div class="similar-jobs">
           <br>
-          <h4 class="text-center"><%=@job.fylke.name.upcase %> JOBS</h4>
+          <h4 class="similar-jobs"><%=@job.fylke.name.upcase %> JOBS</h4>
           <br>
           <% @same_location_jobs.each do |job| %>
             <% if job.id != @job.id %>

@@ -5,12 +5,13 @@ class JobsController < ApplicationController
   before_action :get_all_fylke, only: [:index, :new, :edit]
 
   def index
-    @all_jobs= Job.all
+    @all_jobs ||= Job.all # need this to calculate jobs /fylke
     if requested_jobs
-
-      @jobs=Job.where(fylke_id: requested_jobs).order(created_at: :desc).paginate(page: params[:page], per_page: 5)
+      @jobs = Job.where(fylke_id: requested_jobs).order(created_at: :desc).paginate(page: params[:page], per_page: 7)
+      @total = Job.where(fylke_id: requested_jobs).size 
     else
-      @jobs = @all_jobs.order(created_at: :desc).paginate(page: params[:page], per_page: 3)
+      @jobs = @all_jobs.order(created_at: :desc).paginate(page: params[:page], per_page: 7)
+      @total = @all_jobs.size
     end
 
     respond_to do |format|

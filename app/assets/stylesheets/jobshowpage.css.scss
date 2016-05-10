@@ -35,7 +35,7 @@
   
   }
 
-  .apply-section, .similar-jobs {
+  .apply-section {
   margin-top: 15px;
   background: #fff;
   border: 1px solid #aaa
@@ -45,4 +45,8 @@
   .similar-jobs {
  padding: 0 15px;
 
+  }
+
+  .status {
+  color: green;
   }

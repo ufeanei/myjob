@@ -8,7 +8,7 @@ class ConfirmationsController < ApplicationController
       user.update_attribute(:activated_at, Time.zone.now)
       session[:user_id] = user.id
       flash[:success] = "Account confirmed"
-      redirect_to dashboard_path
+      redirect_to edit_profile_dashboard_path
     else
       flash[:danger] = "Invalid confirmation link"
       redirect_to jobs_path

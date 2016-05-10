@@ -1,4 +1,5 @@
 <ul>
+  <% if @total != 0 %>
   <% @jobs.each do |job| %> <!--- this piece of code generates the infos for each job to be displayed -->
   <li>
     <div class="row">
@@ -17,8 +18,11 @@
     <hr>
     <div class="row panel-bottom">
       <p class="col-md-6 text-center"><%= job.fylke.name %> </p>
-      <p class="col-md-6 text-center">Posted on: <%= job.created_at.month %> </p>
+      <p class="col-md-6 text-center">Posted on: <%= job.created_at.strftime("%m/%d/%Y ") %> </p>
     </div>
   </li>
   <% end %> <!--- end of infos for each job here -->
+ <% else %>
+  <li>No jobs found</li>
+  <% end %>
 </ul>

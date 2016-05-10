@@ -4,7 +4,7 @@
    
     <div class="toppanel">
       <div class="col-md-6 col-xs-6">
-        <h5><strong id="total-jobs"><%= @jobs.size  %></strong> Jobs display</h5>
+        <h5><strong id="total-jobs"><%= @total  %></strong> Jobs display</h5>
       </div>
       <div class="col-md-6 col-xs-6 pagin"> 
         <%= will_paginate @jobs, renderer: BootstrapPagination::Rails, previous_label: '<', next_label:'>' %>

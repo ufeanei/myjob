@@ -45,6 +45,7 @@ $("#search-job-fylke input[type='checkbox']").on('change', function(){
 
   $(document).ajaxStart(function() {
     $(".spinner").fadeIn('slow');
+    $(window).scrollTop(0);
  }).ajaxStop(function() {
       $(".spinner").hide();
   });	

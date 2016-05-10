@@ -38,7 +38,7 @@ before_action :require_user
       flash[:danger] = 'Incorrect old password'
       render 'new_password'     
     elsif @user.update_attributes(user_params)
-     flash[:success] = "Password succesfully changed. Please login again with new password"
+     flash[:success] = "Password succesfully changed."
      redirect_to dashboard_path
     else
       flash[:danger] = 'Passwords do not match'
