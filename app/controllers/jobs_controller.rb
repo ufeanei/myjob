@@ -7,10 +7,12 @@ class JobsController < ApplicationController
   def index
     @all_jobs= Job.all
     if requested_jobs
+
       @jobs=Job.where(fylke_id: requested_jobs).order(created_at: :desc).paginate(page: params[:page], per_page: 5)
     else
-      @jobs = @all_jobs.order(created_at: :desc).paginate(page: params[:page], per_page: 5)
+      @jobs = @all_jobs.order(created_at: :desc).paginate(page: params[:page], per_page: 7)
     end
+   
     respond_to do |format|
       format.html  
       format.js 

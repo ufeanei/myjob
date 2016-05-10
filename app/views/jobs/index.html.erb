@@ -6,9 +6,9 @@
       <div class="col-md-6 col-xs-6">
         <h5><strong id="total-jobs"><%= @jobs.size  %></strong> Jobs display</h5>
       </div>
-        <div class="col-md-6 col-xs-6 pagin"> 
-          <%= will_paginate @jobs, renderer: BootstrapPagination::Rails, previous_label: '<', next_label:'>' %>
-        </div>
+      <div class="col-md-6 col-xs-6 pagin pagination"> 
+        <%= paginate @results, renderer: BootstrapPagination::Rails, previous_label: '<', next_label:'>' %>
+      </div>
     </div><!--end of top panel-->
 
     <aside class="col-md-3 col-sm-5 omrade"> <!-- aside is the fylke filter on the left of the index page. this lists all the fylkes -->
@@ -33,9 +33,10 @@
       <div class="jobs-list">
         <%= render 'index_page_jobs_list' %>
       </div>
-      <div class="pagin pagin-down">
-        <%= will_paginate @jobs, renderer: BootstrapPagination::Rails, previous_label: '<', next_label:'>' %>
+      <div class="pagin pagin-down pagination">
+         <%= paginate @results %>
       </div>
+      
     </div> <!-- end of middle section code -->
 
     <div class="col-md-3 sideadvert hidden-sm"> <!-- the code is for the side advert on the index page at the right -->
