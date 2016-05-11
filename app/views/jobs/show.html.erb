@@ -41,11 +41,11 @@
               </div>
             </li>
           </ul>
-          <br/>
+          <br/> 
           
           <h4 >status: <strong class="status">Job not yet awarded</strong></h4>
           <br/>
-          <button class="btn btn-block btn-primary">Apply to transport it </button>  
+          <%= link_to 'Apply to help',  job_job_applications_path(@job, user_id: current_user.id), method: 'post', class: "btn btn-block btn-primary" %>  
         </div>
 
         <div class="applicants-div">
