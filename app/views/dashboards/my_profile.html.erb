@@ -9,11 +9,12 @@
     <td><strong>Last Name:  </strong></td>
     <td> <%= @user.last_name %> </td>
   </tr>
-
+  
   <tr>
-    <td><strong>Epost:  </strong></td>  
+    <td><strong>Epost:  </strong></td>
     <td><%= @user.email %></td>
   </tr>
+   
 
    <tr>
     <td><strong>Phone Number:  </strong></td>
@@ -22,7 +23,7 @@
 
    <tr>
     <td><strong>Gateaddress:  </strong></td>
-    <td><%= @user.street_addr %> , <%= @user.kommune.name %></td>
+    <td><%= @user.street_addr if @user.street_addr %> , <%= @user.kommune.name  if @user.kommune%></td>
    </tr>
 
    <tr>
@@ -36,4 +37,6 @@
   </tr>
 </table>
 </div>
+
+<%= link_to 'upret profil', edit_profile_dashboard_path, class: 'btn btn-lg btn-info' %>
 <%= render 'part2' %>

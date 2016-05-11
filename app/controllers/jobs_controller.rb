@@ -2,7 +2,7 @@ class JobsController < ApplicationController
 
   before_action :require_user, only: [:new, :create, :edit, :update]
   before_action :get_job, only: [:edit, :update, :show]
-  before_action :get_all_fylke, only: [:index, :new, :edit]
+  before_action :get_all_fylke, only: [:index, :new, :edit, :create, :update]
 
   def index
     @all_jobs ||= Job.all # need this to calculate jobs /fylke
@@ -24,11 +24,12 @@ class JobsController < ApplicationController
     @job = Job.new
   end
 
-  def create    
+  def create  
+
     @job = Job.new(job_params)
     @job.user = current_user
     if @job.save
-      flash[:succes] = 'your job has been created'
+      flash[:success] = 'Your job has been created'
       redirect_to jobs_path
     else
       render :new
@@ -40,7 +41,7 @@ class JobsController < ApplicationController
 
   def update
     if @job.update(job_params)
-      flash[:success] = "your job has been update"
+      flash[:success] = "Your job has been update"
       redirect_to dashboard_path
     else
       render :edit
@@ -54,7 +55,7 @@ class JobsController < ApplicationController
  private
 
    def job_params
-    params.require(:job).permit(:title,:description, :payment, :street_addr, :destination_addr, :contact_number, :kommune_id, :fylke_id)
+    params.require(:job).permit(:title,:description, :payment, :street_addr, :destination_addr, :contact_number, :kommune_id, :fylke_id, :terms_of_service)
    end
 
   def requested_jobs

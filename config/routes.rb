@@ -11,8 +11,8 @@ Porter::Application.routes.draw do
 
  resources :jobs do
   collection do
- 	get 'search'=> 'jobs#index'
- end
+ 	  get 'search'=> 'jobs#index'
+  end
  
  end
  resources :password_resets,  only: [:new, :create, :edit, :update]
