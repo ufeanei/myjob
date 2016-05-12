@@ -31,7 +31,7 @@ class JobApplicationsController < ApplicationController
 
   def award
     #award an application to a user
-    job_application = JobApplication.find_by(id: 1)
+    job_application = JobApplication.find_by(id: params[:id])
     if job_application.update_attribute(awarded: true)
       flash[:success] = "Invitation succesful. Helper has been notified by email"
       redirect_to :back
@@ -41,7 +41,7 @@ class JobApplicationsController < ApplicationController
 
  def cancel_award
   #cancel an already awarded application
-  job_application = JobApplication.find_by(id: 1)
+  job_application = JobApplication.find_by(id: params[:id])
   if job_application.update_attribute(awarded: false)
     flash[:success] = "Invitation succesful canceled"
     redirect_to :back

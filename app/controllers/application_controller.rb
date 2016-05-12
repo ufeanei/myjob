@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
 
  #This boolean returns false if the user is not logged in and true if logged in. Useful for views
   def logged_in?
-  	!!current_user
+    !!current_user
   end
 
   # This remembers a user even when he closes the browsers without loging out. 
@@ -44,9 +44,9 @@ class ApplicationController < ActionController::Base
   end
 
   def require_user
-  	if !logged_in?
-  		flash[:info] = "Please first login"
-  		redirect_to jobs_path
-  	end
+    if !logged_in?
+      flash[:info] = "Please first login"
+      redirect_to jobs_path
+    end
   end
 end
