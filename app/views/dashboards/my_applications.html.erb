@@ -1,7 +1,7 @@
 <%= render 'part1' %>
 
 <h3 class="text-center"><strong>My applications</strong></h3>
-<% if !@my_applications %>
+<% if @my_applications.empty? %>
   <h3>You have not applied to any jobs</h3>
 <% else %>
   <p>Your applications to active jobs are shown below</p>

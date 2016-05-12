@@ -16,7 +16,7 @@ before_action :require_user
     @user = User.find_by(id: current_user.id)
   end
 
-  def my_applicationss
+  def my_applications
     @my_applications = JobApplication.where(user_id: current_user.id, awarded: false)  
   end
 

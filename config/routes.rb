@@ -13,7 +13,6 @@ Porter::Application.routes.draw do
   collection do
  	  get 'search'=> 'jobs#index'
   end
-
   resources :job_applications, only: [:create, :destroy] do
     member do
       get 'award'
@@ -21,6 +20,7 @@ Porter::Application.routes.draw do
     end
   end
  end
+ 
  resources :password_resets,  only: [:new, :create, :edit, :update]
 
  resources :users 

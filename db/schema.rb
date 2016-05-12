@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20160511220806) do
     t.datetime "updated_at"
   end
 
-  add_index "job_applications", ["user_id"], name: "index_job_applications_on_user_id", unique: true
+  add_index "job_applications", ["job_id", "user_id"], name: "index_job_applications_on_job_id_and_user_id", unique: true
 
   create_table "jobs", force: true do |t|
     t.string   "title"
