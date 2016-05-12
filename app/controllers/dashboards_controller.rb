@@ -9,20 +9,18 @@ before_action :require_user
     render :my_profile
   end
 
-  
-
   def edit_profile
     @kommunes = Kommune.all
     @user = User.find_by(id: current_user.id)
   end
 
   def my_applications
-    
     @my_applications = JobApplication.where(user_id: current_user.id, awarded: false).paginate(page: params[:page], per_page: 1)
   end
 
   def my_jobs
-    @my_jobs = Job.where(user_id: current_user.id)
+    @my_jobs = Job.where(user_id: current_user.id).order(created_at: :desc)
+    @applications = JobApplication.where(job_id: @my_jobs.ids) # find the applications for all the jobs owned by current_user
   end
 
   def jobs_won
@@ -56,6 +54,4 @@ before_action :require_user
   def user_params
     params.require(:user).permit(:password, :password_confirmation)
   end
-
-
 end

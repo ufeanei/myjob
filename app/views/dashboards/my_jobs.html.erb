@@ -6,70 +6,46 @@
   <% @my_jobs.each do |job| %>
     <div class="job-wrap">
       <div>
-      <div class="row job-section">
-      	<div class="col-md-3 col-sm-3">
-          <%= image_tag('pages/fotolia.jpg', class: 'img-responsive pull-left thumbnail') %>
-          
-        </div>
-        <div class="col-md-5 col-sm-6">
-          <p> <%= link_to "#{job.title}", job_path(job) %></p>
-          <br>
-          <p> views: <strong>21 </strong></p>
-        
-          <%= link_to 'Endre', edit_job_path(job), class: "pull-left edit-btn" %> 
+        <div class="row job-section">
+        	<div class="col-md-3 col-sm-3">
+            <%= image_tag('pages/fotolia.jpg', class: 'img-responsive pull-left thumbnail') %>  
+          </div>
+          <div class="col-md-5 col-sm-6">
+            <p> <%= link_to "#{job.title}", job_path(job) %></p>
+            <br>
+            <p> views: <strong>21 </strong></p>
+            <%= link_to 'Endre', edit_job_path(job), class: "pull-left edit-btn" %> 
+          </div>
         </div>
       </div>
-    </div>
-
-
-
-    <div class="applicants-list">
-      <h2 class="text-center">Applicants</h2>
-      <p>The following have applid to help. click on the name to view each helper and invite the one you like.</p>
-      <p>You can always cancel an invitation and invite someone else </p>
-      <br>
-      
-      <table class="table table-hover ">
-        <tr>
-          <td><strong><%= link_to "Espen O.", '' %> </strong></td>
-          <td> Stavanger </td>
-          <td> <%= link_to 'invite', '', class: "btn btn-info invite" %></td>
-          <td> <%= link_to 'Cancel', '', class: "btn btn-danger invite-cancel" %></td>
-        </tr>
-        <tr>
-          <td><strong><%= link_to "Espen O.", '' %> </strong></td>
-          <td> Stavanger </td>
-          <td> <%= link_to 'invite', '', class: "btn btn-info" %></td>
-          <td> <%= link_to 'Cancel', '', class: "btn btn-danger invite-cancel" %></td>
-        </tr>
-          <tr>
-          <td><strong><%= link_to "Espen O.", '' %> </strong></td>
-          <td> Stavanger </td>
-          <td> <%= link_to 'invite', '', class: "btn btn-info" %></td>
-          <td> <%= link_to 'Cancel', '', class: "btn btn-danger invite-cancel" %></td>
-        </tr>
-          <tr>
-          <td><strong><%= link_to "Espen O.", '' %> </strong></td>
-          <td> Stavanger </td>
-          <td> <%= link_to 'invite', '', class: "btn btn-info" %></td>
-          <td> <%= link_to 'Cancel', '', class: "btn btn-danger invite-cancel" %></td>
-        </tr>
-          <tr>
-          <td><strong><%= link_to "Espen O.", '' %> </strong></td>
-          <td> Stavanger </td>
-          <td> <%= link_to 'invite', '', class: "btn btn-info" %></td>
-          <td> <%= link_to 'Cancel', '', class: "btn btn-danger invite-cancel" %></td>
-        </tr>   
-      </table>
-   
-
-    </div>
-    </div>
+ 
+      <div class="applicants-list">
+        <h2 class="text-center">Applicants</h2>
+        <p>The following have applid to help. click on the name to view each helper and invite the one you like.</p>
+        <p>You can always cancel an invitation and invite someone else </p>
+        <br>
+        <%if job.job_applications.empty? %>
+          <h4> No applicants yet for this job</h4>
+        <% else %>
+          <table class="table table-hover ">
+            <% @applications.each do |x| %>
+              <% if x.job_id == job.id %>
+                <tr>
+                  <td><strong><%= link_to "#{full_name(x.user)}", user_path(x.user) %> </strong></td>
+                  <td> <%=x.user.kommune.name %> </td>
+                  <td> <%= link_to 'invite', '', class: "btn btn-info invite" %></td>
+                  <td> <%= link_to 'Cancel', '', class: "btn btn-danger invite-cancel" %></td>
+                </tr>
+              <% end %>
+            <% end %>  
+          </table>  
+        <% end %>
+      </div>
+    </div> <!-- end of job wrap -->
     <br>
     <br>
     <br>
   <% end %>
-
 <% end %>
 <%= render 'part2' %>
    
