@@ -30,7 +30,7 @@ $('.invite-cancel').hide();
 });
  
  // ajax for index page pagination
-$('.pagination a').attr('data-remote', 'true');
+
 
 // jobs index page js
 

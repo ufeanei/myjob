@@ -14,12 +14,19 @@
       <h3><%= link_to "#{appl.job.title}", job_path(appl.job) %></h3>
       <% if appl.job.status=='active' %>
       <h4><strong>Active </strong></h4>
-     <br>
-      <%= appl.job.kommune.name %> 
       <% end %>
+     <br>
+     <p><strong><%= appl.job.payment %>Kr </strong></p>
+      <%= link_to 'Delete', job_job_application_path(job_id: appl.job.id , id: appl.id), confirm: 'are you sure', method: :delete %>
+     <p><%= appl.job.kommune.name %> </p>
+      
     </div>
     <br>
   <% end %>
+
 <% end%>
+ <div class="pagin pagin-down">
+         <%= will_paginate @my_applications, renderer: BootstrapPagination::Rails, previous_label: '<', next_label:'>' %>
+  </div>
 
 <%= render 'part2' %>

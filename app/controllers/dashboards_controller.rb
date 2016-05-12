@@ -17,7 +17,8 @@ before_action :require_user
   end
 
   def my_applications
-    @my_applications = JobApplication.where(user_id: current_user.id, awarded: false)  
+    
+    @my_applications = JobApplication.where(user_id: current_user.id, awarded: false).paginate(page: params[:page], per_page: 1)
   end
 
   def my_jobs
