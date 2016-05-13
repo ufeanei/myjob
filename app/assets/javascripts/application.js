@@ -25,11 +25,11 @@ $('.invite-cancel').hide();
 
 
 	$('.invite').click(function(e){
-		e.preventDefault();
+		
 	$('.invite-cancel').show();
 });
  
- // ajax for index page pagination
+ 
 
 
 // jobs index page js

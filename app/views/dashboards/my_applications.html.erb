@@ -17,16 +17,14 @@
       <% end %>
      <br>
      <p><strong><%= appl.job.payment %>Kr </strong></p>
-      <%= link_to 'Delete', job_job_application_path(job_id: appl.job.id , id: appl.id), confirm: 'Are you sure, you want to delete', method: :delete, class: "pull-right btn btn-danger" %>
-     <p><%= appl.job.kommune.name %> </p>
-      
+      <%= link_to 'Slett', job_job_application_path(job_id: appl.job.id , id: appl.id), confirm: 'Are you sure, you want to delete', method: :delete, class: "pull-right btn btn-danger" %>
+     <p><%= appl.job.kommune.name %> </p> 
     </div>
     <br>
   <% end %>
-
 <% end%>
- <div class="pagin pagin-down">
-         <%= will_paginate @my_applications, renderer: BootstrapPagination::Rails, previous_label: '<', next_label:'>' %>
-  </div>
+<div class="pagin pagin-down">
+  <%= will_paginate @my_applications, renderer: BootstrapPagination::Rails, previous_label: '<', next_label:'>' %>
+</div>
 
 <%= render 'part2' %>
