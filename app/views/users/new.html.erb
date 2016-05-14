@@ -36,7 +36,7 @@
         </div>     
         <br/>
         <div class="form-group">
-          <%= check_box_tag "terms" %> I agree <%= link_to 'Terms of Service', service_path %> and <%= link_to 'Privacy statment', privacy_path %>      
+          <%= f.check_box :terms %> I agree <%= link_to 'Terms of Service', service_path %> and <%= link_to 'Privacy statment', privacy_path %>      
         </div>
         <%= f.submit "Register", class: "btn btn-default btn-block register-button" %> 
         <hr class="hr-new-user"/>

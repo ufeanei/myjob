@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessor :remember_token, :confirmation_token, :reset_token
+  attr_accessor :remember_token, :confirmation_token, :reset_token, :terms
 
   before_save :downcase_email
   before_create :create_confirmation_digest
@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, on: :create, length: { minimum: 6 }, allow_nil: true
+  validates :terms, acceptance: {accept: "1"}
 
 
   #used to create the digest of any string

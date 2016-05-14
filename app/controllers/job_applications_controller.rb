@@ -33,15 +33,12 @@ class JobApplicationsController < ApplicationController
     #award an application to a user
 
     job_application = JobApplication.find_by(id: params[:id])
-    if job_application.job.user.id == job_application.user_id 
-      flash[:info] = "You cannot apply to your own job"
-      redirect_to :back
-    elsif job_application.awarded == true
+   if job_application.awarded == true
       flash[:info]= "You have already invited this helper"
       redirect_to :back
     elsif job_application.update_attribute(:awarded, true)
       flash[:success] = "Invitation succesful. Helper has been notified by email"
-      job_application.job.status = 'inactive'
+      job_application.job.update_attribute(:status,'inactive')
       #send notification email to user as a background job
       redirect_to :back
       
@@ -56,12 +53,14 @@ class JobApplicationsController < ApplicationController
     redirect_to :back
   elsif job_application.update_attribute(:awarded, false)
     flash[:success] = "Invitation canceled"
+    job_application.job.update_attribute(:status,'active')
     redirect_to :back
     #send notification email to user as a background job
   end
  end
 
  private
+
   
 
 end

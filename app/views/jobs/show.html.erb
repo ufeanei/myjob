@@ -45,7 +45,7 @@
           
           <h4 >status: <strong class="status">Job not yet awarded</strong></h4>
           <br/>
-          <%= link_to 'Apply to help',  job_job_applications_path(@job, user_id: current_user.id if current_user), method: 'post', class: "btn btn-block btn-primary" %>  
+          <%= link_to 'Apply to help',  job_job_applications_path(@job, user_id: current_user ), method: 'post', class: "btn btn-block btn-primary" %>  
         </div>
 
         <div class="applicants-div">

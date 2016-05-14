@@ -17,8 +17,8 @@
      <% if appl.job.status == 'active' %>
      Job Status:<strong>Active</strong>
      <% elsif appl.job.status == 'inactive' %>
-     <P> Job Status: <strong>Job not active</strong></P>
-     <p>Jobowner has already awarded this job to a helper</p>
+     <P> Job Status: <strong class="inactive-text">Job not active</strong></P>
+     <p class="inactive-text">Jobowner has already awarded this job to a helper</p>
      <% end %>
       <%= link_to 'Slett', job_job_application_path(job_id: appl.job.id , id: appl.id), confirm: 'Are you sure, you want to delete', method: :delete, class: "pull-right btn btn-danger" %>
      <p><%= appl.job.kommune.name %> </p> 
