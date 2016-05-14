@@ -2,21 +2,24 @@
 
 <h3 class="text-center"><strong>My applications</strong></h3>
 <% if @my_applications.empty? %>
-  <h3>You have not applied to any jobs</h3>
+  <h3>You don't have any active applications</h3>
 <% else %>
   <p>Your applications to active jobs are shown below</p>
-  <p>If the jobowner has given the job to a helper, your application for that job is not shown here</p>
+  <p>If the jobowner has given the job to a helper. Your application for that job is not shown here</p>
   <p>Check the "My Jobs Won" on the left</p>
   <br>
 
   <% @my_applications.each do |appl| %>
     <div class="my-appli">
       <h3><%= link_to "#{appl.job.title}", job_path(appl.job) %></h3>
-      <% if appl.job.status=='active' %>
-      <h4><strong>Active </strong></h4>
-      <% end %>
      <br>
      <p><strong><%= appl.job.payment %>Kr </strong></p>
+     <% if appl.job.status == 'active' %>
+     Job Status:<strong>Active</strong>
+     <% elsif appl.job.status == 'inactive' %>
+     <P> Job Status: <strong>Job not active</strong></P>
+     <p>Jobowner has already awarded this job to a helper</p>
+     <% end %>
       <%= link_to 'Slett', job_job_application_path(job_id: appl.job.id , id: appl.id), confirm: 'Are you sure, you want to delete', method: :delete, class: "pull-right btn btn-danger" %>
      <p><%= appl.job.kommune.name %> </p> 
     </div>

@@ -21,13 +21,7 @@ $(document).ready(function(){
 
 // myjobs js
 
-$('.invite-cancel').hide();
 
-
-	$('.invite').click(function(e){
-		
-	$('.invite-cancel').show();
-});
  
  
 
