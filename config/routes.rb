@@ -18,6 +18,8 @@ Porter::Application.routes.draw do
       get 'award'
       get 'cancel_award'
     end
+
+    resources :reviews, only: [:new, :create]
   end
  end
  
