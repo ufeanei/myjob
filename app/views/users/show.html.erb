@@ -9,29 +9,27 @@
     </div >
     <div class="job-review-segment">
       <h3 class="text-center">Jobs Completed</h3>
-      <div>
-        <h3><a href="">Frakt av kjølskap fra sandnes til hunvagd</a></h3>
-        <img src=""><em>in 1915 edward obrind brought something home</em>
-        <hr>
-        
-      </div>
-      <div>
-        <h3><a href="">Frakt av kjølskap fra sandnes til hunvagd</a></h3>
-        <img src=""><em>in 1915 edward obrind brought something home</em>
-        <hr>   
-      </div>
-      <div>
-        <h3><a href="">Frakt av kjølskap fra sandnes til hunvagd</a></h3>
-        <img src=""><em>in 1915 edward obrind brought something home</em>
-        <hr>   
-      </div>
-      <div>
-      <h3><a href="">Frakt av kjølskap fra sandnes til hunvagd</a></h3>
-      <img src=""><em>in 1915 edward obrind brought something home</em>
-      <hr>   
+      <% @appli_won.each do |appl| %>
+        <div>
+          <h3><%= link_to "#{appl.job.title}", job_path(appl.job) %></h3>
+          <h4>Reviews</h4>
+          <% if !@reviews.nil? %>
+            <% @reviews.each do |review| %>
+              <%= image_tag('pages/fotolia.jpg', size: '25x25')%><%= review if review.application == appl %>
+            <% end %>
+          <% end %>
+          <% if (current_user == appl.job.user) || (current_user == appl.user )%> <!---only jobowner or applicant can see the comment form and submit comment -->
+            <%= form_for [ appl.job, appl, @review ] do |f| %>
+            <div class = "form-group">
+              <%= f.label :comment %>
+              <%= f.text_area :comment, class: "form-control" %>
+            </div>
+              <%= f.submit "save", class: "btn btn-success" %>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>      
     </div>
-    </div>
-
   </div>
 </div>
 
