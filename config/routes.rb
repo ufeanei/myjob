@@ -19,7 +19,7 @@ Porter::Application.routes.draw do
       get 'cancel_award'
     end
 
-    resources :reviews, only: [:new, :create]
+    resources :reviews, only: [:create]
   end
  end
  
@@ -42,5 +42,4 @@ Porter::Application.routes.draw do
     get 'my_profile'
   end
  end
-
 end

@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   belongs_to :kommune
   has_many :jobs
   has_many :job_applications
+  has_many :reviews
 
   validates :first_name,  presence: true, length: { maximum: 50 }
   validates :last_name,  presence: true, length: { maximum: 50 }
