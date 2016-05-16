@@ -5,17 +5,31 @@
     <div></div>
     <div id="about-me">
       <h3 class="text-center">About me</h3>
+      <h4><%= @user.first_name.capitalize %></h4>
       <p><%= @user.user_self_description %></p>
     </div >
     <div class="job-review-segment">
       <h3 class="text-center">Jobs Completed</h3>
       <% @appli_won.each do |appl| %>
         <div>
-          <h3><%= link_to "#{appl.job.title}", job_path(appl.job) %></h3>
-          <h4>Reviews</h4>
-          <% if !@reviews.nil? %>
+          <h3><%= link_to "#{appl.job.title.capitalize}", job_path(appl.job) %></h3>
+          <% if !@reviews.empty? %>
             <% @reviews.each do |review| %>
-              <%= image_tag('pages/fotolia.jpg', size: '25x25')%><%= review if review.application == appl %>
+              <div class="row">
+                <div class="col-md-1 col-xs-2">
+                  <%= image_tag('pages/fotolia.jpg', class: "contain img-responsive")%> 
+                </div>
+                <div class= "col-md-11 col-xs-10">
+                  <% if appl.job.user == review.user %>
+                    <strong><%= review.user.first_name%></strong> (Jobowner)
+                  <% elsif appl.user == review.user %>
+                    <strong><%= review.user.first_name %></strong> (Helper)
+                  <% end %>
+                  <br>
+                  <em><%= review.comment.capitalize if review.job_application == appl %></em>  
+                </div>
+              </div>
+              <br>
             <% end %>
           <% end %>
           <% if (current_user == appl.job.user) || (current_user == appl.user )%> <!---only jobowner or applicant can see the comment form and submit comment -->

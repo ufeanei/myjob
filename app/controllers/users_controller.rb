@@ -32,7 +32,7 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id]) 
     @review = Review.new
     @appli_won =  JobApplication.where(user_id: @user.id, awarded: true) #We need all jobs he has done so that we can place job owner reviews under each one 
-    @reviews = Review.where(application_id: @appli_won.ids)                     #on the user show page                                     
+    @reviews = Review.where(job_application_id: @appli_won.ids)                     #on the user show page                                     
   end
 
 
