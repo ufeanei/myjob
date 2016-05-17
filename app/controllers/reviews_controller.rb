@@ -6,12 +6,14 @@ class ReviewsController < ApplicationController
     @review.job_application_id = params[:job_application_id]
     @review.user = current_user
 
-  
+   @user = User.find_by(id: params[:user_id])
+
     if @review.save
       flash[:success] = " Your comment was added"
       redirect_to :back
     else
-      render 'users/show'
+      flash[:danger] = "You can't submit an empty comment"
+      redirect_to user_path(@user)
     end
   end
 end
