@@ -1,0 +1,14 @@
+<h1>Frakt</h1>
+<p> Hi <%= @user.first_name.capitalize %>, </p>
+<p>
+  We are pleased to see that you selected the helper <%= @application.user.first_name.capitalize %> for your job .......
+  Are you satisfied with the helper? what are your opinions on his help
+
+  Click the link below to review <%= @application.user.first_name.capitalize %>
+<%= link_to "#{user_url(@application.user)}", user_url(@application.user, anchor: "#{@application.id}") %>
+  www.localhost:3000/users/:id#jobtitle
+</p>
+
+
+<P>Thank you</P>
+<P> Kundesupport </p>

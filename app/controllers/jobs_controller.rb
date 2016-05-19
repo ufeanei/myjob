@@ -25,9 +25,9 @@ class JobsController < ApplicationController
   end
 
   def create  
-
     @job = Job.new(job_params)
     @job.user = current_user
+    @job.status = 'active' # should have been default value but i forgot
     if @job.save
       flash[:success] = 'Your job has been created'
       redirect_to jobs_path
@@ -54,12 +54,12 @@ class JobsController < ApplicationController
 
  private
 
-   def job_params
+  def job_params
     params.require(:job).permit(:title,:description, :payment, :street_addr, :destination_addr, :contact_number, :kommune_id, :fylke_id, :terms_of_service)
-   end
+  end
 
   def requested_jobs
-   params["fylke_id"].keys if params["fylke_id"]
+    params["fylke_id"].keys if params["fylke_id"]
   end
 
   def get_job
@@ -67,6 +67,6 @@ class JobsController < ApplicationController
   end
 
   def get_all_fylke
-   @fylkes = Fylke.all 
+    @fylkes = Fylke.all 
   end
 end

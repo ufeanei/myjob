@@ -26,7 +26,7 @@
       <h3 class="text-center">Jobs Completed</h3>
       <% @appli_won.each do |appl| %>
         <div>
-          <h3><%= link_to "#{appl.job.title.capitalize}", job_path(appl.job) %></h3>
+          <h3><%= link_to "#{appl.job.title.capitalize}", job_path(appl.job), id: "#{appl.id}" %></h3>
           <% if !@reviews.empty? %>
             <% @reviews.each do |review| %>
               <div class="row">
@@ -51,7 +51,7 @@
             <div class = "form-group">
               <%= f.label :comment %>
               <%= f.text_area :comment, class: "form-control" %>
-              <%= hidden_field_tag 'user_id', "#{@user.id}" %>
+              <%= hidden_field_tag 'user_id', "#{@user.id}" %>  <!-- You need the user_id in the review create action. study its use in that action -->
             </div>
               <%= f.submit "save", class: "btn btn-success" %>
             <% end %>

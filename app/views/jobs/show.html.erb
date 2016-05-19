@@ -42,10 +42,14 @@
             </li>
           </ul>
           <br/> 
-          
+          <% if @job.status == 'active' %>
           <h4 >status: <strong class="status">Job not yet awarded</strong></h4>
           <br/>
           <%= link_to 'Apply to help',  job_job_applications_path(@job, user_id: current_user ), method: 'post', class: "btn btn-block btn-primary" %>  
+          <% elsif @job.status == 'inactive' %>
+           <h4 >status: <strong class="status">Inactive</strong></h4>
+           <p>Job already awarded</p>
+           <% end %>
         </div>
 
         <div class="applicants-div">
