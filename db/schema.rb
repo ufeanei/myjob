@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160516170045) do
+ActiveRecord::Schema.define(version: 20160520031126) do
 
   create_table "fylkes", force: true do |t|
     t.string "name"
@@ -40,6 +40,8 @@ ActiveRecord::Schema.define(version: 20160516170045) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "status"
+    t.string   "image"
+    t.integer  "views"
   end
 
   create_table "kommunes", force: true do |t|
@@ -74,6 +76,7 @@ ActiveRecord::Schema.define(version: 20160516170045) do
     t.datetime "activated_at"
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
+    t.string   "image"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
