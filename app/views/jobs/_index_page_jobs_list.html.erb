@@ -5,7 +5,7 @@
     <div class="row">
       <%= link_to job_path(job.id) do %>
         <div class="col-md-4 col-sm-4">
-          <%= image_tag('pages/fotolia.jpg', size: "170 x 200", class: 'img-responsive pull-left thumbnail') %>
+          <%= image_tag(job.image_url(:thumb), size: "170 x 200", class: 'img-responsive pull-left thumbnail') %>
         </div>
         <div class="col-md-5 col-sm-6">
           <p> <%= job.title %></p>

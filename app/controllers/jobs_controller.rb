@@ -48,7 +48,8 @@ class JobsController < ApplicationController
     end
   end
 
-  def show   
+  def show 
+   @job.update_attribute(:views, @job.views + 1)  
     @same_location_jobs = Job.where(fylke_id: @job.fylke_id).limit(6).order(created_at: :desc)
   end
 

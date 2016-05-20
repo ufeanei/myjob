@@ -8,14 +8,14 @@
       <div class="job-main-details col-sm-7 col-md-8 col-xs-12">
         <h2><%= @job.title %></h2>
         <br>
-        <%= image_tag('pages/fotolia.jpg', class: 'img-responsive  thumbnail') %>
+        <%= image_tag(@job.image_url, class: 'img-responsive thumbnail') %>
         <br/>
         <h3>Description</h3>
         <p><%= @job.description %> </p>
         <br/>
         <h3>Directions</h3>
         <p><%= @job.street_addr %> <strong>  To  </strong> <%= @job.destination_addr%> </p>   
-        <%= image_tag('pages/fotolia.jpg', class: 'img-responsive thumbnail') %>
+        <%= image_tag(@job.image_url, class: 'img-responsive thumbnail') %>
          
         <p class="row col-md-12 col-xs-12"><em>Modified: <%= display_datetime(@job.updated_at)%> </em></p>
                

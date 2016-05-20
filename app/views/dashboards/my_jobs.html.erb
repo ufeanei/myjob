@@ -8,12 +8,12 @@
       <div>
         <div class="row job-section">
         	<div class="col-md-3 col-sm-3">
-            <%= image_tag('pages/fotolia.jpg', class: 'img-responsive pull-left thumbnail') %>  
+            <%= image_tag(job.image_url(:thumb), class: 'img-responsive pull-left thumbnail') %>
           </div>
           <div class="col-md-5 col-sm-6">
             <p> <%= link_to "#{job.title}", job_path(job) %></p>
             <br>
-            <p> views: <strong>21 </strong></p>
+            <p> views: <strong><%= job.views %> </strong></p>
             <%= link_to 'Endre', edit_job_path(job), class: "pull-left edit-btn" %> 
           </div>
         </div>

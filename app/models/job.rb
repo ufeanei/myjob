@@ -12,7 +12,7 @@ class Job < ActiveRecord::Base
   validates :kommune_id, presence: true
   validates :fylke_id, presence: true
   validates :terms_of_service, acceptance: {accept: "1"}
-  validate :iamge_size
+  validate :image_size
 
   belongs_to :fylke
   belongs_to :kommune
@@ -22,7 +22,7 @@ class Job < ActiveRecord::Base
   private
 
   def image_size
-    if image.size < 2.megabytes
+    if image.size > 2.megabytes
       errors.add(:image, "should be less than 2MB")
     end
   end
