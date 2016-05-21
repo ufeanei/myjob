@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   attr_accessor :remember_token, :confirmation_token, :reset_token, :terms
 
+  mount_uploader :image, PictureUploader
+
   before_save :downcase_email
   before_create :create_confirmation_digest
   
@@ -18,6 +20,7 @@ class User < ActiveRecord::Base
   has_secure_password
   validates :password, presence: true, on: :create, length: { minimum: 6 }, allow_nil: true
   validates :terms, acceptance: {accept: "1"}
+  validate :image_size
 
 
   #used to create the digest of any string
@@ -74,4 +77,10 @@ class User < ActiveRecord::Base
       self.confirmation_token  = User.new_token
       self.confirmation_digest = User.digest(confirmation_token)
     end
+
+    def image_size
+    if image.size > 2.megabytes
+      errors.add(:image, "should be less than 2MB")
+    end
+  end
 end

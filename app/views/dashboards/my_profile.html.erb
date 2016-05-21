@@ -37,6 +37,6 @@
   </tr>
 </table>
 </div>
-
+ <%= image_tag(@user.image_url(:thumb), class: 'img-responsive thumbnail') %>
 <%= link_to 'upret profil', edit_profile_dashboard_path, class: 'btn btn-lg btn-info' %>
 <%= render 'part2' %>

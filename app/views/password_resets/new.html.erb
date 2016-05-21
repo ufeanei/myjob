@@ -1,9 +1,10 @@
 <div class="contain ">
-  <div class="col-md-4 col-md-offset-4 well">
-    <h2>Forgot Password</h2>
+  <div class="col-md-4 col-md-offset-4 well form-wrap">
+    <h2 class="text-center">Forgot Password</h2>
+    <p>Please enter your email and we will send you a link to reset your password</p>
     <%= form_tag password_resets_path method: :post  do |f| %>
     <div class="form-group">
-      <%= label_tag :email %>
+      <%= label_tag :email, 'Enter your email address' %>
       <%= text_field_tag :email, nil, class: 'form-control'%>
     </div>
     <%= submit_tag "Send", class: "btn btn-primary btn-block" %>

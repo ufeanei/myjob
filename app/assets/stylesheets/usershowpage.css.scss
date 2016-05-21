@@ -6,7 +6,12 @@
 #about-me, .job-review-segment {
 	background-color: #fff;
 	border: 1px solid #aaaaaa;
+	
 
+}
+
+#about-me {
+	overflow: auto;
 }
 
 .job-review-segment {
@@ -17,4 +22,8 @@
 .wrapping {
 
 	margin-top: 30px;
+}
+
+.user-pic {
+	margin-top: 15px
 }
