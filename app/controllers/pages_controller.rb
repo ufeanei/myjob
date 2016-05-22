@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
 
 	def home
+	  @jobs = Job.last(4).reverse 
 	end
 
 	def contact

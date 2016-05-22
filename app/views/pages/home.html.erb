@@ -24,82 +24,92 @@
 
 <main>
   <h2 class="directions-text text-center">How Frakt works</h2>
-  <div class="col-md-8 col-md-offset-2">
-    <div class="row">
-      <div class="col-md-4 text-center">
-        <span class="numbers"> 1 </span>
-        <h3>POST YOUR AD</h3> 
-        <hr class="front-hr">
-        <h4> You want to move something in your community</h4>
-        <h4> Post it here and it is done</h4>
-      </div>
-      <div class="col-md-4  text-center ">
-        <span  class="numbers"> 2 </span>
-        <br>
-        <h3>GET A HELPER</h3> 
-        <hr class="front-hr">
-        <h4> Happy helpers apply to help you.</h4>
-        <h4> You select one of them</h4>  
-      </div>
-      <div class="col-md-4 text-center">
-        <span class="numbers"> 4 </span>
-        <h3>PAY, RATE AND REVIEW </h3> 
-        <hr class="front-hr">
-        <h4> Pay your helper after job is done</h4>
-        <h4>Rate and Review your helper</h4>
-      </div>
-    </div>
-  </div> 
-  <div class="col-md-6 col-md-offset-3 latest-adds">'
-
-  <ul>
-    <% @jobs = Job.last(4).reverse %>
-    <% @jobs.each do |job| %> <!--- this piece of code generates the infos for each job to be displayed -->
-    <li>
+  <div class="contain">
+    <div class="col-md-8 col-md-offset-2">
       <div class="row">
-        <%= link_to job_path(job.id) do %>
-          <div class="col-md-4 col-sm-4">
-            <%= image_tag(job.image_url(:thumb), size: "170 x 200", class: 'img-responsive pull-left thumbnail') %>
-          </div>
-          <div class="col-md-5 col-sm-6">
-            <p> <%= job.title %></p>
-          </div>
-        <% end %>
-        <div class="col-md-3 ">
-          <h5 id="money"> <%= job.payment %>kr</h5>
+        <div class="col-md-4 text-center">
+          <span class="numbers"> 1 </span>
+          <h3>POST YOUR AD</h3> 
+          <hr class="front-hr">
+          <h4> You want to move something in your community?</h4>
+          <h4> Just post it on Frakt</h4>
+        </div>
+        <div class="col-md-4  text-center ">
+          <span  class="numbers"> 2 </span>
+          <br>
+          <h3>GET A HELPER</h3> 
+          <hr class="front-hr">
+          <h4> Happy helpers apply to help you.</h4>
+          <h4> You select one of them</h4>  
+        </div>
+        <div class="col-md-4 text-center">
+          <span class="numbers"> 4 </span>
+          <h3>PAY, RATE AND REVIEW </h3> 
+          <hr class="front-hr">
+          <h4> Pay your helper after job is done</h4>
+          <h4>Rate and Review your helper</h4>
         </div>
       </div>
-      <hr>
-      <div class="row panel-bottom">
-        <p class="col-md-6 text-center"><%= job.fylke.name %> </p>
-        <p class="col-md-6 text-center">Posted on: <%= job.created_at.strftime("%m/%d/%Y ") %> </p>
-      </div>
-    </li>
-    <% end %> <!--- end of infos for each job here -->
-</ul>
-  </div> 
-
-  <div class="col-md-8 col-md-offset-2">
-    <div class="row">
-      <div class="col-md-3 text-center">
-         
-        <h4> Online purchases</h4>
-      </div>
-      <div class="col-md-3  text-center ">
-        <span  class="numbers"> 2 </span>
-         
-        <h4> flytting</h4>  
-      </div>
-      <div class="col-md-3 text-center">
-        
-        <h4>Purchase from shops like Ikea, Skeidar elkjop etc</h4>
-      </div>
-      <div class="col-md-3 text-center">
-        
-        <h4>Kontoflytting</h4>
-      </div>
     </div>
   </div> 
+
+  <div class="use-cases contain">
+    <div class="col-md-8 col-md-offset-2 ">
+      <ul>
+        <% @jobs.each do |job| %> <!--- this piece of code generates the infos for each job to be displayed -->
+          <div class="col-md-6">
+            <li >
+              <div class="row">
+                <%= link_to job_path(job.id) do %>
+                  <div class="col-md-4 col-sm-4">
+                    <%= image_tag(job.image_url(:thumb), size: "170 x 200", class: 'img-responsive pull-left thumbnail') %>
+                  </div>
+                  <div class="col-md-5 col-sm-6">
+                    <p> <%= job.title %></p>
+                  </div>
+                <% end %>
+                <div class="col-md-3 ">
+                  <h5 id="money"> <%= job.payment %>kr</h5>
+                </div>
+              </div>
+              <hr>
+              <div class="row panel-bottom">
+                <p class="col-md-6 text-center"><%= job.fylke.name %> </p>
+                <p class="col-md-6 text-center">Posted on: <%= job.created_at.strftime("%m/%d/%Y ") %> </p>
+              </div>
+            </li>
+          </div>
+        <% end %> <!--- end of infos for each job here -->
+      </ul>
+    </div> 
+  </div>  
+
+  <div class="use-cases contain">
+    <div class="col-md-8 col-md-offset-2 ">
+      <div class="row">
+        <div class="col-md-3 text-center">
+            <%= image_tag('pages/fotolia.jpg', size: '200 x 300', class: 'img-responsive')%>
+            <br>
+          <h4> Online purchases</h4>
+        </div>
+        <div class="col-md-3  text-center ">
+          <%= image_tag('pages/fotolia.jpg', size: '200 x 300', class: 'img-responsive')%>
+          <br>
+          <h4> flytting</h4>  
+        </div>
+        <div class="col-md-3 text-center">
+          <%= image_tag('pages/fotolia.jpg', size: '200 x 300', class: 'img-responsive')%>
+          <br>
+          <h4>Purchase from shops like Ikea, Skeidar elkjop etc</h4>
+        </div>
+        <div class="col-md-3 text-center">
+          <%= image_tag('pages/fotolia.jpg', size: '200 x 300', class: 'img-responsive pull-right')%>
+          <br>
+          <h4>Kontoflytting</h4>
+        </div>
+      </div>
+    </div> 
+  </div>
 </main>
 
 

@@ -84,14 +84,13 @@ header {
 }
 
 main {
-  
   overflow:auto;
-  
   border-top: 9px solid #000;   
 }
 
 .directions-text {
-  margin-top: 35px;
+  margin-top: 25px;
+
 }
 
 .hero-text h1 {
@@ -121,11 +120,11 @@ main {
 }
 
 .btn-total-jobs {
-  border: 2px solid #cc0066;
+  border: 3px solid #336699;
   font-size: 20px;
   border-radius: 200px;
   font-family: arial, helvetica, sans-serif;
-  color: #cc0066;
+  color: #0099ff;
 }
 
 .numbers {
@@ -135,12 +134,30 @@ main {
   padding: 4px 12px;
   font-size: 20px;
 
+
 }
 .front-hr {
   width: 50%;
   border: 1px solid #000;
 }
 
+.each-job {
+  background-color: #fff;
+  border: 1px solid red;
+}
+.use-cases {
+  background: #f2f2f2;
+
+}
+
+main li {
+  list-style: none;
+  border: 1px solid #aaa;
+  margin-bottom: 5px;
+  background: #fff;
+ 
+  
+}
 
 
 
