@@ -85,15 +85,20 @@ header {
 
 main {
   
-  overflow:auto;    
+  overflow:auto;
+  
+  border-top: 9px solid #000;   
 }
 
-.directions-text {margin-top: 0}
+.directions-text {
+  margin-top: 35px;
+}
 
 .hero-text h1 {
-  color:#ff9900;
+  color:#009966;
   font-size: 40px;
-  font-family: helvetica, sans-serif
+  font-family: helvetica, sans-serif;
+  font-weight: 600;
 }
 
 .btn-ship, .btn-helper {
@@ -116,22 +121,24 @@ main {
 }
 
 .btn-total-jobs {
-  border: 2px solid #2e004f;
-  background-color: #2e004f;
+  border: 2px solid #cc0066;
   font-size: 20px;
   border-radius: 200px;
   font-family: arial, helvetica, sans-serif;
+  color: #cc0066;
+}
+
+.numbers {
   color: #fff;
-}
+  background-color: #635c5a;
+  border-radius: 200px;
+  padding: 4px 12px;
+  font-size: 20px;
 
-.panel {
-  padding: 0 ;
-  font-size: 20px
 }
-
-main li {
-  list-style: none;
-  margin-top: 10px;
+.front-hr {
+  width: 50%;
+  border: 1px solid #000;
 }
 
 
