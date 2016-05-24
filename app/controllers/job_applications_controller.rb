@@ -1,7 +1,7 @@
 class JobApplicationsController < ApplicationController
   before_action :require_user
-  before_action :get_application, only: [:destroy, :award, :cancel_award]
-  before_action :correct_user, only: [:award, :cancel_award]
+  before_action :get_application, only: [:destroy, :award]
+  before_action :correct_user, only: [:award]
 
 
   def create
@@ -47,18 +47,7 @@ class JobApplicationsController < ApplicationController
     end
   end
 
- def cancel_award
-  #Cancel an already awarded application
-  #see before action  
-  if @job_application.awarded == false
-    flash[:info]= "This helper has not been invited yet"
-    redirect_to :back
-  elsif @job_application.update_attribute(:awarded, false)
-    flash[:success] = "Invitation canceled"
-    @job_application.job.update_attribute(:status,'active')
-    redirect_to :back
-  end
- end
+ 
 
  private
  def correct_user

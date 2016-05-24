@@ -1,37 +1,37 @@
 <div class="correct-row-style"> <!-- this first div is added to correct positioning effects from the bootstrap class="row" styles  --> 
-  <div class=" row  col-md-6 col-sm-10 col-sm-offset-1 col-md-offset-3" id="container">
+  <div class="row  col-lg-6 col-lg-offset-3 col-md-8 col-sm-10 col-sm-offset-1 col-md-offset-2" id="container">
     <div class="toppanel">
       <br>
       <br>
     </div><!--end of toppanel-->
     <div class="wrapper">
       <div class="job-main-details col-sm-7 col-md-8 col-xs-12">
-        <h2><%= @job.title %></h2>
+        <h2><%= @job.title.capitalize %></h2>
         <br>
-        <%= image_tag(@job.image_url, class: 'img-responsive thumbnail') %>
+        <%= image_tag(@job.image_url(:trial), class: 'img-responsive') %>
         <br/>
         <h3>Description</h3>
         <p><%= @job.description %> </p>
         <br/>
         <h3>Directions</h3>
         <p><%= @job.street_addr %> <strong>  To  </strong> <%= @job.destination_addr%> </p>   
-        <%= image_tag(@job.image_url, class: 'img-responsive thumbnail') %>
-         
-        <p class="row col-md-12 col-xs-12"><em>Modified: <%= display_datetime(@job.updated_at)%> </em></p>
-               
-              
+        <%= image_tag(@job.image_url(:trial), class: 'img-responsive thumbnail') %> 
+        <p class="row col-md-12 col-xs-12"><em>Modified: <%= display_datetime(@job.updated_at)%> </em></p>        
       </div>
 
       <div class="side-info col-md-4 col-sm-5 col-xs-12 "> 
         <div class="apply-section well">
           <h3 class="text-center">Pris: <strong>1120kr</strong></h3>
           <br/>
-         
           <ul>
             <li>
               <div class="row col-md-12 col-xs-12">
-                <p class="col-md-4 col-xs-5">Annonsør:</p>
-                <p class="col-md-8 col-xs-5" > <%= full_name(@job.user) %></p>
+                <div class="col-md-4 col-xs-5">
+                  <p >Annonsør:</p>
+                </div>
+                <div class="col-md-8 col-xs-5">
+                <p> <%= full_name(@job.user) %></p>
+              </div>
               </div>
             </li>
             <li>
@@ -51,12 +51,10 @@
            <p>Job already awarded</p>
            <% end %>
         </div>
-
         <div class="applicants-div">
           <h2 class="text-center">10</h2>
           <h4 class="text-center">Applicants </h4>  
         </div><!--end of applicants-div-->  
-
         <div class="similar-jobs">
           <br>
           <h4 class="similar-jobs"><%=@job.fylke.name.upcase %> JOBS</h4>
@@ -70,7 +68,6 @@
             <% end %>
           <% end %>
         </div><!-- end of similar jobs-->
-
       </div><!-- end of job main details--> 
     </div> <!-- end of wrapper-->       
   </div>

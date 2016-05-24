@@ -1,9 +1,9 @@
 <header>
-<div class="col-md-12">
-  <div class="row col-md-10 col-md-offset-1 ">
+<div class="col-md-12 col-sm-12">
+  <div class="row col-md-10 col-md-offset-1 col-sm-12">
     <br>
     <br>
-    <div class="hero-text col-md-5">
+    <div class="hero-text col-md-5 col-sm-4">
       <br>
       <br>
       <br>
@@ -15,7 +15,7 @@
         <%= link_to "Vis alle annonse(305)", jobs_path, class: "btn btn-lg btn-total-jobs" %>
       </div>
     </div>
-    <div class="hero-picture col-md-7">
+    <div class="hero-picture col-md-7 col-sm-8">
       <%= image_tag('pages/fotolia.jpg', class: 'img-responsive pull-right')%>
     </div>
   </div>
@@ -23,19 +23,19 @@
 </header>
 
 <main>
-  <h2 class="directions-text text-center">How Frakt works</h2>
-  <div class="contain">
+  <h2 class="red-text text-center">How Frakt Works</h2>
+  <div class="contain grey-area">
     <div class="col-md-8 col-md-offset-2">
       <div class="row">
         <div class="col-md-4 text-center">
-          <span class="numbers"> 1 </span>
+          <span class="numbers">1</span>
           <h3>POST YOUR AD</h3> 
           <hr class="front-hr">
           <h4> You want to move something in your community?</h4>
           <h4> Just post it on Frakt</h4>
         </div>
         <div class="col-md-4  text-center ">
-          <span  class="numbers"> 2 </span>
+          <span  class="numbers">2</span>
           <br>
           <h3>GET A HELPER</h3> 
           <hr class="front-hr">
@@ -43,7 +43,7 @@
           <h4> You select one of them</h4>  
         </div>
         <div class="col-md-4 text-center">
-          <span class="numbers"> 4 </span>
+          <span class="numbers">3</span>
           <h3>PAY, RATE AND REVIEW </h3> 
           <hr class="front-hr">
           <h4> Pay your helper after job is done</h4>
@@ -53,9 +53,14 @@
     </div>
   </div> 
 
-  <div class="use-cases contain">
+  <div class="use-cases contain latest">
+    <br>
+    <br>
+    <br>
+    <h3 class="text-center red-text"> Latest Jobs</h3>
+    <br>
     <div class="col-md-8 col-md-offset-2 ">
-      <ul>
+      <ul class="well contain latest-list">
         <% @jobs.each do |job| %> <!--- this piece of code generates the infos for each job to be displayed -->
           <div class="col-md-6">
             <li >
@@ -65,7 +70,7 @@
                     <%= image_tag(job.image_url(:thumb), size: "170 x 200", class: 'img-responsive pull-left thumbnail') %>
                   </div>
                   <div class="col-md-5 col-sm-6">
-                    <p> <%= job.title %></p>
+                    <p> <%= job.title.capitalize %></p>
                   </div>
                 <% end %>
                 <div class="col-md-3 ">
@@ -81,30 +86,40 @@
           </div>
         <% end %> <!--- end of infos for each job here -->
       </ul>
-    </div> 
+    </div>
+    <div class="col-md-12 text-center">
+      <%= link_to 'Vis flere jobber', jobs_path, class: "btn btn-lg btn-total-jobs" %>
+    </div>
   </div>  
 
   <div class="use-cases contain">
+    <br>
+    <br>
+    <br>
+    <br>
+    <h3 class="text-center red-text">Peolpe are using Frakt for...</h3>
+    <br>
     <div class="col-md-8 col-md-offset-2 ">
       <div class="row">
         <div class="col-md-3 text-center">
             <%= image_tag('pages/fotolia.jpg', size: '200 x 300', class: 'img-responsive')%>
             <br>
-          <h4> Online purchases</h4>
+          <h4> Move Online Purchases</h4>
         </div>
         <div class="col-md-3  text-center ">
           <%= image_tag('pages/fotolia.jpg', size: '200 x 300', class: 'img-responsive')%>
           <br>
-          <h4> flytting</h4>  
+          <h4> Flytting</h4>  
         </div>
         <div class="col-md-3 text-center">
           <%= image_tag('pages/fotolia.jpg', size: '200 x 300', class: 'img-responsive')%>
           <br>
-          <h4>Purchase from shops like Ikea, Skeidar elkjop etc</h4>
+          <h4>Move things bought from Ikea, Skeidar elkjop etc</h4>
         </div>
         <div class="col-md-3 text-center">
-          <%= image_tag('pages/fotolia.jpg', size: '200 x 300', class: 'img-responsive pull-right')%>
+          <%= image_tag('pages/fotolia.jpg', size: '200 x 300', class: 'img-responsive')%>
           <br>
+          
           <h4>Kontoflytting</h4>
         </div>
       </div>

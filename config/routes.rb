@@ -16,7 +16,6 @@ Porter::Application.routes.draw do
   resources :job_applications, only: [:create, :destroy] do
     member do
       get 'award'
-      get 'cancel_award'
     end
 
     resources :reviews, only: [:create]

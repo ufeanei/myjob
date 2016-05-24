@@ -34,7 +34,7 @@
                   <td><strong><%= link_to "#{full_name(x.user)}", user_path(x.user) %> </strong></td>
                   <td> <%=x.user.kommune.name %> </td>
                   <td> <%= link_to 'invite', award_job_job_application_path(job_id: job.id, id: x.id), class: "btn btn-info invite" %></td>
-                  <td> <%= link_to 'Cancel', cancel_award_job_job_application_path(job_id: job.id, id: x.id), class: "invite-cancel" %></td>
+                  
                 </tr>
               <% end %>
             <% end %>  

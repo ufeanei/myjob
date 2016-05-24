@@ -77,21 +77,24 @@ width: 100%}
 |----------------------------------------------------------------------*/
 
 header {
-  border-bottom: 4px solid #aaaaaa;
+  border-bottom: 1px solid #aaaaaa;
   overflow:auto;
   background-color: #ffffff
 
 }
+.grey-area {
+  padding-top: 10px
+}
 
 main {
   overflow:auto;
-  border-top: 9px solid #000;   
+    
 }
 
-.directions-text {
-  margin-top: 25px;
-
+.red-text {
+  color: #cc3333;
 }
+
 
 .hero-text h1 {
   color:#009966;
@@ -124,7 +127,7 @@ main {
   font-size: 20px;
   border-radius: 200px;
   font-family: arial, helvetica, sans-serif;
-  color: #0099ff;
+  color: #336699;
 }
 
 .numbers {
@@ -154,9 +157,19 @@ main li {
   list-style: none;
   border: 1px solid #aaa;
   margin-bottom: 5px;
+  margin-top: 5px;
   background: #fff;
+  border-radius: 5px;
  
   
+}
+
+.latest-list {
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+}
+.latest {
+  border-top: 1px solid #aaa
 }
 
 
