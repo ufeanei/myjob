@@ -7,15 +7,15 @@
       <br>
       <br>
       <br>
-      <br>
       <h1>Move anything within your community</h1>
       <h3>Har du bil? become a helper and earn money</h3>
       <br>
       <div>
         <%= link_to "Vis alle annonse(305)", jobs_path, class: "btn btn-lg btn-total-jobs" %>
       </div>
+      <br>
     </div>
-    <div class="hero-picture col-md-7 col-sm-8">
+    <div class="hero-picture col-md-7 col-sm-8 hidden-sm hidden-xs ">
       <%= image_tag('pages/fotolia.jpg', class: 'img-responsive pull-right')%>
     </div>
   </div>
@@ -27,14 +27,14 @@
   <div class="contain grey-area">
     <div class="col-md-8 col-md-offset-2">
       <div class="row">
-        <div class="col-md-4 text-center">
+        <div class="col-md-4 col-sm-4 text-center">
           <span class="numbers">1</span>
           <h3>POST YOUR AD</h3> 
           <hr class="front-hr">
           <h4> You want to move something in your community?</h4>
           <h4> Just post it on Frakt</h4>
         </div>
-        <div class="col-md-4  text-center ">
+        <div class="col-md-4  col-sm-4 text-center ">
           <span  class="numbers">2</span>
           <br>
           <h3>GET A HELPER</h3> 
@@ -42,7 +42,7 @@
           <h4> Happy helpers apply to help you.</h4>
           <h4> You select one of them</h4>  
         </div>
-        <div class="col-md-4 text-center">
+        <div class="col-md-4 col-sm-4 text-center">
           <span class="numbers">3</span>
           <h3>PAY, RATE AND REVIEW </h3> 
           <hr class="front-hr">
@@ -52,7 +52,6 @@
       </div>
     </div>
   </div> 
-
   <div class="use-cases contain latest">
     <br>
     <br>
@@ -69,15 +68,16 @@
                   <div class="col-md-4 col-sm-4">
                     <%= image_tag(job.image_url(:thumb), size: "170 x 200", class: 'img-responsive pull-left thumbnail') %>
                   </div>
+
                   <div class="col-md-5 col-sm-6">
-                    <p> <%= job.title.capitalize %></p>
+                    <%= "#{job.title.capitalize.slice(0, 32)}" + "..." %>
                   </div>
                 <% end %>
                 <div class="col-md-3 ">
                   <h5 id="money"> <%= job.payment %>kr</h5>
                 </div>
               </div>
-              <hr>
+              <hr class="divider">
               <div class="row panel-bottom">
                 <p class="col-md-6 text-center"><%= job.fylke.name %> </p>
                 <p class="col-md-6 text-center">Posted on: <%= job.created_at.strftime("%m/%d/%Y ") %> </p>
@@ -91,7 +91,6 @@
       <%= link_to 'Vis flere jobber', jobs_path, class: "btn btn-lg btn-total-jobs" %>
     </div>
   </div>  
-
   <div class="use-cases contain">
     <br>
     <br>
@@ -118,13 +117,13 @@
         </div>
         <div class="col-md-3 text-center">
           <%= image_tag('pages/fotolia.jpg', size: '200 x 300', class: 'img-responsive')%>
-          <br>
-          
+          <br>  
           <h4>Kontoflytting</h4>
         </div>
       </div>
     </div> 
   </div>
+
 </main>
 
 

@@ -1,5 +1,5 @@
 class Job < ActiveRecord::Base
-  attr_accessor :terms_of_service
+  attr_accessor :terms_of_service, :image_cache
 
   mount_uploader :image, PictureUploader
   

@@ -47,8 +47,6 @@ class JobApplicationsController < ApplicationController
     end
   end
 
- 
-
  private
  def correct_user
     if @job_application.job.user != current_user # only the jobowner can award and cancel an invitation

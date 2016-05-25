@@ -1,5 +1,5 @@
 <div class="correct-row-style"> <!-- this first div is added to correct positioning effects from the bootstrap class="row" styles  --> 
-  <div class="row  col-lg-6 col-lg-offset-3 col-md-8 col-sm-10 col-sm-offset-1 col-md-offset-2" id="container">
+  <div class="row  col-lg-6 col-lg-offset-3 col-md-10 col-sm-10 col-sm-offset-1 col-md-offset-1" id="container">
     <div class="toppanel">
       <br>
       <br>
@@ -7,9 +7,9 @@
     <div class="wrapper">
       <div class="job-main-details col-sm-7 col-md-8 col-xs-12">
         <h2><%= @job.title.capitalize %></h2>
-        <br>
-        <%= image_tag(@job.image_url(:trial), class: 'img-responsive') %>
-        <br/>
+        <div>
+          <%= image_tag(@job.image_url(:trial), class: 'img-responsive cover-image') %>
+        </div>
         <h3>Description</h3>
         <p><%= @job.description %> </p>
         <br/>
@@ -24,20 +24,16 @@
           <h3 class="text-center">Pris: <strong>1120kr</strong></h3>
           <br/>
           <ul>
-            <li>
-              <div class="row col-md-12 col-xs-12">
-                <div class="col-md-4 col-xs-5">
-                  <p >Annonsør:</p>
-                </div>
-                <div class="col-md-8 col-xs-5">
-                <p> <%= full_name(@job.user) %></p>
-              </div>
+            <li class="col-md-12 col-xs-12">
+              <div class="row">
+                <div class="col-md-5 col-xs-5">Annonsør:</div>
+                <div class="col-md-7 col-xs-5"><%= full_name(@job.user).capitalize %></div>
               </div>
             </li>
-            <li>
-              <div class="row col-md-12 col-xs-12">
-                <p class="col-md-4 col-xs-5">Phone:</p>
-                <p class="col-md-8 col-xs-5"><%= @job.contact_number %></p>
+            <li class="col-md-12 col-xs-12">
+              <div class="row">
+                <p class="col-md-5 col-xs-5">Phone:</p>
+                <p class="col-md-7 col-xs-5"><%= @job.contact_number %></p>
               </div>
             </li>
           </ul>
