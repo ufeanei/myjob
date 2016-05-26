@@ -47,19 +47,36 @@
            <p>Job already awarded</p>
            <% end %>
         </div>
-        <div class="applicants-div">
-          <h2 class="text-center">10</h2>
-          <h4 class="text-center">Applicants </h4>  
+        <div class="applicants-div well">
+          <% if @job.status == 'active' %>
+            <% if @all_applications.empty? %>
+              <p><strong>Ingen hjelpere. Bli den første hjelperen </strong></p>
+            <% else %>
+              <h4 class="text-center"><%= @all_applications.size %> Hjepere</h4>
+             
+              <ul> 
+                <div class="row">
+                <% @all_applications.each do |appli| %>
+                  <li class="col-md-6 col-xs-6">
+                    <div class="text-center">
+                      <%= image_tag(appli.user.image_url(:thumb), class: 'img-responsive img-circle') %>
+                      <%= link_to "#{appli.user.first_name}", user_path(appli.user) %>
+                    </div>  
+                  </li>
+                <% end %>
+              </div>
+              </ul>
+            <% end %>
+          <% end %> 
         </div><!--end of applicants-div-->  
-        <div class="similar-jobs">
-          <br>
-          <h4 class="similar-jobs"><%=@job.fylke.name.upcase %> JOBS</h4>
+        <div class="similar-jobs well">
+          <h4 class="text-center"><%=@job.fylke.name.upcase %> JOBS</h4>
           <br>
           <% @same_location_jobs.each do |job| %>
             <% if job.id != @job.id %>
               <div>
-                <h4><%= link_to job.title, job_path(job) %></h4>
-                <p><strong><%= job.fylke.name %></strong></p>
+                <h5><%= link_to job.title.capitalize, job_path(job) %></h5>
+                <p><%= job.fylke.name %><strong class='pull-right'><%= job.payment %>kr</strong></p>
               </div>
             <% end %>
           <% end %>

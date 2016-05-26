@@ -2,6 +2,7 @@ class JobApplicationsController < ApplicationController
   before_action :require_user
   before_action :get_application, only: [:destroy, :award]
   before_action :correct_user, only: [:award]
+  before_action :max_applicants, only: [:create]
 
 
   def create
@@ -57,6 +58,13 @@ class JobApplicationsController < ApplicationController
 
  def get_application
   @job_application = JobApplication.find_by(id: params[:id])
+ end
+
+ def max_applicants
+  if JobApplication.where(job_id: params[:job_id]).size == 4
+    flash[:info] = "Sorry maximum number of applicants reached for this job. Please apply to another job"
+    redirect_to :back
+  end
  end
 
 end

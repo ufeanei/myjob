@@ -11,7 +11,7 @@
       <h3>Har du bil? become a helper and earn money</h3>
       <br>
       <div>
-        <%= link_to "Vis alle annonse(305)", jobs_path, class: "btn btn-lg btn-total-jobs" %>
+        <%= link_to "Vis alle annonse(#{@total})", jobs_path, class: "btn btn-lg btn-total-jobs" %>
       </div>
       <br>
     </div>
@@ -71,11 +71,15 @@
 
                   <div class="col-md-5 col-sm-6">
                     <%= "#{job.title.capitalize.slice(0, 32)}" + "..." %>
+
+                   
                   </div>
                 <% end %>
+
                 <div class="col-md-3 ">
                   <h5 id="money"> <%= job.payment %>kr</h5>
                 </div>
+                <p class='col-md-5 no-helpers' ><%= job.job_applications.size %> Hjelpere</p>
               </div>
               <hr class="divider">
               <div class="row panel-bottom">
