@@ -68,14 +68,10 @@
                   <div class="col-md-4 col-sm-4">
                     <%= image_tag(job.image_url(:thumb), size: "170 x 200", class: 'img-responsive pull-left thumbnail') %>
                   </div>
-
                   <div class="col-md-5 col-sm-6">
-                    <%= "#{job.title.capitalize.slice(0, 32)}" + "..." %>
-
-                   
+                    <%= "#{job.title.capitalize.slice(0, 32)}" + "..." %>                  
                   </div>
                 <% end %>
-
                 <div class="col-md-3 ">
                   <h5 id="money"> <%= job.payment %>kr</h5>
                 </div>
