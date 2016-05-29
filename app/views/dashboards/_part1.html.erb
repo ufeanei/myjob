@@ -1,20 +1,21 @@
 <div class="contain">
-  <div class="row col-xs-12 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
-    <aside class="col-md-4 col-sm-5 well dashboard-menu"> 
-      <h2>Dashboard</h2>
-      <hr/>
-      <div class=''>
-        <h4 id="my-jobs"><%= link_to 'My Jobs', my_jobs_dashboard_path %></h4>
-        <h4 id="my-applications"><%= link_to 'My Applications', my_applications_dashboard_path %></h4>
-        <h4 id="jobs-won"><%= link_to 'My Jobs won', jobs_won_dashboard_path %></h4>
-        <h4 id="jobs-won"><%= link_to 'My Reviews', user_path(current_user) %></h4>
-        <h4>Account Settings</h4>
-        <ul>
-          <li id="my-profile"><%= link_to 'My profile', my_profile_dashboard_path %></li>
-          <li id="edit-profile"><%= link_to 'Edit Profile', edit_profile_dashboard_path %></li>
-          <li id="change password"><%= link_to 'Change Password', new_password_dashboard_path  %></li>
-        </ul>   
-      </div> 
-    </aside>
-    <div class="col-md-7 col-sm-7  col-xs-12 result-section well">
-    <div class="dashboard-menu-info"> 
+  <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
+    <div class="row">
+      <aside class="col-md-4 col-sm-5 well dashboard-menu"> <!--styles for dashboard-menu found in myjobs.css.scss -->
+        <h2>Dashboard</h2>
+        <hr/>
+        <div class=''>
+          <h4 id="my-jobs"><%= link_to 'My Jobs', my_jobs_dashboard_path %></h4>
+          <h4 id="my-applications"><%= link_to 'My Applications', my_applications_dashboard_path %></h4>
+          <h4 id="jobs-won"><%= link_to 'My Jobs won', jobs_won_dashboard_path %></h4>
+          <h4 id="jobs-won"><%= link_to 'My Reviews', user_path(current_user) %></h4>
+          <h4>Account Settings</h4>
+          <ul>
+            <li id="my-profile"><%= link_to 'My profile', my_profile_dashboard_path %></li>
+            <li id="edit-profile"><%= link_to 'Edit Profile', edit_profile_dashboard_path %></li>
+            <li id="change password"><%= link_to 'Change Password', new_password_dashboard_path  %></li>
+          </ul>   
+        </div> 
+      </aside>
+      <div class="col-md-8 col-sm-7  col-xs-12 result-section well"><!--styles for result-section found in myjobs.css.scss -->
+      <div class="dashboard-menu-info"> 

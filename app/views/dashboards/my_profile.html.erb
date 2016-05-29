@@ -1,42 +1,43 @@
 <%= render 'part1' %>
-<div class="col-md-8 col-md-offset-2">
-	<table class="table table-hover">
-  <tr>
-    <td><strong>First Name:  </strong></td>
-    <td><%= @user.first_name %></td>
-  </tr>
-   <tr>
-    <td><strong>Last Name:  </strong></td>
-    <td> <%= @user.last_name %> </td>
-  </tr>
-  
-  <tr>
-    <td><strong>Epost:  </strong></td>
-    <td><%= @user.email %></td>
-  </tr>
-   
+<div class="contain">
+  <div class="col-md-8 col-md-offset-2">
+    <table class="table table-hover well">
+      <tr>
+        <td><strong>First Name  </strong></td>
+        <td>:&nbsp<%= @user.first_name %></td>
+      </tr>
+       <tr>
+        <td><strong>Last Name  </strong></td>
+        <td> :&nbsp<%= @user.last_name %> </td>
+      </tr>
+      
+      <tr>
+        <td><strong>Epost  </strong></td>
+        <td>:&nbsp<%= @user.email %></td>
+      </tr>
+       
 
-   <tr>
-    <td><strong>Phone Number:  </strong></td>
-    <td><%= @user.phone %></td>
-  </tr>
+       <tr>
+        <td><strong>Phone Number  </strong></td>
+        <td>:&nbsp<%= @user.phone %></td>
+      </tr>
 
-   <tr>
-    <td><strong>Gateaddress:  </strong></td>
-    <td><%= @user.street_addr if @user.street_addr %> , <%= @user.kommune.name  if @user.kommune %></td>
-   </tr>
+       <tr>
+        <td><strong>Gateaddress  </strong></td>
+        <td>:&nbsp<%= @user.street_addr if @user.street_addr %> , <%= @user.kommune.name  if @user.kommune %></td>
+       </tr>
 
-   <tr>
-    <td><strong>Bil Reg.No:  </strong></td>
-    <td> <%= @user.car_reg %></td>
-   </tr>
+       <tr>
+        <td><strong>Bil Reg.No  </strong></td>
+        <td> :&nbsp<%= @user.car_reg %></td>
+       </tr>
 
-   <tr>
-    <td><strong>Beskrivelse:  </strong></td>
-    <td><%=  @user.user_self_description %> </td>
-  </tr>
-</table>
-</div>
- <%= image_tag(@user.image_url(:thumb), class: 'img-responsive thumbnail') %>
-<%= link_to 'upret profil', edit_profile_dashboard_path, class: 'btn btn-lg btn-info' %>
+       <tr>
+        <td><strong>Beskrivelse  </strong></td>
+        <td>:&nbsp<%=  @user.user_self_description %> </td>
+      </tr>
+    </table>
+    <%= link_to 'Upret profil', edit_profile_dashboard_path, class: 'btn btn-lg edit-btn' %> <!-- edit-btn styles found in myjobs.css.scss -->
+  </div>
+</div> 
 <%= render 'part2' %>

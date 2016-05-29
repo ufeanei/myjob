@@ -16,15 +16,15 @@ class JobApplicationsController < ApplicationController
       flash[:success] = "Application succesful. Wait for job owner to invite you"
       redirect_to :back
     else
-      flash[:info] = "You have already applied to this job" # there is a validation that prevent saving if a logged in user tries to apply to the same job twice
-      redirect_to :back                                      # we do not want duplicate applications. we put validation at the model level and at the database level.
+      flash[:info] = "You have already applied to this job" # Validations enforced at model level and  database level prevent a user from applying to the same job twice
+      redirect_to :back                                      
     end
   end
 
   def destroy 
   #delete an application
   #see before action  
-    if @job_application.user != current_user # make sure only job applicant can delete their applications. we will authorize admin too
+    if @job_application.user != current_user # Make sure only job applicant and admin can delete their applications. 
       flash[:danger] = "you can't do that"
       redirect_to root_path
     elsif @job_application.destroy
@@ -50,7 +50,7 @@ class JobApplicationsController < ApplicationController
 
  private
  def correct_user
-    if @job_application.job.user != current_user # only the jobowner can award and cancel an invitation
+    if @job_application.job.user != current_user # Only the jobowner can invite a helper to a job
       flash[:danger] = "You can't do that"
       redirect_to jobs_path 
     end

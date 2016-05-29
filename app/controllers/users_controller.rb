@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
   before_action :require_user, only: [:edit, :destroy]
+  before_action :get_kommunes, only: [:new, :update, :create]
 
   def new
-    @user = User.new
+    @user = User.new 
   end
 
   def create
@@ -18,7 +19,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    @kommunes = Kommune.all
     @user = User.find_by(id: params[:id])
      if @user.update_attributes(user_edit_params)
       flash[:success] = "Profile succesfully updated"
@@ -44,6 +44,10 @@ class UsersController < ApplicationController
 
    def user_edit_params
      params.require(:user).permit(:first_name, :last_name, :user_self_description, :kommune_id, :admin, :image, :phone, :street_addr, :car_reg)
+   end
+
+   def get_kommunes
+    @kommunes = Kommune.all
    end
 
 end

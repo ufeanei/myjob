@@ -1,18 +1,18 @@
 
 
 .job-section, .applicants-list {
-	border: 1px solid #aaaaaa;
-	background-color: #fff;
+  border: 1px solid #aaaaaa;
+  background-color: #fff;
 }
 
 .applicants-list {
-	margin-top: 20px;
-	padding: 10px;
+  margin-top: 20px;
+  padding: 10px;
 }
 
 .job-section {
-	margin:0;
-	padding: 10px;
+  margin:0;
+  padding: 10px;
 }
 
 .job-wrap {
@@ -24,12 +24,24 @@ background-color: #c0c0c0;
 }
 
 .edit-btn{
-	border-radius: 200px;
-	padding: 7px 25px;
-	
+  border-radius: 200px;
+  padding: 7px 25px;
+  
 }
 
 .edit-btn {
-	border: 1px solid blue;
-	color:blue;
+  border: 2px solid #006699;
+  color:#006699;
+}
+
+
+.dashboard-menu, .result-section {
+  border: 1px solid #aaa;
+}
+.fa-check {
+  font-size: 20px;
+  color: #cc6600;
+}
+#invited {
+  color: #cc6600;
 }

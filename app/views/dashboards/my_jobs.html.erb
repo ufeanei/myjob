@@ -5,24 +5,24 @@
 <% else %>
   <% @my_jobs.each do |job| %>
     <div class="job-wrap">
-      <div>
+      <div >
         <div class="row job-section">
-        	<div class="col-md-3 col-sm-3">
+        	<div class="col-md-3 col-sm-3 col-xs-10">
             <%= image_tag(job.image_url(:thumb), class: 'img-responsive pull-left thumbnail') %>
           </div>
-          <div class="col-md-5 col-sm-6">
-            <p> <%= link_to "#{job.title}", job_path(job) %></p>
+          <div class="col-md-5 col-sm-6 col-xs-12">
+            <p> <%= link_to "#{job.title.capitalize}", job_path(job) %></p>
             <br>
             <p> views: <strong><%= job.views %> </strong></p>
             <%= link_to 'Endre', edit_job_path(job), class: "pull-left edit-btn" %> 
           </div>
         </div>
       </div>
- 
       <div class="applicants-list">
         <h2 class="text-center">Applicants</h2>
-        <p>The following have applied to help. click on the name to view each helper and invite the one you like.</p>
-        <p>You can always cancel an invitation and invite someone else </p>
+        <h4>The following have applied to help you. </h4>
+        <h4>Click on helper's name to view his profile then invite any of them to help you </h4>
+        <h4> The financial transaction is between you and your helper and pay only after job is done</h4>
         <br>
         <%if job.job_applications.empty? %>
           <h4> No applicants yet for this job</h4>
@@ -31,10 +31,14 @@
             <% @applications.each do |x| %>
               <% if x.job_id == job.id %>
                 <tr>
-                  <td><strong><%= link_to "#{full_name(x.user)}", user_path(x.user) %> </strong></td>
-                  <td> <%=x.user.kommune.name %> </td>
-                  <td> <%= link_to 'invite', award_job_job_application_path(job_id: job.id, id: x.id), class: "btn btn-info invite" %></td>
-                  
+                  <% if x.awarded %>
+                    <td><strong><%= link_to "#{full_name(x.user)}", user_path(x.user) %> <i class="fa fa-check" aria-hidden="true"></i></strong> </td>
+                    <td> <strong id="invited">Hjelper Invitert</strong></td>  
+                  <% else %>
+                    <td><strong><%= link_to "#{full_name(x.user)}", user_path(x.user) %></strong></td>
+                    <td><%= link_to 'Invite', award_job_job_application_path(job_id: job.id, id: x.id), class: "btn btn-info" %></td>  
+                  <% end %>
+                    <td> <%=x.user.kommune.name %> </td>
                 </tr>
               <% end %>
             <% end %>  

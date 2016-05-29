@@ -8,7 +8,7 @@
       <div class="job-main-details col-sm-7 col-md-8 col-xs-12">
         <h2><%= @job.title.capitalize %></h2>
         <div>
-          <%= image_tag(@job.image_url(:trial), class: 'img-responsive cover-image') %>
+          <%= image_tag(@job.image_url(:trial), class: 'img-responsive cover-image') if @job.image %>
         </div>
         <h3>Description</h3>
         <p><%= @job.description %> </p>
@@ -59,7 +59,12 @@
                 <% @all_applications.each do |appli| %>
                   <li class="col-md-6 col-xs-6">
                     <div class="text-center">
+                      <% if appli.user.image? %>
                       <%= image_tag(appli.user.image_url(:thumb), class: 'img-responsive img-circle') %>
+                      <% else %>
+                      <%= image_tag('pages/default-user-thumb.jpg', class: 'img-responsive img-circle') %>
+                      <% end %>
+
                       <%= link_to "#{appli.user.first_name}", user_path(appli.user) %>
                     </div>  
                   </li>
@@ -78,6 +83,7 @@
                 <h5><%= link_to job.title.capitalize, job_path(job) %></h5>
                 <p><%= job.fylke.name %><strong class='pull-right'><%= job.payment %>kr</strong></p>
               </div>
+              <hr id='show-hr'>
             <% end %>
           <% end %>
         </div><!-- end of similar jobs-->

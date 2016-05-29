@@ -16,7 +16,7 @@
       <br>
     </div>
     <div class="hero-picture col-md-7 col-sm-8 hidden-sm hidden-xs ">
-      <%= image_tag('pages/fotolia.jpg', class: 'img-responsive pull-right')%>
+      <%= image_tag('pages/front.jpg', class: 'img-responsive pull-right')%>
     </div>
   </div>
 <div>
@@ -66,7 +66,11 @@
               <div class="row">
                 <%= link_to job_path(job.id) do %>
                   <div class="col-md-4 col-sm-4">
-                    <%= image_tag(job.image_url(:thumb), size: "170 x 200", class: 'img-responsive pull-left thumbnail') %>
+                    <% if job.image? %>
+                    <%= image_tag(job.image_url(:thumb), class: 'img-responsive pull-left thumbnail pic-margins') %>
+                    <% else %>
+                     <%= image_tag('pages/furniture.jpg', size: "145x110", class: 'img-responsive pull-left thumbnail pic-margins') %>
+                     <% end %>
                   </div>
                   <div class="col-md-5 col-sm-6">
                     <%= "#{job.title.capitalize.slice(0, 32)}" + "..." %>                  

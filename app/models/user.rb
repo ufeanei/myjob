@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   has_many :job_applications
   has_many :reviews
 
-  validates :first_name,  presence: true, length: { maximum: 50 }
+  validates :first_name,  presence: { message: "må fylles ut"}
   validates :last_name,  presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 },
@@ -21,6 +21,7 @@ class User < ActiveRecord::Base
   validates :password, presence: true, on: :create, length: { minimum: 6 }, allow_nil: true
   validates :terms, acceptance: {accept: "1"}
   validate :image_size
+  validates :kommune_id, presence: {message: 'må fylles ut'}
 
 
   #used to create the digest of any string

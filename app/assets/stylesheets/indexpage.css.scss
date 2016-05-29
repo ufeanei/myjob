@@ -13,7 +13,7 @@
   background: #fff;
 }
 
-hr {
+.divider {
   border: 1px solid #aaa;
   border-style:dashed;
  }
@@ -33,7 +33,6 @@ padding-left: 10px;
 padding-top: 10px;
 margin: 0 0 8px 0 ;
 background: #fff;
-
 }
 
 .jobs-list ul {
@@ -53,6 +52,7 @@ background: #fff;
   margin-bottom: 30px
 }
 
+
 .spinner {
  text-align: center
 }
@@ -64,7 +64,6 @@ background: #fff;
   margin-top: 20px;
 }
 .fylke-checkbox {
-
   margin-bottom: 0
 }
 
@@ -81,6 +80,4 @@ background: #fff;
   padding: 0;
 }
 
- 
-
-  }
+}
