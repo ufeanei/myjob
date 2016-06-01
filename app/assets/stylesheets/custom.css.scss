@@ -87,7 +87,7 @@ header {
   background-color: #ffffff
 
 }
-.grey-area {
+.green-area {
   padding-top: 10px
 }
 
@@ -122,7 +122,8 @@ main {
 }
 
 .btn-ship {
-  background-color:#cc6600;  
+border: 3px solid #cc6600;
+background-color: #cc6600;  
 }
 
 .btn-helper {
@@ -172,6 +173,15 @@ main {
 
 .use-cases {
   background: #f2f2f2;
+
+}
+
+.cases {
+  background: #fff;
+  color: #635c5a;
+  
+  border: 1px solid #aaa;
+
 }
 
 main li {

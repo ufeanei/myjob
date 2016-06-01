@@ -3,7 +3,7 @@
   <div class="row col-md-10 col-md-offset-1 col-sm-12">
     <br>
     <br>
-    <div class="hero-text col-md-5 col-sm-4">
+    <div class="hero-text col-md-5">
       <br>
       <br>
       <br>
@@ -24,7 +24,7 @@
 
 <main>
   <h2 class="red-text text-center">How Frakt Works</h2>
-  <div class="contain grey-area">
+  <div class="contain green-area">
     <div class="col-md-8 col-md-offset-2">
       <div class="row">
         <div class="col-md-4 col-sm-4 text-center">
@@ -44,7 +44,7 @@
         </div>
         <div class="col-md-4 col-sm-4 text-center">
           <span class="numbers">3</span>
-          <h3>PAY, RATE AND REVIEW </h3> 
+          <h3>PAY, RATE & REVIEW </h3> 
           <hr class="front-hr">
           <h4> Pay your helper after job is done</h4>
           <h4>Rate and Review your helper</h4>
@@ -69,7 +69,7 @@
                     <% if job.image? %>
                     <%= image_tag(job.image_url(:thumb), class: 'img-responsive pull-left thumbnail pic-margins') %>
                     <% else %>
-                     <%= image_tag('pages/furniture.jpg', size: "145x110", class: 'img-responsive pull-left thumbnail pic-margins') %>
+                     <%= image_tag('pages/furni-thumb.jpg', size: "145x110", class: 'img-responsive pull-left thumbnail pic-margins') %>
                      <% end %>
                   </div>
                   <div class="col-md-5 col-sm-6">
@@ -102,30 +102,45 @@
     <br>
     <h3 class="text-center red-text">Peolpe are using Frakt for...</h3>
     <br>
-    <div class="col-md-8 col-md-offset-2 ">
+    <div class="col-md-6 col-md-offset-3 col-sm-12">
       <div class="row">
-        <div class="col-md-3 text-center">
-            <%= image_tag('pages/fotolia.jpg', size: '200 x 300', class: 'img-responsive')%>
-            <br>
-          <h4> Move Online Purchases</h4>
+        <div class="col-md-3 col-sm-6">
+          <div class="text-center cases">
+              <%= image_tag('pages/furniture.jpg', class: 'img-responsive thumbnail')%>
+             
+              
+            <h4> Transport av Møbler</h4>
+          </div>
         </div>
-        <div class="col-md-3  text-center ">
-          <%= image_tag('pages/fotolia.jpg', size: '200 x 300', class: 'img-responsive')%>
-          <br>
-          <h4> Flytting</h4>  
+        <div class="col-md-3 col-sm-6">     
+          <div class=" text-center cases">
+            <%= image_tag('pages/move.jpg', class: 'img-responsive thumbnail')%>
+           
+            <h4> Flytting</h4>  
+          </div>  
         </div>
-        <div class="col-md-3 text-center">
-          <%= image_tag('pages/fotolia.jpg', size: '200 x 300', class: 'img-responsive')%>
-          <br>
-          <h4>Move things bought from Ikea, Skeidar elkjop etc</h4>
+        <div class="col-md-3 col-sm-6">
+          <div class="text-center cases">
+            <%= image_tag('pages/online.jpg', class: 'img-responsive thumbnail')%>
+                        
+            <h4>Hvitevarer</h4>
+          </div>
         </div>
-        <div class="col-md-3 text-center">
-          <%= image_tag('pages/fotolia.jpg', size: '200 x 300', class: 'img-responsive')%>
-          <br>  
-          <h4>Kontoflytting</h4>
+        <div class="col-md-3 col-sm-6">
+          <div class="text-center cases">
+            <%= image_tag('pages/office.jpg', class: 'img-responsive thumbnail')%>            
+            
+            <h4>Kontoflytting</h4>
+          </div>
         </div>
       </div>
-    </div> 
+    </div>
+  <div class='col-md-12'>
+    <br>
+    <br>
+    <br>
+    <br>
+  </div> 
   </div>
 
 </main>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160520040755) do
+ActiveRecord::Schema.define(version: 20160601080922) do
 
   create_table "fylkes", force: true do |t|
     t.string "name"
@@ -42,6 +42,10 @@ ActiveRecord::Schema.define(version: 20160520040755) do
     t.string   "status"
     t.string   "image"
     t.integer  "views",            default: 0
+    t.float    "lat1"
+    t.float    "long1"
+    t.float    "lat2"
+    t.float    "long2"
   end
 
   create_table "kommunes", force: true do |t|

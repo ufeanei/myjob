@@ -15,7 +15,8 @@
         <br/>
         <h3>Directions</h3>
         <p><%= @job.street_addr %> <strong>  To  </strong> <%= @job.destination_addr%> </p>   
-        <%= image_tag(@job.image_url(:trial), class: 'img-responsive thumbnail') %> 
+         <div id="map-canvas"></div>
+
         <p class="row col-md-12 col-xs-12"><em>Modified: <%= display_datetime(@job.updated_at)%> </em></p>        
       </div>
 
@@ -92,7 +93,61 @@
   </div>
 </div>
 
-
-
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBH6lY2r6Uh07x0sfDoV7n1S4EugAJVq4"></script>
    
- 
+ <script type="text/javascript">
+
+  function initMap() {
+      
+    var lat1 = <%= @job.lat1 %>,
+       lng1 = <%= @job.long1 %>,  
+       lat2 = <%= @job.lat2 %>, 
+       lng2 = <%= @job.long2 %>;
+            
+    var pointA = new google.maps.LatLng(lat1, lng1),
+        pointB = new google.maps.LatLng(lat2, lng2),
+        myOptions = {
+          zoom: 7,
+          center: pointA
+        },
+        map = new google.maps.Map(document.getElementById('map-canvas'), myOptions),
+        // Instantiate a directions service.
+        directionsService = new google.maps.DirectionsService,
+        directionsDisplay = new google.maps.DirectionsRenderer({
+          map: map
+        }),
+        markerA = new google.maps.Marker({
+          position: pointA,
+          title: "point A",
+          label: "A",
+          map: map
+        }),
+        markerB = new google.maps.Marker({
+          position: pointB,
+          title: "point B",
+          label: "B",
+          map: map
+        });
+
+      // get route from A to B
+      calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, pointB);
+
+    }
+
+    function calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, pointB) {
+      directionsService.route({
+        origin: pointA,
+        destination: pointB,
+        travelMode: google.maps.TravelMode.DRIVING
+      }, function(response, status) {
+        if (status == google.maps.DirectionsStatus.OK) {
+          directionsDisplay.setDirections(response);
+        } else {
+          window.alert('Directions request failed due to ' + status);
+        }
+      });
+  }
+
+  initMap();
+
+</script>
