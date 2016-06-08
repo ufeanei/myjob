@@ -6,6 +6,12 @@ gem 'rails', '4.0.0'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 
+#use delayedjob for background jobs
+gem 'delayed_job_active_record'
+
+#use delayed_job_web for a web interface to monit backgorund jobs
+gem "delayed_job_web"
+
 # Use SCSS for stylesheets
 gem 'bootstrap-sass', '3.3.1'
 gem 'sass-rails', '4.0.4'

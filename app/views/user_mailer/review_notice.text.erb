@@ -1,10 +1,12 @@
 
- Hi <%= @user.first_name %>
+Hi <%= @user.first_name.capitalize %>,
 
-  We are pleased to see that you selected the helper john doe for your job .......
-  Are you satisfied with the job?
-  Click the link below to review him
-  www.localhost:3000/users/:id#jobtitle
+We are pleased to see that you selected the helper <%= @application.user.first_name.capitalize %> for your job 
+<%=link_to "#{@application.job.title.capitalize}", job_url(@application.job.id) %>
+Are you satisfied with the helper? What are your opinions on his help?
 
-Thank you
- Kundesupport 
+Click the link below to review <%= @application.user.first_name.capitalize %>
+<%= link_to "#{user_url(@application.user)}", user_url(@application.user, anchor: "#{@application.id}") %>
+   
+MVH
+Frakt Kundesupport 

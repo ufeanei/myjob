@@ -10,7 +10,7 @@ def create
   @user = User.find_by(email: params[:email].downcase)
    if @user
     @user.create_reset_digest
-    UserMailer.reset_password(@user).deliver
+    UserMailer.delay.reset_password(@user, @user.reset_token)
     flash[:info] = "Please check your email for password reset instructions"
     redirect_to jobs_path
   else

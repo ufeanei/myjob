@@ -6,6 +6,8 @@ Porter::Application.routes.draw do
  get "/service" => "pages#service"
  get "/become_driver" => "pages#become_driver"
  get "/confirm" => "confirmations#edit"
+ 
+ match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]
   
  root 'pages#home'
 

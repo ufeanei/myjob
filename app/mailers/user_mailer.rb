@@ -8,8 +8,9 @@ class UserMailer < ActionMailer::Base
   end
 
 
-  def reset_password(user)
+  def reset_password(user, reset_token)
     @user = user
+    @reset_token = reset_token
     mail(to: user.email, subject: "Password reset")
   end
 
@@ -24,7 +25,7 @@ class UserMailer < ActionMailer::Base
   def review_notice(application)
    @user = application.job.user
    @application = application
-   mail(to: application.job.user.email, subject: "Vennlist, review your hjelper#{@user.first_name} on frakt") 
+   mail(to: application.job.user.email, subject: "Vennlist, review your hjelper #{@application.user.first_name} on Frakt") 
   end
 
 end

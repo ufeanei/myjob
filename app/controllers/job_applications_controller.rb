@@ -42,8 +42,8 @@ class JobApplicationsController < ApplicationController
     elsif @job_application.update_attribute(:awarded, true)
       flash[:success] = "Invitation succesful. Helper has been notified by email"
       @job_application.job.update_attribute(:status,'inactive')
-      UserMailer.invited_notice(@job_application).deliver  #send notification email to applicant as a background job
-      UserMailer.review_notice(@job_application).deliver # send notification 2 days later as background job
+      UserMailer.delay.invited_notice(@job_application) #send notification email to applicant as a background job
+      UserMailer.delay(run_at: 5.minutes.from_now).review_notice(@job_application)# send notification 2 days later as background job
       redirect_to :back 
     end
   end
