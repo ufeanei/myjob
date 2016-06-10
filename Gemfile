@@ -3,8 +3,11 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0'
 
+
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+group :development do
+  gem 'sqlite3'
+end
 
 #use delayedjob for background jobs
 gem 'delayed_job_active_record'
@@ -70,3 +73,11 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use debugger
 gem 'debugger', group: [:development, :test]
+
+ruby "2.0.0"
+
+
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
