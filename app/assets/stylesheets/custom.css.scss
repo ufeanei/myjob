@@ -7,6 +7,8 @@
 /----------------------------------------------------------------------*/
 body {
   background:#cccccc;
+  margin:0;
+  padding: 0;
   
 }
 
@@ -179,10 +181,11 @@ background-color: #cc6600;
 .cases {
   background: #fff;
   color: #635c5a;
-  
   border: 1px solid #aaa;
-
+  border-radius: 10px;
 }
+
+.case-container { padding:4px;}
 
 main li {
   list-style: none;

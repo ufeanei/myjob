@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def create
     @user= User.new(user_params)
     if @user.save
-      UserMailer.delay.confirm_email(@user)
+      UserMailer.delay(queue: 'immediate', priority: 0).confirm_email(@user)
       flash[:success]= "Signup succesfull. Please check your email to confirmed your account"
       redirect_to jobs_path
     else
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id]) 
     @review = Review.new
     @appli_won =  JobApplication.where(user_id: @user.id, awarded: true) #We need all jobs he has done so that we can place job owner reviews under each one 
-    @reviews = Review.where(job_application_id: @appli_won.ids)                     #on the user show page                                     
+                         #on the user show page                                     
   end
 
 

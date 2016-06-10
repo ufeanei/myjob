@@ -33,29 +33,28 @@
       <% @appli_won.each do |appl| %>
         <div>
           <h3><%= link_to "#{appl.job.title.capitalize}", job_path(appl.job), id: "#{appl.id}" %></h3>
-          <% if !@reviews.empty? %>
-            <% @reviews.each do |review| %>
+            <% appl.reviews.each do |review| %>
               <div class="row">
-                <div class="col-md-1 col-xs-3">
+                <div class="col-md-2 col-xs-3">
                   <% if review.user.image? %>
                     <%= image_tag(review.user.image_url(:thumb), class: "img-circle img-responsive") %>
                   <% else %>
                     <%= image_tag('pages/default-user-thumb.jpg', class: 'img-responsive img-circle') %>
                   <% end %>
                 </div>
-                <div class= "col-md-10 col-xs-9 review">
-                  <% if appl.job.user == review.user %>
-                    <strong><%= review.user.first_name%></strong> (Jobowner)
-                  <% elsif appl.user == review.user %>
-                    <strong><%= review.user.first_name %></strong> (Helper)
-                  <% end %>
+                <div class= "col-md-10 col-xs-9 review">                 
+                  <strong><%= review.user.first_name %></strong> 
+                  <% if appl.user == review.user %>
+                   (Hjelper)
+                  <% else %>
+                   (Jobeier)
+                  <% end %>  
                   <br>
-                  <em><%= review.comment.capitalize if review.job_application == appl %></em>  
+                  <em><%= review.comment.capitalize %></em>  
                 </div>
               </div>
               <br>
-            <% end %>
-          <% end %>
+            <% end %>        
           <% if (current_user == appl.job.user) || (current_user == appl.user )%> <!---only jobowner or applicant can see the comment form and submit comment -->
             <%= form_for [ appl.job, appl, @review ] do |f| %>
             <div class = "form-group">
@@ -63,7 +62,7 @@
               <%= f.text_area :comment, class: "form-control" %>
               <%= hidden_field_tag 'user_id', "#{@user.id}" %>  <!-- You need the user_id in the review create action. study its use in that action -->
             </div>
-              <%= f.submit "save", class: "btn btn-success" %>
+              <%= f.submit "Post", class: "btn edit-btn" %>
             <% end %>
           <% end %>
         </div>

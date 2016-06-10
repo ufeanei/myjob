@@ -28,4 +28,9 @@ class UserMailer < ActionMailer::Base
    mail(to: application.job.user.email, subject: "Vennlist, review your hjelper #{@application.user.first_name} on Frakt") 
   end
 
+  def review_added(application)
+    @application = application
+    mail(to: application.user.email, subject: "#{@application.job.user.first_name} has reviewed you")
+  end
+
 end

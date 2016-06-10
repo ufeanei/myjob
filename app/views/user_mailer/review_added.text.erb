@@ -1,0 +1,8 @@
+Frakt
+
+Hei <%= @application.user.first_name.capitalize %>
+You have just received a new review from <%= @application.job.user.first_name %>
+Click on <%= link_to 'Mine vurderinger', user_url(@application.user, anchor: "#{@application.id}") %> 
+
+MHV 
+Frakt Kundersupport

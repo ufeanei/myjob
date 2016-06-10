@@ -1,0 +1,10 @@
+<h1>Frakt</h1>
+
+<p>Hei <%= @application.user.first_name %></p>
+
+<p>You have just received a new review from<%= @application.job.user.first_name %></p>
+<p>Click on <%= link_to 'Mine vurderinger', user_url(@application.user, anchor: "#{@application.id}") %> </p>
+
+
+<p>MHV</p>
+<p> Frakt Kundersupport</p>
