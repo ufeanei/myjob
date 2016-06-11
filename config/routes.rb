@@ -26,7 +26,7 @@ Porter::Application.routes.draw do
  
  resources :password_resets,  only: [:new, :create, :edit, :update]
 
- resources :users 
+ resources :users , except: [:index]
 
  get '/login', to: 'sessions#new'
  post '/login', to: 'sessions#create'
