@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def create
     @user= User.new(user_params)
     if @user.save
-      UserMailer.delay(queue: 'immediate', priority: 0).confirm_email(@user)
+      UserMailer.confirm_email(@user).deliver
       flash[:success]= "Signup succesfull. Please check your email to confirmed your account"
       redirect_to jobs_path
     else
