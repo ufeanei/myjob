@@ -36,6 +36,8 @@ class JobApplicationsController < ApplicationController
   def award
     #award job to an applicant 
     #see before action
+
+    
    if @job_application.awarded == true
       flash[:info]= "You have already invited this helper"
       redirect_to :back
@@ -63,6 +65,13 @@ class JobApplicationsController < ApplicationController
  def max_applicants
   if JobApplication.where(job_id: params[:job_id]).size == 4
     flash[:info] = "Sorry maximum number of applicants reached for this job. Please apply to another job"
+    redirect_to :back
+  end
+ end
+
+ def check_payment
+  if @job_application.job.paid == false
+    flash[:info] = "Vennligst betale først"
     redirect_to :back
   end
  end
