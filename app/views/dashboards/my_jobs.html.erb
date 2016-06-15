@@ -10,7 +10,11 @@
       <div >
         <div class="row job-section">
         	<div class="col-md-3 col-sm-3 col-xs-10">
-            <%= image_tag(job.image_url(:thumb), class: 'img-responsive pull-left thumbnail') %>
+            <% if job.image? %>
+              <%= image_tag(job.image_url(:thumb), class: 'img-responsive pull-left thumbnail') %>
+            <% else %>
+              <%= image_tag('pages/furni-thumb.jpg', size: '145x110', class: 'img-responsive pull-left thumbnail') %>
+            <% end %>
           </div>
           <div class="col-md-5 col-sm-6 col-xs-12">
             <p> <%= link_to "#{job.title.capitalize}", job_path(job) %></p>
