@@ -86,6 +86,8 @@
    $('.star-rating').raty({
     path: '/assets/',
     readOnly: true,
+    hints:  ['', '', '', '', ''],
+    noRatedMsg  : 'Ennå ikke vurdert',
     score: function(){
       return $(this).attr('data-score');
     }
@@ -102,6 +104,8 @@
 $('.average-review-rating').raty({
     path: '/assets/',
     readOnly: true,
+    hints:  ['', '', '', '', ''],
+    noRatedMsg  : 'Ennå ikke vurdert ',
     score: function(){
       return $(this).attr('data-score');
     }
