@@ -32,7 +32,7 @@
         
     </div >
     <div class="job-review-segment">
-      <h3 class="text-center"> Helper's Reviews</h3>
+      <h3 class="text-center"> My Reviews</h3>
       <% @appli_won.each do |appl| %>
         <div>
           <h3><%= link_to "#{appl.job.title.capitalize}", job_path(appl.job), id: "#{appl.id}" %></h3> 

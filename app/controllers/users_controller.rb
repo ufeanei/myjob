@@ -21,9 +21,7 @@ class UsersController < ApplicationController
   end
 
   def update
-
-    #@user = User.find_by(id: params[:id])
-    
+    #@user = User.find_by(id: params[:id])    
      if @user.update_attributes(user_edit_params)
       flash[:success] = "Profile succesfully updated"
       redirect_to :back
@@ -34,18 +32,15 @@ class UsersController < ApplicationController
 
   def show
     #@user = User.find_by(id: params[:id]) 
-
     @review = Review.new
     @appli_won =  JobApplication.where(user_id: @user.id, awarded: true) #We need all jobs he has done so that we can place job owner reviews under each one 
                          #on the user show page
-if @user.reviews.blank?
-  @average_review = 0
-else
-  @average_review = @user.reviews.average(:rating).round(2)
-  
-end
-
-@total = @user.reviews.size
+    if @user.reviews.blank?
+      @average_review = 0
+    else
+      @average_review = @user.reviews.average(:rating).round(2)
+    end
+    @total = @user.reviews.size
   end
 
 
