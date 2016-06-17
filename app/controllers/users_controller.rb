@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   before_action :require_user, only: [:edit, :destroy]
   before_action :get_kommunes, only: [:new, :update, :create]
+  before_action :get_user, only: [:update, :show]
+  before_action :require_same_user, only: [:update]
 
   def new
     @user = User.new 
@@ -19,7 +21,9 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find_by(id: params[:id])
+
+    #@user = User.find_by(id: params[:id])
+    
      if @user.update_attributes(user_edit_params)
       flash[:success] = "Profile succesfully updated"
       redirect_to :back
@@ -29,10 +33,19 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(id: params[:id]) 
+    #@user = User.find_by(id: params[:id]) 
+
     @review = Review.new
     @appli_won =  JobApplication.where(user_id: @user.id, awarded: true) #We need all jobs he has done so that we can place job owner reviews under each one 
-                         #on the user show page                                     
+                         #on the user show page
+if @user.reviews.blank?
+  @average_review = 0
+else
+  @average_review = @user.reviews.average(:rating).round(2)
+  
+end
+
+@total = @user.reviews.size
   end
 
 
@@ -48,6 +61,17 @@ class UsersController < ApplicationController
 
    def get_kommunes
     @kommunes = Kommune.all
+   end
+
+   def get_user
+     @user = User.find_by(id: params[:id])
+   end
+
+   def require_same_user
+    if current_user != @user
+      flash[:error] = " you are not allowed to do that"
+      redirect_to jobs_path
+    end
    end
 
 end

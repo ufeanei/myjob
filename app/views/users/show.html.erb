@@ -15,8 +15,9 @@
         <div class="col-md-6">
           <h4><%= @user.first_name.capitalize %></h4>
           <h4><%= @user.kommune.name if @user.kommune %></h4>
-          <p> stars here </p>
-          <p> (7 ratings) </p>
+          <h2>Average rating</h2>
+          <div class='average-review-rating' data-score=<%= @average_review %>></div>
+          <p> <%= @total  %> reviews</p>
         </div>
         <div class="col-md-3 text-center">
           <h4>Jobs Completed</h4>
@@ -31,40 +32,45 @@
         
     </div >
     <div class="job-review-segment">
-      <h3 class="text-center">Jobs Completed</h3>
+      <h3 class="text-center"> Helper's Reviews</h3>
       <% @appli_won.each do |appl| %>
         <div>
-          <h3><%= link_to "#{appl.job.title.capitalize}", job_path(appl.job), id: "#{appl.id}" %></h3>
+          <h3><%= link_to "#{appl.job.title.capitalize}", job_path(appl.job), id: "#{appl.id}" %></h3> 
             <% appl.reviews.each do |review| %>
               <div class="row">
                 <div class="col-md-2 col-xs-3">
-                  <% if review.user.image? %>
-                    <%= image_tag(review.user.image_url(:thumb), class: "img-circle img-responsive") %>
+                  <% if appl.job.user.image? %>
+                    <%= image_tag(appl.job.user.image_url(:thumb), class: "img-circle img-responsive") %>
                   <% else %>
                     <%= image_tag('pages/default-user-thumb.jpg', class: 'img-responsive img-circle') %>
                   <% end %>
                 </div>
                 <div class= "col-md-10 col-xs-9 review">                 
-                  <strong><%= review.user.first_name %></strong> 
-                  <% if appl.user == review.user %>
-                   (Hjelper)
-                  <% else %>
-                   (Jobeier)
-                  <% end %>  
+                  <strong><%= appl.job.user.first_name %></strong>                   
+                   (Jobeier)                  
                   <br>
-                  <em><%= review.comment.capitalize %></em>  
+                  <em><%= review.comment.capitalize %></em> 
+                 <div class='star-rating' data-score= <%= review.rating %> > </div> 
                 </div>
               </div>
               <br>
             <% end %>        
-          <% if (current_user == appl.job.user) || (current_user == appl.user )%> <!---only jobowner or applicant can see the comment form and submit comment -->
-            <%= form_for [ appl.job, appl, @review ] do |f| %>
-            <div class = "form-group">
-              <%= f.label :comment %>
-              <%= f.text_area :comment, class: "form-control" %>
-              <%= hidden_field_tag 'user_id', "#{@user.id}" %>  <!-- You need the user_id in the review create action. study its use in that action -->
-            </div>
-              <%= f.submit "Post", class: "btn edit-btn" %>
+          <% if (current_user == appl.job.user) %><!---only jobowner can see the comment and rating form and submit reviews -->
+            <% if appl.reviews.empty? %> <!-- permit only one review from jobowner for each appl won -->
+              <%= form_for [ appl.job, appl, @review ] do |f| %>
+
+              <div id="rating-form">
+                <%= f.label :rating %>
+              </div> 
+                  
+               
+                <div class = "form-group">              
+                  <%= f.label :comment %>
+                  <%= f.text_area :comment, class: "form-control" %>
+                  <%= hidden_field_tag 'user_id', "#{@user.id}" %>  <!-- You need the user_id in the review create action. study its use in that action -->
+                </div>
+                <%= f.submit "Post", class: "btn edit-btn" %>
+              <% end %>
             <% end %>
           <% end %>
         </div>
@@ -74,4 +80,32 @@
 </div>
 
  
- 
+
+ <script type="text/javascript">
+ /*this displays the stars based on what what value therating has has */
+   $('.star-rating').raty({
+    path: '/assets/',
+    readOnly: true,
+    score: function(){
+      return $(this).attr('data-score');
+    }
+
+  });
+
+/* this displays the stars uncolored then when a number of stars are clicked, that number becomes the value for review[:rating] */
+   $('#rating-form').raty({
+    path: '/assets/',
+    scoreName: 'review[rating]'
+   });
+
+
+$('.average-review-rating').raty({
+    path: '/assets/',
+    readOnly: true,
+    score: function(){
+      return $(this).attr('data-score');
+    }
+
+  });
+
+ </script>
