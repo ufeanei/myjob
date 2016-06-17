@@ -8,7 +8,7 @@ class ReviewsController < ApplicationController
     #@review.user = current_user
     @application = JobApplication.find_by(id: params[:job_application_id])
 
-    #@user = User.find_by(id: params[:user_id]) #useful for the redirect path if review validations failed
+    @user = User.find_by(id: params[:user_id]) #useful for the redirect path if review validations failed
 
     @review.user = @application.user
 
