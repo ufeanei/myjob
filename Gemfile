@@ -37,7 +37,7 @@ gem 'coffee-rails', '~> 4.0.0'
 # gem 'therubyracer', platforms: :ruby
 #use carrierwave for picture upload
 gem 'carrierwave', '~> 0.11.2'
-gem 'fog'
+gem 'fog', '~> 1.38'
 
 
 

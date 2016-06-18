@@ -306,7 +306,7 @@ DEPENDENCIES
   delayed_job_active_record
   delayed_job_web
   figaro (= 1.1.1)
-  fog
+  fog (~> 1.38)
   font-awesome-sass (= 4.5.0)
   geocoder (= 1.1.9)
   jbuilder (~> 1.2)
