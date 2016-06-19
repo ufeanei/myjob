@@ -11,6 +11,6 @@ if Rails.env.production?
     }
 
 
-    config.fog_directory = ENV['S3-BUCKET_NAME']
+    config.fog_directory = ENV['S3_BUCKET_NAME']
   end
 end
