@@ -1,63 +1,65 @@
 <% @page_title = 'Frakt -Alle jobber'%>
 <div class="contain main-content">
-  <div class="row col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2  all">
-   
-    <div class="toppanel">
-      <div class="col-md-6 col-xs-6">
-        <h5><strong id="total-jobs"><%= @total  %></strong> Jobs display</h5>
-      </div>
-      <div class="col-md-6 col-xs-6 pagin"> 
-        <%= will_paginate @jobs, renderer: BootstrapPagination::Rails, previous_label: '<', next_label:'>' %>
-      </div>
-    </div><!--end of top panel-->
+  
+  <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2  all">
+    <div class='row'>
+      <div class="toppanel">
+        <div class="col-md-6 col-xs-6">
+          <h5><strong id="total-jobs"><%= @total  %></strong> Jobs display</h5>
+        </div>
+        <div class="col-md-6 col-xs-6 pagin"> 
+          <%= will_paginate @jobs, renderer: BootstrapPagination::Rails, previous_label: '<', next_label:'>' %>
+        </div>
+      </div><!--end of top panel-->
 
-    <aside class="col-md-3 col-sm-5 omrade"> <!-- aside is the fylke filter on the left of the index page. this lists all the fylkes -->
-      <h2>Område</h2>
-      <hr/>
-      <div class=''>
-        <%= form_tag search_jobs_path, method: :get, remote: true, id: 'search-job-fylke' do %> <!-- where we submit the form. it is an ajax request ie js request -->
-          <% @fylkes.each do |fylke| %> 
-            <div class="form-group fylke-checkbox">
-              <%= check_box_tag("fylke_id[#{fylke.id}]", fylke.id) %>
-              <%= label_tag("fylke_id[#{fylke.id}]", fylke.name) %>(<%= jobs_per_fylke(@all_jobs, fylke.id)%>)
-            </div>    
-          <% end%>
-          <br>
-          <br> 
-          <%= submit_tag "" %>
-        <% end %>
-      </div>
-    </aside>
-    <div class="col-md-6 col-sm-7 middle-section"><!--- the  middle part of page that list all jobs begins here-->
-      <div class="spinner "><%= image_tag('pages/spin.gif') %></div>
-      <div class="jobs-list">
-        <%= render 'index_page_jobs_list' %>
-      </div>
-      <div class="pagin pagin-down">
-         <%= will_paginate @jobs, renderer: BootstrapPagination::Rails, previous_label: '<', next_label:'>' %>
-      </div>
-      
-    </div> <!-- end of middle section code -->
+      <aside class="col-md-3 col-sm-5 omrade"> <!-- aside is the fylke filter on the left of the index page. this lists all the fylkes -->
+        <h2>Område</h2>
+        <hr/>
+        <div>
+          <%= form_tag search_jobs_path, method: :get, remote: true, id: 'search-job-fylke' do %> <!-- where we submit the form. it is an ajax request ie js request -->
+            <% @fylkes.each do |fylke| %> 
+              <div class="form-group fylke-checkbox">
+                <%= check_box_tag("fylke_id[#{fylke.id}]", fylke.id) %>
+                <%= label_tag("fylke_id[#{fylke.id}]", fylke.name) %>(<%= jobs_per_fylke(@all_jobs, fylke.id)%>)
+              </div>    
+            <% end%>
+            <br>
+            <br> 
+            <%= submit_tag "" %>
+          <% end %>
+        </div>
+      </aside>
 
-    <div class="col-md-3 users hidden-sm"> <!-- the code is for the side advert on the index page at the right -->
-      <br>
-      <br>
-      <div>
-        <h3>Drivers</h3>
-        <p>Har du varebil, kassebil, pickup?
-            You can make extra money by transporting load for someone in your locality</p>
-        <p><%= link_to 'Become a driver.Click here', become_driver_path %></p>
-      </div>
-      <div>
-        <h3>Kunde</h3>
-        <p>Are you moving out, or you bought something from the shop or online and you want it transported to your house?
-            For all your moving problems just post your shipment  and select a driver to transport it.</p>
-        <p><%= link_to 'Post your add here', new_job_path %></p>
+      <div class="col-md-6 col-sm-7 middle-section"><!--- the  middle part of page that list all jobs begins here-->
+        <div class="spinner "><%= image_tag('pages/spin.gif') %></div>
+        <div class="jobs-list">
+          <%= render 'index_page_jobs_list' %>
+        </div>
+        <div class="pagin pagin-down">
+           <%= will_paginate @jobs, renderer: BootstrapPagination::Rails, previous_label: '<', next_label:'>' %>
+        </div>
+      </div> <!-- end of middle section code -->
 
-         <br/>
-         <br/>
-         <br/>
-         <br/>
+      <div class="col-md-3 users "> <!-- the code is for the side advert on the index page at the right -->
+        <br>
+        <br>
+        <div>
+          <h3>Drivers</h3>
+          <p>Har du varebil, kassebil, pickup?
+              You can make extra money by transporting load for someone in your locality</p>
+          <p><%= link_to 'Become a driver.Click here', become_driver_path %></p>
+        </div>
+        <div>
+          <h3>Kunde</h3>
+          <p>Are you moving out, or you bought something from the shop or online and you want it transported to your house?
+              For all your moving problems just post your shipment  and select a driver to transport it.</p>
+          <p><%= link_to 'Post your add here', new_job_path %></p>
+
+           <br/>
+           <br/>
+           <br/>
+           <br/>
+        </div>
       </div>
     </div>
   </div>
