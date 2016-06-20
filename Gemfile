@@ -27,8 +27,9 @@ gem 'font-awesome-sass', '4.5.0'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-gem "geocoder", '1.1.9'
+
 #use geocoder to get coordinates of start and finish address. we need these in google maps
+gem "geocoder", '1.1.9'
 
 # Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
@@ -37,6 +38,8 @@ gem 'coffee-rails', '~> 4.0.0'
 # gem 'therubyracer', platforms: :ruby
 #use carrierwave for picture upload
 gem 'carrierwave', '~> 0.11.2'
+
+#use fog for cloud storage. we use amason s3
 gem 'fog', '~> 1.38'
 
 
@@ -57,6 +60,7 @@ group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
+
 # use figaro to hide secret keys
 gem 'figaro', '1.1.1'
 
