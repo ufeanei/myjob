@@ -200,6 +200,8 @@ background-color: #cc6600;
   color: #635c5a;
   border: 1px solid #aaa;
   border-radius: 10px;
+  height: 260px;
+  overflow: auto;
 }
 
 .case-container { padding:4px;}
@@ -210,7 +212,8 @@ main li {
   margin-bottom: 5px;
   margin-top: 5px;
   background: #fff;
-  border-radius: 15px;   
+  border-radius: 15px;
+     
 }
 
 .latest-list {
