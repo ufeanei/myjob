@@ -1,7 +1,7 @@
 class JobApplicationsController < ApplicationController
   before_action :require_user
   before_action :get_application, only: [:destroy, :award]
-  before_action :correct_user, only: [:award]
+  before_action :correct_user, only: [:award, :destroy]
   before_action :max_applicants, only: [:create]
 
 

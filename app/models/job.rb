@@ -34,6 +34,7 @@ class Job < ActiveRecord::Base
   end
 
 
+#simple non database slug solution
   def slug
     self.title.downcase.gsub(" ", "-")  
   end

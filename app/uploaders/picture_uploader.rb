@@ -39,9 +39,9 @@ class PictureUploader < CarrierWave::Uploader::Base
     process :resize_to_fill => [135, 100]
   end
 
-  version :cover do
-    process :resize_to_fit => [200, 250]
-  end
+  #version :cover do
+  #  #process :resize_to_fit => [200, 250]
+  #end
 
   version :trial do
     process resize_and_pad: [580, 400, "#fff", "Center"]

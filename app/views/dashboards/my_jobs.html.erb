@@ -20,7 +20,11 @@
             <p> <%= link_to "#{job.title.capitalize}", job_path(job) %></p>
             <br>
             <p> views: <strong><%= job.views %> </strong></p>
+            <% if job.status == 'inactive' %>
+              <p class='inactive-status'>Job inactive. Hjelper invitert</p>
+              <% else %>
             <%= link_to 'Endre', edit_job_path(job), class: "pull-left edit-btn" %> 
+            <% end %>
           </div>
         </div>
       </div>
