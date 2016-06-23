@@ -19,6 +19,8 @@ class Job < ActiveRecord::Base
   belongs_to :user
   has_many :job_applications
 
+
+
   after_validation :geocode_endpoints
   geocoded_by :origin, latitude: :lat1, longitude: :long1
   geocoded_by :destination, latitude: :lat2, longitude: :long2
@@ -30,6 +32,17 @@ class Job < ActiveRecord::Base
   def destination
     self.destination_addr
   end
+
+
+  def slug
+    self.title.downcase.gsub(" ", "-")  
+  end
+
+  def to_param
+    "#{slug}-#{id}"
+  end
+
+
 
 
   private

@@ -67,7 +67,7 @@
           <div class="col-md-6">
             <li >
               <div class="row">
-                <%= link_to job_path(job.id) do %>
+                <%= link_to job_path(job) do %>
                   <div class="col-md-4 col-sm-4">
                     <% if job.image? %>
                     <%= image_tag(job.image_url(:thumb), class: 'img-responsive pull-left thumbnail pic-margins') %>

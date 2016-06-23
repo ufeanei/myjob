@@ -18,7 +18,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">       
       <ul class="nav navbar-nav nav-btn">        
         <li><%= link_to 'Post Your shipment', new_job_path , class: 'btn btn-ship' %></li>
-        <li><%= link_to 'Become a helper', '', class: 'btn btn-helper' %></li> 
+        <li><%= link_to 'Become a helper', become_driver_path, class: 'btn btn-helper' %></li> 
       </ul>
       <ul class="nav navbar-nav navbar-right navbar-right-links">
         <% if logged_in? %>

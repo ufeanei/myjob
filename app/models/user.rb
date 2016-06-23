@@ -66,6 +66,15 @@ class User < ActiveRecord::Base
     reset_sent_at < 2.hours.ago
   end
 
+ #for slugs
+  def slug
+    self.first_name.downcase.gsub(" ", "-")  
+  end
+
+  def to_param
+    "#{slug}-#{id}"
+  end
+
   private
 
    # Converts email to all lower-case.

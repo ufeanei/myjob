@@ -65,7 +65,8 @@ class JobsController < ApplicationController
   end
 
   def get_job
-    @job = Job.find_by(id: params[:id])
+    a = params[:id].split('-').reverse.join('-').to_i
+    @job = Job.find_by(id: a)
   end
 
   def get_all_fylke

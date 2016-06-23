@@ -46,8 +46,12 @@
   margin: 2px auto;
   }
 
-  .status {
-  color: green;
+  .active-status {
+  color: #009999;
+  }
+
+  .inactive-status {
+  color: #cc3333
   }
 .applicants-div li {
   margin-bottom: 15px;
