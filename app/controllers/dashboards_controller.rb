@@ -19,16 +19,16 @@ before_action :require_user
   end
 
   def my_jobs
-    @my_jobs = Job.where(user_id: current_user.id).order(created_at: :desc)
+    @my_jobs = Job.where(user_id: current_user.id).order(created_at: :desc).order(created_at: :desc).paginate(page: params[:page], per_page: 2)
     @applications = JobApplication.where(job_id: @my_jobs.ids) # find the applications for all the jobs owned by current_user
   end
 
   def jobs_won
-    @appli_won =  JobApplication.where(user_id: current_user.id, awarded: true)   
+    @appli_won =  JobApplication.where(user_id: current_user.id, awarded: true).order(created_at: :desc).paginate(page: params[:page], per_page: 2) 
   end
 
   def new_password
-    @user = User.find_by(id: current_user.id)   
+    @user = User.find_by(id: current_user.id).order(created_at: :desc)   
   end
 
   def change_password

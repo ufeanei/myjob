@@ -29,6 +29,7 @@ class JobsController < ApplicationController
     @job = Job.new(job_params)
     @job.user = current_user
     @job.status = 'active' # should have been default value but i forgot
+    
     if @job.save
       flash[:success] = 'Your job has been created'
       redirect_to jobs_path

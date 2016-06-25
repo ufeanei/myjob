@@ -21,4 +21,7 @@
     <br>
   <% end %> 
 <% end %>
+<div class="pagin pagin-down text-center">
+  <%= will_paginate @appli_won, renderer: BootstrapPagination::Rails, previous_label: '<', next_label:'>' %>
+</div>
 <%= render 'part2' %>

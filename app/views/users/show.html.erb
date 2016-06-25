@@ -2,35 +2,35 @@
 <% @page_title = 'Frakt | mine vurderinger' %> 
 <div class="contain wrapping">
   <div class="col-md-6 col-md-offset-3 well wrap">
- <div id="about-me">
-    <div class="col-md-12">
-      <div class="row">
-        <div class="col-md-3">
-          <% if @user.image? %>
-            <%= image_tag(@user.image_url(:thumb), class: "thumbnail img-responsive user-pic") %>
-          <% else %>
-            <%= image_tag('pages/default-user.jpg', class: 'img-responsive thumbnail user-pic') %>
-          <% end %>
+    <div id="about-me">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-3">
+            <% if @user.image? %>
+              <%= image_tag(@user.image_url(:thumb), class: "thumbnail img-responsive user-pic") %>
+            <% else %>
+              <%= image_tag('pages/default-user.jpg', class: 'img-responsive thumbnail user-pic') %>
+            <% end %>
+          </div>
+          <div class="col-md-6">
+            <h4><%= @user.first_name.capitalize %></h4>
+            <h4><%= @user.kommune.name if @user.kommune %></h4>
+            <h2>Average rating</h2>
+            <div class='average-review-rating' data-score=<%= @average_review %>></div>
+            <p> <%= @total  %> reviews</p>
+          </div>
+          <div class="col-md-3 text-center">
+            <h4>Jobs Completed</h4>
+            <h4> <strong><%= @total_invitations %></strong> </h4>
+          </div>
+          <div class="col-md-12">
+            <h3 class="text-center">About me</h3>
+            <p><%= @user.user_self_description %></p>
+          </div>
         </div>
-        <div class="col-md-6">
-          <h4><%= @user.first_name.capitalize %></h4>
-          <h4><%= @user.kommune.name if @user.kommune %></h4>
-          <h2>Average rating</h2>
-          <div class='average-review-rating' data-score=<%= @average_review %>></div>
-          <p> <%= @total  %> reviews</p>
-        </div>
-        <div class="col-md-3 text-center">
-          <h4>Jobs Completed</h4>
-          <h4> <strong><%= @appli_won.size %></strong> </h4>
-        </div>
-        <div class="col-md-12">
-          <h3 class="text-center">About me</h3>
-          <p><%= @user.user_self_description %></p>
-        </div>
-      </div>
-    </div>
-        
-    </div >
+      </div>    
+    </div > <!-- end of about me here -->
+
     <div class="job-review-segment">
       <h3 class="text-center"> My Reviews</h3>
       <% @appli_won.each do |appl| %>
@@ -58,12 +58,10 @@
           <% if (current_user == appl.job.user) %><!---only jobowner can see the comment and rating form and submit reviews -->
             <% if appl.reviews.empty? %> <!-- permit only one review from jobowner for each appl won -->
               <%= form_for [ appl.job, appl, @review ] do |f| %>
-
-              <div id="rating-form">
-                <%= f.label :rating %>
-              </div> 
-                  
-               
+              <%= render 'shared/errors', obj: @review %>
+                <div id="rating-form">
+                  <%= f.label :rating %>
+                </div>                    
                 <div class = "form-group">              
                   <%= f.label :comment %>
                   <%= f.text_area :comment, class: "form-control" %>
@@ -75,9 +73,12 @@
           <% end %>
         </div>
       <% end %>      
+    </div> <!-- end of job review segment here -->
+    <div class="pagin pagin-down text-center">
+      <%= will_paginate @appli_won, renderer: BootstrapPagination::Rails, previous_label: '<', next_label:'>' %>
     </div>
-  </div>
-</div>
+  </div> <!-- end of well wrap here -->
+</div><!-- end of content wrapping  here -->
 
  
 

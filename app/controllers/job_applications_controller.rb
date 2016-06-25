@@ -7,6 +7,7 @@ class JobApplicationsController < ApplicationController
 
   def create
     @job_application = JobApplication.new(user_id: params[:user_id], job_id: params[:job_id])
+    
     if @job_application.job.user.id == @job_application.user_id #if jobowner == job applicant, prevent him from applying
     #Note that the user_id in jobapplications table is that of the applicant not jobowner. 
     #ambiguity could have been removed by using creator and applicant when creating the two tables

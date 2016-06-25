@@ -1,3 +1,21 @@
 <% @page_title = 'Frakt -Ny jobb'%>
 <%= render 'jobform', title: 'Sett inn Annonse' %>
-    
+
+
+
+<script type="text/javascript">
+  $(function(){
+
+    all_kommunes = $('#job_kommune_id').html();
+
+    $('#job_kommune_id').html("<option value=''> Velg Kommune</option>");
+
+      $('#job_fylke_id').on('change', function(){                                         
+        selected_fylke = $('#job_fylke_id option:selected').text();
+        optgroup = "optgroup[label='" + selected_fylke + "']";
+        options = "<option value=''> Velg Kommune </option>"+ $(all_kommunes).filter(optgroup).html();  // we want the first option to be Velg kommune     
+        $('#job_kommune_id').html(options);            
+      });
+  })
+
+</script>

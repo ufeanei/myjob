@@ -26,7 +26,9 @@ class Job < ActiveRecord::Base
   geocoded_by :destination, latitude: :lat2, longitude: :long2
 
   def origin
+   if self.kommune && self.fylke
      [street_addr, self.kommune.name, self.fylke.name].compact.join(',')
+   end
   end
 
   def destination

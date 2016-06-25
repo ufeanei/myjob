@@ -38,7 +38,7 @@
           <% if @job.status == 'active' %>
           <h4 >status: <strong class="active-status">Job active</strong></h4>
           <br/>
-          <%= link_to 'Apply to help',  job_job_applications_path(@job, user_id: current_user ), method: 'post', class: "btn btn-block btn-primary" %>  
+          <%= link_to 'Apply to help',  job_job_applications_path(job_id: @job.id, user_id: current_user.id ), method: 'post', class: "btn btn-block btn-primary" %>  
           <% elsif @job.status == 'inactive' %>
            <h4 >status: <strong class="inactive-status">Inactive</strong></h4>
            <p class='inactive-status'>Job already awarded</p>

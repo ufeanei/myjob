@@ -54,13 +54,16 @@
             <% end %>  
           </table>  
         <% end %>
-      </div>
+      </div>      
     </div> <!-- end of job wrap -->
-    <br>
-    <br>
-    <br>
+    <br>   
   <% end %>
 <% end %>
+
+<div class="pagin pagin-down text-center">
+  <%= will_paginate @my_jobs, renderer: BootstrapPagination::Rails, previous_label: '<', next_label:'>' %>
+</div>
+
 <%= render 'part2' %>
    
    
