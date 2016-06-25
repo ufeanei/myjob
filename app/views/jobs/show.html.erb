@@ -36,9 +36,13 @@
           </ul>
           <br/> 
           <% if @job.status == 'active' %>
-          <h4 >status: <strong class="active-status">Job active</strong></h4>
-          <br/>
-          <%= link_to 'Apply to help',  job_job_applications_path(job_id: @job.id, user_id: current_user.id ), method: 'post', class: "btn btn-block btn-primary" %>  
+            <h4 >status: <strong class="active-status">Job active</strong></h4>
+            <br/>
+            <% if current_user %>
+              <%= link_to 'Apply to help',  job_job_applications_path(job_id: @job.id, user_id: current_user.id ), method: 'post', class: "btn btn-block btn-primary" %>
+              <% else %>
+                <%= link_to 'Apply to help',  job_job_applications_path(job_id: @job.id), method: 'post', class: "btn btn-block btn-primary" %>
+                <% end %>
           <% elsif @job.status == 'inactive' %>
            <h4 >status: <strong class="inactive-status">Inactive</strong></h4>
            <p class='inactive-status'>Job already awarded</p>
