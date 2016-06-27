@@ -3,7 +3,6 @@ class Review < ActiveRecord::Base
   belongs_to :job_application
 
   validates :comment, presence: true 
-
   validate :must_rate, on: :create
  
   def must_rate

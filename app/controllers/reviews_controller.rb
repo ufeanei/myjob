@@ -10,10 +10,7 @@ class ReviewsController < ApplicationController
 
     @user = User.find_by(id: params[:user_id]) #useful for the redirect path if review validations failed
 
-    @review.user = @application.user # review 
-
-    
-    
+    @review.user =  @application.user #Jobowner review  belongs to the helper
 
     if @review.save
       flash[:success] = "Your comment was added"
@@ -29,7 +26,6 @@ class ReviewsController < ApplicationController
         @average_review = @user.reviews.average(:rating).round(2)
       end
       @total = @user.reviews.size
-      flash[:danger] = "You can't submit an empty comment"
       render 'users/show'
     end
   end

@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
+  
   before_action :require_user, only: [:edit, :destroy]
-  before_action :get_kommunes, only: [:new, :update, :create]
+  before_action :get_kommunes, only: [:new, :create]
   before_action :get_user, only: [:show]
   
 
@@ -20,8 +21,6 @@ class UsersController < ApplicationController
     end
   end
 
-  
-
   def show
     #@user = User.find_by(id: params[:id]) 
     @review = Review.new
@@ -36,15 +35,10 @@ class UsersController < ApplicationController
     @total = @user.reviews.size
   end
 
-
   private
 
    def user_params
      params.require(:user).permit(:first_name, :last_name, :email, :password_confirmation, :password, :user_self_description, :kommune_id, :image, :admin, :phone, :street_addr, :car_reg, :terms)
-   end
-
-   def user_edit_params
-     params.require(:user).permit(:first_name, :last_name, :user_self_description, :kommune_id, :admin, :image, :phone, :street_addr, :car_reg)
    end
 
    def get_kommunes

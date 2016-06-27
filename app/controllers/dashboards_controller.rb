@@ -9,8 +9,6 @@ before_action :require_user
     render :my_profile
   end
 
-  
-
   def my_applications
     @my_applications = JobApplication.where(user_id: current_user.id, awarded: false).order(created_at: :desc).paginate(page: params[:page], per_page: 2)
   end
@@ -24,8 +22,6 @@ before_action :require_user
     @appli_won =  JobApplication.where(user_id: current_user.id, awarded: true).order(created_at: :desc).paginate(page: params[:page], per_page: 2) 
   end
 
-  
-
   def edit_profile
     @kommunes = Kommune.all
     @user = User.find_by(id: current_user.id)
@@ -34,11 +30,9 @@ before_action :require_user
   def update_profile
     @kommunes = Kommune.all
     @user = User.find_by(id: current_user.id) 
-
-     if @user.update_attributes(user_edit_params)
+    if @user.update_attributes(user_edit_params)
       flash[:success] = "Profile succesfully updated"
       redirect_to dashboard_path
-     
     else
       flash[:danger] = 'problems'
       render 'edit_profile'
