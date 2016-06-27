@@ -40,13 +40,13 @@
             <br/>
             <% if current_user %>
               <%= link_to 'Apply to help',  job_job_applications_path(job_id: @job.id, user_id: current_user.id ), method: 'post', class: "btn btn-block btn-primary" %>
-              <% else %>
-                <%= link_to 'Apply to help',  job_job_applications_path(job_id: @job.id), method: 'post', class: "btn btn-block btn-primary" %>
-                <% end %>
+            <% else %>
+              <%= link_to 'Apply to help',  job_job_applications_path(job_id: @job.id), method: 'post', class: "btn btn-block btn-primary" %>
+            <% end %>
           <% elsif @job.status == 'inactive' %>
-           <h4 >status: <strong class="inactive-status">Inactive</strong></h4>
-           <p class='inactive-status'>Job already awarded</p>
-           <% end %>
+            <h4 >status: <strong class="inactive-status">Inactive</strong></h4>
+            <p class='inactive-status'>Job already awarded</p>
+          <% end %>
         </div>
         <div class="applicants-div well">
           <% if @job.status == 'active' %>
@@ -54,18 +54,16 @@
               <p><strong>Ingen hjelpere. Bli den første hjelperen </strong></p>
             <% else %>
               <h4 class="text-center"><%= @all_applications.size %> Hjepere</h4>
-             
               <ul> 
                 <div class="row">
                 <% @all_applications.each do |appli| %>
                   <li class="col-md-6 col-xs-6">
                     <div class="text-center">
                       <% if appli.user.image? %>
-                      <%= image_tag(appli.user.image_url(:thumb), class: 'img-responsive img-circle') %>
+                        <%= image_tag(appli.user.image_url(:thumb), class: 'img-responsive img-circle') %>
                       <% else %>
-                      <%= image_tag('pages/default-user-thumb.jpg', class: 'img-responsive img-circle') %>
+                        <%= image_tag('pages/default-user-thumb.jpg', class: 'img-responsive img-circle') %>
                       <% end %>
-
                       <%= link_to "#{appli.user.first_name}", user_path(appli.user) %>
                     </div>  
                   </li>
@@ -76,7 +74,7 @@
           <% end %> 
         </div><!--end of applicants-div-->  
         <div class="similar-jobs well">
-          <h4 class="text-center"><%=@job.fylke.name.upcase %> JOBS</h4>
+          <h4 class="text-center"><%=@job.fylke.name.upcase %> JOBBER</h4>
           <br>
           <% @same_location_jobs.each do |job| %>
             <% if job.id != @job.id %>

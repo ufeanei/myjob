@@ -9,10 +9,7 @@ before_action :require_user
     render :my_profile
   end
 
-  def edit_profile
-    @kommunes = Kommune.all
-    @user = User.find_by(id: current_user.id)
-  end
+  
 
   def my_applications
     @my_applications = JobApplication.where(user_id: current_user.id, awarded: false).order(created_at: :desc).paginate(page: params[:page], per_page: 2)
@@ -27,8 +24,29 @@ before_action :require_user
     @appli_won =  JobApplication.where(user_id: current_user.id, awarded: true).order(created_at: :desc).paginate(page: params[:page], per_page: 2) 
   end
 
+  
+
+  def edit_profile
+    @kommunes = Kommune.all
+    @user = User.find_by(id: current_user.id)
+  end
+
+  def update_profile
+    @kommunes = Kommune.all
+    @user = User.find_by(id: current_user.id) 
+
+     if @user.update_attributes(user_edit_params)
+      flash[:success] = "Profile succesfully updated"
+      redirect_to dashboard_path
+     
+    else
+      flash[:danger] = 'problems'
+      render 'edit_profile'
+    end
+  end
+
   def new_password
-    @user = User.find_by(id: current_user.id).order(created_at: :desc)   
+    @user = User.find_by(id: current_user.id) 
   end
 
   def change_password
@@ -54,4 +72,9 @@ before_action :require_user
   def user_params
     params.require(:user).permit(:password, :password_confirmation)
   end
+
+  def user_edit_params
+    params.require(:user).permit(:first_name, :last_name, :user_self_description, :kommune_id, :admin, :image, :phone, :street_addr, :car_reg)
+  end
+
 end

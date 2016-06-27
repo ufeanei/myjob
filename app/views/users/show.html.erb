@@ -74,9 +74,11 @@
         </div>
       <% end %>      
     </div> <!-- end of job review segment here -->
-    <div class="pagin pagin-down text-center">
-      <%= will_paginate @appli_won, renderer: BootstrapPagination::Rails, previous_label: '<', next_label:'>' %>
-    </div>
+    <% if !@review.errors.any? %>
+      <div class="pagin pagin-down text-center">
+        <%= will_paginate @appli_won, renderer: BootstrapPagination::Rails, previous_label: '<', next_label:'>' %>
+      </div>
+    <% end %>
   </div> <!-- end of well wrap here -->
 </div><!-- end of content wrapping  here -->
 
@@ -92,7 +94,6 @@
     score: function(){
       return $(this).attr('data-score');
     }
-
   });
 
 /* this displays the stars uncolored then when a number of stars are clicked, that number becomes the value for review[:rating] */
@@ -100,7 +101,6 @@
     path: '/assets/',
     scoreName: 'review[rating]'
    });
-
 
 $('.average-review-rating').raty({
     path: '/assets/',

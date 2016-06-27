@@ -3,8 +3,8 @@
 <div class=" well col-md-8 col-md-offset-2 col-xs-12" novalidate>
   <h3 class="text-center">Edit Profile</h3>
 
-  <%= form_for @user do |f| %>
-  <%= render 'shared/errors', obj: @user %>
+  <%= form_for(@user, url: {controller: 'dashboards', action: 'update_profile'}, method: :patch, html: {multipart: true}) do |f| %>
+    <%= render 'shared/errors', obj: @user %>
     <div class="form-group">
       <%= f.label :first_name, 'First Name' %>
       <%= f.text_field :first_name, class: "form-control" %>
@@ -42,10 +42,8 @@
       <%=f.label :image, 'Last opp bilde' %>
       <%=f.file_field :image %>
       <%= f.hidden_field :image_cache %>
-    </div>
-     
-    <%= f.submit "Lagre", class: "btn btn-default btn-block register-button" %> 
-     
+    </div>  
+    <%= f.submit "Lagre", class: "btn btn-default btn-block register-button" %>  
   <% end %>
 </div>
 <%= render 'dashboards/part2' %>

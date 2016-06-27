@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   before_action :require_user, only: [:edit, :destroy]
   before_action :get_kommunes, only: [:new, :update, :create]
-  before_action :get_user, only: [:update, :show]
-  before_action :require_same_user, only: [:update]
+  before_action :get_user, only: [:show]
+  
 
   def new
     @user = User.new 
@@ -20,15 +20,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def update
-    #@user = User.find_by(id: params[:id])    
-     if @user.update_attributes(user_edit_params)
-      flash[:success] = "Profile succesfully updated"
-      redirect_to :back
-    else
-      render 'dashboards/edit_profile'
-    end
-  end
+  
 
   def show
     #@user = User.find_by(id: params[:id]) 
@@ -63,12 +55,4 @@ class UsersController < ApplicationController
      a = params[:id].split('-').reverse.join('-').to_i
      @user = User.find_by(id: a)
    end
-
-   def require_same_user
-    if current_user != @user
-      flash[:error] = " you are not allowed to do that"
-      redirect_to jobs_path
-    end
-   end
-
 end
