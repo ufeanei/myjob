@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-	fylkes= Fylke.create([
+=begin	fylkes= Fylke.create([
 	{name: 'Akerhus' },
 	{name: 'Aust-Agder' },
 	{name: 'Buskerud' },
@@ -343,6 +343,213 @@ kommunes = Kommune.create([
   {name: 'Øystre Slidre', fylke_id: 10 }  
 
 	])
+
+=end
+
+kommunes = Kommune.create([
+  {name: 'Bjerkreim', fylke_id: 12 }, 
+  {name: 'Bokn', fylke_id: 12 }, 
+  {name: 'Eigersund', fylke_id: 12 }, 
+  {name: 'Finnøy', fylke_id: 12 }, 
+  {name: 'Forsand', fylke_id: 12 }, 
+  {name: 'Gjesdal', fylke_id: 12 }, 
+  {name: 'Haugesund', fylke_id: 12 }, 
+  {name: 'Hjelmeland', fylke_id: 12 }, 
+  {name: 'Hå', fylke_id: 12 }, 
+  {name: 'Karmøy', fylke_id: 12 }, 
+  {name: 'Klepp', fylke_id: 12 }, 
+  {name: 'Kvitsøy', fylke_id: 12 }, 
+  {name: 'Lund', fylke_id: 12 }, 
+  {name: 'Randaberg', fylke_id: 12 }, 
+  {name: 'Rennesøy', fylke_id: 12 }, 
+  {name: 'Sandnes', fylke_id: 12 }, 
+  {name: 'Sauda', fylke_id: 12 }, 
+  {name: 'Sokndal', fylke_id: 12 }, 
+  {name: 'Sola', fylke_id: 12 }, 
+  {name: 'Stavanger', fylke_id: 12 }, 
+  {name: 'Strand', fylke_id: 12 }, 
+  {name: 'Suldal', fylke_id: 12 }, 
+  {name: 'Time', fylke_id: 12 }, 
+  {name: 'Tysvær', fylke_id: 12 }, 
+  {name: 'Utsira', fylke_id: 12 }, 
+  {name: 'Vindafjord', fylke_id: 12 } 
+
+  ])
+
+kommunes = Kommune.create([
+  {name: 'Askvoll', fylke_id: 13 }, 
+  {name: 'Aurland', fylke_id: 13 },  
+  {name: 'Balestrand', fylke_id: 13 },  
+  {name: 'Bremanger', fylke_id: 13 },  
+  {name: 'Eid', fylke_id: 13 },  
+  {name: 'Fjaler', fylke_id: 13 },  
+  {name: 'Flora', fylke_id: 13 },  
+  {name: 'Førde', fylke_id: 13 },  
+  {name: 'Gaular', fylke_id: 13 },  
+  {name: 'Gloppen', fylke_id: 13 },  
+  {name: 'Gulen', fylke_id: 13 },  
+  {name: 'Hornindal', fylke_id: 13 },  
+  {name: 'Hyllestad', fylke_id: 13 },  
+  {name: 'Høyanger', fylke_id: 13 },  
+  {name: 'Jølster', fylke_id: 13 },  
+  {name: 'Leikanger', fylke_id: 13 },  
+  {name: 'Luster', fylke_id: 13 },  
+  {name: 'Lærdal', fylke_id: 13 },  
+  {name: 'Naustdal', fylke_id: 13 },  
+  {name: 'Selje', fylke_id: 13 },  
+  {name: 'Sogndal', fylke_id: 13 },  
+  {name: 'Solund', fylke_id: 13 },  
+  {name: 'Stryn', fylke_id: 13 },  
+  {name: 'Vik', fylke_id: 13 },  
+  {name: 'Vågsøy', fylke_id: 13 },  
+  {name: 'Årdal', fylke_id: 13 }  
+
+  ])
+
+kommunes = Kommune.create([{name: 'Svalbard', fylke_id: 14}])
+
+kommunes = Kommune.create([
+   {name: 'Agdenes', fylke_id: 15 },  
+   {name: 'Bjugn', fylke_id: 15 },  
+   {name: 'Frøya', fylke_id: 15 },  
+   {name: 'Hemne', fylke_id: 15 },  
+   {name: 'Hitra', fylke_id: 15 },  
+   {name: 'Holtålen', fylke_id: 15 },   
+   {name: 'Klæbu', fylke_id: 15 },  
+   {name: 'Malvik', fylke_id: 15 },  
+   {name: 'Meldal', fylke_id: 15 },  
+   {name: 'Melhus', fylke_id: 15 },  
+   {name: 'Midtre Gauldal', fylke_id: 15 },  
+   {name: 'Oppdal', fylke_id: 15 },  
+   {name: 'Orkdal', fylke_id: 15 },  
+   {name: 'Osen', fylke_id: 15 },  
+   {name: 'Rennebu', fylke_id: 15 },  
+   {name: 'Rissa', fylke_id: 15 },  
+   {name: 'Roan', fylke_id: 15 },  
+   {name: 'Røros', fylke_id: 15 },  
+   {name: 'Selbu', fylke_id: 15 },  
+   {name: 'Skaun', fylke_id: 15 },  
+   {name: 'Snillfjord', fylke_id: 15 },  
+   {name: 'Trondheim', fylke_id: 15 },  
+   {name: 'Tydal', fylke_id: 15 },  
+   {name: 'Åfjord', fylke_id: 15 },  
+   {name: 'Ørland', fylke_id: 15 }
+
+  ])
+
+kommunes = Kommune.create([
+  {name: 'Bamble', fylke_id: 16 },  
+  {name: 'Bø', fylke_id: 16 }, 
+  {name: 'Drangedal', fylke_id: 16 },  
+  {name: 'Fyresdal', fylke_id: 16 },  
+  {name: 'Hjartdal', fylke_id: 16 },  
+  {name: 'Kragerø', fylke_id: 16 },  
+  {name: 'Kviteseid', fylke_id: 16 },  
+  {name: 'Nissedal', fylke_id: 16 },  
+  {name: 'Nome', fylke_id: 16 },  
+  {name: 'Notodden', fylke_id: 16 },  
+  {name: 'Porsgrunn', fylke_id: 16 },  
+  {name: 'Sauherad', fylke_id: 16 },  
+  {name: 'Seljord', fylke_id: 16 },  
+  {name: 'Siljan', fylke_id: 16 },  
+  {name: 'Skien', fylke_id: 16 },  
+  {name: 'Tinn', fylke_id: 16 },  
+  {name: 'Tokke', fylke_id: 16 },  
+  {name: 'Vinje', fylke_id: 16 }  
+
+  ])
+
+kommunes = Kommune.create([
+
+  {name: 'Balsfjord', fylke_id: 17 },  
+  {name: 'Bardu', fylke_id: 17 },  
+  {name: 'Berg', fylke_id: 17 },  
+  {name: 'Dyrøy', fylke_id: 17 },  
+  {name: 'Gratangen', fylke_id: 17 },  
+  {name: 'Harstad', fylke_id: 17 },  
+  {name: 'Ibestad', fylke_id: 17 },  
+  {name: 'Karlsøy', fylke_id: 17 },  
+  {name: 'Kvæfjord', fylke_id: 17 },  
+  {name: 'Kvænangen', fylke_id: 17 },  
+  {name: 'Kåfjord', fylke_id: 17 },  
+  {name: 'Lavangen', fylke_id: 17 },  
+  {name: 'Lenvik', fylke_id: 17 },  
+  {name: 'Lyngen', fylke_id: 17 },  
+  {name: 'Målselv', fylke_id: 17 },  
+  {name: 'Nordreisa', fylke_id: 17 },  
+  {name: 'Salangen', fylke_id: 17 },  
+  {name: 'Skjervøy', fylke_id: 17 },  
+  {name: 'Skånland', fylke_id: 17 },  
+  {name: 'Storfjord', fylke_id: 17 },  
+  {name: 'Sørreisa', fylke_id: 17 },  
+  {name: 'Torsken', fylke_id: 17 },  
+  {name: 'Tranøy', fylke_id: 17 },  
+  {name: 'Tromsø', fylke_id: 17 }    
+
+  ])
+
+
+kommunes = Kommune.create([
+
+  {name: 'Audnedal', fylke_id: 18 },  
+  {name: 'Farsund', fylke_id: 18 },  
+  {name: 'Flekkefjord', fylke_id: 18 },  
+  {name: 'Hægebostad', fylke_id: 18 },  
+  {name: 'Kristiansand', fylke_id: 18 },  
+  {name: 'Kvinesdal', fylke_id: 18 },  
+  {name: 'Lindesnes', fylke_id: 18 },  
+  {name: 'Lyngdal', fylke_id: 18 },  
+  {name: 'Mandal', fylke_id: 18 },  
+  {name: 'Marnardal', fylke_id: 18 },  
+  {name: 'Sirdal', fylke_id: 18 },  
+  {name: 'Songdalen', fylke_id: 18 },  
+  {name: 'Søgne', fylke_id: 18 },  
+  {name: 'Vennesla', fylke_id: 18 },  
+  {name: 'Åseral', fylke_id: 18 }
+
+  ])
+
+kommunes = Kommune.create([
+
+  {name: 'Andebu', fylke_id: 19 }, 
+  {name: 'Hof', fylke_id: 19 },   
+  {name: 'Holmestrand', fylke_id: 19 },   
+  {name: 'Horten', fylke_id: 19 }, 
+  {name: 'Lardal', fylke_id: 19 }, 
+  {name: 'Larvik', fylke_id: 19 }, 
+  {name: 'Nøtterøy', fylke_id: 19 }, 
+  {name: 'Re', fylke_id: 19 }, 
+  {name: 'Sande', fylke_id: 19 }, 
+  {name: 'Sandefjord', fylke_id: 19 }, 
+  {name: 'Stokke', fylke_id: 19 }, 
+  {name: 'Svelvik', fylke_id: 19 }, 
+  {name: 'Tjøme', fylke_id: 19 }, 
+  {name: 'Tønsberg', fylke_id: 19 }
+
+  ])
+
+kommunes = Kommune.create([
+  {name: 'Aremark', fylke_id: 20}, 
+  {name: 'Askim', fylke_id: 20},  
+  {name: 'Eidsberg', fylke_id: 20},  
+  {name: 'Fredrikstad', fylke_id: 20},  
+  {name: 'Halden', fylke_id: 20},  
+  {name: 'Hobøl', fylke_id: 20},  
+  {name: 'Hvaler', fylke_id: 20},  
+  {name: 'Marker', fylke_id: 20},  
+  {name: 'Moss', fylke_id: 20},  
+  {name: 'Rakkestad', fylke_id: 20},  
+  {name: 'Rygge', fylke_id: 20},  
+  {name: 'Råde', fylke_id: 20},  
+  {name: 'Rømskog', fylke_id: 20}, 
+  {name: 'Sarpsborg', fylke_id: 20},  
+  {name: 'Skiptvet', fylke_id: 20},  
+  {name: 'Spydeberg', fylke_id: 20},  
+  {name: 'Trøgstad', fylke_id: 20},  
+  {name: 'Våler', fylke_id: 20},   
+
+  ])
+
 
 
 

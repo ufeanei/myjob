@@ -34,7 +34,6 @@ before_action :require_user
       flash[:success] = "Profile succesfully updated"
       redirect_to dashboard_path
     else
-      flash[:danger] = 'problems'
       render 'edit_profile'
     end
   end

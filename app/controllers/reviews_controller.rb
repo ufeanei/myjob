@@ -5,17 +5,14 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(params.require(:review).permit(:comment, :rating))
     @review.job_application_id = params[:job_application_id]
-    #@review.user = current_user
+  
     @application = JobApplication.find_by(id: params[:job_application_id])
-
     @user = User.find_by(id: params[:user_id]) #useful for the redirect path if review validations failed
-
     @review.user =  @application.user #Jobowner review  belongs to the helper
 
     if @review.save
-      flash[:success] = "Your comment was added"
-      # send email to helper as background job
-      UserMailer.delay(queue: 'immediate', priority: 0).review_added(@application)
+      flash[:success] = "Your comment was added"      
+      UserMailer.delay(queue: 'immediate', priority: 0).review_added(@application) # send email to helper as background job
       redirect_to user_path(@user)
     else
       @appli_won =  JobApplication.where(user_id: @user.id, awarded: true).order(created_at: :desc).paginate(page: params[:page], per_page: 2) 
