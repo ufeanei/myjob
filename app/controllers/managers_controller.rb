@@ -17,7 +17,8 @@ class ManagersController < ApplicationController
 
   def all_applications
     @all_applications = JobApplication.all
-    total_applications = JobApplication.all.size
+    @total_applications = JobApplication.all.size
+    @today_applications = JobApplication.where("created_at >= ?", Time.zone.now.beginning_of_day).size
   end
 
 

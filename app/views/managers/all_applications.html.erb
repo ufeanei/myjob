@@ -1,5 +1,49 @@
 <%= render 'part3' %>
 
+<div class='pull-left text-center'>
+    <h4>Total Applications</h4>
+    <h3> <%= @total_applications %></h3>
+  </div>
 
+  <div class='pull-right text-center'>
+    <h4>Applications today</h4>
+    <h3> <%=  @today_applications %></h3>
+  </div>
+</div>
+<br>
+<br>
+<br>
+<table class="table table-bordered table-hover">
+  <thead class="thead-inverse">
+    <tr>
+      <th>Id</th>
+      <th>Job Title</th>
+      <th>Applicant name</th>
+      <th>status</th>
+      <th>Reviews </th>
+      <th>Created at</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <% @all_applications.each do |appl| %>              
+      <tr> 
+          <td><%= appl.id %></td> 
+          <td><%= link_to "#{appl.job.title.capitalize.slice(0, 25) + '...'}", job_path(appl.job.id) %></td>                
+         
+          
+          <td><%= appl.user.first_name.capitalize %> </td> 
+          
+          <% if appl.awarded? %>
+          <td>Awarded </td> 
+          <% else %>
+          <td> Not Awarded</td>
+          <% end %>
+          <td><%= appl.reviews.size %></td>
+          <td><%= appl.created_at %></td>
+          <td><%= link_to 'Delete', '', confirm: 'Are you sure, you want to delete', method: :delete, class: 'btn btn-danger ' %> </td>                      
+      </tr>
+    <% end %>
+</table>
 
-<%= render ' part4' %>
+<%= render 'part4' %><div class='contain'>
+  
