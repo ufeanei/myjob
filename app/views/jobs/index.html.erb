@@ -7,9 +7,6 @@
         <div class="col-md-6 col-xs-6">
           <h5><strong id="total-jobs"><%= @total  %></strong> Jobs display</h5>
         </div>
-        <div class="col-md-6 col-xs-6 pagin"> 
-          <%= will_paginate @jobs, renderer: BootstrapPagination::Rails, previous_label: '<', next_label:'>' %>
-        </div>
       </div><!--end of top panel-->
 
       <aside class="col-md-3 col-sm-5 omrade"> <!-- aside is the fylke filter on the left of the index page. this lists all the fylkes -->

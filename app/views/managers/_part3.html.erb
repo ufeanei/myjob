@@ -1,0 +1,14 @@
+<div class="contain">
+  <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1">
+    <div class="row">
+      <aside class="col-md-4 col-sm-5 well dashboard-menu"> <!--styles for dashboard-menu found in myjobs.css.scss -->
+        <h2>Dashboard</h2>
+        <hr/>
+        <div class=''>
+            <h4 id="my-jobs"><%= link_to 'All Users', my_jobs_dashboard_path %></h4>
+            <h4 id="my-applications"><%= link_to 'All Jobs', my_applications_dashboard_path %></h4>
+            <h4 id="jobs-won"><%= link_to 'All Applications', jobs_won_dashboard_path %></h4> 
+        </div> 
+      </aside>
+      <div class="col-md-8 col-sm-7  col-xs-12 result-section well"><!--styles for result-section found in myjobs.css.scss -->
+      <div class="dashboard-menu-info"> 

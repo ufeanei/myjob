@@ -41,8 +41,16 @@ Porter::Application.routes.draw do
     patch 'change_password'
     get 'edit_profile'
     get 'my_profile'
-    patch 'update_profile'
-    
+    patch 'update_profile'  
   end
  end
+
+
+  resource :manager do
+    member do
+      get 'all_jobs'
+      get 'all_users'
+      get 'all_applications'
+    end
+  end
 end

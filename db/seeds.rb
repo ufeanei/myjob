@@ -344,7 +344,7 @@ kommunes = Kommune.create([
 
 	])
 
-=end
+
 
 kommunes = Kommune.create([
   {name: 'Bjerkreim', fylke_id: 12 }, 
@@ -551,6 +551,6 @@ kommunes = Kommune.create([
   ])
 
 
-
+=end
 
 

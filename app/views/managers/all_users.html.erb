@@ -1,0 +1,47 @@
+<%= render 'part3' %>
+<div class='contain'>
+  <div class='pull-left text-center'>
+    <h4>Total Users</h4>
+    <h3> <%= @total_users %></h3>
+  </div>
+
+  <div class='pull-right text-center'>
+    <h4>Userstoday</h4>
+    <h3> <%=  @today_users %></h3>
+  </div>
+</div>
+<br>
+<br>
+<br>
+<table class="table table-bordered table-hover">
+  <thead class="thead-inverse">
+    <tr>
+      <th>Id</th>
+      <th>Full Name</th>
+      <th>Kommune</th>
+      <th>email</th>
+      <th>Edit </th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <% @all_users.each do |user| %>              
+      <tr> 
+          <td><%= user.id %></td>                 
+          <td><%= link_to "#{user.first_name}"  , user_path(user.id) %> </td>
+          <% if user.kommune %>
+          <td><%= user.kommune.name %> </td> 
+          <% else %> 
+          <td></td>
+          <% end %>
+
+          <td><%= user.email %> </td> 
+           
+          <td><%= link_to 'Edit User', '', class: 'btn btn-info' %> </td> 
+          <td><%= link_to 'Delete', '', confirm: 'Are you sure, you want to delete', method: :delete, class: 'btn btn-danger' %> </td>                      
+      </tr>
+    <% end %>
+</table>
+   
+
+
+<%= render 'part4' %>

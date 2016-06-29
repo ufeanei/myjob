@@ -60,6 +60,8 @@ before_action :require_user
     @user = User.find_by(id: current_user.id)  
   end
 
+  
+
   private
 
   def user_params
