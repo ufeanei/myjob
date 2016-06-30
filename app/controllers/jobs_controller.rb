@@ -1,9 +1,9 @@
 class JobsController < ApplicationController
 
-  before_action :require_user, only: [:new, :create, :edit, :update]
-  before_action :get_job, only: [:edit, :update, :show]
+  before_action :require_user, only: [:new, :create, :edit, :update, :destroy]
+  before_action :get_job, only: [:edit, :update, :show, :destroy]
   before_action :get_all_fylke, only: [:index, :new, :edit, :create, :update]
-  before_action :require_job_owner, only: [:edit, :update]
+  before_action :require_job_owner_or_admin, only: [:edit, :update, :destroy]
 
   def index
     @all_jobs ||= Job.all # need this to calculate jobs /fylke  # need to make sure only active jobs are shown later in production
@@ -56,7 +56,15 @@ class JobsController < ApplicationController
     @same_location_jobs = Job.where(fylke_id: @job.fylke_id).limit(6).order(created_at: :desc)
   end
 
+  def destroy
+    if @job.destroy
+      flash[:info] = 'Job deleted'
+      redirect_to :back
+    end
+  end
+
  private
+
 
   def job_params
     params.require(:job).permit(:title,:description, :payment, :street_addr, :destination_addr, :contact_number, :kommune_id, :fylke_id, :terms_of_service, :image, :image_cache)
@@ -75,8 +83,8 @@ class JobsController < ApplicationController
     @fylkes = Fylke.all 
   end
 
-  def require_job_owner
-    if @job.user != current_user # Only the jobowner can perform job edit and update
+  def require_job_owner_or_admin
+    if (@job.user != current_user) && (current_user.admin == false)# Only the jobowner can perform job edit and update
       flash[:danger] = "You can't do that"
       redirect_to jobs_path 
     end

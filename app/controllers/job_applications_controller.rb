@@ -1,8 +1,9 @@
 class JobApplicationsController < ApplicationController
   before_action :require_user
   before_action :get_application, only: [:destroy, :award]
-  before_action :correct_user, only: [:award, :destroy]
+  before_action :correct_user, only: [:award]
   before_action :max_applicants, only: [:create]
+  before_action :require_admin_or_helper, only: [:destroy]
 
 
   def create
@@ -23,22 +24,13 @@ class JobApplicationsController < ApplicationController
   end
 
   def destroy 
-  #delete an application
-  #see before action  
-    if @job_application.user != current_user # Make sure only job applicant and admin can delete their applications. 
-      flash[:danger] = "you can't do that"
-      redirect_to root_path
-    elsif @job_application.destroy
+    if @job_application.destroy
       flash[:success] = "Application deleted"
       redirect_to :back
     end
   end
 
   def award
-    #award job to an applicant 
-    #see before action
-
-    
    if @job_application.awarded == true
       flash[:info]= "You have already invited this helper"
       redirect_to :back
@@ -68,6 +60,13 @@ class JobApplicationsController < ApplicationController
     flash[:info] = "Sorry maximum number of applicants reached for this job. Please apply to another job"
     redirect_to :back
   end
+ end
+
+ def require_admin_or_helper
+   if (current_user != @job_application.user ) && (current_user.admin == false)  # Make sure only job applicant and admin can delete their applications. 
+      flash[:danger] = "you can't do that"
+      redirect_to root_path
+   end
  end
 
  def check_payment

@@ -1,13 +1,25 @@
+<style type="text/css">
+  .table-hover > tbody > tr:hover {
+  background-color: #D2D2D2;
+
+}
+.totals {
+  margin-top:5px;
+}
+  </style>
+
 <%= render 'part3' %>
+<div class='contain'>
+  <div class='col-md-8 col-md-offset-2'>
+    <div class='pull-left text-center'>
+      <p>Total Applications</p>
+      <h3 class='totals'> <%= @total_applications %></h3>
+    </div>
 
-<div class='pull-left text-center'>
-    <h4>Total Applications</h4>
-    <h3> <%= @total_applications %></h3>
-  </div>
-
-  <div class='pull-right text-center'>
-    <h4>Applications today</h4>
-    <h3> <%=  @today_applications %></h3>
+    <div class='pull-right text-center'>
+      <p>Applications today</p>
+      <h3 class='totals'> <%=  @today_applications %></h3>
+    </div>
   </div>
 </div>
 <br>
@@ -18,10 +30,11 @@
     <tr>
       <th>Id</th>
       <th>Job Title</th>
-      <th>Applicant name</th>
+      <th>Helper</th>
       <th>status</th>
       <th>Reviews </th>
       <th>Created at</th>
+      <th>Job status</th>
       <th>Delete</th>
     </tr>
   </thead>
@@ -29,21 +42,29 @@
       <tr> 
           <td><%= appl.id %></td> 
           <td><%= link_to "#{appl.job.title.capitalize.slice(0, 25) + '...'}", job_path(appl.job.id) %></td>                
-         
-          
-          <td><%= appl.user.first_name.capitalize %> </td> 
-          
+          <td><%= appl.user.first_name.capitalize %> </td>          
           <% if appl.awarded? %>
           <td>Awarded </td> 
           <% else %>
           <td> Not Awarded</td>
           <% end %>
           <td><%= appl.reviews.size %></td>
-          <td><%= appl.created_at %></td>
-          <td><%= link_to 'Delete', '', confirm: 'Are you sure, you want to delete', method: :delete, class: 'btn btn-danger ' %> </td>                      
+          <td><%= (time_ago_in_words(appl.created_at)+ ' ago').gsub('about', '') %></td>
+          <td> <%= appl.job.status %></td>
+          <% if appl.awarded? %>
+          <td>---</td>
+          <% else %>
+          <td><%= link_to 'Delete', job_job_application_path(job_id: appl.job.id, id: appl.id), confirm: 'Are you sure, you want to delete', method: :delete, class: 'btn btn-danger ' %> </td> 
+          <% end %>                     
       </tr>
     <% end %>
 </table>
 
-<%= render 'part4' %><div class='contain'>
+<div class="pagin pagin-down text-center">
+  <%= will_paginate @all_applications, renderer: BootstrapPagination::Rails, previous_label: '<', next_label:'>' %>
+</div>
+
+<%= render 'part4' %>
+  
+
   

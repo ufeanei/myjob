@@ -26,7 +26,7 @@ Porter::Application.routes.draw do
  
  resources :password_resets,  only: [:new, :create, :edit, :update]
 
- resources :users , except: [:index, :update]
+ resources :users , except: [:index, :update, :destroy]
 
  get '/login', to: 'sessions#new'
  post '/login', to: 'sessions#create'
@@ -46,7 +46,7 @@ Porter::Application.routes.draw do
  end
 
 
-  resource :manager do
+  resource :manager, only: [:show] do
     member do
       get 'all_jobs'
       get 'all_users'

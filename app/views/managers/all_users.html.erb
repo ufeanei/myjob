@@ -1,13 +1,14 @@
 <%= render 'part3' %>
 <div class='contain'>
-  <div class='pull-left text-center'>
-    <h4>Total Users</h4>
-    <h3> <%= @total_users %></h3>
-  </div>
-
-  <div class='pull-right text-center'>
-    <h4>Userstoday</h4>
-    <h3> <%=  @today_users %></h3>
+  <div class='col-md-8 col-md-offset-2'>
+    <div class='pull-left text-center'>
+      <p>Total Users</p>
+      <h3 class='totals'> <%= @total_users %></h3>
+    </div>
+    <div class='pull-right text-center'>
+      <p>New Users Today</p>
+      <h3 class='totals'> <%=  @today_users %></h3>
+    </div>
   </div>
 </div>
 <br>
@@ -21,7 +22,7 @@
       <th>Kommune</th>
       <th>email</th>
       <th>Edit </th>
-      <th>Delete</th>
+      
     </tr>
   </thead>
   <% @all_users.each do |user| %>              
@@ -33,15 +34,14 @@
           <% else %> 
           <td></td>
           <% end %>
-
-          <td><%= user.email %> </td> 
-           
-          <td><%= link_to 'Edit User', '', class: 'btn btn-info edit-btn' %> </td> 
-          <td><%= link_to 'Delete', '', confirm: 'Are you sure, you want to delete', method: :delete, class: 'btn btn-danger ' %> </td>                      
+          <td><%= user.email %> </td>    
+          <td><%= link_to 'Edit User', '', class: 'btn btn-info edit-btn' %> </td>                      
       </tr>
     <% end %>
 </table>
    
-
+<div class="pagin pagin-down text-center">
+  <%= will_paginate @all_users, renderer: BootstrapPagination::Rails, previous_label: '<', next_label:'>' %>
+</div>
 
 <%= render 'part4' %>

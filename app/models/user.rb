@@ -7,9 +7,9 @@ class User < ActiveRecord::Base
   before_create :create_confirmation_digest
   
   belongs_to :kommune
-  has_many :jobs
-  has_many :job_applications
-  has_many :reviews
+  has_many :jobs, dependent: :destroy
+  has_many :job_applications, dependent: :destroy
+  has_many :reviews, dependent: :destroy
 
   validates :first_name,  presence: { message: "må fylles ut"}
   validates :last_name,  presence: true, length: { maximum: 50 }
