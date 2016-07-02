@@ -1,9 +1,9 @@
 class JobsController < ApplicationController
 
-  before_action :require_user, only: [:new, :create, :edit, :update, :destroy]
-  before_action :get_job, only: [:edit, :update, :show, :destroy]
+  before_action :require_user, only: [:new, :create, :edit, :update, :destroy, :activate_job]
+  before_action :get_job, only: [:edit, :update, :show, :destroy, :activate_job]
   before_action :get_all_fylke, only: [:index, :new, :edit, :create, :update]
-  before_action :require_job_owner_or_admin, only: [:edit, :update, :destroy]
+  before_action :require_job_owner_or_admin, only: [:edit, :update, :destroy, :activate_job]
 
   def index
     @all_jobs ||= Job.all # need this to calculate jobs /fylke  # need to make sure only active jobs are shown later in production
@@ -63,6 +63,19 @@ class JobsController < ApplicationController
     end
   end
 
+  def activate_job
+    if @job.update_attribute(:status, 'active')
+      flash[:info] = 'Job activation successful'
+      if current_user.admin?
+        redirect_to all_jobs_manager_path
+      else
+        redirect_to my_jobs_dashboard_path
+      end
+    end
+  end
+
+
+
  private
 
 
@@ -84,7 +97,7 @@ class JobsController < ApplicationController
   end
 
   def require_job_owner_or_admin
-    if (@job.user != current_user) && (current_user.admin == false)# Only the jobowner can perform job edit and update
+    if (@job.user != current_user) && (current_user.admin == false)# Only the jobowner can perform job edit and update .Demorgan's law used here
       flash[:danger] = "You can't do that"
       redirect_to jobs_path 
     end

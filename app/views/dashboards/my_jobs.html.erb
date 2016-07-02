@@ -22,8 +22,10 @@
             <p> views: <strong><%= job.views %> </strong></p>
             <% if job.status == 'inactive' %>
               <p class='inactive-status'>Job inactive. Hjelper invitert</p>
+              <%= link_to 'Activate', activate_job_job_path(job), method: :patch, class: 'btn btn-info pull-right edit-btn' %> 
               <% else %>
             <%= link_to 'Endre', edit_job_path(job), class: "pull-left edit-btn" %> 
+
             <% end %>
           </div>
         </div>

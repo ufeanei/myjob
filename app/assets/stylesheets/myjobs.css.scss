@@ -40,3 +40,11 @@ background-color: #c0c0c0;
 #invited {
   color: #cc6600;
 }
+
+.table-hover > tbody > tr:hover {
+  background-color: #D2D2D2;
+
+}
+.totals {
+  margin-top:5px;
+}

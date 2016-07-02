@@ -15,6 +15,11 @@ Porter::Application.routes.draw do
   collection do
  	  get 'search'=> 'jobs#index'
   end
+
+  member do
+    patch 'activate_job'
+  end
+  
   resources :job_applications, only: [:create, :destroy] do
     member do
       get 'award'

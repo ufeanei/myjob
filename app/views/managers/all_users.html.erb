@@ -21,8 +21,7 @@
       <th>Full Name</th>
       <th>Kommune</th>
       <th>email</th>
-      <th>Edit </th>
-      
+      <th>Joined since</th> 
     </tr>
   </thead>
   <% @all_users.each do |user| %>              
@@ -34,8 +33,8 @@
           <% else %> 
           <td></td>
           <% end %>
-          <td><%= user.email %> </td>    
-          <td><%= link_to 'Edit User', '', class: 'btn btn-info edit-btn' %> </td>                      
+          <td><%= user.email %> </td> 
+          <td><%= (time_ago_in_words(user.created_at)+ ' ago').gsub('about', '') %></td>                             
       </tr>
     <% end %>
 </table>

@@ -2,12 +2,12 @@
 <div class='contain'>
   <div class='col-md-8 col-md-offset-2'>
     <div class='pull-left text-center'>
-      <h4>Total jobs</h4>
-      <h3> <%= @total_jobs %></h3>
+      <p>Total jobs</p>
+      <h3 class='totals'> <%= @total_jobs %></h3>       <!-- page css styles found in myapplications.css.scss-->
     </div>
     <div class='pull-right text-center'>
-      <h4>Jobs today</h4>
-      <h3> <%= @today_jobs%></h3>
+      <p>Jobs today</p>
+      <h3 class='totals'> <%= @today_jobs%></h3>
     </div>
   </div>
 </div>
@@ -36,7 +36,7 @@
       <% if job.status == 'active' %>
         <td>----</td>
       <% else %>
-        <td><%= link_to 'Activate', '', class: 'btn btn-info' %> </td> 
+        <td><%= link_to 'Activate', activate_job_job_path(job), method: :patch, class: 'btn btn-info' %> </td> 
       <% end %>
       <td><%= link_to 'Delete', job_path(job), confirm: 'Are you sure, you want to delete', method: :delete, class: 'btn btn-danger' %> </td>                      
     </tr>
