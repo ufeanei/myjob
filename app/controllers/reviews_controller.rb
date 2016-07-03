@@ -17,7 +17,7 @@ class ReviewsController < ApplicationController
     else
       flash[:danger] = "Star rating and comment must not be empty"
     @my_jobs_ids = Job.where(user_id: current_user).ids
-    @applications = JobApplication.where(awarded: true, job_id: @my_jobs_ids).select {|x| x.reviews.empty?}
+    @applications_without_reviews = JobApplication.where(awarded: true, job_id: @my_jobs_ids).select {|x| x.reviews.empty?}
     render 'dashboards/rate_your_helpers'
     end
   end
