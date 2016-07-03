@@ -4,6 +4,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :current_user, :logged_in?
 
+def helper_ratings
+   @my_jobs_ids = Job.where(user_id: current_user).ids
+    @applications_without_reviews = JobApplication.where(awarded: true, job_id: @my_jobs_ids).select {|x| x.reviews.empty?}
+end
+
 
   # This gets the currently logged in user
   def current_user

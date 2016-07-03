@@ -55,30 +55,12 @@
               </div>
               <br>
             <% end %>        
-          <% if (current_user == appl.job.user) %><!---only jobowner can see the comment and rating form and submit reviews -->
-            <% if appl.reviews.empty? %> <!-- permit only one review from jobowner for each appl won -->
-              <%= form_for [ appl.job, appl, @review ] do |f| %>
-              <%= render 'shared/errors', obj: @review %>
-                <div id="rating-form">
-                  <%= f.label :rating %>
-                </div>                    
-                <div class = "form-group">              
-                  <%= f.label :comment %>
-                  <%= f.text_area :comment, class: "form-control" %>
-                  <%= hidden_field_tag 'user_id', "#{@user.id}" %>  <!-- You need the user_id in the review create action. study its use in that action -->
-                </div>
-                <%= f.submit "Post", class: "btn edit-btn" %>
-              <% end %>
-            <% end %>
-          <% end %>
         </div>
       <% end %>      
     </div> <!-- end of job review segment here -->
-    <% if !@review.errors.any? %>
       <div class="pagin pagin-down text-center">
         <%= will_paginate @appli_won, renderer: BootstrapPagination::Rails, previous_label: '<', next_label:'>' %>
       </div>
-    <% end %>
   </div> <!-- end of well wrap here -->
 </div><!-- end of content wrapping  here -->
 

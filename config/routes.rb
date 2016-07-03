@@ -46,7 +46,8 @@ Porter::Application.routes.draw do
     patch 'change_password'
     get 'edit_profile'
     get 'my_profile'
-    patch 'update_profile'  
+    patch 'update_profile' 
+    get 'rate_your_helpers' 
   end
  end
 

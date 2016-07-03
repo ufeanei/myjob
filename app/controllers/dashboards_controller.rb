@@ -1,5 +1,6 @@
 class DashboardsController < ApplicationController
 before_action :require_user
+before_action :helper_ratings # this is too track the helpers needing reviews as one navigates btw all actions/views of the dashboards
 # before action user is looged in, is current user, has been confirmed
 # @user in all action is the logged in and current user
   def show
@@ -58,6 +59,15 @@ before_action :require_user
 
   def my_profile
     @user = User.find_by(id: current_user.id)  
+  end
+
+
+  def rate_your_helpers
+    @review = Review.new
+=begin
+    @my_jobs_ids = Job.where(user_id: current_user).ids
+    @applications_without_reviews = JobApplication.where(awarded: true, job_id: @my_jobs_ids).select {|x| x.reviews.empty?}
+=end
   end
 
   

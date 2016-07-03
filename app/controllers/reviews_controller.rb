@@ -7,23 +7,22 @@ class ReviewsController < ApplicationController
     @review.job_application_id = params[:job_application_id]
   
     @application = JobApplication.find_by(id: params[:job_application_id])
-    @user = User.find_by(id: params[:user_id]) #useful for the redirect path if review validations failed
+   # @user = User.find_by(id: params[:user_id]) #useful for the redirect path if review validations failed
     @review.user =  @application.user #Jobowner review  belongs to the helper
 
     if @review.save
       flash[:success] = "Your comment was added"      
       UserMailer.delay(queue: 'immediate', priority: 0).review_added(@application) # send email to helper as background job
-      redirect_to user_path(@user)
+      redirect_to rate_your_helpers_dashboard_path
     else
-      @appli_won =  JobApplication.where(user_id: @user.id, awarded: true).order(created_at: :desc).paginate(page: params[:page], per_page: 2) 
-      @total_invitations = JobApplication.where(user_id: @user.id, awarded: true).size
-      if @user.reviews.blank?
-        @average_review = 0
-      else
-        @average_review = @user.reviews.average(:rating).round(2)
-      end
-      @total = @user.reviews.size
-      render 'users/show'
+      flash[:danger] = "Star rating and comment must not be empty"
+    @my_jobs_ids = Job.where(user_id: current_user).ids
+    @applications = JobApplication.where(awarded: true, job_id: @my_jobs_ids).select {|x| x.reviews.empty?}
+    render 'dashboards/rate_your_helpers'
     end
   end
 end
+
+
+
+    
