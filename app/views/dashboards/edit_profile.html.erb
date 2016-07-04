@@ -6,21 +6,21 @@
   <%= form_for(@user, url: {controller: 'dashboards', action: 'update_profile'}, method: :patch, html: {multipart: true}) do |f| %>
     <%= render 'shared/errors', obj: @user %>
     <div class="form-group">
-      <%= f.label :first_name, 'First Name' %>
+      <%= f.label :first_name, 'Fornavn' %>
       <%= f.text_field :first_name, class: "form-control" %>
     </div>
     <div class="form-group">
-      <%= f.label :last_name, 'Last Name' %>
+      <%= f.label :last_name, 'Etternavn' %>
       <%= f.text_field :last_name, class: "form-control" %>
     </div>
    
     <div class="form-group">
-      <%= f.label :phone, 'Phone Number' %>
+      <%= f.label :phone, 'Mobilnummer' %>
       <%= f.text_field :phone, class: "form-control" %>
     </div>
     
     <div class="form-group">
-      <%= f.label :street_addr, 'Gate adress' %>
+      <%= f.label :street_addr, 'Gateadresse' %>
       <%= f.text_field :street_addr, class: "form-control", placeholder: "eg Grytingstien 2, 4041" %>
     </div>
     <div class="form-group">
