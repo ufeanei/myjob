@@ -5,22 +5,22 @@
         <h2>Dashboard</h2>
         <hr/>
         <div class=''>          
-          <h4><%= link_to 'My Jobs', my_jobs_dashboard_path %></h4>
-          <h4><%= link_to 'My Applications', my_applications_dashboard_path %></h4>
-          <h4><%= link_to 'My Jobs won', jobs_won_dashboard_path %></h4>
-          <h4><%= link_to 'My Reviews', user_path(current_user) %></h4> 
+          <h4><%= link_to 'Mine annonser', my_jobs_dashboard_path %></h4>
+          <h4><%= link_to 'Mine søknader', my_applications_dashboard_path %></h4>
+          <h4><%= link_to 'Invitasjoner fra jobb eiere', jobs_won_dashboard_path %></h4>
+          <h4><%= link_to 'Mine vurderinger', user_path(current_user) %></h4> 
           <%= link_to rate_your_helpers_dashboard_path do %>
             <% if @applications_without_reviews.size == 0 %> 
-            <h4> Rate your helpers</h4>
+            <h4> Hjelpere venter på dine vurderinger</h4>
             <% else %>   
-            <h4> Rate your helpers <sup>(<%= @applications_without_reviews.size %>)</sup></h4> 
+            <h4> Hjelpere venter på dine vurderinger<sup>(<%= @applications_without_reviews.size %>)</sup></h4> 
             <% end %>          
           <% end %>         
-          <h4>Account Settings</h4>
+          <h4>Min Konto</h4>
           <ul>
-            <li ><%= link_to 'My profile', my_profile_dashboard_path %></li>
-            <li ><%= link_to 'Edit Profile', edit_profile_dashboard_path %></li>
-            <li><%= link_to 'Change Password', new_password_dashboard_path  %></li>
+            <li ><%= link_to 'Min Profil', my_profile_dashboard_path %></li>
+            <li ><%= link_to 'Rediger Profil', edit_profile_dashboard_path %></li>
+            <li><%= link_to 'Endre Passord', new_password_dashboard_path  %></li>
           </ul>   
         </div> 
       </aside>

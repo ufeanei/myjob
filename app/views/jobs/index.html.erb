@@ -5,7 +5,7 @@
     <div class='row'>
       <div class="toppanel">
         <div class="col-md-6 col-xs-6">
-          <h5><strong id="total-jobs"><%= @total  %></strong> Jobs display</h5>
+          <h5><strong id="total-jobs"><%= @total  %></strong> Jobber funnet</h5>
         </div>
       </div><!--end of top panel-->
 
@@ -32,7 +32,7 @@
         <div class="jobs-list">
           <%= render 'index_page_jobs_list' %>
         </div>
-        <div class="pagin pagin-down">
+        <div class="pagin pagin-down text-center">
            <%= will_paginate @jobs, renderer: BootstrapPagination::Rails, previous_label: '<', next_label:'>' %>
         </div>
       </div> <!-- end of middle section code -->
@@ -41,16 +41,16 @@
         <br>
         <br>
         <div>
-          <h3>Drivers</h3>
-          <p>Har du varebil, kassebil, pickup?
-              You can make extra money by transporting load for someone in your locality</p>
-          <p><%= link_to 'Become a driver.Click here', become_driver_path %></p>
+          <h3>Hjelpere</h3>
+          <p>Har du varebil, kassebil, pickup etc?
+             <br>Hjelpe noen og tjene ekstra penger</p>
+          <h4><%= link_to 'Bli en hjelper.Klikk her', become_driver_path %></h4>
         </div>
         <div>
           <h3>Kunde</h3>
-          <p>Are you moving out, or you bought something from the shop or online and you want it transported to your house?
-              For all your moving problems just post your shipment  and select a driver to transport it.</p>
-          <p><%= link_to 'Post your add here', new_job_path %></p>
+          <p>Trenger du hjelp til å flytte, frakte eller transport noe?
+              Sett in annonse og velg din hjelper.</p>
+          <h4><%= link_to 'Sett inn annonse', new_job_path %></h4>
 
            <br/>
            <br/>

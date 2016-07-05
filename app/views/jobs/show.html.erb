@@ -12,48 +12,61 @@
         <div>
           <%= image_tag(@job.image_url(:trial), class: 'img-responsive cover-image') if @job.image %>
         </div>
-        <h3>Description</h3>
+        <h3>Beskrivelse</h3>
         <p><%= @job.description %> </p>
         <br/>
-        <h3>Directions</h3>
+        <h3>Retninger</h3>
         <p><%= @job.street_addr %> <strong>  To  </strong> <%= @job.destination_addr%> </p>   
          <div id="map-canvas"></div>
 
-        <p class="row col-md-12 col-xs-12"><em>Modified: <%= display_datetime(@job.updated_at)%> </em></p>        
+        <p class="row col-md-12 col-xs-12"><em>Sist endret: <%= display_datetime(@job.updated_at)%> </em></p>        
       </div>
 
       <div class="side-info col-md-4 col-sm-5 col-xs-12 "> 
         <div class="apply-section well">
-          <h3 class="text-center">Pris: <strong>1120kr</strong></h3>
+          <h3 class="text-center">Betaling: <strong>1120kr</strong></h3>
           <br/>
-          <ul>
+          <ul class='contain'> <!-- contain class has styles  overflow:auto -->
             <li class="col-md-12 col-xs-12">
               <div class="row">
                 <div class="col-md-5 col-xs-5">Annonsør:</div>
                 <div class="col-md-7 col-xs-5"><%= full_name(@job.user).capitalize %></div>
               </div>
             </li>
-          </ul>
-          <br/> 
-          <% if @job.status == 'active' %>
-            <h4 >status: <strong class="active-status">Job active</strong></h4>
-            <br/>
-            <% if current_user %>
-              <%= link_to 'Apply to help',  job_job_applications_path(job_id: @job.id, user_id: current_user.id ), method: 'post', class: "btn btn-block btn-primary" %>
-            <% else %>
-              <%= link_to 'Apply to help',  job_job_applications_path(job_id: @job.id), method: 'post', class: "btn btn-block btn-primary" %>
+            <% if @job.status == 'active' %>
+              <li class='col-md-12 col-xs-12'>
+                <div class='row'>
+                  <div class="col-md-5 col-xs-5">Annonsestatus:</div>
+                  <div class="col-md-7 col-xs-5"><strong class="active-status">Aktiv</strong></div>
+                </div>
+              </li>
+            <% elsif @job.status == 'inactive' %>
+              <li class='col-md-12 col-xs-12'>
+                <div class='row'>
+                  <div class="col-md-5 col-xs-5">Annonsestatus:</div>
+                  <div class="col-md-7 col-xs-5"><strong class="inactive-status">Inaktiv</strong></div>
+                </div>
+              </li>
+              <p class='inactive-status'>Jobben utført</p>
             <% end %>
-          <% elsif @job.status == 'inactive' %>
-            <h4 >status: <strong class="inactive-status">Inactive</strong></h4>
-            <p class='inactive-status'>Job already awarded</p>
-          <% end %>
+          </ul>
+          <br>
+          <br>
+          <% if @job.status == 'active' %>
+            <% if current_user %>
+              <%= link_to 'Tilby din hjelp',  job_job_applications_path(job_id: @job.id, user_id: current_user.id ), method: 'post', class: "btn btn-block btn-primary" %>
+            <% else %>
+              <%= link_to 'Tilby din hjelp',  job_job_applications_path(job_id: @job.id), method: 'post', class: "btn btn-block btn-primary" %>
+            <% end %>
+          <% end %>          
         </div>
+
         <div class="applicants-div well">
           <% if @job.status == 'active' %>
             <% if @all_applications.empty? %>
-              <p><strong>Ingen hjelpere. Bli den første hjelperen </strong></p>
+              <p><strong id='befirst'>Ingen hjelpere. Være først </strong></p>
             <% else %>
-              <h4 class="text-center"><%= @all_applications.size %> Hjepere</h4>
+              <h4 class="text-center">Hjepere (<%= @all_applications.size %>)</h4>
               <ul> 
                 <div class="row">
                 <% @all_applications.each do |appli| %>

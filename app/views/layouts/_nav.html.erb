@@ -17,8 +17,8 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">       
       <ul class="nav navbar-nav nav-btn">        
-        <li><%= link_to 'Post Your shipment', new_job_path , class: 'btn btn-ship' %></li>
-        <li><%= link_to 'Become a helper', become_driver_path, class: 'btn btn-helper' %></li> 
+        <li><%= link_to 'Sett inn annonse', new_job_path , class: 'btn btn-ship' %></li>
+        <li><%= link_to 'Bli en hjelper', become_driver_path, class: 'btn btn-helper' %></li> 
       </ul>
       <ul class="nav navbar-nav navbar-right navbar-right-links">
         <% if logged_in? %>
@@ -32,9 +32,9 @@
            <li><%= link_to 'Logg ut', logout_path %></li>
 
         <% else %>
-          <li><%= link_to 'Login', login_path %></li>
+          <li><%= link_to 'Logg inn', login_path %></li>
 
-          <li><%= link_to 'Register', new_user_path %></li>
+          <li><%= link_to 'Registrer deg', new_user_path %></li>
         <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->

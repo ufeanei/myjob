@@ -230,17 +230,18 @@ main li {
   margin-top: 10px;
   margin-left: 10px;
 }
-@media (min-width: 1200px) {
+@media (min-width: 1500px) {
   .cases {
     height: 270px;
   }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1450px) {
   .cases {
-    height: 250px;
+    height: 240px;
   }
 }
+
 
 
 
