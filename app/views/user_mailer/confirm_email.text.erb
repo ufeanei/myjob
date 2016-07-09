@@ -1,8 +1,11 @@
   Hi <%= @user.first_name %> 
  
-Welcome to Frakt! Click on the link below to confirm your email and activate your account
+Velkommen til frakt! 
+For å kunne logge inn på kontoen din må du først aktivere den ved å trykke på den følgende lenken
 
 <%= confirm_url(token: @user.confirmation_token, email: @user.email) %>
 
+
+MVH
 Kundesupport
 Frakt

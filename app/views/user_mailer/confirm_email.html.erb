@@ -1,9 +1,9 @@
 <h1>Frakt</h1>
-<p> Hi <%= @user.first_name %>, </p>
+<p> Hei <%= @user.first_name %>, </p>
 <p>
-  welcome to Frakt! Click on the link below to confirm your email and activate your account
+  Velkommen til frakt! <br>For å kunne logge inn på kontoen din må du først aktivere den ved å trykke på den følgende lenken
 </p>
-<%= link_to "Activate", confirm_url(token: @user.confirmation_token, email: @user.email) %>
+<%= confirm_url(token: @user.confirmation_token, email: @user.email) %>
 
-<P>Thank you</P>
+<P>MVH</P>
 <P> Kundesupport </p>
