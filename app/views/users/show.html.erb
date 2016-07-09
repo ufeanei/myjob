@@ -15,16 +15,15 @@
           <div class="col-md-6">
             <h4><%= @user.first_name.capitalize %></h4>
             <h4><%= @user.kommune.name if @user.kommune %></h4>
-            <h2>Average rating</h2>
             <div class='average-review-rating' data-score=<%= @average_review %>></div>
-            <p> <%= @total  %> reviews</p>
+            <p> <%= @total  %> Omtaler</p>
           </div>
           <div class="col-md-3 text-center">
-            <h4>Jobs Completed</h4>
+            <h4>Jobber fullført</h4>
             <h4> <strong><%= @total_invitations %></strong> </h4>
           </div>
           <div class="col-md-12">
-            <h3 class="text-center">About me</h3>
+            <h3 class="text-center">Om meg</h3>
             <p><%= @user.user_self_description %></p>
           </div>
         </div>
@@ -32,7 +31,7 @@
     </div > <!-- end of about me here -->
 
     <div class="job-review-segment">
-      <h3 class="text-center"> My Reviews</h3>
+      <h3 class="text-center">Omtaler</h3>
       <% @appli_won.each do |appl| %>
         <div>
           <h3><%= link_to "#{appl.job.title.capitalize}", job_path(appl.job), id: "#{appl.id}" %></h3> 
@@ -47,7 +46,7 @@
                 </div>
                 <div class= "col-md-10 col-xs-9 review">                 
                   <strong><%= appl.job.user.first_name %></strong>                   
-                   (Jobeier)                  
+                   (Jobbeier)                  
                   <br>
                   <em><%= review.comment.capitalize %></em> 
                  <div class='star-rating' data-score= <%= review.rating %> > </div> 

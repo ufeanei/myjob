@@ -32,7 +32,7 @@ before_action :helper_ratings # this is too track the helpers needing reviews as
     @kommunes = Kommune.all
     @user = User.find_by(id: current_user.id) 
     if @user.update_attributes(user_edit_params)
-      flash[:success] = "Profile succesfully updated"
+      flash[:success] = "Profil oppdatert"
       redirect_to dashboard_path
     else
       render 'edit_profile'
@@ -45,14 +45,14 @@ before_action :helper_ratings # this is too track the helpers needing reviews as
 
   def change_password
     @user = User.find_by(id: current_user.id) 
-    if !@user.authenticated?(:password, params[:old_password])      
-      flash[:danger] = 'Incorrect old password'
+    if !@user.authenticated?(:password, params[:gammelt_passord])      
+      flash[:danger] = 'Feil gammelt passord'
       render 'new_password'     
     elsif @user.update_attributes(user_params)
-     flash[:success] = "Password succesfully changed."
+     flash[:success] = "Passordet er endret."
      redirect_to dashboard_path
     else
-      flash[:danger] = 'Passwords do not match'
+      flash[:danger] = 'Passordene samsvarer ikke'
       render 'new_password'
     end
   end

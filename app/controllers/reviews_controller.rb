@@ -11,14 +11,14 @@ class ReviewsController < ApplicationController
     @review.user =  @application.user #Jobowner review  belongs to the helper
 
     if @review.save
-      flash[:success] = "Your comment was added"      
+      flash[:success] = "Tusen takk!"      
       UserMailer.delay(queue: 'immediate', priority: 0).review_added(@application) # send email to helper as background job
       redirect_to rate_your_helpers_dashboard_path
     else
-      flash[:danger] = "Star rating and comment must not be empty"
-    @my_jobs_ids = Job.where(user_id: current_user).ids
-    @applications_without_reviews = JobApplication.where(awarded: true, job_id: @my_jobs_ids).select {|x| x.reviews.empty?}
-    render 'dashboards/rate_your_helpers'
+      flash[:danger] = " Vennligst, Du må skrive en anmeldelse og gi minst en stjerne"
+      @my_jobs_ids = Job.where(user_id: current_user).ids
+      @applications_without_reviews = JobApplication.where(awarded: true, job_id: @my_jobs_ids).select {|x| x.reviews.empty?}
+      render 'dashboards/rate_your_helpers'
     end
   end
 end

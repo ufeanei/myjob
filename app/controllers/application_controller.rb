@@ -5,8 +5,8 @@ class ApplicationController < ActionController::Base
   helper_method :current_user, :logged_in?
 
 def helper_ratings
-   @my_jobs_ids = Job.where(user_id: current_user).ids
-    @applications_without_reviews = JobApplication.where(awarded: true, job_id: @my_jobs_ids).select {|x| x.reviews.empty?}
+  @my_jobs_ids = Job.where(user_id: current_user).ids
+  @applications_without_reviews = JobApplication.where(awarded: true, job_id: @my_jobs_ids).select {|x| x.reviews.empty?}
 end
 
 
@@ -50,7 +50,7 @@ end
 
   def require_user
     if !logged_in?
-      flash[:info] = "Please first login"
+      flash[:info] = "Vennligst logg inn først"
       redirect_to :back
     end
   end

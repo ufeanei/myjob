@@ -3,37 +3,37 @@
   <div class="row well new-user-wrapper col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-xs-12 ">  
     <div class="col-md-6 col-xs-12 infos hidden-xs">
       <br/>
-      <p>Please create your new account.</p>
+      <p>OPPRET NY KONTO</p>
       <ul>
-        <li><p>To post your job</p></li>
-        <li><p>To be a hjelper</p></li>
+        <li><p>Å legge inn annonse</p></li>
+        <li><p>Å være en Hjelper</p></li>
       </ul>
      <%= image_tag('pages/front.jpg', class: "img-responsive hidden-xs") %> 
     </div>
     <div class="col-md-6 registerform col-xs-12" novalidate>
-      <h3 class="text-center title">CREATE YOUR ACCOUNT</h3>
+      <h3 class="text-center title">OPPRET KONTO</h3>
       <%= form_for @user do |f| %>
        <%= render 'shared/errors', obj: @user %>
         <div class="form-group">
-          <%= f.label :first_name, 'Forst Navn' %>
+          <%= f.label :first_name, 'Fornavn' %>
           <%= f.text_field :first_name, class: "form-control" %>
         </div>
         <div class="form-group">
-          <%= f.label :last_name %>
+          <%= f.label :last_name, 'Etternavn' %>
           <%= f.text_field :last_name, class: "form-control" %>
         </div>
          <input type="text" style="display:none"> <!-- hidden inputs added to cancel autocomplete for email and password-->
          <input type="password" style="display:none">
         <div class="form-group">
-          <%= f.label :email, 'Email address' %>
+          <%= f.label :email, 'E-post' %>
           <%= f.text_field :email, class: "form-control" %>
         </div>
         <div class="form-group">
-          <%=f.label :password %>
+          <%=f.label :password, 'Passord' %>
           <%= f.password_field :password, class: "form-control", placeholder: 'passord' %>
         </div> 
         <div class="form-group">
-          <%=f.label :password_confirmation %>
+          <%=f.label :password_confirmation, 'Bekreft passord' %>
           <%= f.password_field :password_confirmation, class: "form-control", placeholder: 'passord' %>
         </div> 
         <div class="form-group">
@@ -42,11 +42,11 @@
         </div>    
         <br/>
         <div class="form-group">
-          <%= f.check_box :terms %> I agree <%= link_to 'Terms of Service', service_path %> and <%= link_to 'Privacy statment', privacy_path %>      
+          <%= f.check_box :terms %> Jeg godtar <%= link_to 'Vilkårene', service_path %> og <%= link_to 'Personvernpolicy/cookies', privacy_path %>      
         </div>
-        <%= f.submit "Register", class: "btn btn-default btn-block register-button" %> 
+        <%= f.submit "Oppret Konto", class: "btn btn-default btn-block register-button" %> 
         <hr class="hr-new-user"/>
-        <h4 class="text-center">Are you a member already? <%= link_to 'Login', login_path %></h4>
+        <h4 class="text-center">Allerede registrert hos oss? <%= link_to 'Logg inn', login_path %></h4>
       <% end %>
     </div>
   </div>

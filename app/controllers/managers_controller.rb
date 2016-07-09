@@ -33,7 +33,7 @@ class ManagersController < ApplicationController
 
   def require_admin
     if !current_user.admin?
-      flash[:info] = 'You cannot do that'
+      flash[:info] = 'Du kan ikke gjøre det'
       redirect_to jobs_path
     end
   end

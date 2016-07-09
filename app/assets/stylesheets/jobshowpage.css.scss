@@ -58,11 +58,18 @@
   padding-left: 10px;
   padding-right: 5px;
 }
-#map-canvas {
-      height: 300px;
-      width: 100%;
-    }
 
-    #befirst {
-    color: #993300;
-    }
+#map-canvas {
+  height: 300px;
+  width: 100%;
+}
+
+#befirst {
+  color: #993300;
+}
+
+.apply-btn {
+  font-size: 18px;
+  font-weight: 600;
+
+}

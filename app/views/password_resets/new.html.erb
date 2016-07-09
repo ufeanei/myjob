@@ -3,14 +3,14 @@
 <% @page_title = 'Frakt -Tilbakestill passord'%>
 <div class="contain ">
   <div class="col-md-4 col-md-offset-4 well form-wrap">
-    <h2 class="text-center">Forgot Password</h2>
-    <p>Please enter your email and we will send you a link to reset your password</p>
+    <h2 class="text-center">Glemt ditt?</h2>
+    <h4> Vi sender deg en e-post med instruksjoner om hvordan du tilbakestiller passordet ditt.</h4>
     <%= form_tag password_resets_path method: :post  do |f| %>
     <div class="form-group">
-      <%= label_tag :email, 'Enter your email address' %>
+      <%= label_tag :email, 'Skriv inn din epostadresse' %>
       <%= text_field_tag :email, nil, class: 'form-control'%>
     </div>
-    <%= submit_tag "Send", class: "btn btn-primary btn-block" %>
+    <%= submit_tag "Tilbakestill passord", class: "btn btn-primary btn-block" %>
     <% end %>
   </div>
 </div>

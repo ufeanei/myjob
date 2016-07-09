@@ -1,13 +1,13 @@
 <% @page_title = 'Frakt-Min Side' %>
 
 <%= render 'part1' %>
-<h3 class="text-center"><strong>My Jobs</strong></h3>
+<h3 class="text-center"><strong>Mine annonser</strong></h3>
 <% if @my_jobs.empty? %>
-  <h3>You have not posted any jobs</h3>
+  <h3>Du har ikke lagt inn noen jobb</h3>
 <% else %>
   <% @my_jobs.each do |job| %>
     <div class="job-wrap">
-      <div >
+      <div>
         <div class="row job-section">
         	<div class="col-md-3 col-sm-3 col-xs-10">
             <% if job.image? %>
@@ -19,25 +19,24 @@
           <div class="col-md-5 col-sm-6 col-xs-12">
             <p> <%= link_to "#{job.title.capitalize}", job_path(job) %></p>
             <br>
-            <p> views: <strong><%= job.views %> </strong></p>
+            <p> Visninger: <strong><%= job.views %> </strong></p>
             <% if job.status == 'inactive' %>
-              <p class='inactive-status'>Job inactive. Hjelper invitert</p>
-              <%= link_to 'Activate', activate_job_job_path(job), method: :patch, class: 'btn btn-info pull-right edit-btn' %> 
+              <p class='inactive-status'>Jobb inaktiv. Helper har blitt invitert</p>
+              <%= link_to 'Aktiver', activate_job_job_path(job), method: :patch, class: 'btn btn-info pull-right edit-btn' %> 
               <% else %>
-            <%= link_to 'Endre', edit_job_path(job), class: "pull-left edit-btn" %> 
+            <%= link_to 'Rediger jobb', edit_job_path(job), class: "pull-left edit-btn" %> 
 
             <% end %>
           </div>
         </div>
       </div>
       <div class="applicants-list">
-        <h2 class="text-center">Applicants</h2>
-        <h4>The following have applied to help you. </h4>
-        <h4>Click on helper's name to view his profile then invite any of them to help you </h4>
-        <h4> The financial transaction is between you and your helper and pay only after job is done</h4>
+        <h2 class="text-center">Hjelpere</h2>
+        <h4 class='grey-text'>Hjelperne nedenfor har tilbudt å hjelpe deg</h4>
+        <h4 class='grey-text'>Klikk på helper navn for å vise sin profil før du inviterer hjelperen for å hjelpe deg</h4>
         <br>
         <%if job.job_applications.empty? %>
-          <h4> No applicants yet for this job</h4>
+          <h4> Ingen hjelper ennå</h4>
         <% else %>
           <table class="table table-hover ">
             <% @applications.each do |x| %>

@@ -12,10 +12,9 @@ class UsersController < ApplicationController
     @user= User.new(user_params)
     if @user.save
       UserMailer.confirm_email(@user).deliver
-      flash[:success]= "Signup succesfull. Please check your email to confirmed your account"
+      flash[:success]= "Vellykket registrering. En aktiveringsepost har blitt sendt på epost"
       redirect_to jobs_path
     else
-      flash[:danger] = "Account not created"
       render :new
     end
   end

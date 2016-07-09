@@ -90,7 +90,7 @@ class User < ActiveRecord::Base
 
     def image_size
     if image.size > 2.megabytes
-      errors.add(:image, "should be less than 2MB")
+      errors.add(:image, "må være mindre enn 2 MB.")
     end
   end
 end

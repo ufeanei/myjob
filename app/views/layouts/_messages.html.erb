@@ -1,8 +1,9 @@
-<div class="container" >
-  <% flash.each do |key, msg| %>
-  <div class=" alert alert-<%= key %>">
-    <a class="close" data-dismiss='alert'> &#215;</a>
-    <%= content_tag :div, msg %>
+  <div class="container message-div" >
+    <% flash.each do |key, msg| %>
+    <div class=" alert alert-<%= key %>">
+      <a class="close" data-dismiss='alert'> &#215;</a>
+      <%= content_tag :div, msg %>
+    </div>
+    <% end %>
   </div>
-  <% end %>
-</div>
+ 

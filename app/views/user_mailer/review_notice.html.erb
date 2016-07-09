@@ -1,14 +1,16 @@
 <h1>Frakt</h1>
 
-<p> Hi <%= @user.first_name.capitalize %>, </p>
+<p> Hei <%= @user.first_name.capitalize %>, </p>
 <p>
-  We are pleased to see that you selected the helper <%= @application.user.first_name.capitalize %> for your job <br>
- <em> <strong><%=@application.job.title.capitalize %> </strong></em><br>
+  Gratulerer! Du valgte <%= @application.user.first_name.capitalize %> som hjelper for din jobb <br>
+ <em> <strong><%=link_to "#{@application.job.title.capitalize}", job_url(@application.job) %> </strong></em><br>
   <br>
-  Are you satisfied with the helper? what are your opinions on his help<br>
-  Click the link below to review <%= @application.user.first_name.capitalize %><br>
-<%= link_to "#{user_url(@application.user)}", user_url(@application.user, anchor: "#{@application.id}") %>
-   
+  Er du fornøyd med sitt arbeid?<br>
+  Vennligst logg inn på Frakt kontoen din på <%= link_to "#{root_url}", root_url %> and Klikk på 'Min Konto'.<br>
+  Til venstre, klikk på <strong>'Hjelpere venter på dine vurderinger'</strong> og skrive en omtale<br>
+
+  <br>
+  Det tar bare 15-20 sekunder  
 </p>
 
 

@@ -11,10 +11,10 @@ def create
    if @user
     @user.create_reset_digest
     UserMailer.delay.reset_password(@user, @user.reset_token)
-    flash[:info] = "Please check your email for password reset instructions"
+    flash[:info] = "En melding med instruksjoner om hvordan du tilbakestiller passordet ditt har blitt sendt til deg via e-post."
     redirect_to jobs_path
   else
-    flash.now[:danger] = "Email address not found"
+    flash.now[:danger] = "Epostaddressen er ugyldig"
     render :new
   end
 end
@@ -28,11 +28,11 @@ def update
  # see before action for missing code
  
   if params[:user][:password].empty?
-    @user.errors.add(:password, "can't be empty")
+    @user.errors.add(:password, "Må fylles ut")
     render :edit
   elsif @user.update_attributes(user_params)
     session[:user_id] = @user.id
-    flash[:success] = "Password has been reset."
+    flash[:success] = "Tilbakestilling av passordet var vellykket."
     redirect_to jobs_path
   else
     render :edit
@@ -53,7 +53,7 @@ private
   # Confirms a valid user.
   def valid_user
     unless (@user && @user.confirmed? && @user.authenticated?(:reset, params[:id]))
-      flash[:danger] = "Please you must first register and activate your account"
+      flash[:danger] = "E-post har ikke blitt aktivert enda"
       redirect_to jobs_path
     end
   end
@@ -61,7 +61,7 @@ private
   # Checks expiration of reset token.
   def check_expiration
     if @user.password_reset_expired?
-      flash[:danger] = "Password reset has expired."
+      flash[:danger] = "Tilbakestillingsnøkkelen er utgått."
       redirect_to new_password_reset_url
     end
   end

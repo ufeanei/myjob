@@ -1,22 +1,22 @@
 <%= render 'dashboards/part1' %>
 <% if @applications_without_reviews.empty? %>
-  <h4> You have rated all your helpers</h4>
+  <h4>Ingen hjelper venter på din vurdering</h4>
 <% else %>
 <ul>
   <% @applications_without_reviews.each do |appl| %>
   <li>
-  <h4>Job title :<%= link_to "#{appl.job.title.capitalize}", job_path(appl.job)%></h4>  
-  <h4> Helper : <%= appl.user.first_name.capitalize %></h4>  
-  <p>Please tell us how you feel about <%=link_to "#{appl.user.first_name.capitalize}" , user_path(appl.user) %>'s help</p>
+  <h4>Annonsetittelen :<%= link_to "#{appl.job.title.capitalize}", job_path(appl.job)%></h4>  
+  <h4> Hjelper : <%= appl.user.first_name.capitalize %></h4>  
+  <p>Vennligst fortell oss om <%=link_to "#{appl.user.first_name.capitalize}" , user_path(appl.user) %> hjelp</p>
       <%= form_for [ appl.job, appl, @review ] do |f| %>
         <div class="rating-form">
-          <%= f.label :rating %>
+          <%= f.label :rating, 'Velg antall stjerner' %>
         </div>                    
         <div class = "form-group">              
-          <%= f.label :comment %>
+          <%= f.label :comment, 'Anmeldelsen din' %>
           <%= f.text_area :comment, class: "form-control" %>        
         </div>
-        <%= f.submit "Post", class: "btn edit-btn" %>
+        <%= f.submit "Send inn", class: "btn edit-btn" %>
       <% end %>
     </li>
     <br>

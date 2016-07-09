@@ -31,7 +31,7 @@ class JobsController < ApplicationController
     @job.status = 'active' # should have been default value but i forgot
     
     if @job.save
-      flash[:success] = 'Your job has been created'
+      flash[:success] = 'Annonse lagt inn'
       redirect_to jobs_path
     else
       render :new
@@ -43,7 +43,7 @@ class JobsController < ApplicationController
 
   def update
     if @job.update(job_params)
-      flash[:success] = "Your job has been update"
+      flash[:success] = "Annonse oppdatert"
       redirect_to dashboard_path
     else
       render :edit
@@ -58,14 +58,14 @@ class JobsController < ApplicationController
 
   def destroy
     if @job.destroy
-      flash[:info] = 'Job deleted'
+      flash[:info] = 'Annonse slettet'
       redirect_to :back
     end
   end
 
   def activate_job
     if @job.update_attribute(:status, 'active')
-      flash[:info] = 'Job activation successful'
+      flash[:info] = 'Annonse aktivert'
       if current_user.admin?
         redirect_to all_jobs_manager_path
       else
@@ -98,7 +98,7 @@ class JobsController < ApplicationController
 
   def require_job_owner_or_admin
     if (@job.user != current_user) && (current_user.admin == false)# Only the jobowner can perform job edit and update .Demorgan's law used here
-      flash[:danger] = "You can't do that"
+      flash[:danger] = "Du kan ikke gjøre det"
       redirect_to jobs_path 
     end
  end

@@ -16,7 +16,7 @@
           <%= f.text_area :description, row: 15, class: "form-control" %>
         </div>      
         <div class="form-group">
-          <%= f.label :payment, 'Pris'%><span class="red-star">*</span>
+          <%= f.label :payment, 'Betaling'%><span class="red-star">*</span>
           <%= f.text_field :payment, class: "form-control" %>
         </div>
 
@@ -27,11 +27,11 @@
           <%= image_tag(@job.image_url(:thumb)) if @job.image? %>
         </div>
         <br>
-        Items to be transported:
+        Retninger
         <div class="row">        
           <div class="form-group col-md-6"> 
             <%= f.label "Fra:" %><span class="red-star">*</span>         
-            <%= f.text_field :street_addr,  placeholder: "Gateaddress eks. storgata 20A", class: "form-control" %> 
+            <%= f.text_field :street_addr,  placeholder: "Gateadresse eks. storgata 20A", class: "form-control" %> 
             
             <%= f.collection_select :fylke_id, @fylkes, :id, :name, {prompt: "Velg Fylke"}, {class:"form-control addr-field"} %>  
             <%= f.grouped_collection_select :kommune_id, @fylkes, :kommunes, :name, :id, :name, {}, {class:"form-control addr-field"} %>                          
@@ -39,22 +39,22 @@
 
           <div class="form-group col-md-6"> 
             <%= f.label "Til:" %><span class="red-star">*</span>         
-            <%= f.text_field :destination_addr, placeholder: "Gate address", class: "form-control addr-field" %>
+            <%= f.text_field :destination_addr, placeholder: "adresse", class: "form-control addr-field" %>
           </div>
         </div>
         <br>
          
         <div class="row">
          <div class="form-group col-md-4">
-            <%= f.label :contact_number, "Contact Number" %>           
+            <%= f.label :contact_number, "Mobilnummer" %>           
             <%= f.text_field :contact_number, class: "form-control" %>                    
          </div>
          <div class="col-md-8"></div>
         </div>
         <div class="form-group">
-          <%= f.check_box :terms_of_service %> <span>I agree <%= link_to 'Terms of Service', service_path %> and <%= link_to 'Privacy statment', privacy_path %> </span><span class="red-star">*</span> 
+          <%= f.check_box :terms_of_service %> <span>Jeg godtar <%= link_to 'Vilkårene', service_path %> og <%= link_to 'Personvernpolicy/cookies', privacy_path %> </span><span class="red-star">*</span> 
         </div>
-        <%= f.submit "Post your job", class: "btn btn-lg btn-primary" %>
+        <%= f.submit "Sett inn annonse", class: "btn btn-lg btn-primary" %>
       <% end %>
     </div>
   </div>

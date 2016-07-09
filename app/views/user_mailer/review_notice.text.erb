@@ -1,12 +1,16 @@
 
 Hi <%= @user.first_name.capitalize %>,
 
-We are pleased to see that you selected the helper <%= @application.user.first_name.capitalize %> for your job 
+Gratulerer! Du valgte <%= @application.user.first_name.capitalize %> som hjelper for din jobb
 <%=link_to "#{@application.job.title.capitalize}", job_url(@application.job.id) %>
-Are you satisfied with the helper? What are your opinions on his help?
+ Er du fornøyd med sitt arbeid?
 
-Click the link below to review <%= @application.user.first_name.capitalize %>
-<%= link_to "#{user_url(@application.user)}", user_url(@application.user, anchor: "#{@application.id}") %>
-   
+Vennligst logg inn på Frakt kontoen din på <%= link_to "#{root_url}", root_url %> and Klikk på 'Min Konto'
+Til venstre, klikk på  'Hjelpere venter på dine vurderinger' og skrive en omtale  
+
+Det tar bare 15-20 sekunder
+
+Tusen Takk! 
+
 MVH
 Frakt Kundesupport 
