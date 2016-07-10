@@ -18,7 +18,7 @@ class UserMailer < ActionMailer::Base
   def invited_notice(application)
     @user = application.user 
     @application = application
-    mail(to: application.user.email, subject: "Jobbeier har invitert deg til å hjelpe")
+    mail(to: application.user.email, subject: "Jobbeier har invitert deg")
   end
 
 # send review notice to jobowner. Here @user is the jobowner

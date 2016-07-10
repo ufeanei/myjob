@@ -1,14 +1,20 @@
-Hei,
+Hei <%= @user.first_name %>,
 
-The jobowner of the job <%= link_to "#{@application.job.title}", job_url(@application.job) %> has invited you
-Please contact the jobowner immediately 
-To get his contact details, log on to your <%= link_to 'Frakt', root_url %> account and click on 'My Job Won'
 
-We wish you a happy cooperation together.
-Please note that all financial transaction is between you and the jobowner
+  Jobbeier av jobb <%= link_to "#{@application.job.title}", job_url(@application.job) %> har inviterer deg
+  
+  Ta kontakt med jobbeier umiddelbart
+  Logg på <%= link_to 'Frakt', root_url %>-kontoen din og klikk på 'Invitasjoner fra jobb eiere' å få jobb eieren kontaktinformasjon
+  
+  Jobben eieren vil betale deg direkte etter jobben er utført
+  
+  Vi ønsker deg en lykkelig samarbeid med jobbeier
+  
+
 
 MVH
-Kunderservice, Frakt
+Kunderservice, 
+Frakt
 
 
 

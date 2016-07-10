@@ -3,7 +3,7 @@ Hi <%= @user.first_name.capitalize %>,
 
 Gratulerer! Du valgte <%= @application.user.first_name.capitalize %> som hjelper for din jobb
 <%=link_to "#{@application.job.title.capitalize}", job_url(@application.job.id) %>
- Er du fornøyd med sitt arbeid?
+Er du fornøyd med sitt arbeid?
 
 Vennligst logg inn på Frakt kontoen din på <%= link_to "#{root_url}", root_url %> and Klikk på 'Min Konto'
 Til venstre, klikk på  'Hjelpere venter på dine vurderinger' og skrive en omtale  
