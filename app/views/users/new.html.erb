@@ -13,6 +13,9 @@
     <div class="col-md-6 registerform col-xs-12" novalidate>
       <h3 class="text-center title">OPPRET KONTO</h3>
       <%= form_for @user do |f| %>
+        <% if @user.errors.any? %>
+          <div class="alert alert-danger">Obs! Vennligst rett feilene under:</div>
+        <% end %>
         <div class="form-group">
           <%= f.label :first_name, 'Fornavn' %>
           <%= f.text_field :first_name, class: "form-control" %>

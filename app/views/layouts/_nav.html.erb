@@ -22,19 +22,19 @@
       </ul>
       <ul class="nav navbar-nav navbar-right navbar-right-links">
         <% if logged_in? %>
-          <li><%= link_to "Hei #{current_user.first_name.capitalize }", dashboard_path %></li>
-          <li>
+          <li class="nav-item"><%= link_to "Hei #{current_user.first_name.capitalize }", dashboard_path %></li>
+          <li class="nav-item">
             <%= link_to dashboard_path do %>
             Min Konto
             <i class="fa fa-caret-down" aria-hidden="true"></i>
               <%end %>
             </li>
-           <li><%= link_to 'Logg ut', logout_path %></li>
+           <li class="nav-item"><%= link_to 'Logg ut', logout_path %></li>
 
         <% else %>
-          <li><%= link_to 'Logg inn', login_path %></li>
+          <li class="nav-item"><%= link_to 'Logg inn', login_path %></li>
 
-          <li><%= link_to 'Registrer deg', new_user_path %></li>
+          <li class="nav-item"><%= link_to 'Registrer deg', new_user_path %></li>
         <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
