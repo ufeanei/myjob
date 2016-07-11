@@ -3,15 +3,15 @@ class Job < ActiveRecord::Base
 
   mount_uploader :image, PictureUploader
   
-  validates :title,  presence: true, length: {maximum: 90}
-  validates :description, presence: true
-  validates :payment, numericality: true 
-  validates :street_addr, presence: true
-  validates :destination_addr, presence: true
-  validates :contact_number, presence: true
-  validates :kommune_id, presence: true
-  validates :fylke_id, presence: true
-  validates :terms_of_service, acceptance: {accept: "1"}
+  validates :title,  presence: { message: "må fylles ut"}
+  validates :description, presence: { message: "må fylles ut"}
+  validates :payment, numericality: { message: "må fylles ut"} 
+  validates :street_addr, presence: { message: "må fylles ut"}
+  validates :destination_addr, presence: { message: "må fylles ut"}
+  validates :contact_number, presence: { message: "må fylles ut"}
+  validates :kommune_id, presence: { message: "må fylles ut"}
+  validates :fylke_id, presence: { message: "må fylles ut"}
+  validates :terms_of_service, acceptance: {accept: "1", message: 'Du må godta vilkårene og personvernpolicy'}
   validate :image_size
 
   belongs_to :fylke

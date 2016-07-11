@@ -45,11 +45,13 @@
                   <% if x.awarded %>
                     <td><strong><%= link_to "#{full_name(x.user)}", user_path(x.user) %> <i class="fa fa-check" aria-hidden="true"></i></strong> </td>
                     <td> <strong id="invited">Hjelper Invitert</strong></td>  
+                    <td> <%=x.user.phone %> </td>
                   <% else %>
                     <td><strong><%= link_to "#{full_name(x.user)}", user_path(x.user) %></strong></td>
                     <td><%= link_to 'Invite', award_job_job_application_path(job_id: job.id, id: x.id), class: "btn btn-info" %></td>  
-                  <% end %>
                     <td> <%=x.user.kommune.name %> </td>
+                  <% end %>
+                    
                 </tr>
               <% end %>
             <% end %>  

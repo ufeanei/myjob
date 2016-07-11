@@ -10,16 +10,19 @@ class User < ActiveRecord::Base
   has_many :jobs, dependent: :destroy
   has_many :job_applications, dependent: :destroy
   has_many :reviews, dependent: :destroy
-
+  
+  validates :phone,  presence: { message: "må fylles ut"}
   validates :first_name,  presence: { message: "må fylles ut"}
-  validates :last_name,  presence: true, length: { maximum: 50 }
+  validates :last_name,  presence: { message: "må fylles ut"}
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, presence: true, length: { maximum: 255 },
-                    format: { with: VALID_EMAIL_REGEX },
+  validates :email, presence: { message: "må fylles ut"},
+                    format: { with: VALID_EMAIL_REGEX, message: ", Epostaddressen er ugyldig" },
                     uniqueness: { case_sensitive: false }
+
   has_secure_password
-  validates :password, presence: true, on: :create, length: { minimum: 6 }, allow_nil: true
-  validates :terms, acceptance: {accept: "1"}
+
+  validates :password, presence: {message: "må fylles ut"}, on: :create, length: { minimum: 6, message: "Passordet må være minst 6 tegn"}, allow_nil: true
+  validates :terms, acceptance: {accept: "1", message: 'Du må godta vilkårene og personvernpolicy'}
   validate :image_size
   validates :kommune_id, presence: {message: 'må fylles ut'}
 

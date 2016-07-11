@@ -6,18 +6,23 @@
       <br>
 
       <%= form_for(@job, html: {multipart: true}) do |f| %>
+      <% if @job.errors.any? %>
+        <div class="alert alert-danger">Obs! Vennligst rett feilene under:</div>
+      <% end %>
         <div class="form-group">
-          <%= render 'shared/errors', obj: @job %>
-          <%= f.label :title, 'Jobb titel' %><span class="red-star">*</span>
+          <%= f.label :title, 'Jobb titel' %> 
           <%= f.text_field :title, class: "form-control" %>
+           <span class='error-span'><%= @job.errors[:title][0] if @job.errors[:title] %></span>
         </div>
         <div class="form-group">
-          <%= f.label :description, 'Beskrivelse' %><span class="red-star">*</span>
+          <%= f.label :description, 'Beskrivelse' %> 
           <%= f.text_area :description, row: 15, class: "form-control" %>
+           <span class='error-span'><%= @job.errors[:description][0] if @job.errors[:description] %></span>
         </div>      
         <div class="form-group">
-          <%= f.label :payment, 'Betaling'%><span class="red-star">*</span>
+          <%= f.label :payment, 'Betaling'%> 
           <%= f.text_field :payment, class: "form-control" %>
+           <span class='error-span'><%= @job.errors[:payment][0] if @job.errors[:payment] %></span>
         </div>
 
         <div class="form-group">
@@ -30,29 +35,35 @@
         Retninger
         <div class="row">        
           <div class="form-group col-md-6"> 
-            <%= f.label "Fra:" %><span class="red-star">*</span>         
+            <%= f.label "Fra:" %>          
             <%= f.text_field :street_addr,  placeholder: "Gateadresse eks. storgata 20A", class: "form-control" %> 
+             <span class='error-span'><%= @job.errors[:street_addr][0] if @job.errors[:street_addr] %></span>
             
-            <%= f.collection_select :fylke_id, @fylkes, :id, :name, {prompt: "Velg Fylke"}, {class:"form-control addr-field"} %>  
-            <%= f.grouped_collection_select :kommune_id, @fylkes, :kommunes, :name, :id, :name, {}, {class:"form-control addr-field"} %>                          
+            <%= f.collection_select :fylke_id, @fylkes, :id, :name, {prompt: "Velg Fylke"}, {class:"form-control addr-field"} %> 
+            <span class='error-span'><%= @job.errors[:fylke_id][0] if @job.errors[:fylke_id] %></span> 
+
+            <%= f.grouped_collection_select :kommune_id, @fylkes, :kommunes, :name, :id, :name, {}, {class:"form-control addr-field"} %> 
+            <span class='error-span'><%= @job.errors[:kommune_id][0] if @job.errors[:kommune_id] %></span>                         
           </div>
 
           <div class="form-group col-md-6"> 
-            <%= f.label "Til:" %><span class="red-star">*</span>         
+            <%= f.label "Til:" %>        
             <%= f.text_field :destination_addr, placeholder: "adresse", class: "form-control addr-field" %>
+             <span class='error-span'><%= @job.errors[:destination_addr][0] if @job.errors[:destination_addr] %></span>
           </div>
         </div>
         <br>
-         
         <div class="row">
          <div class="form-group col-md-4">
-            <%= f.label :contact_number, "Mobilnummer" %>           
-            <%= f.text_field :contact_number, class: "form-control" %>                    
+          <%= f.label :contact_number, "Mobilnummer" %>           
+          <%= f.text_field :contact_number, class: "form-control" %> 
+           <span class='error-span'><%= @job.errors[:contact_number][0] if @job.errors[:contact_number] %></span>                   
          </div>
          <div class="col-md-8"></div>
         </div>
         <div class="form-group">
-          <%= f.check_box :terms_of_service %> <span>Jeg godtar <%= link_to 'Vilkårene', service_path %> og <%= link_to 'Personvernpolicy/cookies', privacy_path %> </span><span class="red-star">*</span> 
+          <%= f.check_box :terms_of_service %> <span>Jeg godtar <%= link_to 'Vilkårene', service_path %> og <%= link_to 'Personvernpolicy/cookies', privacy_path %>
+           <span class='error-span'><%= @job.errors[:terms_of_service][0] if @job.errors[:terms_of_service] %></span> 
         </div>
         <%= f.submit "Sett inn annonse", class: "btn btn-lg btn-primary" %>
       <% end %>

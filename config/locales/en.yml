@@ -21,3 +21,16 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    attributes:
+      user:
+        password: "Passord"
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              blank: "må fylles ut"
+            password_confirmation: 
+              blank: ''
+              confirmation: 'Passordene samsvarer ikke'

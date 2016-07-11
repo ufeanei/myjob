@@ -13,36 +13,47 @@
     <div class="col-md-6 registerform col-xs-12" novalidate>
       <h3 class="text-center title">OPPRET KONTO</h3>
       <%= form_for @user do |f| %>
-       <%= render 'shared/errors', obj: @user %>
         <div class="form-group">
           <%= f.label :first_name, 'Fornavn' %>
           <%= f.text_field :first_name, class: "form-control" %>
+          <span class='error-span'><%= @user.errors[:first_name][0] if @user.errors[:first_name] %></span>
         </div>
         <div class="form-group">
           <%= f.label :last_name, 'Etternavn' %>
           <%= f.text_field :last_name, class: "form-control" %>
+          <span class='error-span'><%= @user.errors[:last_name][0] if @user.errors[:last_name] %></span>
         </div>
          <input type="text" style="display:none"> <!-- hidden inputs added to cancel autocomplete for email and password-->
          <input type="password" style="display:none">
         <div class="form-group">
           <%= f.label :email, 'E-post' %>
           <%= f.text_field :email, class: "form-control" %>
+          <span class='error-span'><%= "#{@user.errors[:email][0]} #{@user.errors[:email][1]} " if @user.errors[:email] %></span>
         </div>
         <div class="form-group">
           <%=f.label :password, 'Passord' %>
           <%= f.password_field :password, class: "form-control", placeholder: 'passord' %>
+          <span class='error-span'><%= "#{@user.errors[:password][0]} #{@user.errors[:password][1]}" if @user.errors[:password] %></span>
         </div> 
         <div class="form-group">
           <%=f.label :password_confirmation, 'Bekreft passord' %>
           <%= f.password_field :password_confirmation, class: "form-control", placeholder: 'passord' %>
+          <span class='error-span'><%= "#{@user.errors[:password_confirmation][0]}" if @user.errors[:password_confirmation] %></span>
         </div> 
+        <div class="form-group">
+          <%= f.label :phone, 'Mobilnummer' %>
+          <%= f.text_field :phone, class: "form-control" %>
+          <span class='error-span'><%= @user.errors[:phone][0] if @user.errors[:phone] %></span>
+       </div>
         <div class="form-group">
           <%= f.label 'Kommune' %>
           <%= f.collection_select :kommune_id, @kommunes, :id, :name, {prompt: "Velg Kommune"}, {class:"form-control addr-field"}%> 
+          <span class='error-span'><%= @user.errors[:kommune_id][0] if @user.errors[:kommune_id] %></span>
         </div>    
         <br/>
         <div class="form-group">
-          <%= f.check_box :terms %> Jeg godtar <%= link_to 'Vilkårene', service_path %> og <%= link_to 'Personvernpolicy/cookies', privacy_path %>      
+          <%= f.check_box :terms %> Jeg godtar <%= link_to 'Vilkårene', service_path %> og <%= link_to 'Personvernpolicy/cookies', privacy_path %>
+          <span class='error-span'><%= @user.errors[:terms][0] if @user.errors[:terms] %></span>      
         </div>
         <%= f.submit "Oppret Konto", class: "btn btn-default btn-block register-button" %> 
         <hr class="hr-new-user"/>
