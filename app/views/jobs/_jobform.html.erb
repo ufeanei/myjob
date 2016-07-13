@@ -6,9 +6,9 @@
       <br>
 
       <%= form_for(@job, html: {multipart: true}) do |f| %>
-      <% if @job.errors.any? %>
-        <div class="alert alert-danger">Obs! Vennligst rett feilene under:</div>
-      <% end %>
+        <% if @job.errors.any? %>
+          <div class="alert alert-danger">Obs! Vennligst rett feilene under:</div>
+        <% end %>
         <div class="form-group">
           <%= f.label :title, 'Jobb titel' %> 
           <%= f.text_field :title, class: "form-control" %>
@@ -32,7 +32,7 @@
           <%= image_tag(@job.image_url(:thumb)) if @job.image? %>
         </div>
         <br>
-        Retninger
+        <h4 class='grey-text'>Retninger</h4>
         <div class="row">        
           <div class="form-group col-md-6"> 
             <%= f.label "Fra:" %>          

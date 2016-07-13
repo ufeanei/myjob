@@ -3,8 +3,9 @@
 <div class="correct-row-style"> <!-- this first div is added to correct positioning effects from the bootstrap class="row" styles  --> 
   <div class="row  col-lg-6 col-lg-offset-3 col-md-10 col-sm-10 col-sm-offset-1 col-md-offset-1" id="container">
     <div class="toppanel">
-      <br>
-      <br>
+       
+       <h4><%= link_to 'Alle jobber', jobs_path  %> / jobbdetaljer</h4>
+       
     </div><!--end of toppanel-->
     <div class="wrapper">
       <div class="job-main-details col-sm-7 col-md-8 col-xs-12">
@@ -29,22 +30,22 @@
           <ul class='contain'> <!-- contain class has styles  overflow:auto -->
             <li class="col-md-12 col-xs-12">
               <div class="row">
-                <div class="col-md-5 col-xs-5">Annonsør:</div>
-                <div class="col-md-7 col-xs-5"><%= full_name(@job.user).capitalize %></div>
+                <div class="col-md-6 col-xs-5">Annonsør:</div>
+                <div class="col-md-6 col-xs-5"><%= full_name(@job.user).capitalize %></div>
               </div>
             </li>
             <% if @job.status == 'active' %>
               <li class='col-md-12 col-xs-12'>
                 <div class='row'>
-                  <div class="col-md-5 col-xs-5">Annonsestatus:</div>
-                  <div class="col-md-7 col-xs-5"><strong class="active-status">Aktiv</strong></div>
+                  <div class="col-md-6 col-xs-5">Jobbstatus:</div>
+                  <div class="col-md-6 col-xs-5"><strong class="active-status">Aktiv</strong></div>
                 </div>
               </li>
             <% elsif @job.status == 'inactive' %>
               <li class='col-md-12 col-xs-12'>
                 <div class='row'>
-                  <div class="col-md-5 col-xs-5">Annonsestatus:</div>
-                  <div class="col-md-7 col-xs-5"><strong class="inactive-status">Inaktiv</strong></div>
+                  <div class="col-md-6 col-xs-5">Jobbstatus:</div>
+                  <div class="col-md-6 col-xs-5"><strong class="inactive-status">Inaktiv</strong></div>
                 </div>
               </li>
               <p class='inactive-status'>Jobben utført</p>
