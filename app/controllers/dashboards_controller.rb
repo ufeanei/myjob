@@ -1,7 +1,6 @@
 class DashboardsController < ApplicationController
 before_action :require_user
-before_action :helper_ratings # this is too track the helpers needing reviews as one navigates btw all actions/views of the dashboards
-# before action user is looged in, is current user, has been confirmed
+before_action :helper_ratings # this is to track the number of helpers needing reviews as one navigates btw all actions/views of the dashboard
 # @user in all action is the logged in and current user
   def show
     @kommunes = Kommune.all
@@ -11,16 +10,16 @@ before_action :helper_ratings # this is too track the helpers needing reviews as
   end
 
   def my_applications
-    @my_applications = JobApplication.where(user_id: current_user.id, awarded: false).order(created_at: :desc).paginate(page: params[:page], per_page: 2)
+    @my_applications = JobApplication.where(user_id: current_user.id, awarded: false).order(created_at: :desc).paginate(page: params[:page], per_page: 8)
   end
 
   def my_jobs
-    @my_jobs = Job.where(user_id: current_user.id).order(created_at: :desc).order(created_at: :desc).paginate(page: params[:page], per_page: 2)
+    @my_jobs = Job.where(user_id: current_user.id).order(created_at: :desc).order(created_at: :desc).paginate(page: params[:page], per_page: 4)
     @applications = JobApplication.where(job_id: @my_jobs.ids) # find the applications for all the jobs owned by current_user
   end
 
   def jobs_won
-    @appli_won =  JobApplication.where(user_id: current_user.id, awarded: true).order(created_at: :desc).paginate(page: params[:page], per_page: 2) 
+    @appli_won =  JobApplication.where(user_id: current_user.id, awarded: true).order(created_at: :desc).paginate(page: params[:page], per_page: 8) 
   end
 
   def edit_profile
@@ -61,17 +60,13 @@ before_action :helper_ratings # this is too track the helpers needing reviews as
     @user = User.find_by(id: current_user.id)  
   end
 
-
   def rate_your_helpers
     @review = Review.new
-=begin
-    @my_jobs_ids = Job.where(user_id: current_user).ids
-    @applications_without_reviews = JobApplication.where(awarded: true, job_id: @my_jobs_ids).select {|x| x.reviews.empty?}
-=end
+    #@my_jobs_ids = Job.where(user_id: current_user).ids  #### this commented out info is removed to helper_rating method in the before action ### 
+    #@applications_without_reviews = JobApplication.where(awarded: true, job_id: @my_jobs_ids).select {|x| x.reviews.empty?}
   end
 
   
-
   private
 
   def user_params
