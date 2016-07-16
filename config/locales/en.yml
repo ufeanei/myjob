@@ -32,5 +32,5 @@ en:
             password:
               blank: "må fylles ut"
             password_confirmation: 
-              blank: ''
+              blank: 'må fylles ut'
               confirmation: 'Passordene samsvarer ikke'

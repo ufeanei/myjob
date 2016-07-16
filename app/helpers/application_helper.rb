@@ -20,7 +20,7 @@ module ApplicationHelper
   	.gsub('hour', 'time')
   	.gsub('month', 'måned')
   	.gsub('minutes', 'minutter')
-  	.gsub('less than a', '')
+  	.gsub('less than a', 'mindre enn 1')
   	.gsub('minute', 'minutt')
     .gsub('day', 'dag')
   end
