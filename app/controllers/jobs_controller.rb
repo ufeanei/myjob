@@ -28,6 +28,7 @@ class JobsController < ApplicationController
   def create  
     @job = Job.new(job_params)
     @job.user = current_user
+    @job.category_id = 1
     @job.status = 'active' # should have been default value but i forgot
     
     if @job.save
@@ -80,7 +81,8 @@ class JobsController < ApplicationController
 
 
   def job_params
-    params.require(:job).permit(:title,:description, :payment, :street_addr, :destination_addr, :contact_number, :kommune_id, :fylke_id, :terms_of_service, :image, :image_cache)
+    params.require(:job).permit(:title,:description, :payment, :category_id, :street_addr, :destination_addr, :contact_number, 
+      :kommune_id, :fylke_id, :terms_of_service, :image, :image_cache)
   end
 
   def requested_jobs

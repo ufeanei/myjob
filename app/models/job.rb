@@ -13,7 +13,8 @@ class Job < ActiveRecord::Base
   validates :fylke_id, presence: { message: "må fylles ut"}
   validates :terms_of_service, acceptance: {accept: "1", message: 'Du må godta vilkårene og personvernpolicy'}
   validate :image_size
-
+  
+  belongs_to :category
   belongs_to :fylke
   belongs_to :kommune
   belongs_to :user
