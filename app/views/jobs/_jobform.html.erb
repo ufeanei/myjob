@@ -26,7 +26,7 @@
         </div>
 
         <div class="form-group">
-          <%=f.label :image, 'Last opp bilde' %>
+          <%=f.label :image, 'Last opp bilde (valgfri)' %>
           <%=f.file_field :image %>
           <%= f.hidden_field :image_cache %>
           <%= image_tag(@job.image_url(:thumb)) if @job.image? %>
