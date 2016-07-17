@@ -1,7 +1,7 @@
-<h1>Frakt</h1>
+<h1>Jobbplass</h1>
 <p> Hei <%= @user.first_name %>, </p>
 <p>
-  Velkommen til frakt! <br>For å kunne logge inn på kontoen din må du først aktivere den ved å trykke på den følgende lenken
+  Velkommen til Jobbplass! <br>For å kunne logge inn på kontoen din må du først aktivere den ved å trykke på den følgende lenken
 </p>
 <%= confirm_url(token: @user.confirmation_token, email: @user.email) %>
 
