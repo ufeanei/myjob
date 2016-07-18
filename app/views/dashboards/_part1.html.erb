@@ -7,7 +7,7 @@
         <div class='btn-group-vertical col-md-12'>          
          <%= link_to 'Mine annonser', my_jobs_dashboard_path, class: 'btn btn-default btn block text-left'  %>
           <%= link_to 'Mine søknader', my_applications_dashboard_path, class: 'btn btn-default text-left'  %>
-          <%= link_to 'Invitasjoner fra jobb eiere', jobs_won_dashboard_path, class: 'btn btn-default text-left'  %>
+          <%= link_to 'Invitasjoner fra jobbeiere', jobs_won_dashboard_path, class: 'btn btn-default text-left'  %>
           <%= link_to 'Mine vurderinger', user_path(current_user), class: 'btn btn-default text-left'  %>
 
           <%= link_to rate_your_helpers_dashboard_path , class: 'btn btn-default text-left' do %>
@@ -17,7 +17,7 @@
               Hjelpere venter på dine vurderinger<sup>(<%= @applications_without_reviews.size %>)</sup>
             <% end %>          
           <% end %>         
-          <h4>Min Konto</h4>
+          <h4><strong>Min Konto</strong></h4>
           
           <%= link_to 'Min Profil', my_profile_dashboard_path, class: 'btn btn-default text-left'  %>
           <%= link_to 'Rediger Profil', edit_profile_dashboard_path, class: 'btn btn-default text-left'  %>

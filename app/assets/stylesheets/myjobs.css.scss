@@ -17,7 +17,7 @@
 
 .job-wrap {
 border: 1px solid #aaaaaa;
-padding: 15px;
+padding: 5px;
 background-color: #c0c0c0;
 
 
@@ -58,5 +58,9 @@ sup {
 }
 
 .btn-group-vertical .text-left {
-  text-align: left
+  text-align: left;
+  font-family: arial;
+  font-size: 19px;
+  color: #000066;
+  border: 1px solid #aaa;
 }
