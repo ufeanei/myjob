@@ -44,7 +44,7 @@ class PictureUploader < CarrierWave::Uploader::Base
   #end
 
   version :trial do
-    process resize_and_pad: [580, 400, "#fff", "Center"]
+    process resize_and_pad: [620, 400, "#fff", "Center"]
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
