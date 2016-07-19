@@ -1,6 +1,11 @@
 <% @page_title = 'Sett inn Annonse'%>
 <%= render 'jobform', title: 'Sett inn Annonse' %>
-
+<div class='overlay col-md-12 text-center '>
+  <div>
+    <%= image_tag('pages/spin.gif') %>
+  </div>
+  <p>processing your picture.....</p>
+</div>
 
 
 <script type="text/javascript">
@@ -19,6 +24,21 @@
         options = "<option value=''> Velg Kommune </option>"+ $(all_kommunes).filter(optgroup).html();  // we want the first option to be Velg kommune     
         $('#job_kommune_id').html(options);            
       });
+
+
+
+
+  $(".overlay").hide();
+
+  $(".jobform input[type='submit']").on('click', function(){
+    $(".overlay").show();
+    <% if !@job.errors.any? %>
+     $(".overlay").hide();
+    <% end %>
+  });
+   
+   
+
   })
 
 </script>
