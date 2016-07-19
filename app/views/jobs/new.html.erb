@@ -10,6 +10,7 @@
 
 
 <script type="text/javascript">
+ $(".overlay").hide();
   $(function(){
 
     all_kommunes = $('#job_kommune_id').html(); // give me a list of all kommunes grouped under their fylkes
@@ -29,8 +30,7 @@
 
 
 
-  $(".overlay").hide();
-
+  //$(".overlay").hide();
   $(".jobform input[type='submit']").on('click', function(){
     $(".overlay").show();  
     
