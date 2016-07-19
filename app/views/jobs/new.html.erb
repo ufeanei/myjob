@@ -1,16 +1,18 @@
 <% @page_title = 'Sett inn Annonse'%>
 <%= render 'jobform', title: 'Sett inn Annonse' %>
-<div class='overlay col-md-12 text-center '>
+<div class='overlay col-md-12 text-center hidden'>
   <div class='spin col-md-2 col-md-offset-5'>
+    <p></p>
     <%= image_tag('pages/spin.gif') %>
-    <p>Lagring.....</p>
+    <p>Behandling...</p>
   </div>
   
 </div>
 
 
 <script type="text/javascript">
- $(".overlay").hide();
+ 
+
   $(function(){
 
     all_kommunes = $('#job_kommune_id').html(); // give me a list of all kommunes grouped under their fylkes
@@ -32,7 +34,7 @@
 
   //$(".overlay").hide();
   $(".jobform input[type='submit']").on('click', function(){
-    $(".overlay").show();  
+    $(".overlay").removeClass("hidden"); 
     
   });
    
