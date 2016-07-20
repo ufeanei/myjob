@@ -29,16 +29,10 @@
         $('#job_kommune_id').html(options);            
       });
 
-
-
-
-  //$(".overlay").hide();
-  $(".jobform input[type='submit']").on('click', function(){
-    $(".overlay").removeClass("hidden"); 
-    
-  });
-   
-   
+ // overlay during form submission
+    $(".jobform input[type='submit']").on('click', function(){
+      $(".overlay").removeClass("hidden");     
+    });
 
   })
 

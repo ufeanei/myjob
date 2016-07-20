@@ -19,30 +19,21 @@
 
 $(document).ready(function(){
 
-// myjobs js
-
-
- 
- 
-
-
 // jobs index page js
 
-$(".spinner").hide();
-$("#search-job-fylke input[type='submit']").hide();
+  $(".spinner").hide();
+  $("#search-job-fylke input[type='submit']").hide();
 
-
-$("#search-job-fylke input[type='checkbox']").on('change', function(){
-	$("#search-job-fylke").submit();
-
-});
+  $("#search-job-fylke input[type='checkbox']").on('change', function(){
+    $("#search-job-fylke").submit();
+  });
 
   $(document).ajaxStart(function() {
     $(".spinner").fadeIn('slow');
     $(window).scrollTop(0);
  }).ajaxStop(function() {
       $(".spinner").hide();
-  });	
+  }); 
 });
 
 
