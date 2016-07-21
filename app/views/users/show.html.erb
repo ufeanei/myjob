@@ -16,14 +16,14 @@
             <h4><%= @user.first_name.capitalize %></h4>
             <h4><%= @user.kommune.name if @user.kommune %></h4>
             <div class='average-review-rating' data-score=<%= @average_review %>></div>
-            <p> <%= @total  %> Omtaler</p>
+            <p > <%= @total  %> Omtaler</p>
           </div>
           <div class="col-md-3 text-center">
             <h4>Jobber fullført</h4>
             <h4> <strong><%= @total_invitations %></strong> </h4>
           </div>
           <div class="col-md-12">
-            <h3 class="text-center">Om meg</h3>
+            <h3 class="text-center grey-text">Om meg</h3>
             <p><%= @user.user_self_description %></p>
           </div>
         </div>
@@ -31,7 +31,7 @@
     </div > <!-- end of about me here -->
 
     <div class="job-review-segment">
-      <h3 class="text-center">Omtaler</h3>
+      <h3 class="text-center grey-text">Omtaler</h3>
       <% @appli_won.each do |appl| %>
         <div>
           <h3><%= link_to "#{appl.job.title.capitalize}", job_path(appl.job), id: "#{appl.id}" %></h3> 

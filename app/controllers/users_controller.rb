@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   def show
     #@user = User.find_by(id: params[:id]) 
     @review = Review.new
-    @appli_won =  JobApplication.where(user_id: @user.id, awarded: true).order(created_at: :desc).paginate(page: params[:page], per_page: 2) #We need all jobs he has done so that we can place job owner reviews under each one 
+    @appli_won =  JobApplication.where(user_id: @user.id, awarded: true).order(created_at: :desc).paginate(page: params[:page], per_page: 8) #We need all jobs he has done so that we can place job owner reviews under each one 
                          #on the user show page
     @total_invitations = JobApplication.where(user_id: @user.id, awarded: true).size
     if @user.reviews.blank?

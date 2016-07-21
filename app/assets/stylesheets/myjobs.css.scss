@@ -54,13 +54,17 @@ sup {
 }
 
 .grey-text {
-  color: #666666
+  color: #666666;
 }
 
 .btn-group-vertical .text-left {
   text-align: left;
   font-family: arial;
-  font-size: 19px;
+  font-size: 17px;
   color: #000066;
   border: 1px solid #aaa;
+
+}
+.btn-group-vertical {
+  padding:0;
 }
