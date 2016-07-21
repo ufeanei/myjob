@@ -59,12 +59,23 @@ sup {
 
 .btn-group-vertical .text-left {
   text-align: left;
-  font-family: arial;
+  font-family: helvetica;
   font-size: 17px;
   color: #000066;
   border: 1px solid #aaa;
 
+
 }
+
 .btn-group-vertical {
-  padding:0;
+  padding: 0
+  
 }
+
+@media (min-width: 1500px) { 
+.btn-group-vertical {
+  padding: 30px;
+  width: 80%;
+  
+}
+ }

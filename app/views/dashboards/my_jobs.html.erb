@@ -10,14 +10,14 @@
     <div class="job-wrap">
       <div>
         <div class="row job-section">
-        	<div class="col-md-3 col-sm-3 col-xs-10">
+        	<div class="col-md-3 col-sm-4 col-xs-10">
             <% if job.image? %>
               <%= image_tag(job.image_url(:thumb), class: 'img-responsive pull-left thumbnail') %>
             <% else %>
               <%= image_tag('pages/furni-thumb.jpg', size: '145x110', class: 'img-responsive pull-left thumbnail') %>
             <% end %>
           </div>
-          <div class="col-md-5 col-sm-6 col-xs-12">
+          <div class="col-md-5 col-sm-8 col-xs-12">
             <p> <%= link_to "#{job.title.capitalize}", job_path(job) %></p>
             <br>
             <p> Visninger: <strong><%= job.views %> </strong></p>
@@ -26,11 +26,11 @@
               <%= link_to 'Aktiver', activate_job_job_path(job), method: :patch, class: 'btn btn-info pull-right edit-btn' %> 
               <% else %>
             <%= link_to 'Rediger jobb', edit_job_path(job), class: "pull-left edit-btn" %> 
-
             <% end %>
           </div>
         </div>
       </div>
+
       <div class="applicants-list">
         <h3 class="text-center grey-text">Hjelpere</h3>
         <br>
@@ -38,7 +38,7 @@
         <h4 class='grey-text'>Klikk på helper navn for å vise sin profil før du inviterer hjelperen for å hjelpe deg</h4>
         <br>
         <%if job.job_applications.empty? %>
-          <h4 class='red-text'> Ingen hjelper enda</h4>
+          <h4 class='red-text'> Ingen hjelper ennå</h4>
         <% else %>
           <table class="table table-hover ">
             <% @applications.each do |x| %>
