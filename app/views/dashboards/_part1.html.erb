@@ -5,12 +5,12 @@
         <h2>Dashbord</h2>
         <hr/>
         <div class='btn-group-vertical col-md-10 col-xs-12 col-sm-12'>          
-         <%= link_to 'Mine annonser', my_jobs_dashboard_path, class: 'btn btn-default btn block text-left'  %>
-          <%= link_to 'Mine søknader', my_applications_dashboard_path, class: 'btn btn-default text-left'  %>
-          <%= link_to 'Invitasjoner fra jobbeiere', jobs_won_dashboard_path, class: 'btn btn-default text-left'  %>
+         <%= link_to 'Mine annonser', my_jobs_dashboard_path, class: "btn btn-default text-left #{@myjobs}"  %>
+          <%= link_to 'Mine søknader', my_applications_dashboard_path, class: "btn btn-default text-left #{@myapps}"  %>
+          <%= link_to 'Invitasjoner fra jobbeiere', jobs_won_dashboard_path, class: "btn btn-default text-left #{@jobswon}"  %>
           <%= link_to 'Mine vurderinger', user_path(current_user), class: 'btn btn-default text-left'  %>
 
-          <%= link_to rate_your_helpers_dashboard_path , class: 'btn btn-default text-left' do %>
+          <%= link_to rate_your_helpers_dashboard_path , class: "btn btn-default text-left #{@rate}" do %>
             <% if @applications_without_reviews.size == 0 %> 
                Vurder dine hjelpere 
             <% else %>   
@@ -19,9 +19,9 @@
           <% end %>         
           <h4><strong>Min Konto</strong></h4>
           
-          <%= link_to 'Min Profil', my_profile_dashboard_path, class: 'btn btn-default text-left'  %>
-          <%= link_to 'Rediger Profil', edit_profile_dashboard_path, class: 'btn btn-default text-left'  %>
-          <%= link_to 'Endre Passord', new_password_dashboard_path, class: 'btn btn-default text-left'   %>
+          <%= link_to 'Min Profil', my_profile_dashboard_path, class: "btn btn-default text-left #{@myprofile}"  %>
+          <%= link_to 'Rediger Profil', edit_profile_dashboard_path, class: "btn btn-default text-left #{@editprofile}"  %>
+          <%= link_to 'Endre Passord', new_password_dashboard_path, class: "btn btn-default text-left #{@changepass}"   %>
         </div>   
        
       </aside>

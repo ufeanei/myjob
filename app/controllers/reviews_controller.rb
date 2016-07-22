@@ -18,6 +18,7 @@ class ReviewsController < ApplicationController
       flash[:danger] = " Vennligst, Du må skrive en anmeldelse og gi minst en stjerne"
       @my_jobs_ids = Job.where(user_id: current_user).ids
       @applications_without_reviews = JobApplication.where(awarded: true, job_id: @my_jobs_ids).select {|x| x.reviews.empty?}
+      @rate = 'clicked'
       render 'dashboards/rate_your_helpers'
     end
   end
