@@ -58,7 +58,7 @@ Porter::Application.configure do
     password: ENV["SENDGRID_PASSWORD"]
   }
 
-  config.action_mailer.default_url_options = { :host => 'obscure-beyond-36942.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'jobbplass.no' }
 
   # Prepend all log lines with the following tags.
   # config.log_tags = [ :subdomain, :uuid ]

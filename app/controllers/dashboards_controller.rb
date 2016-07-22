@@ -49,6 +49,7 @@ before_action :helper_ratings # this is to track the number of helpers needing r
   end
 
   def change_password
+    @changepass = 'clicked'
     @user = User.find_by(id: current_user.id) 
     if !@user.authenticated?(:password, params[:gammelt_passord])      
       flash[:danger] = 'Feil gammelt passord'
@@ -58,7 +59,7 @@ before_action :helper_ratings # this is to track the number of helpers needing r
      redirect_to dashboard_path
     else
       flash[:danger] = 'Passordene samsvarer ikke'
-      @changepass = 'clicked'
+      
       render 'new_password'
     end
   end
