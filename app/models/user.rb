@@ -16,8 +16,8 @@ class User < ActiveRecord::Base
   validates :last_name,  presence: { message: "må fylles ut"}
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: { message: "må fylles ut"},
-                    format: { with: VALID_EMAIL_REGEX, message: ", Epostaddressen er ugyldig" },
-                    uniqueness: { case_sensitive: false }
+                    format: { with: VALID_EMAIL_REGEX, message: ", E-postaddressen er ugyldig" },
+                    uniqueness: { case_sensitive: false, message: "e-post allerede i bruk" }
 
   has_secure_password
 

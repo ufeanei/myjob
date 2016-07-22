@@ -1,7 +1,9 @@
   Hi <%= @user.first_name %> 
  
 Velkommen til Jobbplass! 
-For å kunne logge inn på kontoen din må du først aktivere den ved å trykke på den følgende lenken
+For å kunne logge inn på kontoen din må du først aktivere den ved å trykke på den følgende lenken eller
+
+Kopier linken nedenfor og lim den inn i nettleseren din og trykk 'enter'
 
 <%= confirm_url(token: @user.confirmation_token, email: @user.email) %>
 
