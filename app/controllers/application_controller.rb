@@ -51,7 +51,7 @@ class ApplicationController < ActionController::Base
   def require_user
     if !logged_in?
       flash[:info] = "Vennligst logg inn først"
-      redirect_to :back
+      redirect_to :jobs
     end
   end
 end

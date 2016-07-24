@@ -12,51 +12,30 @@
   <h4> Hjelper : <%= appl.user.first_name.capitalize %></h4>  
   <p>Vennligst fortell oss om <%=link_to "#{appl.user.first_name.capitalize}" , user_path(appl.user) %> hjelp</p>
       <%= form_for [ appl.job, appl, @review ] do |f| %>
-        <div class="rating-form">
+      
+      <div class="form-<%= appl.id %>" >
           <%= f.label :rating, 'Velg antall stjerner' %>
-        </div>                    
+      </div> 
+                        
         <div class = "form-group">              
           <%= f.label :comment, 'Anmeldelsen din' %>
           <%= f.text_area :comment, class: "form-control" %>        
         </div>
-        <%= f.submit "Send inn", class: "btn edit-btn" %>
+        <%= f.submit "Send inn", class: "btn edit-btn #{appl.id }" %>
       <% end %>
     </li>
     <br>
-  <% end %>
+
+  <script type="text/javascript">
+/* this displays the stars uncolored then when a number of stars are clicked, that number becomes the value for review[:rating] */
+ $(".form-<%= appl.id %>").raty({
+    path: '/assets/',
+    hints:  ['ikke fornøyd', '', 'bra', 'veldig bra', 'utmerket'],
+    scoreName: 'review[rating]' 
+   })  
+ </script>
+<% end %>
 </ul>
 <% end %>
 <%= render 'dashboards/part2' %>
 
-<script type="text/javascript">
- /*this displays the stars based on what what value therating has */
-   $('.star-rating').raty({
-    path: '/assets/',
-    readOnly: true,
-    hints:  ['', '', '', '', ''],
-    noRatedMsg  : 'Ennå ikke vurdert',
-    score: function(){
-      return $(this).attr('data-score');
-    }
-  });
-
-/* this displays the stars uncolored then when a number of stars are clicked, that number becomes the value for review[:rating] */
-   $('.rating-form').raty({
-    path: '/assets/',
-    hints:  ['ikke fornøyd', '', 'bra', 'veldig bra', 'utmerket'],
-    scoreName: 'review[rating]'
-
-   });
-
-$('.average-review-rating').raty({
-    path: '/assets/',
-    readOnly: true,
-    hints:  ['', '', '', '', ''],
-    noRatedMsg  : 'Ennå ikke vurdert ',
-    score: function(){
-      return $(this).attr('data-score');
-    }
-
-  });
-
- </script>

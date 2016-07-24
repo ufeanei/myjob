@@ -6,6 +6,7 @@ before_action :helper_ratings # this is to track the number of helpers needing r
     @kommunes = Kommune.all
     @user = User.find_by(id: current_user.id)
     @my_jobs = Job.where(user_id: current_user.id)
+    @myprofile = 'clicked'
     render :my_profile
   end
 
