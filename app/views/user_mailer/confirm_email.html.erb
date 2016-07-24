@@ -3,7 +3,7 @@
 <p>
   Velkommen til Jobbplass! <br>For å kunne logge inn på kontoen din må du først aktivere den ved å trykke på den følgende lenken
 </p>
-<%= confirm_url(token: @user.confirmation_token, email: @user.email) %>
+<%= link_to "#{confirm_url(token: @user.confirmation_token, email: @user.email)}", confirm_url(token: @user.confirmation_token, email: @user.email) %>
 
 <P>MVH</P>
 <P> Kundesupport </p>
