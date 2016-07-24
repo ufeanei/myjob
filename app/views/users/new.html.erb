@@ -57,7 +57,7 @@
         </div>    
         <br/>
         <div class="form-group">
-          <%= f.check_box :terms %> Jeg godtar <%= link_to 'Vilkårene', service_path %> og <%= link_to 'Personvernpolicy/cookies', privacy_path %>
+          <%= f.check_box :terms %> Jeg godtar <%= link_to 'Vilkårene', service_path %> og <%= link_to 'Personvernpolicy og cookies', privacy_path %>
           <span class='error-span'><%= @user.errors[:terms][0] if @user.errors[:terms] %></span>      
         </div>
         <%= f.submit "Oppret Konto", class: "btn btn-default btn-block register-button" %> 

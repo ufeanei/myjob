@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     @user= User.new(user_params)
     if @user.save
       UserMailer.confirm_email(@user).deliver
-      flash[:success]= "Vellykket registrering. En aktiveringsepost har blitt sendt på epost"
+      flash[:success]= "Vellykket registrering. En aktiveringsepost har blitt sendt til din e-post adresse. Kontroller innboksen eller spam-mappen"
       redirect_to jobs_path
     else
       render :new
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
   private
 
    def user_params
-     params.require(:user).permit(:first_name, :last_name, :email, :password_confirmation, :password, :user_self_description, :kommune_id, :image, :phone, :street_addr, :car_reg, :terms)
+     params.require(:user).permit(:first_name, :last_name, :email, :password_confirmation, :password, :user_self_description, :kommune_id, :image, :phone, :street_addr, :terms)
    end
 
    def get_kommunes
