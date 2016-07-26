@@ -1,6 +1,10 @@
 <div class="contain">
   <div class="col-xs-12 col-sm-10 col-md-10 col-md-offset-1 col-sm-offset-1">
     <div class="row">
+      <div class='col-md-12'>
+        <br>
+        <br>
+      </div>
       <aside class="col-md-4 col-sm-5 well dashboard-menu contain"> <!--styles for dashboard-menu found in myjobs.css.scss -->
         <h2>Dashbord</h2>
         <hr/>
@@ -8,7 +12,7 @@
          <%= link_to 'Mine annonser', my_jobs_dashboard_path, class: "btn btn-default text-left #{@myjobs}"  %>
           <%= link_to 'Mine søknader', my_applications_dashboard_path, class: "btn btn-default text-left #{@myapps}"  %>
           <%= link_to 'Invitasjoner fra jobbeiere', jobs_won_dashboard_path, class: "btn btn-default text-left #{@jobswon}"  %>
-          <%= link_to 'Mine vurderinger', user_path(current_user), class: 'btn btn-default text-left'  %>
+          <%= link_to 'Min offentlige profil', user_path(current_user), class: 'btn btn-default text-left'  %>
 
           <%= link_to rate_your_helpers_dashboard_path , class: "btn btn-default text-left #{@rate}" do %>
             <% if @applications_without_reviews.size == 0 %> 
@@ -16,7 +20,7 @@
             <% else %>   
               Vurder dine hjelpere <sup>(<%= @applications_without_reviews.size %>)</sup>
             <% end %>          
-          <% end %>         
+          <% end %>           
           <h4><strong>Min Konto</strong></h4>
           
           <%= link_to 'Min Profil', my_profile_dashboard_path, class: "btn btn-default text-left #{@myprofile}"  %>

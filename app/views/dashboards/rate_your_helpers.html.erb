@@ -5,37 +5,36 @@
 <% if @applications_without_reviews.empty? %>
   <h4>Ingen hjelper venter på din vurdering</h4>
 <% else %>
-<ul>
-  <% @applications_without_reviews.each do |appl| %>
-  <li>
-  <h4>Annonsetittelen :<%= link_to "#{appl.job.title.capitalize}", job_path(appl.job)%></h4>  
-  <h4> Hjelper : <%= appl.user.first_name.capitalize %></h4>  
-  <p>Vennligst fortell oss om <%=link_to "#{appl.user.first_name.capitalize}" , user_path(appl.user) %> hjelp</p>
-      <%= form_for [ appl.job, appl, @review ] do |f| %>
-      
-      <div class="form-<%= appl.id %>" >
-          <%= f.label :rating, 'Velg antall stjerner' %>
-      </div> 
-                        
-        <div class = "form-group">              
-          <%= f.label :comment, 'Anmeldelsen din' %>
-          <%= f.text_area :comment, class: "form-control" %>        
-        </div>
-        <%= f.submit "Send inn", class: "btn edit-btn #{appl.id }" %>
-      <% end %>
-    </li>
-    <br>
-
-  <script type="text/javascript">
-/* this displays the stars uncolored then when a number of stars are clicked, that number becomes the value for review[:rating] */
- $(".form-<%= appl.id %>").raty({
-    path: '/assets/',
-    hints:  ['ikke fornøyd', '', 'bra', 'veldig bra', 'utmerket'],
-    scoreName: 'review[rating]' 
-   })  
- </script>
-<% end %>
-</ul>
+  <ul>
+    <% @applications_without_reviews.each do |appl| %>
+      <li class='ratings-list'>
+        <h4>Annonsetittelen :<%= link_to "#{appl.job.title.capitalize}", job_path(appl.job)%></h4>  
+        <h4> Hjelper : <%= appl.user.first_name.capitalize %></h4>  
+        <p>Vennligst fortell oss om <%=link_to "#{appl.user.first_name.capitalize}" , user_path(appl.user) %> hjelp</p>
+        <br>
+        <%= form_for [ appl.job, appl, @review ] do |f| %>
+          <div class="rating-div %>" >
+            <%= f.label :rating, 'Velg antall stjerner' %>
+          </div>                         
+            <div class = "form-group">              
+              <%= f.label :comment, 'Anmeldelsen din' %>
+              <%= f.text_area :comment, class: "form-control" %>        
+            </div>
+            <%= f.submit "Send inn", class: "btn edit-btn" %>
+        <% end %>
+      </li>
+      <br> 
+    <% end %>
+  </ul>
 <% end %>
 <%= render 'dashboards/part2' %>
 
+<script type="text/javascript">
+/* this displays the stars uncolored then when a number of stars are clicked, that number becomes the value for review[:rating] */
+ $(".rating-div").raty({
+    path: '/assets/',
+    hints:  ['ikke fornøyd', '', 'bra', 'veldig bra', 'utmerket'],
+    //score: <%= @review.rating if @review.rating %>,
+    scoreName: 'review[rating]' 
+   })  
+ </script>
