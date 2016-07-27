@@ -15,7 +15,6 @@ class ReviewsController < ApplicationController
       UserMailer.delay(queue: 'immediate', priority: 0).review_added(@application) # send email to helper as background job
       redirect_to rate_your_helpers_dashboard_path
     else
-      flash[:danger] = " Vennligst, Du må skrive en anmeldelse og gi minst en stjerne"
       @my_jobs_ids = Job.where(user_id: current_user).ids
       @applications_without_reviews = JobApplication.where(awarded: true, job_id: @my_jobs_ids).select {|x| x.reviews.empty?}
       @rate = 'clicked'

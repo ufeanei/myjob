@@ -13,14 +13,13 @@
         <p>Vennligst fortell oss om <%=link_to "#{appl.user.first_name.capitalize}" , user_path(appl.user) %> hjelp</p>
         <br>
         <%= form_for [ appl.job, appl, @review ] do |f| %>
-          <div class="rating-div %>" >
-            <%= f.label :rating, 'Velg antall stjerner' %>
-          </div>                         
+         <%= f.label :rating, 'Velg antall stjerner' %>
+          <span class="rating-div" > </span>  <span class='error-span'><%= @review.errors[:rating][0] if @review.errors[:rating] %></span>                        
             <div class = "form-group">              
               <%= f.label :comment, 'Anmeldelsen din' %>
-              <%= f.text_area :comment, class: "form-control" %>        
+              <%= f.text_area :comment, class: "form-control" %><span class='error-span'><%= @review.errors[:comment][0] if @review.errors[:comment] %></span>        
             </div>
-            <%= f.submit "Send inn", class: "btn edit-btn" %>
+            <%= f.submit "Send inn", class: "btn edit-btn submit-btn" %>
         <% end %>
       </li>
       <br> 
@@ -31,10 +30,26 @@
 
 <script type="text/javascript">
 /* this displays the stars uncolored then when a number of stars are clicked, that number becomes the value for review[:rating] */
- $(".rating-div").raty({
+ $( ".rating-div" ).raty({
     path: '/assets/',
     hints:  ['ikke fornøyd', '', 'bra', 'veldig bra', 'utmerket'],
-    //score: <%= @review.rating if @review.rating %>,
-    scoreName: 'review[rating]' 
-   })  
+    
+    <% if @review.rating %>
+    score: <%= @review.rating %>,
+    <% end %> 
+    scoreName: 'review[rating]',
+    size: 24
+   }); 
+
+ $( ".ratings-list" ).each(function( index ) {
+
+  if (index > 0){
+    $( this ).fadeTo( 0,.2 );
+    $( this ).find( '.error-span' ).hide();
+    $( this ).find( '.rating-div' ).hide();
+   $( this ).find( 'input[type=submit]' ).prop( 'disabled', true );
+
+  }
+   
+});
  </script>
