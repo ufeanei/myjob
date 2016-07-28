@@ -4,12 +4,12 @@
       <aside class="col-md-4 col-sm-5 well dashboard-menu"> <!--styles for dashboard-menu found in myjobs.css.scss -->
         <h2>Manager Dashboard</h2>
         <hr/>
-        <div class=''>
-          <h4 ><%= link_to 'All Users', all_users_manager_path %></h4>
-          <h4 ><%= link_to 'All Jobs', all_jobs_manager_path %></h4>
-          <h4 ><%= link_to 'All Applications', all_applications_manager_path %></h4> 
-          <h4><%= link_to 'Manager Job categories', categories_path %></h4>
-          <h4><%= link_to 'Add new Job category',  new_category_path %></h4>
+        <div class='btn-group-vertical col-md-10 col-xs-12 col-sm-12'>
+          <%= link_to 'All Users', all_users_manager_path, class: 'btn btn-default text-left'%>
+          <%= link_to 'All Jobs', all_jobs_manager_path, class: 'btn btn-default text-left' %>
+          <%= link_to 'All Applications', all_applications_manager_path, class: 'btn btn-default text-left' %> 
+         <%= link_to 'Manager Job categories', categories_path, class: 'btn btn-default text-left' %>
+         <%= link_to 'Add new Job category',  new_category_path, class: 'btn btn-default text-left' %>
         </div> 
       </aside>
       <div class="col-md-8 col-sm-7  col-xs-12 result-section well"><!--styles for result-section found in myjobs.css.scss -->

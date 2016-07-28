@@ -15,6 +15,17 @@
 
   $(function(){
 
+    if ($('#job_category_id').val() == 1){
+      $('#to-address-field').show();
+        $('#job-address-label').text('Fra:');
+        $('#directions').text('Retlinger');
+    }
+    else {
+        $('#to-address-field').hide();
+        $('#job-address-label').text('Sted');
+        $('#directions').text('');
+      };
+     
     all_kommunes = $('#job_kommune_id').html(); // give me a list of all kommunes grouped under their fylkes
 
     selected_fylke = $('#job_fylke_id option:selected').text(); // get the fylke selected on the fylke select field
@@ -29,6 +40,21 @@
         $('#job_kommune_id').html(options);            
       });
 
+     $('#job_category_id ').on('change', function(){
+       if ($(this).val() == 1){
+        $('#to-address-field').show();
+        $('#job-address-label').text('Fra:');
+        $('#directions').text('Retlinger');
+       }
+       else {
+        $('#to-address-field').hide();
+        $('#job-address-label').text('Sted');
+        $('#directions').text('');
+      };
+
+     })
+
+     
  // overlay during form submission
     $(".jobform input[type='submit']").on('click', function(){
       $(".overlay").removeClass("hidden");     

@@ -2,7 +2,7 @@ class JobsController < ApplicationController
 
   before_action :require_user, only: [:new, :create, :edit, :update, :destroy, :activate_job]
   before_action :get_job, only: [:edit, :update, :show, :destroy, :activate_job]
-  before_action :get_all_fylke, only: [:index, :new, :edit, :create, :update]
+  before_action :get_all_fylke_and_categories, only: [:index, :new, :edit, :create, :update]
   before_action :require_job_owner_or_admin, only: [:edit, :update, :destroy, :activate_job]
 
   def index
@@ -28,7 +28,7 @@ class JobsController < ApplicationController
   def create  
     @job = Job.new(job_params)
     @job.user = current_user
-    @job.category_id = 1
+     
     @job.status = 'active' # should have been default value but i forgot
     
     if @job.save
@@ -94,8 +94,9 @@ class JobsController < ApplicationController
     @job = Job.find_by(id: a)
   end
 
-  def get_all_fylke
+  def get_all_fylke_and_categories
     @fylkes = Fylke.all 
+    @categories = Category.all
   end
 
   def require_job_owner_or_admin

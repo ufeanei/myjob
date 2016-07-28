@@ -10,12 +10,22 @@
       </div><!--end of top panel-->
 
       <aside class="col-md-3 col-sm-5 omrade"> <!-- aside is the fylke filter on the left of the index page. this lists all the fylkes -->
-        <h2>Område</h2>
-        <hr/>
         <div>
           <%= form_tag search_jobs_path, method: :get, remote: true, id: 'search-job-fylke' do %> <!-- where we submit the form. it is an ajax request ie js request -->
+          <h2 class='grey-text'>Jobbcategori</h2>
+          <hr/>
+          <% @categories.each do |category| %> 
+              <div class="form-group fylke-checkbox grey-text">
+                <%= check_box_tag("category_id[#{category.id}]", category.id) %>
+                <%= label_tag("category_id[#{category.id}]", category.name) %>
+              </div>    
+            <% end%>
+            <br>
+            <br>
+        <h2 class='grey-text'>Område</h2>
+        <hr/>
             <% @fylkes.each do |fylke| %> 
-              <div class="form-group fylke-checkbox">
+              <div class="form-group fylke-checkbox grey-text">
                 <%= check_box_tag("fylke_id[#{fylke.id}]", fylke.id) %>
                 <%= label_tag("fylke_id[#{fylke.id}]", fylke.name) %>(<%= jobs_per_fylke(@all_jobs, fylke.id)%>)
               </div>    

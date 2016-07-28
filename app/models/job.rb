@@ -2,17 +2,19 @@ class Job < ActiveRecord::Base
   attr_accessor :terms_of_service
 
   mount_uploader :image, PictureUploader
-  
+
+  validates :category_id, presence: {message: "må velg jobbcategory"}
   validates :title,  presence: { message: "må fylles ut"}
   validates :description, presence: { message: "må fylles ut"}
   validates :payment, numericality: { message: "må fylles ut"} 
   validates :street_addr, presence: { message: "må fylles ut"}
-  validates :destination_addr, presence: { message: "må fylles ut"}
+  
   validates :contact_number, presence: { message: "må fylles ut"}
   validates :kommune_id, presence: { message: "må fylles ut"}
   validates :fylke_id, presence: { message: "må fylles ut"}
   validates :terms_of_service, acceptance: {accept: "1", message: 'Du må godta vilkårene og personvernpolicy'}
   validate :image_size
+  validate :destination_addr_presence_for_cat1
   
   belongs_to :category
   belongs_to :fylke
@@ -53,8 +55,15 @@ class Job < ActiveRecord::Base
 
   def image_size
     if image.size > 2.megabytes
-      errors.add(:image, "må være mindre enn 2 MB.B")
+      errors.add(:image, "Må være mindre enn 2 MB.B")
     end
+  end
+
+  def destination_addr_presence_for_cat1
+    if (category_id == 1) && destination_addr.empty?
+      errors.add(:destination_addr, "Må fylles ut destinasjon adresse")
+    end
+
   end
 
   def geocode_endpoints

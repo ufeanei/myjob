@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  before_action :require_admin
 
   def index
     @cat = Category.all
@@ -13,6 +14,7 @@ class CategoriesController < ApplicationController
     @cat = Category.new(params.require(:category).permit(:name))
     if @cat.save
       flash[:success] = 'New Category added succesfully'
+      redirect_to categories_path
      else
       render 'new'
     end
@@ -31,5 +33,15 @@ class CategoriesController < ApplicationController
       render 'edit'
     end
   end
+
+
+  private
+
+  def require_admin
+    if !current_user.admin?
+      flash[:danger] = "Du kan ikke gjøre det"
+      redirect_to jobs_path 
+    end
+ end
 end
 
