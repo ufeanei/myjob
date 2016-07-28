@@ -74,7 +74,7 @@ before_action :helper_ratings # this is to track the number of helpers needing r
     @review = Review.new
     @rate = 'clicked'
     #@my_jobs_ids = Job.where(user_id: current_user).ids  #### this commented out info is removed to helper_rating method in the before action ### 
-    @applications_without_reviews = (JobApplication.where(awarded: true, job_id: @my_jobs_ids).select {|x| x.reviews.empty?})
+    #@applications_without_reviews = (JobApplication.where(awarded: true, job_id: @my_jobs_ids).select {|x| x.reviews.empty?})
   end
 
   
