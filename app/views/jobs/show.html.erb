@@ -114,8 +114,8 @@
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDBH6lY2r6Uh07x0sfDoV7n1S4EugAJVq4&language=no&region=NO"></script>
    
- <script type="text/javascript">
-
+<script type="text/javascript">
+<% if @job.lat2 && @job.long2 %>
   function initMap() {
       
     var lat1 = <%= @job.lat1 %>,
@@ -149,11 +149,11 @@
         });
 
       // get route from A to B
-      calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, pointB);
+      calculateAndDisplayRoute( directionsService, directionsDisplay, pointA, pointB );
 
     }
 
-    function calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, pointB) {
+    function calculateAndDisplayRoute( directionsService, directionsDisplay, pointA, pointB ) {
       directionsService.route({
         origin: pointA,
         destination: pointB,
@@ -162,11 +162,34 @@
         if (status == google.maps.DirectionsStatus.OK) {
           directionsDisplay.setDirections(response);
         } else {
-          window.alert('Directions request failed due to ' + status);
+          window.alert('Kan ikke få retning ' + status);
         }
       });
   }
 
+  <% else %>
+    function initMap() {
+        
+      var lat1 = <%= @job.lat1 %>,
+          lng1 = <%= @job.long1 %>;  
+          
+      var pointA = new google.maps.LatLng( lat1, lng1 ),
+          
+          myOptions = {
+            zoom: 12,
+            center: pointA,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+          },
+
+          map = new google.maps.Map( document.getElementById( 'map-canvas' ), myOptions ),
+          makerA = new google.maps.Marker({
+            position: pointA,
+            title: "Punkt A",
+            label: "A",
+            map: map
+          });
+        }
+  <% end %>
   initMap();
 
 </script>
