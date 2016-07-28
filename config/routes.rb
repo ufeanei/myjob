@@ -59,4 +59,6 @@ Porter::Application.routes.draw do
       get 'all_applications'
     end
   end
+
+  resources :categories
 end
