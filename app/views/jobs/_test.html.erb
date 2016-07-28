@@ -1,0 +1,52 @@
+<script type="text/javascript">
+
+  $(function(){
+
+    if ($('#job_category_id').val() == 1){
+      $('#to-address-field').show();
+        $('#job-address-label').text('Fra:');
+        $('#directions').text('Retlinger');
+    }
+    else {
+        $('#to-address-field').hide();
+        $('#job-address-label').text('Sted');
+        $('#directions').text('');
+      };
+     
+    all_kommunes = $('#job_kommune_id').html(); // give me a list of all kommunes grouped under their fylkes
+
+    selected_fylke = $('#job_fylke_id option:selected').text(); // get the fylke selected on the fylke select field
+    optgroup = "optgroup[label='" + selected_fylke + "']";      // use the fylke selected up to filter out a list of its kommunes from all kommunes
+    options = "<option value=''> Velg Kommune </option>"+ $(all_kommunes).filter(optgroup).html();  // to the list above add a prompt with empty value     
+    $('#job_kommune_id').html(options);   // go to the kommune select field and fill it with the constructed kommune list above
+
+      $('#job_fylke_id').on('change', function(){                                         
+        selected_fylke = $('#job_fylke_id option:selected').text();
+        optgroup = "optgroup[label='" + selected_fylke + "']";
+        options = "<option value=''> Velg Kommune </option>"+ $(all_kommunes).filter(optgroup).html();  // we want the first option to be Velg kommune     
+        $('#job_kommune_id').html(options);            
+      });
+
+     $('#job_category_id ').on('change', function(){
+       if ($(this).val() == 1){
+        $('#to-address-field').show();
+        $('#job-address-label').text('Fra:');
+        $('#directions').text('Retlinger');
+       }
+       else {
+        $('#to-address-field').hide();
+        $('#job-address-label').text('Sted');
+        $('#directions').text('');
+      };
+
+     })
+
+     
+ // overlay during form submission
+    $(".jobform input[type='submit']").on('click', function(){
+      $(".overlay").removeClass("hidden");     
+    });
+
+  })
+
+</script>

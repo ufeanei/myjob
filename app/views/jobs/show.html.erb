@@ -16,9 +16,14 @@
         <h3>Beskrivelse</h3>
         <p><%= @job.description %> </p>
         <br/>
-        <h3>Retninger</h3>
-        <p><%= @job.street_addr %> <strong>  To  </strong> <%= @job.destination_addr%> </p>   
-         <div id="map-canvas"></div>
+        <% if !@job.destination_addr.empty? %>
+          <h3>Retninger</h3>
+          <p><%= @job.street_addr %> <strong>  To  </strong> <%= @job.destination_addr%> </p> 
+        <% else %>
+          <h3>Sted</h3> 
+          <p><%=@job.origin %></p> 
+        <% end %>
+        <div id="map-canvas"></div>
 
         <p class="row col-md-12 col-xs-12"><em>Sist endret: <%= display_datetime(@job.updated_at)%> </em></p>        
       </div>
