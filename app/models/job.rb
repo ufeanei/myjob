@@ -75,13 +75,14 @@ class Job < ActiveRecord::Base
       end
     end
     # Repeat for destination
-    if :destination_addr_changed?
-      geocoded = Geocoder.search(destination).first
-      if geocoded
-        self.lat2 = geocoded.latitude
-        self.long2 = geocoded.longitude
+     
+      if :destination_addr_changed?
+        geocoded = Geocoder.search(destination).first
+        if geocoded
+          self.lat2 = geocoded.latitude
+          self.long2 = geocoded.longitude
+        end
       end
-    end
   end
 end
 

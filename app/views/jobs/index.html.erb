@@ -12,7 +12,7 @@
       <aside class="col-md-3 col-sm-5 omrade"> <!-- aside is the fylke filter on the left of the index page. this lists all the fylkes -->
         <div>
           <%= form_tag search_jobs_path, method: :get, remote: true, id: 'search-job-fylke' do %> <!-- where we submit the form. it is an ajax request ie js request -->
-          <h2 class='grey-text'>Jobbcategori</h2>
+          <h3 class='grey-text'>Jobbcategori</h3>
           <hr/>
           <% @categories.each do |category| %> 
               <div class="form-group fylke-checkbox grey-text">
@@ -22,7 +22,7 @@
             <% end%>
             <br>
             <br>
-        <h2 class='grey-text'>Område</h2>
+        <h3 class='grey-text'>Område</h3>
         <hr/>
             <% @fylkes.each do |fylke| %> 
               <div class="form-group fylke-checkbox grey-text">
