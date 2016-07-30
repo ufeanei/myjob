@@ -9,7 +9,7 @@
         </div>
       </div><!--end of top panel-->
 
-      <aside class="col-md-3 col-sm-5 omrade"> <!-- aside is the fylke filter on the left of the index page. this lists all the fylkes -->
+      <aside class="col-md-4 col-sm-5 omrade"> <!-- aside is the fylke filter on the left of the index page. this lists all the fylkes -->
         <div>
           <%= form_tag search_jobs_path, method: :get, remote: true, id: 'search-job-fylke' do %> <!-- where we submit the form. it is an ajax request ie js request -->
           <h3 class='grey-text'>Jobbcategori</h3>
@@ -37,7 +37,7 @@
         </div>
       </aside>
 
-      <div class="col-md-6 col-sm-7 middle-section"><!--- the  middle part of page that list all jobs begins here-->
+      <div class="col-md-5 col-sm-7 middle-section"><!--- the  middle part of page that list all jobs begins here-->
         <div class="spinner "><%= image_tag('pages/spin.gif') %></div>
         <div class="jobs-list">
           <%= render 'index_page_jobs_list' %>
