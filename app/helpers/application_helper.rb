@@ -1,10 +1,14 @@
 module ApplicationHelper
   def display_datetime(dt)
-    dt.strftime("%m/%d/%Y  at %H:%M%P")
+    dt.strftime("%d/%m/%Y  at %H:%M%P")
   end
 
   def jobs_per_fylke(jobs, id)
    jobs.select {|x| x.fylke_id== id}.size
+  end
+
+  def jobs_per_category(jobs, category_id)
+    jobs.select {|x| x.category_id == category_id}.size
   end
 
   def full_name(user)
