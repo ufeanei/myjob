@@ -8,6 +8,7 @@ class JobsController < ApplicationController
   def index
     @all_jobs ||= Job.all # need this to calculate jobs /fylke  # need to make sure only active jobs are shown later in production
     if requested_jobs
+      #@jobs = Job.where(fylke_id: requested_jobs) OR 
       @jobs = Job.where(fylke_id: requested_jobs).order(created_at: :desc).paginate(page: params[:page], per_page: 10)
       @total = Job.where(fylke_id: requested_jobs).size 
     else
@@ -87,6 +88,10 @@ class JobsController < ApplicationController
 
   def requested_jobs
     params["fylke_id"].keys if params["fylke_id"]
+  end
+
+  def jobs_from_category
+    params["category_id"].keys if params["category_id"]
   end
 
   def get_job
