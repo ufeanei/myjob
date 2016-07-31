@@ -3,12 +3,20 @@ module ApplicationHelper
     dt.strftime("%d/%m/%Y  at %H:%M%P")
   end
 
-  def jobs_per_fylke(jobs, id)
-   jobs.select {|x| x.fylke_id== id}.size
+  def jobs_per_fylke(all_jobs, jobs_by_cat, id)
+    if jobs_by_cat
+      jobs_by_cat.select {|x| x.fylke_id == id}.size
+    elsif all_jobs  
+      all_jobs.select {|x| x.fylke_id == id}.size
+    end
   end
 
-  def jobs_per_category(jobs, category_id)
-    jobs.select {|x| x.category_id == category_id}.size
+  def jobs_per_category(all_jobs, jobs_by_fylke, category_id)
+    if jobs_by_fylke
+      jobs_by_fylke.select {|x| x.category_id == category_id}.size
+    elsif all_jobs
+      all_jobs.select {|x| x.category_id == category_id}.size
+    end
   end
 
   def full_name(user)

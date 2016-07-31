@@ -17,7 +17,7 @@
           <% @categories.each do |category| %> 
               <div class="form-group fylke-checkbox grey-text">
                 <%= check_box_tag("category_id[#{category.id}]", category.id) %>
-                <%= label_tag("category_id[#{category.id}]", category.name) %>(<%= jobs_per_category(@all_jobs, category.id)%>)
+                <%= label_tag("category_id[#{category.id}]", category.name) %><span id="cat-<%= category.id %>">(<%= jobs_per_category(@all_jobs, @jobs_by_fylke, category.id)%>)</span>
               </div>    
             <% end%>
             <br>
@@ -27,7 +27,7 @@
             <% @fylkes.each do |fylke| %> 
               <div class="form-group fylke-checkbox grey-text">
                 <%= check_box_tag("fylke_id[#{fylke.id}]", fylke.id) %>
-                <%= label_tag("fylke_id[#{fylke.id}]", fylke.name) %>(<%= jobs_per_fylke(@all_jobs, fylke.id)%>)
+                <%= label_tag("fylke_id[#{fylke.id}]", fylke.name) %><span id="fylke-<%= fylke.id %>" >(<%= jobs_per_fylke(@all_jobs, @jobs_by_cat, fylke.id)%>)</span>
               </div>    
             <% end%>
             <br>
@@ -53,11 +53,11 @@
         <div>
           <h3>Hjelpere</h3>
           <p>Har du varebil, kassebil, pickup etc?
-             <br>Hjelpe noen og tjene ekstra penger</p>
+             <br>Hjelp noen og tjen ekstra penger</p>
           <h4><%= link_to 'Bli en hjelper.Klikk her', become_driver_path %></h4>
         </div>
         <div>
-          <h3>Kunde</h3>
+          <h3>Kunder</h3>
           <p>Trenger du hjelp til å flytte, frakte eller transport noe?
               Sett in annonse og velg din hjelper.</p>
           <h4><%= link_to 'Sett inn annonse', new_job_path %></h4>

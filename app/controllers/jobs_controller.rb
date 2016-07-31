@@ -6,21 +6,25 @@ class JobsController < ApplicationController
   before_action :require_job_owner_or_admin, only: [:edit, :update, :destroy, :activate_job]
 
   def index
-    @all_jobs ||= Job.all # need this to calculate jobs /fylke  # need to make sure only active jobs are shown later in production
-
     if requested_jobs && jobs_from_category
-      #@jobs = Job.where(fylke_id: requested_jobs) OR 
-      @jobs = Job.where(fylke_id: requested_jobs, category_id: jobs_from_category).order(created_at: :desc).paginate(page: params[:page], per_page: 10)
-      @total = Job.where(fylke_id: requested_jobs, category_id: jobs_from_category).size 
+      @job_from_both = Job.where(fylke_id: requested_jobs, category_id: jobs_from_category)
+
+      @jobs_by_cat =Job.where(category_id: jobs_from_category)
+      @jobs_by_fylke = Job.where(fylke_id: requested_jobs)
+      
+      @jobs = @job_from_both.order(created_at: :desc).paginate(page: params[:page], per_page: 10)
+      @total = @job_from_both.size#Job.where(fylke_id: requested_jobs, category_id: jobs_from_category).size 
     elsif jobs_from_category && !requested_jobs
-      @jobs = Job.where(category_id: jobs_from_category).order(created_at: :desc).paginate(page: params[:page], per_page: 10)
-      @total = Job.where(category_id: jobs_from_category).size
+      @jobs_by_cat =Job.where(category_id: jobs_from_category).order(created_at: :desc) 
+      @jobs = @jobs_by_cat.paginate(page: params[:page], per_page: 10)
+      @total = @jobs_by_cat.size
       #debugger 
-      elsif requested_jobs && !jobs_from_category
-      @jobs = Job.where(fylke_id: requested_jobs).order(created_at: :desc).paginate(page: params[:page], per_page: 10)
-      @total = Job.where(fylke_id: requested_jobs).size 
-    
+    elsif requested_jobs && !jobs_from_category
+        @jobs_by_fylke = Job.where(fylke_id: requested_jobs).order(created_at: :desc)
+        @jobs = @jobs_by_fylke.paginate(page: params[:page], per_page: 10)
+        @total = @jobs_by_fylke.size 
     else
+      @all_jobs = Job.all
       @jobs = @all_jobs.order(created_at: :desc).paginate(page: params[:page], per_page: 10)
       @total = @all_jobs.size
     end

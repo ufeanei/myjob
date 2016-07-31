@@ -1,32 +1,33 @@
 <ul>
   <% if @total != 0 %>
-  <% @jobs.each do |job| %> <!--- this piece of code generates the infos for each job to be displayed -->
-  <li>
-    <div class="row">
-      <%= link_to job_path(job) do %>
-        <div class="col-md-4 col-sm-4">
-          <% if job.image? %>
-            <%= image_tag(job.image_url(:thumb), class: 'img-responsive pull-left thumbnail') %>
-          <% else %>
-            <%= image_tag('pages/furni-thumb.jpg', size: '145x110', class: 'img-responsive pull-left thumbnail') %>
-          <% end %>
-        </div>
-        <div class="col-md-5 col-sm-6">
-          <h4> <%= job.title.capitalize %></h4>
-        </div>
+    <% @jobs.each do |job| %> <!--- this piece of code generates the infos for each job to be displayed -->
+      <%= link_to job_path(job) do %> 
+        <li>
+          <div class="row">
+            
+              <div class="col-md-4 col-sm-4">
+                <% if job.image? %>
+                  <%= image_tag(job.image_url(:thumb), class: 'img-responsive pull-left thumbnail') %>
+                <% else %>
+                  <%= image_tag('pages/furni-thumb.jpg', size: '145x110', class: 'img-responsive pull-left thumbnail') %>
+                <% end %>
+              </div>
+              <div class="col-md-5 col-sm-6">
+                <h4> <%= job.title.capitalize %></h4>
+              </div>
+           
+            <div class="col-md-3 ">
+              <h5 id="money"> <%= job.payment %>kr</h5>
+            </div>
+          </div>
+          <hr class="divider">
+          <div class="row panel-bottom">
+            <p class="col-md-6 text-center"><%= job.fylke.name %> </p>
+            <p class="col-md-6 text-center time-text"><%= time_in_words_norwegian(job.created_at) %> </p>  
+          </div>
+        </li>
       <% end %>
-      <div class="col-md-3 ">
-        <h5 id="money"> <%= job.payment %>kr</h5>
-      </div>
-    </div>
-    <hr class="divider">
-    <div class="row panel-bottom">
-      <p class="col-md-6 text-center"><%= job.fylke.name %> </p>
-      <p class="col-md-6 text-center time-text"><%= time_in_words_norwegian(job.created_at) %> </p>
-     
-    </div>
-  </li>
-  <% end %> <!--- end of infos for each job here -->
+    <% end %> <!--- end of infos for each job here -->
  <% else %>
   <li>Ingen jobber funnet</li>
   <% end %>
