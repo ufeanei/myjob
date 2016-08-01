@@ -14,7 +14,7 @@ class PagesController < ApplicationController
   def service
   end
   
-  def about
+  def faq
   end
 
   def become_driver

@@ -1,6 +1,6 @@
 Porter::Application.routes.draw do
  get "/home" => "pages#home"
- get "/about" => "pages#about"
+ get "/faq" => "pages#faq"
  get "/contact" => "pages#contact"
  get "/privacy" => "pages#privacy"
  get "/service" => "pages#service"
