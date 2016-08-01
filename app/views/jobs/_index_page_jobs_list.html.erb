@@ -2,7 +2,7 @@
   <% if @total != 0 %>
     <% @jobs.each do |job| %> <!--- this piece of code generates the infos for each job to be displayed -->
       <%= link_to job_path(job) do %> 
-        <li>
+        <li class='job-list-item'>
           <div class="row">
               <div class="col-md-4 col-sm-4">
                 <% if job.image? %>
@@ -13,15 +13,14 @@
               </div>
               <div class="col-md-5 col-sm-6">
                 <h4> <%= job.title.capitalize %></h4>
-              </div>
-           
+              </div>  
             <div class="col-md-3 ">
-              <h5 id="money"> <%= job.payment %>kr</h5>
+              <h5 id="money" > <%= job.payment %>kr</h5>
             </div>
           </div>
           <hr class="divider">
           <div class="row panel-bottom">
-            <p class="col-md-6 text-center"><%= job.fylke.name %> </p>
+            <p class="col-md-6 text-center grey-text"><%= job.fylke.name %> </p>
             <p class="col-md-6 text-center time-text"><%= time_in_words_norwegian(job.created_at) %> </p>  
           </div>
         </li>
