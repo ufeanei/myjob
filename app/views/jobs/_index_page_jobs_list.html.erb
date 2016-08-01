@@ -4,7 +4,6 @@
       <%= link_to job_path(job) do %> 
         <li>
           <div class="row">
-            
               <div class="col-md-4 col-sm-4">
                 <% if job.image? %>
                   <%= image_tag(job.image_url(:thumb), class: 'img-responsive pull-left thumbnail') %>
