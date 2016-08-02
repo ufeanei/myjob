@@ -1,4 +1,5 @@
 Porter::Application.routes.draw do
+  get "sitemap/index"
  get "/home" => "pages#home"
  get "/faq" => "pages#faq"
  get "/contact" => "pages#contact"
@@ -29,6 +30,7 @@ Porter::Application.routes.draw do
   end
  end
  
+ resources :sitemap, only: [:index]
  resources :password_resets,  only: [:new, :create, :edit, :update]
 
  resources :users , except: [:index, :update, :destroy]
