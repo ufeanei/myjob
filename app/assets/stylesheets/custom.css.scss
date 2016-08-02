@@ -5,16 +5,18 @@
                               Application wide styles
 |---------------------------------------------------------------------|
 /----------------------------------------------------------------------*/
+html,body
+{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x : hidden;
+    
+}
 body {
   background:#cccccc;
-  margin:0;
-  padding: 0;
-  height: 100%
   
-}
-
-html {
-  height: 100%
 }
 
 .navbar {
