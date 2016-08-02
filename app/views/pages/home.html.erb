@@ -1,4 +1,4 @@
-<% @page_title = 'Jobbplass | Velkommen'%>
+<% @page_title = 'Jobbplass | småjobb markedsplass'%>
 <header>
 <div class="col-md-12 col-sm-12">
   <div class="row col-md-10 col-md-offset-1 col-sm-12">
@@ -8,8 +8,8 @@
       <br>
       <br>
       <br>
-      <h1>Du ønsker å transportere noe? få en hjelper her</h1>
-      <h3><strong>Har du bil? Bli en hjelper og tjen penger</strong></h3>
+      <h1>Har du en småjobb som frakt, flytting, husarbeid, bygging, montering etc? Få en hjelper her</h1>
+      <h3>Eller du kan bli en hjelper og tjen penger</h3>
       <br>
       <div>
         <%= link_to jobs_path, class: "btn btn-lg btn-total-jobs" do %>
@@ -26,7 +26,7 @@
 </header>
 
 <main>
-  <h2 class="red-text text-center">Slik fungerer det!</h2>
+  <h2 class=" text-center"><strong>Slik fungerer det!</strong></h2>
   <div class="contain green-area">
     <div class="col-md-8 col-md-offset-2">
       <div class="row">
@@ -34,7 +34,7 @@
           <span class="numbers">1</span>
           <h3>SETT INN ANNONSE</h3> 
           <hr class="front-hr">
-          <h4> Du ønsker å transportere noe?</h4>
+          <h4> Har du en småjobb?</h4>
           <h4> Sett inn annonse</h4>
         </div>
         <div class="col-md-4  col-sm-4 text-center ">
@@ -78,7 +78,7 @@
                      <% end %>
                   </div>
                   <div class="col-md-5 col-sm-6">
-                    <%= "#{job.title.capitalize.slice(0, 32)}" + "..." %>                  
+                    <h4><%= "#{job.title.capitalize.slice(0, 32)}" + "..." %></h4>                  
                   </div>
                 <% end %>
                 <div class="col-md-3 ">

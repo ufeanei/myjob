@@ -169,10 +169,14 @@ main {
 
 
 .hero-text h1 {
+  line-height: 1.33em;
+  
+  font-weight: 500;
+  font-family: open-sans, helvetica, sans-serif;
+  
+}
+.hero-text h3 {
   color:#009966;
-  font-size: 40px;
-  font-family: helvetica, sans-serif;
-  font-weight: 600;
 }
 
 .btn-ship, .btn-helper {
