@@ -92,7 +92,6 @@ class JobsController < ApplicationController
 
  private
 
-
   def job_params
     params.require(:job).permit(:title,:description, :payment, :category_id, :street_addr, :destination_addr, :contact_number, 
       :kommune_id, :fylke_id, :terms_of_service, :image, :image_cache)

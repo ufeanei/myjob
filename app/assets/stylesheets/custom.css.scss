@@ -166,8 +166,6 @@ main {
   color: #cc3300;
 }
 
-
-
 .hero-text h1 {
   line-height: 1.33em;
   
@@ -247,9 +245,7 @@ background-color: #cc6600;
   background: #fff;
   color: #635c5a;
   border: 1px solid #aaa;
-  border-radius: 10px;
- 
-  
+  border-radius: 10px; 
 }
 
 .case-container { padding:4px;}
@@ -278,6 +274,7 @@ main li {
   margin-top: 10px;
   margin-left: 10px;
 }
+
 @media (min-width: 1500px) {
   .cases {
     height: 270px;
