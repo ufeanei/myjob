@@ -106,10 +106,13 @@ background: #fff;
 
    @media (min-width: 990px) and (max-width: 1200px) { 
 
-  .users {display: none;}
+  .hidden-sm {display: none!important;}
   .omrade {width:40%;}
   .middle-section {width:60%;}
   .jobs-list {padding-right: 0}
+  .cases { height:180px}
+  .latest-div {width:80%; margin-left:10%}
+  .hero-text {width:80%; margin-left:10%}
 
    }
 @media (min-width: 1500px) {
