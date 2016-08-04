@@ -5,44 +5,12 @@ $(".pagin").html(" <%=j( will_paginate @jobs, renderer: BootstrapPagination::Rai
 $('.pagination a').attr('data-remote', 'true');
 $(".jobs-list").html("<%= j (render 'index_page_jobs_list') %>");
 
-
-  <% if @jobs_by_cat && !@jobs_by_fylke %>
-    <% @fylkes.each do |fylke| %>
-      $('#fylke-<%=fylke.id %>').html("(<%= jobs_per_fylke(@all_jobs, @jobs_by_cat, fylke.id)%>)");
-    <% end %>
-    <% @categories.each do |cat| %>
-      $('#cat-<%=cat.id %>').html("(<%= jobs_per_category(@all_jobs, @jobs_by_fylke, cat.id)%>)"); 
-    <% end %>
-  <% end %> // remove after
-
-
-  <% if !@jobs_by_cat && !@jobs_by_fylke %> // elseif was removed here
-  <% @fylkes.each do |fylke| %>
-    $('#fylke-<%=fylke.id %>').html("(<%= jobs_per_fylke(@all_jobs, @jobs_by_cat, fylke.id)%>)");
-  <% end %>
-  <% @categories.each do |cat| %>
-      $('#cat-<%=cat.id %>').html("(<%= jobs_per_category(@all_jobs, @jobs_by_fylke, cat.id)%>)"); 
-    <% end %>
-  <% end %>
-
-  <% if @jobs_by_cat && @jobs_by_fylke %> // elseif removed here
-    <% @fylkes.each do |fylke| %>
-      $('#fylke-<%=fylke.id %>').html("(<%= jobs_per_fylke(@all_jobs, @jobs_by_cat, fylke.id)%>)");
-    <% end %>
-    <% @categories.each do |cat| %>
-      $('#cat-<%=cat.id %>').html("(<%= jobs_per_category(@all_jobs, @jobs_by_fylke, cat.id)%>)"); 
-    <% end %> 
-  <% end %>
-
-
-  <% if @jobs_by_fylke && !@jobs_by_cat %>
-    <% @categories.each do |cat| %>
-      $('#cat-<%=cat.id %>').html("(<%= jobs_per_category(@all_jobs, @jobs_by_fylke, cat.id)%>)"); 
-    <% end %>
-     <% @fylkes.each do |fylke| %>
-      $('#fylke-<%=fylke.id %>').html("(<%= jobs_per_fylke(@all_jobs, @jobs_by_cat, fylke.id)%>)");
-    <% end %>
-  <% end %>
+<% @fylkes.each do |fylke| %>
+  $('#fylke-<%=fylke.id %>').html("(<%= jobs_per_fylke(@all_jobs, @jobs_by_cat, fylke.id)%>)");
+<% end %>
+<% @categories.each do |cat| %>
+  $('#cat-<%=cat.id %>').html("(<%= jobs_per_category(@all_jobs, @jobs_by_fylke, cat.id)%>)"); 
+<% end %>
 
 
 
