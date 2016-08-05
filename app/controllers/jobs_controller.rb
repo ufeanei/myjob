@@ -20,9 +20,9 @@ class JobsController < ApplicationController
       @total = @jobs_by_cat.size
       
     elsif requested_jobs && !jobs_from_category
-        @jobs_by_fylke = Job.where(fylke_id: requested_jobs).order(created_at: :desc)
-        @jobs = @jobs_by_fylke.paginate(page: params[:page], per_page: 10)
-        @total = @jobs_by_fylke.size 
+      @jobs_by_fylke = Job.where(fylke_id: requested_jobs).order(created_at: :desc)
+      @jobs = @jobs_by_fylke.paginate(page: params[:page], per_page: 10)
+      @total = @jobs_by_fylke.size 
     else      
       @jobs = @all_jobs.order(created_at: :desc).paginate(page: params[:page], per_page: 10)
       @total = @all_jobs.size

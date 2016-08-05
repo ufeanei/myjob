@@ -38,12 +38,13 @@ class JobApplicationsController < ApplicationController
       flash[:success] = "Invitasjon vellykket. Hjelper varslet via e-post"
       @job_application.job.update_attribute(:status,'inactive')
       UserMailer.delay(queue: 'immediate', priority: 0).invited_notice(@job_application) #send notification email to applicant as a background job
-      UserMailer.delay(queue: 'twodays', priority: 10, run_at: 5.minutes.from_now).review_notice(@job_application)# send notification 2 days later as background job
+      UserMailer.delay(queue: 'sixhrs', priority: 10, run_at: 6.hours.from_now).review_notice(@job_application)# send notification 2 days later as background job
       redirect_to :back 
     end
   end
 
  private
+
  def correct_user
     if @job_application.job.user != current_user # Only the jobowner can invite a helper to a job
       flash[:danger] = "Du kan ikke gjøre det"

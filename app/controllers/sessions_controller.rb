@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
         flash[:success] = "Du er nå logget inn"
         redirect_to jobs_path
       else
-        message ="E-post er ikke bekreftet enda."
+        message ="E-post er ikke bekreftet ennå."
         message+= "Sjekk e-posten din for en bekreftelseslenke"
         flash[:warning] = message
         redirect_to jobs_path

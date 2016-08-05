@@ -11,7 +11,7 @@ def create
    if @user
     @user.create_reset_digest
     UserMailer.delay.reset_password(@user, @user.reset_token)
-    flash[:info] = "En melding med instruksjoner om hvordan du tilbakestiller passordet ditt har blitt sendt til deg via e-post."
+    flash[:info] = "En melding med instruksjoner om hvordan du tilbakestiller passordet ditt har blitt sendt til deg via e-post. Kontroller innboksen eller spam-mappen"
     redirect_to jobs_path
   else
     flash.now[:danger] = "Epostaddressen er ugyldig"
