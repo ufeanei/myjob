@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-=begin	fylkes= Fylke.create([
+	fylkes= Fylke.create([
 	{name: 'Akerhus' },
 	{name: 'Aust-Agder' },
 	{name: 'Buskerud' },
@@ -551,6 +551,6 @@ kommunes = Kommune.create([
   ])
 
 
-=end
+
 
 
