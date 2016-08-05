@@ -84,11 +84,11 @@ background: #fff;
     }
 
 .middle-section {
-  margin: 2px 0;
+  margin: 8px 0;
 }
 
 .jobs-list {
-  padding: 0;
+  padding: 0 
 }
 .row {
  margin: 0; 
@@ -99,12 +99,16 @@ background: #fff;
 }
 
 @media (min-width: 752px) and (max-width: 900px) { 
+.all {
+   width: 96%;
+   margin-left: 2%;
+    }
 
-  .jobs-list {padding: 0}
+  .jobs-list {padding: 0 0 0 8px }
 
    }
 
-   @media (min-width: 990px) and (max-width: 1200px) { 
+@media (min-width: 990px) and (max-width: 1200px) { 
 
   .hidden-sm {display: none!important;}
   .omrade {width:40%;}

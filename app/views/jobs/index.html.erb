@@ -1,6 +1,6 @@
 <% @page_title = 'Jobbplass | Alle jobber'%>
 <div class=" contain main-content">
-  <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1  all">
+  <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1  all">
     <div class='row'>
       <div class="toppanel">
         <div class="col-md-6 col-xs-6">
@@ -16,7 +16,10 @@
           <% @categories.each do |category| %> 
               <div class="form-group fylke-checkbox grey-text">
                 <%= check_box_tag("category_id[#{category.id}]", category.id) %>
-                <%= label_tag("category_id[#{category.id}]", category.name) %><span id="cat-<%= category.id %>">(<%= jobs_per_category(@all_jobs, @jobs_by_fylke, category.id)%>)</span>
+                <%= label_tag("category_id[#{category.id}]") do %>
+                <%= category.name %>
+                <span id="cat-<%= category.id %>">(<%= jobs_per_category(@all_jobs, @jobs_by_fylke, category.id)%>)</span>
+                <% end %>
               </div>    
             <% end%>
             <br>
@@ -26,7 +29,10 @@
             <% @fylkes.each do |fylke| %> 
               <div class="form-group fylke-checkbox grey-text">
                 <%= check_box_tag("fylke_id[#{fylke.id}]", fylke.id) %>
-                <%= label_tag("fylke_id[#{fylke.id}]", fylke.name) %><span id="fylke-<%= fylke.id %>" >(<%= jobs_per_fylke(@all_jobs, @jobs_by_cat, fylke.id)%>)</span>
+                <%= label_tag("fylke_id[#{fylke.id}]" ) do %>
+                <%= fylke.name %>
+                <span id="fylke-<%= fylke.id %>" >(<%= jobs_per_fylke(@all_jobs, @jobs_by_cat, fylke.id)%>)</span>
+                <% end %>
               </div>    
             <% end%>
             <br>
