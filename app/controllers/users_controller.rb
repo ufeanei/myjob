@@ -40,7 +40,7 @@ class UsersController < ApplicationController
    end
 
    def get_kommunes
-    @kommunes = Kommune.all
+    @kommunes = Kommune.all.order(name: :asc)
    end
 
    def get_user
