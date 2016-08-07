@@ -74,7 +74,7 @@
                     <% if job.image? %>
                     <%= image_tag(job.image_url(:thumb), class: 'img-responsive pull-left thumbnail pic-margins') %>
                     <% else %>
-                     <%= image_tag('pages/furni-thumb.jpg', class: 'img-responsive pull-left thumbnail pic-margins') %>
+                     <%= image_tag("pages/thumb_cat_#{job.category_id}.png", class: 'img-responsive pull-left thumbnail pic-margins') %>
                      <% end %>
                   </div>
                   <div class="col-md-5 col-sm-6">
@@ -111,34 +111,52 @@
     <br>
     <h3 class="text-center red-text ">Hvordan folk bruker Jobbplass</h3>
     <br>
-    <div class="col-md-6 col-md-offset-3 col-sm-12">
-      <div class="row">
-        <div class="col-md-3 col-sm-3 case-container">
-          <div class="text-center cases">
-            <%= image_tag('pages/furniture.jpg', class: 'img-responsive push')%>            
-            <h4> Transport av Møbler</h4>
-          </div>
+    <div class='col-md-6 col-md-offset-3'>
+    <div class='row'>
+      <div class='col-md-3 col-sm-6'>
+        <div class='each-cat'>
+          <%= image_tag("pages/cat_1.png", class: 'img-responsive   ') %>
+          <p>Fyltting, Frakt</p>
         </div>
-        <div class="col-md-3 col-sm-3 case-container">     
-          <div class=" text-center cases">
-            <%= image_tag('pages/move.jpg', class: 'img-responsive push')%>
-            <h4> Flytting  </h4>  
-          </div>  
+      </div>
+      <div class='col-md-3 col-sm-6'>
+        <div class='each-cat'>
+          <%= image_tag("pages/cat_2.png", class: 'img-responsive   ') %>
+          <p>Utearbeid og Hage</p>
+      </div>
+      </div>
+      <div class='col-md-3 col-sm-6'>
+        <div class='each-cat'>
+          <%= image_tag("pages/cat_3.png", class: 'img-responsive   ') %>
+          <p>Reparasjon, Vedlikehold</p>
+      </div>
+      </div>
+      <div class='col-md-3 col-sm-6'>
+        <div class='each-cat'>
+          <%= image_tag("pages/cat_4.png", class: 'img-responsive  ') %>
+          <p>Vask, Renhold Husearbeid</p>
         </div>
-        <div class="col-md-3 col-sm-3 case-container">
-          <div class="text-center cases">
-            <%= image_tag('pages/online.jpg', class: 'img-responsive push')%>             
-            <h4> Transport av Hvitevarer</h4>
-          </div>
+      </div>
+      <div class='col-md-3 col-sm-6'>
+        <div class='each-cat'>
+          <%= image_tag("pages/cat_5.png", class: 'img-responsive   ') %>
+          <p>Bygging og montering</p>
         </div>
-        <div class="col-md-3 col-sm-3 case-container">
-          <div class="text-center cases">
-            <%= image_tag('pages/office.jpg', class: 'img-responsive push')%>            
-            <h4> Kontoflytting </h4>
-          </div>
+      </div>
+      <div class='col-md-3 col-sm-6'>
+        <div class='each-cat'>
+          <%= image_tag("pages/cat_6.png", class: 'img-responsive   ') %>
+          <p>IT og Data</p>
+        </div>
+      </div>
+      <div class='col-md-3 col-sm-6'>
+        <div  class='each-cat'>
+          <%= image_tag("pages/cat_7.png", class: 'img-responsive   ') %>
+          <p>Undervisning, Leksehelp</p>
         </div>
       </div>
     </div>
+  </div>
     <div class='col-md-12'> <!-- added just to give gap below. prefer this to css -->
       <br>
       <br>

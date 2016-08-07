@@ -8,7 +8,7 @@
                 <% if job.image? %>
                   <%= image_tag(job.image_url(:thumb), class: 'img-responsive pull-left thumbnail') %>
                 <% else %>
-                  <%= image_tag('pages/furni-thumb.jpg', size: '145x110', class: 'img-responsive pull-left thumbnail') %>
+                  <%= image_tag("pages/thumb_cat_#{job.category_id}.png",  class: 'img-responsive pull-left thumbnail') %>
                 <% end %>
               </div>
               <div class="col-md-5 col-sm-6">

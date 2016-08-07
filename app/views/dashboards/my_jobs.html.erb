@@ -14,7 +14,7 @@
             <% if job.image? %>
               <%= image_tag(job.image_url(:thumb), class: 'img-responsive pull-left thumbnail') %>
             <% else %>
-              <%= image_tag('pages/furni-thumb.jpg', size: '145x110', class: 'img-responsive pull-left thumbnail') %>
+              <%= image_tag("pages/thumb_cat_#{job.category_id}.png", class: 'img-responsive pull-left thumbnail') %>
             <% end %>
           </div>
           <div class="col-md-5 col-sm-8 col-xs-12">
@@ -41,17 +41,22 @@
           <h4 class='red-text'> Ingen hjelper ennå</h4>
         <% else %>
           <table class="table table-hover ">
+            <thead>
+              <th>Hjelpernavn</th>
+              <th>Mobilnummer</th>
+              <th>Inviter</th>
+            </thead>
             <% @applications.each do |x| %>
               <% if x.job_id == job.id %>
                 <tr>
                   <% if x.awarded %>
                     <td><strong><%= link_to "#{full_name(x.user)}", user_path(x.user) %> <i class="fa fa-check" aria-hidden="true"></i></strong> </td>
+                    <td><%=x.user.phone %> </td>
                     <td> <strong id="invited">Hjelper Invitert</strong></td>  
-                    <td> Tel: <%=x.user.phone %> </td>
                   <% else %>
-                    <td><strong><%= link_to "#{full_name(x.user)}", user_path(x.user) %></strong></td>
-                    <td><%= link_to 'Invite', award_job_job_application_path(job_id: job.id, id: x.id), class: "btn btn-info" %></td>  
-                    <td> <%=x.user.kommune.name %> </td>
+                    <td><strong><%= link_to "#{full_name(x.user)}", user_path(x.user) %></strong></td>  
+                    <td> nummer skjult </td>
+                    <td><%= link_to 'Inviter', award_job_job_application_path(job_id: job.id, id: x.id), class: "btn btn-info" %></td>  
                   <% end %>
                 </tr>
               <% end %>

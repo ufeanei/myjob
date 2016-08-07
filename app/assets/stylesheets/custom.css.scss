@@ -236,21 +236,9 @@ background-color: #cc6600;
   margin-left: 25%;
 }
 
-.use-cases {
-  background: #f2f2f2;
 
-}
 
-.cases {
-  background: #fff;
-  color: #635c5a;
-  border: 1px solid #aaa;
-  border-radius: 10px; 
-}
-
-.case-container { padding:4px;}
-
-main li {
+.latest-list  li {
   list-style: none;
   border: 1px solid #aaa;
   margin-bottom: 5px;
@@ -275,17 +263,15 @@ main li {
   margin-left: 10px;
 }
 
-@media (min-width: 1500px) {
-  .cases {
-    height: 270px;
-  }
+.use-cases {
+  background: #f2f2f2;
+
 }
 
-@media (max-width: 1450px) {
-  .cases {
-    height: 240px;
-  }
+.each-cat {
+  padding: 20px;
 }
+
 .field_with_errors { display: inline }
 
 /*---------------------------------------------------------------------|
