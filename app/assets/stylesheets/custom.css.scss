@@ -244,13 +244,13 @@ background-color: #cc6600;
   margin-bottom: 5px;
   margin-top: 5px;
   background: #fff;
-  border-radius: 15px;
+  
      
 }
 
 .latest-list {
   border: 1px solid #635c5a;
-  border-radius: 15px;
+  border-radius: 10px;
   background-color: #c0c0c0;
 }
 
@@ -271,6 +271,13 @@ background-color: #cc6600;
 .each-cat {
   padding: 20px;
   text-align: center;
+
+}
+
+.each-cat p {
+  margin-top: 5px;
+  font-size: 17px;
+  color: #666666
 }
 .field_with_errors { display: inline }
 
