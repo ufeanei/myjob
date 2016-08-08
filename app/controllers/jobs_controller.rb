@@ -12,19 +12,19 @@ class JobsController < ApplicationController
       @jobs_by_cat =Job.where(category_id: jobs_from_category)
       @jobs_by_fylke = Job.where(fylke_id: requested_jobs)
       
-      @jobs = @job_from_both.order(created_at: :desc).paginate(page: params[:page], per_page: 10)
+      @jobs = @job_from_both.order(updated_at: :desc).paginate(page: params[:page], per_page: 10)
       @total = @job_from_both.size
     elsif jobs_from_category && !requested_jobs
-      @jobs_by_cat =Job.where(category_id: jobs_from_category).order(created_at: :desc) 
+      @jobs_by_cat =Job.where(category_id: jobs_from_category).order(updated_at: :desc) 
       @jobs = @jobs_by_cat.paginate(page: params[:page], per_page: 10)
       @total = @jobs_by_cat.size
       
     elsif requested_jobs && !jobs_from_category
-      @jobs_by_fylke = Job.where(fylke_id: requested_jobs).order(created_at: :desc)
+      @jobs_by_fylke = Job.where(fylke_id: requested_jobs).order(updated_at: :desc)
       @jobs = @jobs_by_fylke.paginate(page: params[:page], per_page: 10)
       @total = @jobs_by_fylke.size 
     else      
-      @jobs = @all_jobs.order(created_at: :desc).paginate(page: params[:page], per_page: 10)
+      @jobs = @all_jobs.order(updated_at: :desc).paginate(page: params[:page], per_page: 10)
       @total = @all_jobs.size
     end
 
