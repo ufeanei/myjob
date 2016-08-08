@@ -6,7 +6,7 @@ class Job < ActiveRecord::Base
   validates :category_id, presence: {message: "må velg jobbcategory"}
   validates :title,  presence: { message: "må fylles ut"}
   validates :description, presence: { message: "må fylles ut"}
-  validates :payment, numericality: { message: "må fylles ut"} 
+  validates :payment, numericality: { message: "må være et tall ex. 500, 251"} 
   validates :street_addr, presence: { message: "må fylles ut"}
   
   validates :contact_number, presence: { message: "må fylles ut"}

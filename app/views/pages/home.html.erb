@@ -64,7 +64,7 @@
     <h3 class="text-center red-text"> Nyeste Jobber</h3>
     <br>
     <div class="col-md-8 col-md-offset-2 latest-div">
-      <ul class="well contain latest-list">
+      <ul class="contain latest-list">
         <% @jobs.each do |job| %> <!--- this piece of code generates the infos for each job to be displayed -->
           <div class="col-md-6">
             <li >
@@ -78,7 +78,7 @@
                      <% end %>
                   </div>
                   <div class="col-md-5 col-sm-6">
-                    <h4><%= "#{job.title.capitalize.slice(0, 32)}" + "..." %></h4>                  
+                    <p><%= "#{job.title.capitalize.slice(0, 32)}" + "..." %></p>                  
                   </div>
                 <% end %>
                 <div class="col-md-3 ">
