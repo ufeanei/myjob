@@ -279,6 +279,14 @@ background-color: #cc6600;
   font-size: 17px;
   color: #666666
 }
+
+@media (min-width: 1500px) { 
+.use-cases-wrapper {
+  width: 50%;
+  margin-left: 25%;
+  
+}
+ }
 .field_with_errors { display: inline }
 
 /*---------------------------------------------------------------------|
