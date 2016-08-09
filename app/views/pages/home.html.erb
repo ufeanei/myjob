@@ -67,31 +67,32 @@
       <ul class="contain latest-list">
         <% @jobs.each do |job| %> <!--- this piece of code generates the infos for each job to be displayed -->
           <div class="col-md-6 list-container">
-            <li >
-              <div class="row">
-                <%= link_to job_path(job) do %>
-                  <div class="col-md-4 col-sm-4">
-                    <% if job.image? %>
-                    <%= image_tag(job.image_url(:thumb), class: 'img-responsive pull-left thumbnail pic-margins') %>
-                    <% else %>
-                     <%= image_tag("pages/thumb_cat_#{job.category_id}.png", class: 'img-responsive pull-left thumbnail pic-margins') %>
-                     <% end %>
+            <%= link_to job_path(job) do %>
+              <li >
+                <div class="row">    
+                    <div class="col-md-4 col-sm-4">
+                      <% if job.image? %>
+                      <%= image_tag(job.image_url(:thumb), class: 'img-responsive pull-left thumbnail pic-margins') %>
+                      <% else %>
+                       <%= image_tag("pages/thumb_cat_#{job.category_id}.png", class: 'img-responsive pull-left thumbnail pic-margins') %>
+                       <% end %>
+                    </div>
+                    <div class="col-md-5 col-sm-6">
+                      <p><%= "#{job.title.capitalize.slice(0, 32)}" + "..." %></p>                  
+                    </div>
+                  
+                  <div class="col-md-3 ">
+                    <h5 id="money"> <%= job.payment %>kr</h5>
                   </div>
-                  <div class="col-md-5 col-sm-6">
-                    <p><%= "#{job.title.capitalize.slice(0, 32)}" + "..." %></p>                  
-                  </div>
-                <% end %>
-                <div class="col-md-3 ">
-                  <h5 id="money"> <%= job.payment %>kr</h5>
+                  <p class='col-md-5 no-helpers' ><%= job.job_applications.size %> Hjelpere</p>
                 </div>
-                <p class='col-md-5 no-helpers' ><%= job.job_applications.size %> Hjelpere</p>
-              </div>
-              <hr class="divider">
-              <div class="row panel-bottom">
-                <p class="col-md-6 text-center"><%= job.fylke.name %> </p>
-                <p class="col-md-6 text-center time-text"><%= time_in_words_norwegian(job.created_at) %> </p>
-              </div>
-            </li>
+                <hr class="divider">
+                <div class="row panel-bottom">
+                  <p class="col-md-6 text-center grey-text"><%= job.fylke.name %> </p>
+                  <p class="col-md-6 text-center time-text"><%= time_in_words_norwegian(job.created_at) %> </p>
+                </div>
+              </li>
+            <% end %>
           </div>
         <% end %> <!--- end of infos for each job here -->
       </ul>
