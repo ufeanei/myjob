@@ -41,7 +41,7 @@ class Job < ActiveRecord::Base
 
 #simple non database slug solution
   def slug
-    self.title.downcase.gsub(" ", "-")  
+    self.title.downcase.gsub("/", " ").gsub(" ", "-")
   end
 
   def to_param
