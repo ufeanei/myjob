@@ -18,7 +18,7 @@
         <br/>
         <% if !@job.destination_addr.empty? %>
           <h3>Retninger</h3>
-          <p><%= @job.street_addr %> <strong>  To  </strong> <%= @job.destination_addr%> </p> 
+          <p><%= @job.street_addr %> <strong>  Til  </strong> <%= @job.destination_addr%> </p> 
         <% else %>
           <h3>Sted</h3> 
           <p><%=@job.origin %></p> 

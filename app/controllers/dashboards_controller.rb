@@ -27,13 +27,13 @@ before_action :helper_ratings # this is to track the number of helpers needing r
   end
 
   def edit_profile
-    @kommunes = Kommune.all
+    @kommunes = Kommune.all.order(name: :asc)
     @user = User.find_by(id: current_user.id)
     @editprofile = 'clicked'
   end
 
   def update_profile
-    @kommunes = Kommune.all
+    @kommunes = Kommune.all.order(name: :asc)
     @user = User.find_by(id: current_user.id) 
     if @user.update_attributes(user_edit_params)
       flash[:success] = "Profil oppdatert"
