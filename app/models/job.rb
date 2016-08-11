@@ -30,7 +30,7 @@ class Job < ActiveRecord::Base
 
   def origin
    if self.kommune && self.fylke
-     [street_addr, self.kommune.name, self.fylke.name].compact.join(',')
+     [street_addr, display_kommune_name, self.fylke.name].compact.join(',')
    end
   end
 
@@ -48,14 +48,35 @@ class Job < ActiveRecord::Base
     "#{slug}-#{id}"
   end
 
+def display_kommune_name
 
+    case kommune.name 
+    when 'Bø i Nordland' , 'Bø i Telemark'
+      return 'Bø'
+    when 'Herøy i Møre og Romsdal' , 'Herøy i Nordland'
+      return 'Herøy'
+    when 'Hole i Akerhus' , 'Hole i Buskerud'
+      return 'Hole'
+    when 'Nes i Akerhus' , 'Nes i Buskerud'
+      return 'Nes'
+    when 'Os i Hedmark' , 'Os i Hordaland'
+      return 'Os'
+    when 'Sande i Møre og Romsdal' , 'Sande i Vestfold'
+      return 'Sande'
+    when 'Våler i Hedmark' , 'Våler i Østfold'
+      return 'Våler'
+    else
+      return kommune.name
+    end
+ 
+end
 
 
   private
 
   def image_size
     if image.size > 2.megabytes
-      errors.add(:image, "Må være mindre enn 2 MB.B")
+      errors.add(:image, "Må være mindre enn 2 MB")
     end
   end
 
