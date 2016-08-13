@@ -56,7 +56,7 @@
                   <% else %>
                     <td><strong><%= link_to "#{full_name(x.user)}", user_path(x.user) %></strong></td>  
                     <td> nummer skjult </td>
-                    <td><%= link_to 'Inviter', award_job_job_application_path(job_id: job.id, id: x.id), class: "btn btn-info" %></td>  
+                    <td><%= link_to 'Inviter', award_job_job_application_path(job_id: job.id, id: x.id), class: "btn btn-info invited-button" %></td>  
                   <% end %>
                 </tr>
               <% end %>
@@ -77,6 +77,21 @@
 
 <%= render 'part2' %>
    
-   
+<div class='overlay col-md-12 text-center hidden'> <!-- css styles for overlay found in newjob.css.scss -->
+  <div class='spin col-md-2 col-md-offset-5'>
+    <p></p>
+    <%= image_tag('pages/spin.gif') %>
+    <p>Behandling...</p>
+  </div>  
+</div>
+
+<script type="text/javascript">
+
+// show overlay when the invite button is clicked 
+    $(".invited-button").on('click', function(){
+      $(".overlay").removeClass("hidden");     
+    });
+
+</script> 
   
   
