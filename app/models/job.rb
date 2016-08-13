@@ -48,28 +48,27 @@ class Job < ActiveRecord::Base
     "#{slug}-#{id}"
   end
 
-def display_kommune_name
-
-    case kommune.name 
-    when 'Bø i Nordland' , 'Bø i Telemark'
-      return 'Bø'
-    when 'Herøy i Møre og Romsdal' , 'Herøy i Nordland'
-      return 'Herøy'
-    when 'Hole i Akerhus' , 'Hole i Buskerud'
-      return 'Hole'
-    when 'Nes i Akerhus' , 'Nes i Buskerud'
-      return 'Nes'
-    when 'Os i Hedmark' , 'Os i Hordaland'
-      return 'Os'
-    when 'Sande i Møre og Romsdal' , 'Sande i Vestfold'
-      return 'Sande'
-    when 'Våler i Hedmark' , 'Våler i Østfold'
-      return 'Våler'
-    else
-      return kommune.name
-    end
- 
-end
+#we need a method to return just the kommune name for duplicate kommunes.
+  def display_kommune_name
+      case kommune.name 
+      when 'Bø i Nordland' , 'Bø i Telemark'
+        return 'Bø'
+      when 'Herøy i Møre og Romsdal' , 'Herøy i Nordland'
+        return 'Herøy'
+      when 'Hole i Akerhus' , 'Hole i Buskerud'
+        return 'Hole'
+      when 'Nes i Akerhus' , 'Nes i Buskerud'
+        return 'Nes'
+      when 'Os i Hedmark' , 'Os i Hordaland'
+        return 'Os'
+      when 'Sande i Møre og Romsdal' , 'Sande i Vestfold'
+        return 'Sande'
+      when 'Våler i Hedmark' , 'Våler i Østfold'
+        return 'Våler'
+      else
+        return kommune.name
+      end
+  end
 
 
   private
@@ -95,8 +94,8 @@ end
         self.long1 = geocoded.longitude
       end
     end
+    
     # Repeat for destination
-     
       if :destination_addr_changed?
         geocoded = Geocoder.search(destination).first
         if geocoded

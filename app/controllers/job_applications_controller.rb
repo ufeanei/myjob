@@ -16,6 +16,7 @@ class JobApplicationsController < ApplicationController
       redirect_to :back
     elsif @job_application.save
       flash[:success] = "Søknad vellykket. Vent på jobbeier å invitere deg"
+      UserMailer.delay(queue: 'immediate', priority: 0).application_notice(@job_application)
       redirect_to :back
     else
       flash[:info] = "Du har allerede søkt på denne jobben" # Validations enforced at model level and  database level prevent a user from applying to the same job twice
@@ -38,7 +39,7 @@ class JobApplicationsController < ApplicationController
       flash[:success] = "Invitasjon vellykket. Hjelper varslet via e-post"
       @job_application.job.update_attribute(:status,'inactive')
       UserMailer.delay(queue: 'immediate', priority: 0).invited_notice(@job_application) #send notification email to applicant as a background job
-      UserMailer.delay(queue: 'sixhrs', priority: 10, run_at: 6.hours.from_now).review_notice(@job_application)# send notification 2 days later as background job
+      UserMailer.delay(queue: 'sixhrs', priority: 10, run_at: 6.minutes.from_now).review_notice(@job_application)# send notification 2 days later as background job
       redirect_to :back 
     end
   end

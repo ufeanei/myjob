@@ -1,0 +1,20 @@
+<h1>Jobbplass</h1>
+
+
+<p>Hei <%= @application.job.user.first_name %>,</p>
+
+<p><%= @application.user.first_name.capitalize %> har søkt som hjelper til jobben din <br>
+<%= link_to "#{@application.job.title}", job_url(@application.job) %> <br>
+Vennligst logg inn på Jobbplass-kontoen din å invitere hjelper</p>
+
+<p> Å invitere en hjelper</p>
+<ul>
+  <li>Logg inn på Jobbplass</li>
+  <li>Øverst til høyre ser du "<strong>Min Konto</strong>". Klikk på denne for å gå til konto dashbordet</li>
+  <li>På venstre, klikk på "<strong>Mine annonser</strong>". Du vil se dine småjobber og hjelperne som har tilbudt å hjelpe deg.</li>
+  <li>Velg hjelperen du liker og klikk 'Inviter'-knappen ved siden av helperens navn</li>
+</ul>
+ 
+<P>MVH</P>
+<p>Jobbplass</p>
+

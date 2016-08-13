@@ -3,10 +3,13 @@ Hi <%= @user.first_name.capitalize %>,
 
 Gratulerer! Du valgte <%= @application.user.first_name.capitalize %> som hjelper for din jobb
 <%=link_to "#{@application.job.title.capitalize}", job_url(@application.job.id) %>
-Er du fornøyd med sitt arbeid?
+Vennligst fortell oss om din opplevelse med #{@application.user.first_name}
 
-Vennligst logg inn på Jobbplass kontoen din på <%= link_to "#{root_url}", root_url %> and klikk på 'Min Konto'
-Til venstre, klikk på  'Vurder dine hjelpere ' og skrive en omtale  
+Å skrive en omtale 
+
+Logg inn på <%= link_to "Jobbplass", root_url %>-kontoen din
+Øverst til høyre ser du 'Min Konto'. Klikk på denne for å gå til konto dashbordet
+På venstre, klikk på 'Vurder din hjelper'.
 
 Det tar bare 15-20 sekunder
 
