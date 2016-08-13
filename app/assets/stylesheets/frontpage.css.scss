@@ -6,6 +6,8 @@
 |---------------------------------------------------------------------|
 |----------------------------------------------------------------------*/
 
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+
 header {
   border-bottom: 1px solid #009999;
   overflow:auto;
@@ -13,7 +15,8 @@ header {
 
 }
 .green-area {
-  padding-top: 10px
+  padding-top: 10px;
+  font-family: 'Open Sans', helvetica, sans-serif;
 }
 
 .no-helpers {
@@ -34,19 +37,20 @@ main {
   line-height: 1.33em;
   
   font-weight: 700;
-  font-family: Georgia, open-sans, helvetica, sans-serif;
+  font-family: 'Open Sans', helvetica, sans-serif;
   
 }
 .hero-text h3 {
   color:#009966;
   font-weight: 700;
+  font-family: 'Open Sans', helvetica, sans-serif;
 }
 
 .btn-ship, .btn-helper {
   font-size: 16px;
   color: #ffffff;
   font-weight: 600;
-  font-family: arial, helvetica, sans-serif;
+  font-family: 'Open Sans', helvetica, sans-serif;
   border-radius:200px;
   margin:10px 15px;
 }
@@ -65,7 +69,7 @@ background-color: #cc6600;
   border: 3px solid #336699;
   font-size: 20px;
   border-radius: 200px;
-  font-family: arial, helvetica, sans-serif;
+  font-family: 'Open Sans', helvetica, sans-serif;
   color: #336699;
 }
 
@@ -90,6 +94,7 @@ background-color: #cc6600;
 .navbar-right-links {
   color: #fff; 
   font-size: 16px;
+  font-family: 'Open Sans', helvetica, sans-serif;
 }
 
 .front-hr {
@@ -136,7 +141,8 @@ background-color: #cc6600;
 .each-cat p {
   margin-top: 5px;
   font-size: 17px;
-  color: #666666
+  color: #666666;
+  font-family: 'Open Sans', helvetica, sans-serif;
 }
 
 @media (min-width: 1500px) { 
