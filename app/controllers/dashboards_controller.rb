@@ -1,7 +1,9 @@
 class DashboardsController < ApplicationController
 before_action :require_user
 before_action :helper_ratings # this is to track the number of helpers needing reviews as one navigates btw all actions/views of the dashboard
-# @user in all action is the logged in and current user
+                              # @user in all action is the logged in and current user
+before_action :active_jobs_with_helpers
+
   def show
     @kommunes = Kommune.all
     @user = User.find_by(id: current_user.id)
@@ -17,12 +19,14 @@ before_action :helper_ratings # this is to track the number of helpers needing r
 
   def my_jobs
     @my_jobs = Job.where(user_id: current_user.id).order(created_at: :desc).order(created_at: :desc).paginate(page: params[:page], per_page: 3)
-    @applications = JobApplication.where(job_id: @my_jobs.ids) # find the applications for all the jobs owned by current_user
+    @applications = JobApplication.where(job_id: @my_jobs.ids)# find the applications for all the jobs owned by current_user
     @myjobs = 'clicked'
   end
 
   def jobs_won
-    @appli_won =  JobApplication.where(user_id: current_user.id, awarded: true).order(created_at: :desc).paginate(page: params[:page], per_page: 8) 
+    @invitations = JobApplication.where(user_id: current_user.id, awarded: true)
+    @appli_won =  @invitations.order(created_at: :desc).paginate(page: params[:page], per_page: 8)
+    @total_won = @invitations.size 
     @jobswon = 'clicked'
   end
 

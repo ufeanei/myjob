@@ -9,7 +9,15 @@
         <h2>Dashbord</h2>
         <hr/>
         <div class='btn-group-vertical col-md-10 col-xs-12 col-sm-12'>          
-         <%= link_to 'Mine annonser', my_jobs_dashboard_path, class: "btn btn-default text-left #{@myjobs}"  %>
+         <%= link_to  my_jobs_dashboard_path, class: "btn btn-default text-left #{@myjobs}" do %>
+         <% if @active_jobs_with_applicants.size == 0  %>
+          Mine annonser
+          <% else %>
+          Mine annonser<sup>(<%= @active_jobs_with_applicants.size %>)</sup> <br>
+          <sup><%= @active_jobs_with_applicants.size %> med hjelpere venter</sup>
+
+          <% end %>
+          <% end %>
           <%= link_to 'Mine søknader', my_applications_dashboard_path, class: "btn btn-default text-left #{@myapps}"  %>
           <%= link_to 'Invitasjoner fra jobbeiere', jobs_won_dashboard_path, class: "btn btn-default text-left #{@jobswon}"  %>
           <%= link_to 'Min offentlige profil', user_path(current_user), class: 'btn btn-default text-left'  %>

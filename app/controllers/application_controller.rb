@@ -9,6 +9,9 @@ class ApplicationController < ActionController::Base
     @applications_without_reviews = JobApplication.where(awarded: true, job_id: @my_jobs_ids).select {|x| x.reviews.empty?}
   end
 
+  def active_jobs_with_helpers
+    @active_jobs_with_applicants = Job.where(user_id: current_user.id, status: 'active').select { |x| x.job_applications.size > 0}
+  end
 
   # This gets the currently logged in user
   def current_user
