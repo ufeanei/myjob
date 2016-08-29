@@ -15,11 +15,18 @@
           <% else %>
           Mine annonser<sup>(<%= @active_jobs_with_applicants.size %>)</sup> <br>
           <sup><%= @active_jobs_with_applicants.size %> med hjelpere venter</sup>
-
           <% end %>
           <% end %>
           <%= link_to 'Mine søknader', my_applications_dashboard_path, class: "btn btn-default text-left #{@myapps}"  %>
-          <%= link_to 'Invitasjoner fra jobbeiere', jobs_won_dashboard_path, class: "btn btn-default text-left #{@jobswon}"  %>
+          <%= link_to jobs_won_dashboard_path, class: "btn btn-default text-left #{@jobswon}"  do %>
+          <% if @total_won == 0 %>
+            Invitasjoner fra jobbeiere
+          <% else %>
+            Invitasjoner fra jobbeiere<sup>(<%= @total_won %>)</sup>
+            <% end %>
+          <% end %>
+
+
           <%= link_to 'Min offentlige profil', user_path(current_user), class: 'btn btn-default text-left'  %>
 
           <%= link_to rate_your_helpers_dashboard_path , class: "btn btn-default text-left #{@rate}" do %>

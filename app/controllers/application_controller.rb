@@ -13,6 +13,12 @@ class ApplicationController < ActionController::Base
     @active_jobs_with_applicants = Job.where(user_id: current_user.id, status: 'active').select { |x| x.job_applications.size > 0}
   end
 
+  def total_invitations
+    @invitations = JobApplication.where(user_id: current_user.id, awarded: true)
+    @appli_won =  @invitations.order(created_at: :desc).paginate(page: params[:page], per_page: 8)
+    @total_won = @invitations.size 
+  end
+
   # This gets the currently logged in user
   def current_user
     if (user_id = session[:user_id])

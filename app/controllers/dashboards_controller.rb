@@ -3,6 +3,7 @@ before_action :require_user
 before_action :helper_ratings # this is to track the number of helpers needing reviews as one navigates btw all actions/views of the dashboard
                               # @user in all action is the logged in and current user
 before_action :active_jobs_with_helpers
+before_action :total_invitations
 
   def show
     @kommunes = Kommune.all
@@ -24,9 +25,9 @@ before_action :active_jobs_with_helpers
   end
 
   def jobs_won
-    @invitations = JobApplication.where(user_id: current_user.id, awarded: true)
-    @appli_won =  @invitations.order(created_at: :desc).paginate(page: params[:page], per_page: 8)
-    @total_won = @invitations.size 
+    #@invitations = JobApplication.where(user_id: current_user.id, awarded: true)
+    #@appli_won =  @invitations.order(created_at: :desc).paginate(page: params[:page], per_page: 8)
+    #@total_won = @invitations.size 
     @jobswon = 'clicked'
   end
 
